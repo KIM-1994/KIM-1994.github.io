@@ -54,6 +54,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Pracitc" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/07/Pracitc/">평택시 진위천 수질농도에 대한 학술 논문</a>
+    </h1>
+  
+
+        <a href="/2020/11/07/Pracitc/" class="article-date">
+  <time datetime="2020-11-06T15:00:00.000Z" itemprop="datePublished">2020-11-07</time>
+</a>
+      </header>
+    
+    <div class="article-entry-abstract" itemprop="articleBody">
+      
+        <!--<figure class="highlight plain"><figcaption><span>setup, include</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">knitr::opts_chunk$set(comment&#x3D;NA,echo &#x3D; F, message&#x3D;F, warning &#x3D; F)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &lt;- read.csv(file.choose(), header &#x3D; F)</span><br><span class="line">library(tidyverse)</span><br><span class="line">library(ggplot2)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="1-20년-진위천3-기본농도-분석"><a href="#1-20년-진위천3-기본농도-분석" class="headerlink" title="1. 20년 진위천3 기본농도 분석"></a><strong>1. 20년 진위천3 기본농도 분석</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">names(a) &lt;- c(&quot;수질측정방법&quot;, &quot;농도&quot;)</span><br><span class="line">ggplot(data &#x3D; a, mapping &#x3D; aes(x&#x3D; 수질측정방법, y &#x3D; 농도, fill &#x3D; 수질측정방법, label &#x3D; T)) +</span><br><span class="line">  geom_bar(stat&#x3D;&quot;identity&quot;, position &#x3D; &quot;dodge&quot;, width&#x3D;.5) +</span><br><span class="line">  geom_text (aes(label &#x3D; 농도), position &#x3D; &quot;dodge&quot;, vjust &#x3D; 0) +</span><br><span class="line">  theme_bw() +</span><br><span class="line">  labs(title&#x3D;&quot;2020년 고덕시 수질측정치&quot;, </span><br><span class="line">       subtitle&#x3D;&quot;수질측정의 농도비교&quot;, </span><br><span class="line">       caption&#x3D;&quot;자료제공 : 물환경 데이터&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="/img/Practice/KakaoTalk_20201107_162155628.png" alt="png"></p>
+<h2 id="2-20년-진위천3-수질농도-세부-분석"><a href="#2-20년-진위천3-수질농도-세부-분석" class="headerlink" title="2. 20년 진위천3 수질농도 세부 분석"></a><strong>2. 20년 진위천3 수질농도 세부 분석</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ggplot(data &#x3D; a, mapping &#x3D; aes(x&#x3D; 수질측정방법, y &#x3D; 농도, fill &#x3D; 수질측정방법)) +</span><br><span class="line">  geom_bar(stat&#x3D;&quot;identity&quot;, position &#x3D; &quot;dodge&quot;, width&#x3D;.5 ) +</span><br><span class="line">  theme_bw() +</span><br><span class="line">   geom_text(aes(label &#x3D; 농도), position &#x3D; position_stack(vjust &#x3D; 0.5)) +  labs(title&#x3D;&quot;2020년 고덕시 수질측정치&quot;, </span><br><span class="line">       subtitle&#x3D;&quot;수질측정의 농도비교&quot;, </span><br><span class="line">       caption&#x3D;&quot;자료제공 : 물환경 데이터&quot;) +</span><br><span class="line">  facet_wrap(. ~ 수질측정방법)</span><br></pre></td></tr></table></figure>
+<p><img src="/img/Practice/KakaoTalk_20201107_162213607.png" alt="png"></p>
+<h2 id="3-년도별-진위천3-수질농도-분석"><a href="#3-년도별-진위천3-수질농도-분석" class="headerlink" title="3. 년도별 진위천3 수질농도 분석"></a><strong>3. 년도별 진위천3 수질농도 분석</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">b &lt;- read.csv(file.choose())</span><br><span class="line">b %&gt;%</span><br><span class="line">  ggplot(data &#x3D; b, mapping &#x3D; aes(x&#x3D; 년, y &#x3D; 농도, fill &#x3D; 수질측정방법)) +</span><br><span class="line">  geom_bar(stat&#x3D;&quot;identity&quot;, position&#x3D;position_dodge(0.85), width&#x3D;1, binwdth &#x3D; 10) +</span><br><span class="line">  geom_text (aes(label &#x3D; 농도), position&#x3D;position_dodge(0.85), vjust &#x3D; 0) +</span><br><span class="line">  theme_bw() +</span><br><span class="line">  labs(title&#x3D;&quot;2020년 고덕시 수질측정치&quot;, </span><br><span class="line">       subtitle&#x3D;&quot;진위천3 수질측정의 농도비교&quot;, </span><br><span class="line">       caption&#x3D;&quot;자료제공 : 물환경 정보시스템&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="/img/Practice/KakaoTalk_20201107_162233342.png" alt="png"></p>
+<h2 id="4-년도별-진위천3-추세-비교"><a href="#4-년도별-진위천3-추세-비교" class="headerlink" title="4. 년도별 진위천3 추세 비교"></a><strong>4. 년도별 진위천3 추세 비교</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">b %&gt;%</span><br><span class="line">  ggplot(data &#x3D; b, mapping &#x3D; aes(x&#x3D; 년, y &#x3D; 농도, color &#x3D; 수질측정방법, fill &#x3D; 수질측정방법)) +</span><br><span class="line">  geom_line(size &#x3D; 1.5) +</span><br><span class="line">  theme_bw() +</span><br><span class="line">  labs(title&#x3D;&quot;2020년 고덕시 수질측정치&quot;, </span><br><span class="line">       subtitle&#x3D;&quot;수질측정의 농도비교&quot;, </span><br><span class="line">       caption&#x3D;&quot;자료제공 : 물환경 데이터&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="/img/Practice/KakaoTalk_20201107_162240834.png" alt="png"></p>
+<h2 id="5-년도별-진위천3-세부-농도-비교"><a href="#5-년도별-진위천3-세부-농도-비교" class="headerlink" title="5. 년도별 진위천3 세부 농도 비교"></a><strong>5. 년도별 진위천3 세부 농도 비교</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ggplot(data &#x3D; b, mapping &#x3D; aes(x&#x3D; 년, y &#x3D; 농도, fill &#x3D; 수질측정방법)) +</span><br><span class="line">  geom_bar(stat&#x3D;&quot;identity&quot;, position &#x3D; &quot;dodge&quot;, width&#x3D;.5 ) +</span><br><span class="line">  geom_text(aes(label &#x3D; 농도), position &#x3D; position_stack(vjust &#x3D; 1)) +</span><br><span class="line">  theme_bw() +</span><br><span class="line">  labs(title&#x3D;&quot;2020년 고덕시 수질측정치&quot;, </span><br><span class="line">       subtitle&#x3D;&quot;진위천3 수질측정의 농도비교&quot;, </span><br><span class="line">       caption&#x3D;&quot;자료제공 : 물환경 정보시스템&quot;) +</span><br><span class="line">  facet_wrap(. ~ 수질측정방법)</span><br></pre></td></tr></table></figure>
+<p><img src="/img/Practice/KakaoTalk_20201107_162249055.png" alt="png"></p>
+<h2 id="6-20년-진위천3-월별-비교-분석"><a href="#6-20년-진위천3-월별-비교-분석" class="headerlink" title="6. 20년 진위천3 월별 비교 분석"></a><strong>6. 20년 진위천3 월별 비교 분석</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">c &lt;- read.csv(file.choose())</span><br><span class="line">library(scales)</span><br><span class="line">  names(c) &lt;- c(&quot;측정소명&quot;, &quot;년월&quot;,&quot;농도&quot;,&quot;수질측정방법&quot;) </span><br><span class="line">c %&gt;%</span><br><span class="line">  ggplot(data &#x3D; c, mapping &#x3D; aes(x&#x3D; 년월, y &#x3D; 농도, fill &#x3D; 수질측정방법)) +</span><br><span class="line">  geom_bar(stat&#x3D;&quot;identity&quot;,position&#x3D;position_dodge(0.85), width&#x3D;1) +</span><br><span class="line">   scale_x_discrete(label &#x3D; c(&quot;20년Jan&quot;,&quot;20년Feb&quot;,&quot;20년Mar&quot;,&quot;20년Apr&quot;,&quot;20년May&quot;,&quot;20년Jun&quot;,&quot;20년Jul&quot;,&quot;20년Aug&quot;,&quot;20년Sep&quot;)) +</span><br><span class="line">  theme_bw() +</span><br><span class="line">  labs(title&#x3D;&quot;2020년 월별 고덕시 수질측정치&quot;, </span><br><span class="line">       subtitle&#x3D;&quot;진위천3 수질측정의 농도비교&quot;, </span><br><span class="line">       caption&#x3D;&quot;자료제공 : 물환경 정보시스템&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="/img/Practice/KakaoTalk_20201107_162308083.png" alt="png"></p>
+-->
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://kim-1994.github.io/2020/11/07/Pracitc/" data-id="ckh7cxnf40000rwvjf47q3pmg" class="article-share-link">Share</a>-->
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-home-credit-default-risk" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
