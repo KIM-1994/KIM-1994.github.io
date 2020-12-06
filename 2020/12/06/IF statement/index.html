@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>점프 투 파이썬 if문 | Welcome to HOya World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="if문은 왜 필요할까? 다음과 같은 상상을 해보자.  “시간이 있으면 친구를 만나고, 시간이 없으면 안만난다.”  누구나 일어날 수 있는 상황 중 하나이며, 프로그래밍도 사람이 하는 것이므로 위 문장처럼 주어진 조건을 판단한 후 그 상황에 맞게 처리해야 할 경우가 생긴다. 이렇듯 프로그래밍에서 조건을 판단하여 해당 조건에 맞는 상황을 수행하는 데 쓰는 것이">
+<meta property="og:type" content="article">
+<meta property="og:title" content="점프 투 파이썬 if문">
+<meta property="og:url" content="http://kim-1994.github.io/2020/12/06/IF%20statement/index.html">
+<meta property="og:site_name" content="Welcome to HOya World">
+<meta property="og:description" content="if문은 왜 필요할까? 다음과 같은 상상을 해보자.  “시간이 있으면 친구를 만나고, 시간이 없으면 안만난다.”  누구나 일어날 수 있는 상황 중 하나이며, 프로그래밍도 사람이 하는 것이므로 위 문장처럼 주어진 조건을 판단한 후 그 상황에 맞게 처리해야 할 경우가 생긴다. 이렇듯 프로그래밍에서 조건을 판단하여 해당 조건에 맞는 상황을 수행하는 데 쓰는 것이">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/72365693/100966348-0451a180-3570-11eb-9482-7ca770dacbaa.JPG">
+<meta property="og:image" content="https://user-images.githubusercontent.com/72365693/100966697-e33d8080-3570-11eb-9d34-47c90eb1250d.JPG">
+<meta property="og:image" content="https://user-images.githubusercontent.com/72365693/100967757-5e079b00-3573-11eb-81cd-a49a017dc948.JPG">
+<meta property="og:image" content="https://user-images.githubusercontent.com/72365693/101275829-20617700-37ec-11eb-9574-2bc722c4a997.JPG">
+<meta property="og:image" content="https://user-images.githubusercontent.com/72365693/101276137-5c95d700-37ee-11eb-97eb-df268bbd615c.JPG">
+<meta property="article:published_time" content="2020-12-06T09:19:12.382Z">
+<meta property="article:modified_time" content="2020-12-06T09:21:35.354Z">
+<meta property="article:author" content="HOya">
+<meta property="article:tag" content="if문">
+<meta property="article:tag" content="기본 문법">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/72365693/100966348-0451a180-3570-11eb-9482-7ca770dacbaa.JPG">
+  
+    <link rel="alternate" href="/atom.xml" title="Welcome to HOya World" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,700&amp;subset=korean" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <!--<div id="banner"></div>-->
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <a href="/" id="main-nav-title" class="main-nav-link">Welcome to HOya World</a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives/">Archives</a>
+        
+          <a class="main-nav-link" href="/about/">about</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-IF statement" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a>►<a class="article-category-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95/">파이썬 기본 문법</a>►<a class="article-category-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95/if%EB%AC%B8/">if문</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      점프 투 파이썬 if문
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="if문은-왜-필요할까"><a href="#if문은-왜-필요할까" class="headerlink" title="if문은 왜 필요할까?"></a><strong>if문은 왜 필요할까?</strong></h1><hr>
+<p>다음과 같은 상상을 해보자.</p>
+<blockquote>
+<p>“시간이 있으면 친구를 만나고, 시간이 없으면 안만난다.”</p>
+</blockquote>
+<p>누구나 일어날 수 있는 상황 중 하나이며, 프로그래밍도 사람이 하는 것이므로 위 문장처럼 주어진 조건을 판단한 후 그 상황에 맞게 처리해야 할 경우가 생긴다. 이렇듯 프로그래밍에서 조건을 판단하여 해당 조건에 맞는 상황을 수행하는 데 쓰는 것이 바로 if문이다.</p>
+<p>위와 같은 상황을 파이썬에서는 다음과 같이 표현할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">time = <span class="literal">True</span></span><br><span class="line"><span class="keyword">if</span> time:</span><br><span class="line">    print(<span class="string">&quot;친구를 만나라&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&quot;만나지 마라&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>친구를 만나라</code></pre>
+<p>time에 True를 입력했으므로 time은 참이다. 따라서 if문 다음 문장이 수행되어 ‘친구를 만나라’가 출력된다.</p>
+<h1 id="if문의-기본구조"><a href="#if문의-기본구조" class="headerlink" title="if문의 기본구조"></a><strong>if문의 기본구조</strong></h1><hr>
+<p>다음은 if와 else를 사용한 조건문의 기본 구조이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 조건문:</span><br><span class="line">    수행할 문장<span class="number">1</span></span><br><span class="line">    수행할 문장<span class="number">2</span></span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    수행할 문장A</span><br><span class="line">    수행할 문장B</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>조건문을 테스트해서 참이면 if문 바로 다음문장(if블록)들을 수행하고, 조건문이 거짓이면 else문 다음문장(else)들을 수행하게 된다. 그러므로 else문은 if문 없이 독립적으로 사용할 수 없다.</p>
+<h1 id="들여쓰기"><a href="#들여쓰기" class="headerlink" title="들여쓰기"></a><strong>들여쓰기</strong></h1><hr>
+<p>if문을 만들 때는 if조건문: 바로 아래 문장부터 if문에 속하는 모든 문장에 들여쓰기(indentation)를 해주어야 한다. 오른쪽에서 보는 것과 같이 조건문이 참일 경우”수행할 문장1”을 들여쓰기했고 “수행할 문장2”와 “수행할 문장3”도 들여쓰기 해 주었다. 다른 프로그래밍 언어를 사용해 온 사람들은 파이썬에서 “수행할 문장”을 들여쓰기하는 것을 무시하는 경우가 많으니 더 주의해야 한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 조건문:</span><br><span class="line">    수행할 문장<span class="number">1</span></span><br><span class="line">    수행할 문장<span class="number">2</span></span><br><span class="line">    수행할 문장<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>다음처럼 작성하면 오류가 발생한다. “수행할 문장2”를 들여쓰기하지 않았기 때문이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 조건문:</span><br><span class="line">    수행할 문장<span class="number">1</span></span><br><span class="line">수행할 문장<span class="number">2</span></span><br><span class="line">    수행할 문장<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>IDLE 에디터에서 다음과 같이 작성하여 실행해 보자. 여기에서는 오류가 뜨는지 확인만 하면 되니 IDLE 에디터 창에서 바로 실행하자(단축기:<code>F5</code>).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">time = <span class="literal">True</span></span><br><span class="line"><span class="keyword">if</span> time:</span><br><span class="line">    print(<span class="string">&quot;친구를&quot;</span>)</span><br><span class="line">print(<span class="string">&quot;만나러&quot;</span>)</span><br><span class="line">    print(<span class="string">&quot;가라&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://user-images.githubusercontent.com/72365693/100966348-0451a180-3570-11eb-9482-7ca770dacbaa.JPG" alt="캡처"></p>
+<p>들여쓰기 오류가 발생하는 것을 확인할 수 있다.</p>
+<p>다음과 같은 경우에도 오류가 발생한다. “수행할 문장3”을 들여쓰기 했지만 “수행할 문장1”이나 “수행할 문장2”와 들여쓰기의 너비가 다르다. 즉, 들여쓰기는 언제나 같은 너비로 해야한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 조건문:</span><br><span class="line">    수행할 문장<span class="number">1</span></span><br><span class="line">    수행할 문장<span class="number">2</span></span><br><span class="line">        수행할 문장<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>IDLE 에디터에서 다음과 같이 작성하여 실행해 보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">time = <span class="literal">True</span></span><br><span class="line"><span class="keyword">if</span> time:</span><br><span class="line">    print(<span class="string">&quot;친구를&quot;</span>)</span><br><span class="line">    print(<span class="string">&quot;만나러&quot;</span>)</span><br><span class="line">        print(<span class="string">&quot;가라&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://user-images.githubusercontent.com/72365693/100966697-e33d8080-3570-11eb-9d34-47c90eb1250d.JPG" alt="캡처"></p>
+<p>마찬가지로 들여쓰기 오류가 발생하는 것을 확인할 수 있다.</p>
+<p>그렇다면 들여쓰기는 공백(<code>Spacebar</code>)으로 하는 것이 좋을까? 아니면 탭(<code>Tab</code>)으로 하는 것이 좋을까? 이에 대한 논란은 파이썬을 사용하는 사람들 사이에서 아직도 계속되고 있다. 탭으로 하자는 쪽과 공백으로 하자는 쪽 모두가 동의하는 내용은 단 하나, 2가지를 혼영해서 쓰지는 말자는 것이다. 공백으로 할 거면 항상 공백으로 통일하고, 탭으로 할 거면 항상 탭으로 통일해서 사용하자는 말이다. 탭이나 공백은 프로그램 소스에서 눈으로 보이는 것이 아니기 때문에 혼용해서 쓰면 오류의 원인이 되니 주의하자.</p>
+<p><em>※ 요즘 파이썬 커뮤니티에서는 들여쓰기를 할 때 공백(<code>Spacebar</code>) 4개를 사용하는 것을 권장한다.</em></p>
+<p><img src="https://user-images.githubusercontent.com/72365693/100967757-5e079b00-3573-11eb-81cd-a49a017dc948.JPG" alt="캡처"></p>
+<h1 id="조건문이란-무엇인가"><a href="#조건문이란-무엇인가" class="headerlink" title="조건문이란 무엇인가?"></a><strong>조건문이란 무엇인가?</strong></h1><hr>
+<p><strong>if 조건문</strong>에서 “조건문”이란 참과 거짓을 판단하는 문장을 말한다.<br>앞에서 살펴본 시간 예제에서 조건문은 time이 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">time = <span class="literal">True</span></span><br><span class="line"><span class="keyword">if</span> time:</span><br></pre></td></tr></table></figure>
+
+<p>time은 True이기 때문에 조건이 참이 되어 if문 다음 문장을 수행한다.</p>
+<h2 id="비교연산자"><a href="#비교연산자" class="headerlink" title="비교연산자"></a><strong>비교연산자</strong></h2><p>이번에는 조건문에 비교연산자(<span style="color:red"><code>&lt;</code>,<code>&gt;</code>,<code>==</code>,<code>!=</code>,<code>&gt;=</code>,<code>&lt;=</code></span>)를 쓰는 방법에 대해 알아보자.</p>
+<p>다음 표는 비교 연산자를 잘 설명해 준다.</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>비교연산자</strong></th>
+<th align="center"><strong>설명</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">x &lt; y</td>
+<td align="center">x가 y보다 작다</td>
+</tr>
+<tr>
+<td align="left">x &gt; y</td>
+<td align="center">x가 y보다 크다</td>
+</tr>
+<tr>
+<td align="left">x == y</td>
+<td align="center">x와 y가 같다</td>
+</tr>
+<tr>
+<td align="left">x != y</td>
+<td align="center">x와 y가 같지 않다</td>
+</tr>
+<tr>
+<td align="left">x &gt;= y</td>
+<td align="center">x가 y보다 크거나 같다</td>
+</tr>
+<tr>
+<td align="left">x &lt;= y</td>
+<td align="center">x가 y보다 작거나 같다</td>
+</tr>
+</tbody></table>
+<p>이제 위 연산자를 어떻게 사용하는지 알아보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">3</span></span><br><span class="line">y = <span class="number">2</span></span><br><span class="line">x &gt; y</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True</code></pre>
+<p>x에 3을, y에 2를 대입한 다음에 <code>x &gt; y</code>라는 조건문을 수행하면 True를 돌려준다. <code>x &gt; y</code> 조건문이 참이기 때문이다</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x &lt; y</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>False</code></pre>
+<p>위 조건문은 거짓이기 때문에 False를 돌려준다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x == y</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>False</code></pre>
+<p>x와 y는 같지 않다. 따라서 위 조건문은 거짓이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x != y</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True</code></pre>
+<p>x와 y는 같지 않다. 따라서 위 조건문은 참이다.</p>
+<p>앞에서 살펴본 time 예제를 다음처럼 바꾸려면 어떻게 해야 할까?</p>
+<blockquote>
+<p>“만약 30분의 시간이 남았으면 친구를 만나고 그렇지 않으면 만나지 않는다”</p>
+</blockquote>
+<p>위 상황은 다음처럼 프로그래밍 할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">time = <span class="number">20</span></span><br><span class="line"><span class="keyword">if</span> time &gt;= <span class="number">30</span>:</span><br><span class="line">    print(<span class="string">&quot;친구를 만나러 가라&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&quot;만나지 않는다.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>만나지 않는다.</code></pre>
+<p><span style="color:red"><code>time &gt;= 30</code></span> 조건문이 거짓이 되기 때문에 else문 다음 문장을 수행하게 된다.</p>
+<h2 id="and-or-not"><a href="#and-or-not" class="headerlink" title="and, or, not"></a><strong>and, or, not</strong></h2><p>조건을 판단하기 위해 사용하는 다른 연산자로는 and, or, not이 있다. 각각의 연산자는 다음처럼 동작한다.</p>
+<table>
+<thead>
+<tr>
+<th><strong>연산자</strong></th>
+<th align="right"><strong>설명</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x or y</td>
+<td align="right">x와 y 둘중에 하나만 참이어도 참이다</td>
+</tr>
+<tr>
+<td>x and y</td>
+<td align="right">x 와 y 모두 참이어야 한다</td>
+</tr>
+<tr>
+<td>not x</td>
+<td align="right">x가 거짓이면 참이다</td>
+</tr>
+</tbody></table>
+<p>다음 예를 통해 or 연산자의 사용법을 알아보자.</p>
+<blockquote>
+<p>“시간이 30분 이상 있거나 여유가 있다면 친구를 만나고 그렇지 않으면 만나지 마라”</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">time = <span class="number">20</span></span><br><span class="line">composure = <span class="literal">True</span></span><br><span class="line"><span class="keyword">if</span> time &gt;= <span class="number">30</span> <span class="keyword">or</span> composure:</span><br><span class="line">    print(<span class="string">&quot;친구를 만나라&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&quot;만나지 마라&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>친구를 만나라</code></pre>
+<p>time은 20분이지만 composure가 True이기 때문에 <span style="color:red"> time &gt;= 30분 or composure </span> 조건문이 참이 된다. 따라서 if문 다음 ‘친구를 만나라’ 문장이 출력된다.</p>
+<h2 id="x-in-s-x-not-in-s"><a href="#x-in-s-x-not-in-s" class="headerlink" title="x in s, x not in s"></a><strong>x in s, x not in s</strong></h2><p>더 나아가 파이썬은 다른 프로그래밍 언어에서 쉽게 볼 수 없는 재미있는 조건문을 제공한다.</p>
+<p>바로 다음과 같은 것들이다.</p>
+<table>
+<thead>
+<tr>
+<th><strong>in</strong></th>
+<th><strong>not in</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x in 리스트</td>
+<td>x not in 리스트</td>
+</tr>
+<tr>
+<td>x in 튜플</td>
+<td>x not in 튜플</td>
+</tr>
+<tr>
+<td>x in 문자열</td>
+<td>x not in 문자열</td>
+</tr>
+</tbody></table>
+<p>영어 단어 in의 뜻이 “~안에”라는 것을 생각해 보면 다음 예가 쉽게 이해가 될 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">not</span> <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>False</code></pre>
+<p>앞에서 첫 번째 예는 “[1,2,3]이라는 리스트 안에 1이 있는가?” 조건문이다. 1은 [1,2,3]안에 있으므로 참이 되어 True를 돌려준다. 두 번째 예는 “[1,2,3]리스트 안에 1이 없는가?” 조건문이다. 1은 [1,2,3]안에 있으므로 거짓이 되어 False를 돌려준다.</p>
+<p>다음은 튜플과 문자열에 적용한 예이다. 각각의 결과가 나온 이유는 쉽게 유추할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;a&#x27;</span> <span class="keyword">in</span> (<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;j&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> <span class="string">&#x27;python&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True</code></pre>
+<p>이번에는 우리가 계속 사용해 온 시간 예제에 in을 적용해 보자.</p>
+<blockquote>
+<p>“만약 남은 시간이 있다면 친구를 만나고 없으면 만나지 마라”</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">friend = [<span class="string">&#x27;time&#x27;</span>,<span class="string">&#x27;phone&#x27;</span>,<span class="string">&#x27;paper&#x27;</span>]</span><br><span class="line"><span class="keyword">if</span> <span class="string">&#x27;time&#x27;</span> <span class="keyword">in</span> friend:</span><br><span class="line">    print(<span class="string">&quot;친구를 만나라&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&quot;만나지 마라&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>친구를 만나라</code></pre>
+<p>[‘time’,’phone’,’paper’] 리스트 안에 ‘time’이 있으므로 ‘time’in friend는 참이 된다. 따라서 if문 다음 문장이 수행된다.</p>
+<p><img src="https://user-images.githubusercontent.com/72365693/101275829-20617700-37ec-11eb-9574-2bc722c4a997.JPG" alt="캡처"></p>
+<h2 id="다양한-조건을-판단하는-elif"><a href="#다양한-조건을-판단하는-elif" class="headerlink" title="다양한 조건을 판단하는 elif"></a><strong>다양한 조건을 판단하는 elif</strong></h2><hr>
+<p>if와 else만으로는 다양한 조건을 판단하기 어렵다. 다음 예를 보더라도 if와 else만으로는 조건을 판한다는데 어려움을 겪게 된다.</p>
+<blockquote>
+<p>“주머니에 돈이 있으면 택시를 타고, 주머니에 돈은 없지만 카드가 있으면 택시를 타고, 돈도 없고 카드도 없으면 걸어 가라”</p>
+</blockquote>
+<p>위 문장을 보면 조건을 판단하는 부분이 두 군데가 있다. 먼저 주머니에 돈이 있는지를 판단해야 하고 주머니에 돈이 없으면 다시 카드가 있는지 판단해야 한다.</p>
+<p>if와 else만으로 위 문장을 표현하려면 다음과 같이 할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pocket = [<span class="string">&#x27;paper&#x27;</span>,<span class="string">&#x27;handphone&#x27;</span>]</span><br><span class="line">card = <span class="literal">True</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">&#x27;money&#x27;</span> <span class="keyword">in</span> pocket:</span><br><span class="line">    print(<span class="string">&quot;택시를 타고가라&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">if</span> card:</span><br><span class="line">        print(<span class="string">&quot;택시를 타고가라&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">&quot;걸어가라&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>택시를 타고가라</code></pre>
+<p>언뜻 보기에도 이해하기 어렵고 산만한 느낌이 든다. 이런 복잡함을 해결하기 위해 파이썬에서는 다중 조건 판단을 가능하게 하는 <strong>elif</strong>를 사용한다.</p>
+<p>위 예를 elif를 사용하면 다음과 같이 바꿀 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pocket = [<span class="string">&#x27;paper&#x27;</span>,<span class="string">&#x27;cellphone&#x27;</span>]</span><br><span class="line">card = <span class="literal">True</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">&#x27;money&#x27;</span> <span class="keyword">in</span> pocket:</span><br><span class="line">    print(<span class="string">&quot;택시를 타고가라&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> card:</span><br><span class="line">    print(<span class="string">&quot;택시를 타고가라&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&quot;걸어가라&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>택시를 타고가라</code></pre>
+<p>즉, elif는 이전 조건문이 거짓일 때 수행된다. if, elif, else를 모두 사용할 때 기본 구조는 다음과 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">If &lt;조건문&gt;:</span><br><span class="line">    &lt;수행할 문장<span class="number">1</span>&gt; </span><br><span class="line">    &lt;수행할 문장<span class="number">2</span>&gt;</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">elif</span> &lt;조건문&gt;:</span><br><span class="line">    &lt;수행할 문장<span class="number">1</span>&gt;</span><br><span class="line">    &lt;수행할 문장<span class="number">2</span>&gt;</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">elif</span> &lt;조건문&gt;:</span><br><span class="line">    &lt;수행할 문장<span class="number">1</span>&gt;</span><br><span class="line">    &lt;수행할 문장<span class="number">2</span>&gt;</span><br><span class="line">    ...</span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   &lt;수행할 문장<span class="number">1</span>&gt;</span><br><span class="line">   &lt;수행할 문장<span class="number">2</span>&gt;</span><br><span class="line">   ... </span><br></pre></td></tr></table></figure>
+
+<p>위에서 볼 수 있듯이 elif는 개수에 제한 없이 사용할 수 있다.</p>
+<p><img src="https://user-images.githubusercontent.com/72365693/101276137-5c95d700-37ee-11eb-97eb-df268bbd615c.JPG" alt="캡처"></p>
+<h2 id="조건부-표현식"><a href="#조건부-표현식" class="headerlink" title="조건부 표현식"></a><strong>조건부 표현식</strong></h2><hr>
+<p>다음과 같은 코드를 보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> score &gt;= <span class="number">60</span>:</span><br><span class="line">    message = <span class="string">&quot;success&quot;</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    message = <span class="string">&quot;failure&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>위 코드는 score가 60 이상일 경우 message에 문자열”success”를, 아닐 경우에는 “failure”를 대입하는 코드이다.</p>
+<p>파이썬의 조건부 표현식(conditional expression)을 사용하면 위 코드를 다음과 같이 간단히 표현할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">message = <span class="string">&quot;success&quot;</span> <span class="keyword">if</span> score &gt;= <span class="number">60</span> <span class="keyword">else</span> <span class="string">&quot;failure&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>조건부 표현식은 다음과 같이 정의한다.</p>
+<p><span style="color:red"><code>조건문이 참인 경우</code></span> if <span style="color:red"><code>조건문</code></span> else <span style="color:red"><code>조건문이 거짓인 경우</code></span></p>
+<p>조건부 표현식은 가독성에 유리하고 한 줄로 작성할 수 있어 활용성이 좋다.</p>
+<p>출처 : <a target="_blank" rel="noopener" href="https://wikidocs.net/20">https://wikidocs.net/20</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://kim-1994.github.io/2020/12/06/IF%20statement/" data-id="cki8i209q0000ncvjf8be756a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/if%EB%AC%B8/" rel="tag">if문</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95/" rel="tag">기본 문법</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/12/04/chap6/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-caption">Older</span>
+      <div class="article-nav-title">파이썬 머신러닝 완벽가이드 6장 차원축소</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 HOya<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> with 
+      theme_by <a href="http://hexo.io/" target="_blank">mango</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives/" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/" class="mobile-nav-link">about</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
