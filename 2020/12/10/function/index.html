@@ -10,7 +10,7 @@
   <meta name="description" content="함수란 무엇인가? 함수를 설명하기 전에 믹서를 생각해 보자. 우리는 믹서에 과일을 넣는다. 그리고 믹서를 사용해서 과일을 갈아 과일 주스를 만든다. 우리가 믹서에 넣은 과일은 “입력”이 되고 과일 주스는 “출력(결과값)”이 된다. 그렇다면 믹서는 무엇인가? (믹서는 과일을 입력받아 주스를 출력하는 함수와 같다.) 우리가 배우려는 함수가 바로 믹서와 비슷하다">
 <meta property="og:type" content="article">
 <meta property="og:title" content="점프 투 파이썬 함수">
-<meta property="og:url" content="http://kim-1994.github.io/2020/12/09/function/index.html">
+<meta property="og:url" content="http://kim-1994.github.io/2020/12/10/function/index.html">
 <meta property="og:site_name" content="Welcome to HOya World">
 <meta property="og:description" content="함수란 무엇인가? 함수를 설명하기 전에 믹서를 생각해 보자. 우리는 믹서에 과일을 넣는다. 그리고 믹서를 사용해서 과일을 갈아 과일 주스를 만든다. 우리가 믹서에 넣은 과일은 “입력”이 되고 과일 주스는 “출력(결과값)”이 된다. 그렇다면 믹서는 무엇인가? (믹서는 과일을 입력받아 주스를 출력하는 함수와 같다.) 우리가 배우려는 함수가 바로 믹서와 비슷하다">
 <meta property="og:locale" content="en_US">
@@ -18,11 +18,11 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/72365693/101631489-bfde6e00-3a67-11eb-8f61-bf40e6351708.JPG">
 <meta property="og:image" content="https://user-images.githubusercontent.com/72365693/101636052-1b135f00-3a6e-11eb-8416-6422ed0b8319.JPG">
 <meta property="og:image" content="https://user-images.githubusercontent.com/72365693/101637493-30898880-3a70-11eb-89cf-7d2db2da6cfa.JPG">
-<meta property="article:published_time" content="2020-12-09T13:51:53.322Z">
-<meta property="article:modified_time" content="2020-12-09T13:54:06.431Z">
+<meta property="article:published_time" content="2020-12-10T05:27:35.525Z">
+<meta property="article:modified_time" content="2020-12-10T05:29:29.508Z">
 <meta property="article:author" content="HOya">
 <meta property="article:tag" content="함수">
-<meta property="article:tag" content="프로그램 입출력은 어떻게 할까?">
+<meta property="article:tag" content="점프 투 파이썬">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/72365693/101629946-7725b580-3a65-11eb-9431-3ea49187dce5.JPG">
   
@@ -281,16 +281,87 @@ None</code></pre>
 나의 이름은 강동원 입니다.
 나이는 27살입니다.
 남자입니다.</code></pre>
-<p>입력값으로 “박응용”, 27처럼 2개를 주면 name에는 “박응용”이 old에는 27이 대입된다. 그리고 man이라는 변수에는 입력값을 주지 않았지만 초깃값 True를 갖게 된다.</p>
+<p>입력값으로 “강동원”, 27처럼 2개를 주면 name에는 “강동원”이 old에는 27이 대입된다. 그리고 man이라는 변수에는 입력값을 주지 않았지만 초깃값 True를 갖게 된다.</p>
+<p>따라서, 위 예에서 함수를 사용한 2가지 방법은 모두 동일한 결과를 출력한다.</p>
+<p>이제 초기값이 설정된 부분을 False로 바꿔 보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">say_myself(<span class="string">&quot;강동원&quot;</span>, <span class="number">27</span>, <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>나의 이름은 강동원 입니다.
+나이는 27살입니다.
+여자입니다.</code></pre>
+<p>man 변수에 False 값이 대입되어 위와 같은 결과가 출력된다.</p>
+<p>함수의 매개변수에 초기값을 설정할 때 주의할 것이 하나 있다. 만약 위에서 본 say_myself 함수를 다음과 같이 만들면 어떻게 될까?</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">say_myself</span>(<span class="params">name, man=<span class="literal">True</span>, old</span>):</span> </span><br><span class="line">    print(<span class="string">&quot;나의 이름은 %s 입니다.&quot;</span> % name) </span><br><span class="line">    print(<span class="string">&quot;나이는 %d살입니다.&quot;</span> % old) </span><br><span class="line">    <span class="keyword">if</span> man: </span><br><span class="line">        print(<span class="string">&quot;남자입니다.&quot;</span>) </span><br><span class="line">    <span class="keyword">else</span>: </span><br><span class="line">        print(<span class="string">&quot;여자입니다.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>  File &quot;&lt;ipython-input-7-52c3af61a84d&gt;&quot;, line 1
+    def say_myself(name, man=True, old):
+                   ^
+SyntaxError: non-default argument follows default argument</code></pre>
+<p>이전 함수와 바뀐 부분은 초기값을 설정한 매개변수의 위치이다. 결론을 미리 말하면 이것은 함수를 실행할 때 오류가 발생한다.</p>
+<p>얼핏 생각하기에 위 함수를 호출하려면 다음과 같이 하면 될 것 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">say_myself(<span class="string">&quot;강동원&quot;</span>, <span class="number">27</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>나의 이름은 강동원 입니다.
+나이는 27살입니다.
+남자입니다.</code></pre>
+<p>위와 같이 함수를 호출한다면 name 변수에는 “강동원”이 들어갈 것이다. 하지만 파이썬 인터프리터는 27을 man 변수와 old 변수 중 어느 곳에 대입해야 할지 알 수 없게 된다.</p>
+<p>오류 메시지를 보면 다음과 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SyntaxError: non-default argument follows default argument</span><br></pre></td></tr></table></figure>
+
+<p>위 오류 메시지는 초기값을 설정해 놓은 매개변수 뒤에 초기값을 설정해 놓지 않은 매개변수는 사용할 수 없다는 뜻이다. 즉 매개변수로 <span style = red><code>(name, man=True, old)</code></span>는 안된다는 것이다. 초기화시키고 싶은 매개변수를 항상 뒤쪽에 놓는 것을 잊지 말자.</p>
+<h2 id="함수-안에서-선언한-변수의-효력-범위"><a href="#함수-안에서-선언한-변수의-효력-범위" class="headerlink" title="함수 안에서 선언한 변수의 효력 범위"></a><strong>함수 안에서 선언한 변수의 효력 범위</strong></h2><hr>
+<p>함수 안에서 사용할 변수의 이름을 함수 밖에서도 동일하게 사용한다면 어떻게 될까? 이런 궁금증이 생겼던 독자라면 이번에 확실하게 답을 찾을 수 있을 것이다.</p>
+<p>다음 예를 보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vartest.py</span></span><br><span class="line">a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">vartest</span>(<span class="params">a</span>):</span></span><br><span class="line">    a = a + <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">vartest(a)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1</code></pre>
+<p>먼저 a라는 변수를 생성하고 1을 대입한다. 다음 입력으로 들어온 값에 1을 더해 주고 결과값은 돌려주지 않는 vartest 함수를 선언한다. 그리고 vartest 함수에 입력값으로 a를 주었다. 마지막으로 a의 값을 출력하는 <span style = red><code>print(a)</code></span>를 입력한다. 과연 결과값은 무엇이 나올까?</p>
+<p>당연히 vartest 함수에서 매개변수 a의 값에 1을 더했으니까 2가 출력될 것 같지만 프로그램 소스를 작성해서 실행해 보면 결과값은 1이 나온다. 그 이유는 함수 안에서 새로 만든 매개변수는 함수 안에서만 사용하는 “함수만의 변수”이기 때문이다. 즉, <span style = red><code>def vartest(a)</code></span>에서 입력값을 전달받는 매개변수 a는 함수 안에서만 사용하는 변수이지 함수 밖의 변수 a가 아니라는 뜻이다.</p>
+<p>따라서, vartest 함수는 다음처럼 변수 이름을 hello로 한 vartest 함수와 완전히 동일하다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">vartest</span>(<span class="params">hello</span>):</span></span><br><span class="line">    hello = hello + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>즉, 함수 안에서 사용하는 매개변수는 함수 밖의 변수 이름과는 전혀 상관이 없다는 뜻이다.</strong></p>
+<p>다음 예를 보면 더욱 분명하게 이해할 수 있을 것이다.</p>
+<p>위 프로그램 소스를 에디터로 작성해서 실행하면 어떻게 될까? 오류가 발생할 것이라고 생각한 독자는 모든 것을 이해한 독자이다. <span style = red><code>vartest(3)</code></span>을 수행하면 vartest 함수 안에서 a는 4가 되지만 함수를 호출하고 난 뒤에 <span style = red><code>print(a)</code></span>문장은 오류가 발생하게 된다. 그 이유는 print(a)에서 입력받아야 하는 a 변수를 어디에서도 찾을 수가 없기 때문이다. 다시 말하지만 함수 안에서 선언한 매개변수는 함수 안에서만 사용될 뿐 함수 밖에서는 사용되지 않는다. 이것을 이해하는 것은 매우 중요하다.</p>
+<h2 id="함수-안에서-함수-밖의-변수를-변경하는-방법"><a href="#함수-안에서-함수-밖의-변수를-변경하는-방법" class="headerlink" title="함수 안에서 함수 밖의 변수를 변경하는 방법"></a><strong>함수 안에서 함수 밖의 변수를 변경하는 방법</strong></h2><hr>
+<p>그렇다면 vartest라는 함수를 사용해서 함수 밖의 변수 a를 1만큼 증가시킬 수 있는 방법은 없을까? 이 질문에 2가지 해결 방법이 있다.</p>
+<p><strong>1. return 사용하기</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vartest_return.py</span></span><br><span class="line">a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">vartest</span>(<span class="params">a</span>):</span></span><br><span class="line">    a = a + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">a = vartest(a)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2</code></pre>
+<p>첫 번째 방법은 return을 사용하는 방법이다. vartest 함수는 입력으로 들어온 값을 1을 더한값을 돌려준다. 따라서 <span style = red><code>a = vartest(a)</code></span>라고 대입하면 a가 vartest 함수의 결과값으로 바뀐다. 여기에서도 물론 vartest 함수 안의 a 매개변수는 함수 밖의 a와는 다른 것이다.</p>
+<p><strong>2. global 명령어 사용하기</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vartest_global.py</span></span><br><span class="line">a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">vartest</span>():</span></span><br><span class="line">    <span class="keyword">global</span> a</span><br><span class="line">    a = a+<span class="number">1</span></span><br><span class="line">    </span><br><span class="line">vartest()</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2</code></pre>
+<p>두 번째 방법은 global 명령어를 사용하는 방법이다. 위 예에서 볼 수 있듯이 vartest 함수 안의 <span style = red><code>global a</code></span> 문장은 함수 안에서 함수 밖의 a 변수를 직접 사용하겠다는 뜻이다. 하지만 프로그래밍을 할 때 global 명령어는 사용하지 않는 것이 좋다. 왜냐하면 함수는 독립적으로 존재하는 것이 좋기 때문이다. 외부 변수에 종속적인 함수는 그다지 좋은 함수가 아니다. 그러므로 가급적 global 명령어를 사용하는 이 방법은 피하고 첫 번째 방법을 사용하기를 권한다.</p>
+<h2 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><strong>lambda</strong></h2><hr>
+<p>lambda는 함수를 생성할 때 사용하는 예약어로 def와 동일한 역할을 한다. 보통 함수를 한줄로 간결하게 만들 때 사용한다. 우리말로는 “람다”라고 읽고 def를 사용해야 할 정도로 복잡하지 않거나 def를 사용할 수 없는 곳에 주로 쓰인다.</p>
+<p>사용법은 다음과 같다.</p>
+<blockquote>
+<p>lambda 매개변수1, 매개변수2, …. : 매개변수를 이용한 표현식</p>
+</blockquote>
+<p>한번 직접 만들어 보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add = <span class="keyword">lambda</span> a, b: a+b</span><br><span class="line">result = add(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+<pre><code>7</code></pre>
+<p>add는 두 개의 인수를 받아 서로 더한 값을 돌려주는 lambda 함수이다. 위 예제는 def를 사용한 다음 함수와 하는 일이 완전히 동일하다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line"></span><br><span class="line">result = add(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+<pre><code>7</code></pre>
+<blockquote>
+<p>※ lambda 예약어로 만든 함수는 return 명령어가 없어도 결괏값을 돌려준다.</p>
+</blockquote>
 <p><a target="_blank" rel="noopener" href="https://wikidocs.net/24">출처</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kim-1994.github.io/2020/12/09/function/" data-id="ckihh4y840000govjaxbeh8ma" class="article-share-link">Share</a>
+      <a data-url="http://kim-1994.github.io/2020/12/10/function/" data-id="ckihh4y840000govjaxbeh8ma" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%A0%EA%B9%8C/" rel="tag">프로그램 입출력은 어떻게 할까?</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%ED%95%A8%EC%88%98/" rel="tag">함수</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag">점프 투 파이썬</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%ED%95%A8%EC%88%98/" rel="tag">함수</a></li></ul>
 
     </footer>
   </div>
