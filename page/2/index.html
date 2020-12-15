@@ -54,6 +54,201 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-02. Series To generate data(index, value 활용)_Before" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Series/">Series</a>►<a class="article-category-link" href="/categories/Series/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0/">데이터 생성하기</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/26/02.%20Series%20To%20generate%20data(index,%20value%20%ED%99%9C%EC%9A%A9)_Before/">series 데이터 생성하기</a>
+    </h1>
+  
+
+        <a href="/2020/11/26/02.%20Series%20To%20generate%20data(index,%20value%20%ED%99%9C%EC%9A%A9)_Before/" class="article-date">
+  <time datetime="2020-11-26T03:22:38.290Z" itemprop="datePublished">2020-11-26</time>
+</a>
+      </header>
+    
+    <div class="article-entry-abstract" itemprop="articleBody">
+      
+        <!--<h2 id="학습목표"><a href="#학습목표" class="headerlink" title="학습목표"></a>학습목표</h2><ol>
+<li>pandas Series 데이터 생성하기</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+
+<h4 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h4><ul>
+<li>pandas의 기본 객체 중 하나</li>
+<li>numpy의 ndarray를 기반으로 인덱싱을 기능을 추가하여 1차원 배열을 나타냄</li>
+<li>index를 지정하지 않을 시, 기본적으로 ndarray와 같이 0-based 인덱스 생성, 지정할 경우 명시적으로 지정된 index를 사용</li>
+<li>같은 타입의 0개 이상의 데이터를 가질 수 있음</li>
+</ul>
+<ul>
+<li>data로만 생성하기<ul>
+<li>index는 기본적으로 0부터 자동적으로 생성</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">s1 = pd.Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) </span><br><span class="line">s1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 판다스</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#-Series (인덱스 + 변수1)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#-DataFrame (인덱스 + 다중)</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    1
+1    2
+2    3
+dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s2 = pd.Series([<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>])</span><br><span class="line">s2</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    a
+1    b
+2    c
+dtype: object</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s3 = pd.Series(np.arange(<span class="number">200</span>))</span><br><span class="line">s3</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0        0
+1        1
+2        2
+3        3
+4        4
+      ... 
+195    195
+196    196
+197    197
+198    198
+199    199
+Length: 200, dtype: int32</code></pre>
+<ul>
+<li>data, index함께 명시하기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s4 = pd.Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">100</span>,<span class="number">200</span>,<span class="number">300</span>]) <span class="comment"># 오른쪽 리스트가 인덱스 이름을 변경하는 것!</span></span><br><span class="line">s4</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>100    1
+200    2
+300    3
+dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s5 = pd.Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>]) <span class="comment"># 인덱스를 문자형으로 바꾸어 나타냄</span></span><br><span class="line">s5</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>a    1
+b    2
+c    3
+dtype: int64</code></pre>
+<ul>
+<li>data, index, data type 함께 명시하기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 인덱스 범위 설정 후 int를 16으로 정해줌</span></span><br><span class="line">s6 = pd.Series(np.arange(<span class="number">5</span>), np.arange(<span class="number">100</span>,<span class="number">105</span>), dtype=np.int16) </span><br><span class="line">s6</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>100    0
+101    1
+102    2
+103    3
+104    4
+dtype: int16</code></pre>
+<h4 id="인덱스-활용하기"><a href="#인덱스-활용하기" class="headerlink" title="인덱스 활용하기"></a>인덱스 활용하기</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s6. index <span class="comment"># 인덱스의 값들이 나온다</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Int64Index([100, 101, 102, 103, 104], dtype=&#39;int64&#39;)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s6.values <span class="comment">#s6 변수 값들이 나온다</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([0, 1, 2, 3, 4], dtype=int16)</code></pre>
+<ol>
+<li>인덱스를 통한 데이터 접근</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s6[<span class="number">104</span>] = <span class="number">70</span> <span class="comment"># 인덱스 104번째에 70값이라고 지정</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s6[<span class="number">105</span>] = <span class="number">90</span> <span class="comment"># 설정한 인덱스에 설정한 값이 지정</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>인덱스를 통한 데이터 업데이트</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s6[<span class="number">104</span>] = <span class="number">70</span> <span class="comment"># 인덱스 104번째에 70값이라고 나온다</span></span><br><span class="line">s6</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>100     0
+101     1
+102     2
+103     3
+104    70
+105    90
+200    80
+dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s6[<span class="number">105</span>] = <span class="number">90</span> <span class="comment"># 설정한 인덱스에 설정한 값이 나온다</span></span><br><span class="line">s6[<span class="number">200</span>] = <span class="number">80</span></span><br><span class="line">s6</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>100     0
+101     1
+102     2
+103     3
+104    70
+105    90
+200    80
+dtype: int64</code></pre>
+<ol start="3">
+<li>인덱스 재사용하기</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s7 = pd.Series(np.arange(<span class="number">7</span>), s6.index) <span class="comment"># s6 인덱스 범위 7개가 나온다</span></span><br><span class="line">s7</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>100    0
+101    1
+102    2
+103    3
+104    4
+105    5
+200    6
+dtype: int32</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+-->
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://kim-1994.github.io/2020/11/26/02.%20Series%20To%20generate%20data(index,%20value%20%ED%99%9C%EC%9A%A9)_Before/" data-id="ckhya1tky00005svje7eafizz" class="article-share-link">Share</a>-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Series/" rel="tag">Series</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0/" rel="tag">데이터 생성하기</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-numpy" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
@@ -3403,55 +3598,6 @@ There are 55374 anomalous days of employment</code></pre>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Colab-with-Kaggle/" rel="tag">Colab with Kaggle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kaggle/" rel="tag">Kaggle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%EC%BA%90%EA%B8%80/" rel="tag">캐글</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/04/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <a href="/2020/11/04/hello-world/" class="article-date">
-  <time datetime="2020-11-04T07:04:12.752Z" itemprop="datePublished">2020-11-04</time>
-</a>
-      </header>
-    
-    <div class="article-entry-abstract" itemprop="articleBody">
-      
-        <!--<p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
--->
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://kim-1994.github.io/2020/11/04/hello-world/" data-id="ckh329axu0000p8vjfqbc9i1b" class="article-share-link">Share</a>-->
-      
-      
     </footer>
   </div>
   
