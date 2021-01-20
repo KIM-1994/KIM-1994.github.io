@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>데이터 분석 실무 with 파이썬 | Welcome to HOya World</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="파이썬,crawling,웹 크롤링 기초" />
+    
+    <meta name="description" content="1. selenium과 크롬드라이버 설치 1! pip install selenium  Requirement already satisfied: selenium in c:\programdata\anaconda3\lib\site-packages (3.141.0) Requirement already satisfied: urllib3 in c:\programdata">
+<meta property="og:type" content="article">
+<meta property="og:title" content="데이터 분석 실무 with 파이썬">
+<meta property="og:url" content="http://kim-1994.github.io/2020/12/15/WebCrawling/index.html">
+<meta property="og:site_name" content="Welcome to HOya World">
+<meta property="og:description" content="1. selenium과 크롬드라이버 설치 1! pip install selenium  Requirement already satisfied: selenium in c:\programdata\anaconda3\lib\site-packages (3.141.0) Requirement already satisfied: urllib3 in c:\programdata">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/72365693/101738310-50b95600-3b09-11eb-8251-c60e9aadd908.png">
+<meta property="article:published_time" content="2020-12-15T03:40:22.820Z">
+<meta property="article:modified_time" content="2020-12-15T04:59:13.883Z">
+<meta property="article:author" content="HOya">
+<meta property="article:tag" content="파이썬">
+<meta property="article:tag" content="crawling">
+<meta property="article:tag" content="웹 크롤링 기초">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/72365693/101738310-50b95600-3b09-11eb-8251-c60e9aadd908.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Transformation/">Data Transformation</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Transformation/Python/">Python</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Kaggle/">Kaggle</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Kaggle/%EC%BA%90%EA%B8%80/">캐글</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Series/">Series</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Series/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0/">데이터 생성하기</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ala/">ala</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/">crawling</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B7%B8%EB%9E%98%ED%94%84/">그래프</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B7%B8%EB%9E%98%ED%94%84/DFS/">DFS</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B7%B8%EB%A6%AC%EB%94%94/">그리디</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B7%B8%EB%A6%AC%EB%94%94/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%EC%8B%9C%EA%B0%81%ED%99%94/">시각화</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%88%98%EB%8A%A5/">수능</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%88%98%EB%8A%A5/%EC%8B%9C%EA%B0%81%ED%99%94/">시각화</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%88%EC%84%B1%EC%B2%9C3/">안성천3</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%88%EC%84%B1%EC%B2%9C3/%EC%8B%9C%EA%B0%81%ED%99%94/">시각화</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95/">파이썬 기본 문법</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%95%A8%EC%88%98/">함수</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/crawling/">crawling</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EC%9B%B9-%ED%81%AC%EB%A1%A4%EB%A7%81-%EA%B8%B0%EC%B4%88/">웹 크롤링 기초</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-WebCrawling" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        데이터 분석 실무 with 파이썬
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2020/12/15/WebCrawling/" class="article-date">
+       <time datetime="2020-12-15T03:40:22.820Z" itemprop="datePublished">2020-12-15</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2020/12/15/WebCrawling/" class="article-date">
+     <time datetime="2020-12-15T04:59:13.883Z" itemprop="dateModified">2020-12-15</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/crawling/" rel="tag">crawling</a>, <a class="tag-link-link" href="/tags/%EC%9B%B9-%ED%81%AC%EB%A1%A4%EB%A7%81-%EA%B8%B0%EC%B4%88/" rel="tag">웹 크롤링 기초</a>, <a class="tag-link-link" href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag">파이썬</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h2 id="1-selenium과-크롬드라이버-설치"><a href="#1-selenium과-크롬드라이버-설치" class="headerlink" title="1. selenium과 크롬드라이버 설치"></a><strong>1. selenium과 크롬드라이버 설치</strong></h2><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">! pip install selenium</span><br></pre></td></tr></table></figure>
+
+<pre><code>Requirement already satisfied: selenium in c:\programdata\anaconda3\lib\site-packages (3.141.0)
+Requirement already satisfied: urllib3 in c:\programdata\anaconda3\lib\site-packages (from selenium) (1.25.9)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># selenium 라이버러리 불러오기</span></span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver </span><br></pre></td></tr></table></figure>
+
+<p>다운로드 전 현재 사용중인 크롬의 버전을 확인 해야 한다.</p>
+<p><img src="https://user-images.githubusercontent.com/72365693/101738310-50b95600-3b09-11eb-8251-c60e9aadd908.png" alt="캡처"></p>
+<p>확인 후 <a target="_blank" rel="noopener" href="https://sites.google.com/a/chromium.org/chromedriver/downloads">ChromeDriver - WebDriver</a> 다운</p>
+<h2 id="2-크롬드라이버-활용하기"><a href="#2-크롬드라이버-활용하기" class="headerlink" title="2. 크롬드라이버 활용하기"></a><strong>2. 크롬드라이버 활용하기</strong></h2><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 크롬드라이버 실행</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">driver = webdriver.Chrome(<span class="string">&#x27;C:/Users/user/Desktop/chromedriver.exe&#x27;</span>) <span class="comment"># 경로는 수정해주세요</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://user-images.githubusercontent.com/72365693/101740251-efdf4d00-3b0b-11eb-8134-f07275fdd86e.JPG" alt="캡처"></p>
+<p>크롬드라이버를 실행한 화면</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver = webdriver.Chrome(<span class="string">&#x27;C:/Users/user/Desktop/chromedriver.exe&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-웹-페이지-접속"><a href="#3-웹-페이지-접속" class="headerlink" title="3. 웹 페이지 접속"></a><strong>3. 웹 페이지 접속</strong></h2><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL 접속</span></span><br><span class="line">url = <span class="string">&#x27;http://www.naver.com/&#x27;</span></span><br><span class="line">driver.get(url)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-웹-페이지-HTML-다운로드"><a href="#4-웹-페이지-HTML-다운로드" class="headerlink" title="4. 웹 페이지(HTML) 다운로드"></a><strong>4. 웹 페이지(HTML) 다운로드</strong></h2><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 웹 페이지의 HTML 다운로드</span></span><br><span class="line">html = driver.page_source</span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 driver.page_source를 이용해 웹 페이지의 HTML 정보를 가져올 수 있다.</p>
+<h2 id="5-HTML-구조-살펴보기"><a href="#5-HTML-구조-살펴보기" class="headerlink" title="5. HTML 구조 살펴보기"></a><strong>5. HTML 구조 살펴보기</strong></h2><hr>
+<ol>
+<li>시작과 끝이 있다.<ul>
+<li>&lt;태크&gt;로 시작하고 &lt;/태그&gt;로 끝이난다. 태그 부분에 들어가는 태그명은 <code>div, p, span, a, tr, td</code> 등 다양하다.</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li>태그는 다른 태그에 속할 수 있다.<ul>
+<li>태그 시작 부분과 끝부분 사이에 다른 태그가 들어 있는지로 확인 가능하다.</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li>태그의 시작과 끝 사이에 화면에 표시되는 정보가 들어간다.<ul>
+<li>&lt;태그&gt;Desktop&lt;/태그&gt;의 경우 화면에 Desktop 부분이 표시가 된다.</li>
+</ul>
+</li>
+</ol>
+<ol start="4">
+<li>태그 기호 내에 속성을 가질 수 있다.<ul>
+<li>&lt;태그 속성1 = 값1 속성2 = 값2&gt;안녕하세요&lt;/태그&gt;에서 속성1, 속성2와 같이 여러 개의 속성 정보를 가질 수 있다.</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># HTML 구조 예</span></span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;h1&gt; 우리동네시장&lt;/h1&gt;</span><br><span class="line">            &lt;div class = &#x27;sale&#x27;&gt;</span><br><span class="line">                &lt;p id = &#x27;fruits1&#x27; class = &#x27;fruits&#x27;&gt;</span><br><span class="line">                    &lt;span class = &#x27;name&#x27;&gt; 바나나 &lt;/span&gt;</span><br><span class="line">                    &lt;span class = &#x27;price&#x27;&gt; 3000원&lt;/span&gt;</span><br><span class="line">                    &lt;span class = &#x27;inventory&#x27;&gt; 500개 &lt;/span&gt;</span><br><span class="line">                    &lt;span class = &#x27;store&#x27;&gt; 가나다상회 &lt;/span&gt;</span><br><span class="line">                    &lt;a href = &#x27;http://bit.ly/forPlaywithData&#x27;&gt; 홈페이지 &lt;/a&gt;</span><br><span class="line">                &lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class = &#x27;prepare&#x27;&gt;</span><br><span class="line">                &lt;p id = &#x27;fruits2&#x27; class = &#x27;fruits&#x27;&gt;</span><br><span class="line">                    &lt;span class = &#x27;name&#x27;&gt; 파인애플 &lt;/span&gt;</span><br><span class="line">                &lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h2 id="6-크롬-브라우저에서-웹-페이지의-HTML-살펴보기"><a href="#6-크롬-브라우저에서-웹-페이지의-HTML-살펴보기" class="headerlink" title="6. 크롬 브라우저에서 웹 페이지의 HTML 살펴보기"></a><strong>6. 크롬 브라우저에서 웹 페이지의 HTML 살펴보기</strong></h2><hr>
+<p>원하는 정보가 HTML 페이지의 어디에 있는지 살펴보기 위해서는 크롬의 개발자 도구를 활용하는 것이 편리하다.</p>
+<p>여기에서는 크롬 브라우저로 <a target="_blank" rel="noopener" href="https://www.melon.com/chart/index.htm">멜론</a>차트 페이지에 접속한 뒤 개발자 도구를 이용해 HTML의 구조를 살펴 보자. </p>
+<p>&lt;HTML구조 보는 방법&gt;</p>
+<ol>
+<li>크롬 우측 상단에 메뉴버튼을 클릭한 후 [도구 더보기] -&gt; [개발자 도구]</li>
+<li>단축키로 F12를 입력</li>
+<li>웹 페이지 내에서 마우스 오른쪽 버튼 클릭 후 [검사] 선택해도 개발자 도구가 활성화가 된다.</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/72365693/101761554-a26cdb00-3b1f-11eb-9649-fb07fb5022a4.png" alt="g"></p>
+<p>크롬 개발자 도구의 활성화</p>
+<p><img src="https://user-images.githubusercontent.com/72365693/101762125-5c644700-3b20-11eb-8617-0e83f92ec0ca.png" alt="z"></p>
+<p>개발자 도구로 HTML 내에서 원하는 태그의 위치 찾기</p>
+<h2 id="7-BeautifulSoup을-이용한-정보-찾기"><a href="#7-BeautifulSoup을-이용한-정보-찾기" class="headerlink" title="7. BeautifulSoup을 이용한 정보 찾기"></a><strong>7. BeautifulSoup을 이용한 정보 찾기</strong></h2><hr>
+<p>실제 웹 페이지는 HTML의 규모가 커서 실습하기에는 적절하지 않음. 간단한 웹페이지의 HTML로 필요한 정보를 찾는 방법을 실습해 보자.</p>
+<p>다음 예제를 보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 실습용 HTLML</span></span><br><span class="line">html = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&lt;html&gt;</span></span><br><span class="line"><span class="string">    &lt;head&gt;</span></span><br><span class="line"><span class="string">    &lt;/head&gt;</span></span><br><span class="line"><span class="string">    &lt;body&gt;</span></span><br><span class="line"><span class="string">        &lt;h1&gt; 우리동네시장&lt;/h1&gt;</span></span><br><span class="line"><span class="string">            &lt;div class = &#x27;sale&#x27;&gt;</span></span><br><span class="line"><span class="string">                &lt;p id = &#x27;fruits1&#x27; class = &#x27;fruits&#x27;&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class = &#x27;name&#x27;&gt; 바나나 &lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class = &#x27;price&#x27;&gt; 3000원&lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class = &#x27;inventory&#x27;&gt; 500개 &lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class = &#x27;store&#x27;&gt; 가나다상회 &lt;/span&gt;</span></span><br><span class="line"><span class="string">                    &lt;a href = &#x27;http://bit.ly/forPlaywithData&#x27;&gt; 홈페이지 &lt;/a&gt;</span></span><br><span class="line"><span class="string">                &lt;/p&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;div class = &#x27;prepare&#x27;&gt;</span></span><br><span class="line"><span class="string">                &lt;p id = &#x27;fruits2&#x27; class = &#x27;fruits&#x27;&gt;</span></span><br><span class="line"><span class="string">                    &lt;span class = &#x27;name&#x27;&gt; 파인애플 &lt;/span&gt;</span></span><br><span class="line"><span class="string">                &lt;/p&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>시작과 끝 부분에 사용된 <strong>‘’’</strong> 는 파이썬에서 여러 줄을 걸친 문자열을 입력할 때 사용하는 기호이다.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># HTML 문자열을 BeautifulSoup으로 해석하기</span></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;html.parser&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>!주의! B와 S는 대문자로 입력해야 한다는 것!</p>
+<p>그 뒤 BeautifulSoup(html, ‘html.parser’) 명령을 통해 html 변수에 들어 있는 문자열 정보를 HTML 형식에 맞게 해석해서 원하는 정보를 찾을 수 있도록 준비한다.</p>
+<h2 id="8-HTML-정보-차지-⓵-태그-속성-활용"><a href="#8-HTML-정보-차지-⓵-태그-속성-활용" class="headerlink" title="8. HTML 정보 차지 ⓵ - 태그 속성 활용"></a><strong>8. HTML 정보 차지 ⓵ - 태그 속성 활용</strong></h2><hr>
+<p>BeautifulSoup 명령어인 select(‘조건’)을 이용하면 HTML 내에서 입력한 조건을 만족하는 태그를 모두 선택할 수 있다.</p>
+<p>태그명과, 해당 태그의 속성 정보를 이용해 특정 태그를 찾을 수 있다. soup.select(TAG)를 입력할 경우 soup에 저장된 HTML 범위 내에서 태그명이 TAG인 태그를 모두 선택하게 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 태그명으로 태그 찾기</span></span><br><span class="line">tags_span = soup.select(<span class="string">&#x27;span&#x27;</span>)</span><br><span class="line">tags_p = soup.select(<span class="string">&#x27;p&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>태그명 외에도 태그의 속성 중 id 값과 class명을 이용해 태그를 찾을 수도 있다. soup.select(‘조건’)의 ‘조건’ 부분에 샵(#) 기호 뒤에 id 값을 넣거나 점(.) 뒤에 class명을 넣는 방식으로 조건을 지정할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># id 와 class로 태그 찾기</span></span><br><span class="line">ids_fruits1 = soup.select(<span class="string">&#x27;#fruits1&#x27;</span>)</span><br><span class="line">class_price = soup.select(<span class="string">&#x27;.price&#x27;</span>)</span><br><span class="line">tags_span_class_price = soup.select(<span class="string">&#x27;span.price&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>첫 번째 줄</p>
+<ul>
+<li>아이디 값이 fruits1인 태그를 모두 찾아 ids_fruits1 변수에 저장</li>
+</ul>
+<p>두 번째 줄</p>
+<ul>
+<li>class명이 ‘price’인 태그를 모두 찾아 class_price 변수에 저장</li>
+</ul>
+<p>세 번째 줄</p>
+<ul>
+<li>태그명과 class명 조건을 함께 지정</li>
+</ul>
+<p>즉, 태그명이 ‘span’이면서 class명이 ‘price’인 태그를 모두 찾는다.</p>
+<p>class 속성은 글꼴, 배경색 등의 서식을 지정하기 위해 사용되며, HTML 내에서 동일한 class명이 여러 번 사용될 수 있다. 반면 id 값은 특정 대상을 지정하기 위해 사용되므로 HTML 내에서 한 번만 사용 가능하다. 따라서, id 값을 잘 활용한다면 특정 태그를 손쉽게 찾을 수 있다.</p>
+<h2 id="9-HTML-정보-찾기-⓶-상위-구조-활용"><a href="#9-HTML-정보-찾기-⓶-상위-구조-활용" class="headerlink" title="9. HTML 정보 찾기 ⓶ - 상위 구조 활용"></a><strong>9. HTML 정보 찾기 ⓶ - 상위 구조 활용</strong></h2><hr>
+<p>정보가 담긴 태그의 속성만으로 찾기가 어려울 경우 어떠한 부모 태그 아래에 있는지 등의 정보를 추가해서 찾을 수 있다.<br>한 단계 아래를 의미할 때는 (&gt;)기호를 사용하며 여러 단계(한 단계도 포함) 아래를 의미할 때는 띄어쓰기(‘ ‘)를 사용한다.</p>
+<p><strong>상위 태그 = 부모 태그</strong><br><strong>하위 태그 = 자손(자식) 태그</strong><br>라고 부른다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 태그 구조로 위치 찾기 - 1</span></span><br><span class="line">tags_name = soup.select(<span class="string">&#x27;span.name&#x27;</span>)</span><br><span class="line">print(tags_name)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&lt;span class=&quot;name&quot;&gt; 바나나 &lt;/span&gt;, &lt;span class=&quot;name&quot;&gt; 파인애플 &lt;/span&gt;]</code></pre>
+<p>이때 파인애플은 제외하고 바나나만 찾기 위해 바나나가 속한 부모 태그 정보를 추가한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 태그 구조로 위치 찾기 - 2</span></span><br><span class="line">tags_banana1 = soup.select(<span class="string">&#x27;#fruits1 &gt; span.name&#x27;</span>)</span><br><span class="line">print(tags_banana1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&lt;span class=&quot;name&quot;&gt; 바나나 &lt;/span&gt;]</code></pre>
+<p>부모 태그정보를 추가함으로써 바나나만 출력되는 것을 확인할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 태그 구조로 위치 찾기 - 3</span></span><br><span class="line">tags_banana2 = soup.select(<span class="string">&#x27;div.sale &gt; #fruits1 &gt; span.name&#x27;</span>)</span><br><span class="line">tags_banana3 = soup.select(<span class="string">&#x27;div.sale span.name&#x27;</span>)</span><br><span class="line">print(tags_banana2)</span><br><span class="line">print(tags_banana3)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&lt;span class=&quot;name&quot;&gt; 바나나 &lt;/span&gt;]
+[&lt;span class=&quot;name&quot;&gt; 바나나 &lt;/span&gt;]</code></pre>
+<p>첫 번째 줄 </p>
+<ul>
+<li>상위태그1(div.sale) 바로 아래 있는 상위태그2(#fruits1)를 찾고, 바로 아래 있는 태그(span.name)를 모두 찾았다.</li>
+</ul>
+<p>두 번째 줄</p>
+<ul>
+<li>상위태그(div.sale) 바로 아래에 있는 태그뿐 아니라 몇 단계 아래의 태그 중에서 태그 정보(span.name)를 모두 찾았다.</li>
+</ul>
+<p>위 예를 통해서 &gt; 기호와 띄어쓰기를 이용해 원하는 태그를 찾아보았으며, 태그에서 정보를 찾는 방법은 한 가지만 있는 것이 아니라 여러 가지 방법이 가능할 수 있다.</p>
+<h2 id="10-정보-가져오기-⓵-태그-그룹에서-하나의-태그-선택하기"><a href="#10-정보-가져오기-⓵-태그-그룹에서-하나의-태그-선택하기" class="headerlink" title="10. 정보 가져오기 ⓵ - 태그 그룹에서 하나의 태그 선택하기"></a><strong>10. 정보 가져오기 ⓵ - 태그 그룹에서 하나의 태그 선택하기</strong></h2><hr>
+<p><strong>soup.select(‘조건’)</strong></p>
+<ul>
+<li>조건에 해당하는 모든 태그를 찾을 수 있다.</li>
+<li>그룹 형태로 결과를 확인 할 수 있다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 태그 그룹에서 하나의 태그만 선택</span></span><br><span class="line">tags = soup.select(<span class="string">&#x27;span.name&#x27;</span>)</span><br><span class="line">tag_1 = tags[<span class="number">0</span>]  <span class="comment"># 인덱스 번호로 하나의 태그 지정</span></span><br><span class="line">print(tag_1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;span class=&quot;name&quot;&gt; 바나나 &lt;/span&gt;</code></pre>
+<p>첫 번째 줄</p>
+<ul>
+<li>soup에서 태그명이 span이며, class명이 name인 태그를 모두 찾아 tags 변수에 저장했다.</li>
+</ul>
+<p>두 번째 줄</p>
+<ul>
+<li>인덱스 번호가 0인 첫 번째 원소를 선택해서 tag_1 변수에 저장했다.</li>
+</ul>
+<p>다음에는 태그 그룹에 있는 태그들을 모두 선택해 보겠다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 태그 그룹에서 반복문으로 태그 하나씩 선택하기</span></span><br><span class="line">tags = soup.select(<span class="string">&#x27;span.name&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> tag <span class="keyword">in</span> tags:    <span class="comment"># 반복문으로 태그 그룹에서 각 태그를 선택해 활용</span></span><br><span class="line">    print(tag)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;span class=&quot;name&quot;&gt; 바나나 &lt;/span&gt;
+&lt;span class=&quot;name&quot;&gt; 파인애플 &lt;/span&gt;</code></pre>
+<p>첫 번째 줄</p>
+<ul>
+<li>태그 정보가 span.name인 태그를 모두 찾아 tags 변수에 저장했다.</li>
+</ul>
+<p>두 번째 줄</p>
+<ul>
+<li>tags 그룹에서 하나씩 꺼내서 tag변수에 넣은 뒤 tag 변수를 출력</li>
+</ul>
+<p>결과 창에서 바나나 태그와 파인애플 태그가 순서대로 출력된 것을 확인 할 수 있다.</p>
+<h2 id="11-정보-가져오기-⓶-선택한-태그에서-정보-가져오기"><a href="#11-정보-가져오기-⓶-선택한-태그에서-정보-가져오기" class="headerlink" title="11. 정보 가져오기 ⓶ - 선택한 태그에서 정보 가져오기"></a><strong>11. 정보 가져오기 ⓶ - 선택한 태그에서 정보 가져오기</strong></h2><p>일반적으로 브라우저에 표시되는 정보를 수집하는 일이 많기에 .text 명령을 자주 활용하지만, 화면에 보이지 않는 URL 주소를 수집하기 위해서는 [‘href’] 명령도 필요하다. (하이퍼링크는 모두 <code>&lt;a href = &#39;URL주소&#39;&gt;</code>  형식으로 작성돼 있다.)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 태그에서 정보 가져오기</span></span><br><span class="line">content = TAG.text <span class="comment"># 태그에서 화면에 보이는 텍스트 부분만 가져오기</span></span><br><span class="line">attribute = TAG[<span class="string">&#x27;속성명&#x27;</span>] <span class="comment"># 태그 내 속성값 가져오기</span></span><br></pre></td></tr></table></figure>
+
+<p>첫 번째 줄</p>
+<ul>
+<li>선택한 태그의 화면에 보이는 텍스트 부분을</li>
+</ul>
+<p>두 번째 줄</p>
+<ul>
+<li>선택한 태그 내의 특성 속성의 값을 가져온다.</li>
+</ul>
+<p>위 예제에서 URL주소 정보를 추출해 보겠다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 선택한 태그에서 텍스트 속성 값 가져오기</span></span><br><span class="line">tags = soup.select(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">tag = tags[<span class="number">0</span>]</span><br><span class="line">content = tag.text</span><br><span class="line">print(content)</span><br><span class="line">link = tag[<span class="string">&#x27;href&#x27;</span>]</span><br><span class="line">print(link)</span><br></pre></td></tr></table></figure>
+
+<pre><code> 홈페이지 
+http://bit.ly/forPlaywithData</code></pre>
+<p>1번째 줄</p>
+<ul>
+<li>soup에서 태그명이 a 인 태그를 모두 선택</li>
+</ul>
+<p>2번째 줄</p>
+<ul>
+<li>첫번째(인덱스 번호 0번) 원소를 선택해서 tag 변수에 저장</li>
+</ul>
+<h2 id="12-멜론-노래-순위-정보-크롤링"><a href="#12-멜론-노래-순위-정보-크롤링" class="headerlink" title="12. 멜론 노래 순위 정보 크롤링"></a><strong>12. 멜론 노래 순위 정보 크롤링</strong></h2><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 크롬드라이버 실행</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">driver = webdriver.Chrome(<span class="string">&#x27;C:/Users/user/Desktop/chromedriver.exe&#x27;</span>) <span class="comment"># 경로는 수정해주세요</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 멜론 차트 바로가기</span></span><br><span class="line">url = <span class="string">&#x27;http://www.melon.com/chart/index.htm&#x27;</span></span><br><span class="line">driver.get(url)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># HTML 다운로드 및 BeautifulSoup으로 읽기</span></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line">html = driver.page_source</span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;html.parser&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 100개의 노래 태그 찾기</span></span><br><span class="line">songs = soup.select(<span class="string">&#x27;table &gt; tbody &gt; tr&#x27;</span>)</span><br><span class="line">print(<span class="built_in">len</span>(songs))</span><br><span class="line">print(songs[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>100
+&lt;tr data-song-no=&quot;33077590&quot;&gt;
+&lt;td&gt;&lt;div class=&quot;wrap t_right&quot;&gt;&lt;input class=&quot;input_check &quot; name=&quot;input_check&quot; title=&quot;VVS (Feat. JUSTHIS) (Prod. GroovyRoom) 곡 선택&quot; type=&quot;checkbox&quot; value=&quot;33077590&quot;/&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td&gt;&lt;div class=&quot;wrap&quot;&gt;
+&lt;a class=&quot;image_typeAll&quot; href=&quot;javascript:melon.link.goAlbumDetail(&#39;10521601&#39;);&quot; title=&quot;쇼미더머니 9 Episode 1&quot;&gt;
+&lt;img alt=&quot;쇼미더머니 9 Episode 1 - 페이지 이동&quot; height=&quot;60&quot; onerror=&quot;WEBPOCIMG.defaultAlbumImg(this);&quot; src=&quot;https://cdnimg.melon.co.kr/cm2/album/images/105/21/601/10521601_20201120125511_500.jpg/melon/resize/120/quality/80/optimize&quot; width=&quot;60&quot;/&gt;
+&lt;span class=&quot;bg_album_frame&quot;&gt;&lt;/span&gt;
+&lt;/a&gt;
+&lt;/div&gt;&lt;/td&gt;
+&lt;td&gt;&lt;div class=&quot;wrap&quot;&gt;
+&lt;a class=&quot;btn button_icons type03 song_info&quot; href=&quot;javascript:melon.link.goSongDetail(&#39;33077590&#39;);&quot; title=&quot;VVS (Feat. JUSTHIS) (Prod. GroovyRoom) 곡정보&quot;&gt;&lt;span class=&quot;none&quot;&gt;곡정보&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;&lt;/td&gt;
+&lt;td&gt;&lt;div class=&quot;wrap&quot;&gt;
+&lt;div class=&quot;wrap_song_info&quot;&gt;
+&lt;div class=&quot;ellipsis rank01&quot;&gt;&lt;span&gt;
+&lt;a href=&quot;javascript:melon.play.playSong(&#39;19030101&#39;,33077590);&quot; title=&quot;VVS (Feat. JUSTHIS) (Prod. GroovyRoom) 재생&quot;&gt;VVS (Feat. JUSTHIS) (Prod. GroovyRoom)&lt;/a&gt;
+&lt;/span&gt;&lt;/div&gt;
+&lt;br/&gt;
+&lt;div class=&quot;ellipsis rank02&quot;&gt;
+&lt;a href=&quot;javascript:melon.link.goArtistDetail(&#39;2866523&#39;);&quot; title=&quot;미란이 (Mirani) - 페이지 이동&quot;&gt;미란이 (Mirani)&lt;/a&gt;, &lt;a href=&quot;javascript:melon.link.goArtistDetail(&#39;2747971&#39;);&quot; title=&quot;먼치맨 - 페이지 이동&quot;&gt;먼치맨&lt;/a&gt;, &lt;a href=&quot;javascript:melon.link.goArtistDetail(&#39;1703507&#39;);&quot; title=&quot;Khundi Panda - 페이지 이동&quot;&gt;Khundi Panda&lt;/a&gt;, &lt;a href=&quot;javascript:melon.link.goArtistDetail(&#39;2745413&#39;);&quot; title=&quot;머쉬베놈 (MUSHVENOM) - 페이지 이동&quot;&gt;머쉬베놈 (MUSHVENOM)&lt;/a&gt;&lt;span class=&quot;checkEllipsis&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:melon.link.goArtistDetail(&#39;2866523&#39;);&quot; title=&quot;미란이 (Mirani) - 페이지 이동&quot;&gt;미란이 (Mirani)&lt;/a&gt;, &lt;a href=&quot;javascript:melon.link.goArtistDetail(&#39;2747971&#39;);&quot; title=&quot;먼치맨 - 페이지 이동&quot;&gt;먼치맨&lt;/a&gt;, &lt;a href=&quot;javascript:melon.link.goArtistDetail(&#39;1703507&#39;);&quot; title=&quot;Khundi Panda - 페이지 이동&quot;&gt;Khundi Panda&lt;/a&gt;, &lt;a href=&quot;javascript:melon.link.goArtistDetail(&#39;2745413&#39;);&quot; title=&quot;머쉬베놈 (MUSHVENOM) - 페이지 이동&quot;&gt;머쉬베놈 (MUSHVENOM)&lt;/a&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;wrap_atist&quot; style=&quot;&quot;&gt;
+&lt;button class=&quot;button_icons etc more_down&quot; data-control=&quot;dropdown&quot; title=&quot;아티스트 더보기&quot; type=&quot;button&quot;&gt;&lt;span class=&quot;none&quot;&gt;아티스트명 더보기&lt;/span&gt;&lt;/button&gt;
+&lt;div class=&quot;atist_view&quot; style=&quot;display:none;&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;ellipsis&quot; href=&quot;javascript:melon.link.goArtistDetail(&#39;2866523&#39;);&quot; title=&quot;미란이 (Mirani) 페이지 이동&quot;&gt;미란이 (Mirani)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;ellipsis&quot; href=&quot;javascript:melon.link.goArtistDetail(&#39;2747971&#39;);&quot; title=&quot;먼치맨 페이지 이동&quot;&gt;먼치맨&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;ellipsis&quot; href=&quot;javascript:melon.link.goArtistDetail(&#39;1703507&#39;);&quot; title=&quot;Khundi Panda 페이지 이동&quot;&gt;Khundi Panda&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;ellipsis&quot; href=&quot;javascript:melon.link.goArtistDetail(&#39;2745413&#39;);&quot; title=&quot;머쉬베놈 (MUSHVENOM) 페이지 이동&quot;&gt;머쉬베놈 (MUSHVENOM)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/td&gt;
+&lt;td&gt;&lt;div class=&quot;wrap&quot;&gt;
+&lt;div class=&quot;wrap_song_info&quot;&gt;
+&lt;div class=&quot;ellipsis rank03&quot;&gt;
+&lt;a href=&quot;javascript:melon.link.goAlbumDetail(&#39;10521601&#39;);&quot; title=&quot;쇼미더머니 9 Episode 1 - 페이지 이동&quot;&gt;쇼미더머니 9 Episode 1&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/td&gt;
+&lt;td&gt;&lt;div class=&quot;wrap&quot;&gt;
+&lt;button class=&quot;button_etc like&quot; data-song-menuid=&quot;19030101&quot; data-song-no=&quot;33077590&quot; title=&quot;VVS (Feat. JUSTHIS) (Prod. GroovyRoom) 좋아요&quot; type=&quot;button&quot;&gt;&lt;span class=&quot;odd_span&quot;&gt;좋아요&lt;/span&gt;
+&lt;span class=&quot;cnt&quot;&gt;
+&lt;span class=&quot;none&quot;&gt;총건수&lt;/span&gt;
+121,414&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;&lt;/td&gt;
+&lt;td&gt;&lt;div class=&quot;wrap t_center&quot;&gt;
+&lt;button class=&quot;button_icons play &quot; onclick=&quot;melon.play.playSong(&#39;19030101&#39;,33077590);&quot; title=&quot;듣기&quot; type=&quot;button&quot;&gt;&lt;span class=&quot;none&quot;&gt;듣기&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;&lt;/td&gt;
+&lt;td&gt;&lt;div class=&quot;wrap t_center&quot;&gt;
+&lt;button class=&quot;button_icons scrap &quot; onclick=&quot;melon.play.addPlayList(&#39;33077590&#39;);&quot; title=&quot;담기&quot; type=&quot;button&quot;&gt;&lt;span class=&quot;none&quot;&gt;담기&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;&lt;/td&gt;
+&lt;td&gt;&lt;div class=&quot;wrap t_center&quot;&gt;
+&lt;button class=&quot;button_icons download &quot; onclick=&quot;melon.buy.goBuyProduct(&#39;frm&#39;, &#39;33077590&#39;, &#39;3C0001&#39;, &#39;&#39;,&#39;0&#39;, &#39;19030101&#39;);&quot; title=&quot;다운로드&quot; type=&quot;button&quot;&gt;&lt;span class=&quot;none&quot;&gt;다운로드&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;&lt;/td&gt;
+&lt;td&gt;&lt;div class=&quot;wrap t_center&quot;&gt;
+&lt;button class=&quot;button_icons video disabled&quot; disabled=&quot;disabled&quot; onclick=&quot;melon.link.goMvDetail(&#39;19030101&#39;, &#39;33077590&#39;,&#39;song&#39;);&quot; title=&quot;뮤직비디오&quot; type=&quot;button&quot;&gt;&lt;span class=&quot;none&quot;&gt;뮤직비디오&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+<p>이번에는 한 곡의 노래 태그에 해당하는 HTML 코드에서 노래 제목과 가수를 찾아보자.<br>1위 곡의 정보를 먼저 찾은 뒤 반복문을 통해 100곡 전체의 제목과 가수를 찾아볼 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 한개의 곡 정보 지정하기</span></span><br><span class="line">song = songs[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 곡 제목 찾기 1</span></span><br><span class="line">title = song.select(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"><span class="built_in">len</span>(title)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>16</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 곡 제목 찾기 2</span></span><br><span class="line">title = song.select(<span class="string">&#x27;span &gt; a&#x27;</span>)</span><br><span class="line"><span class="built_in">len</span>(title)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>5</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 곡 제목 찾기 3</span></span><br><span class="line">title = song.select(<span class="string">&#x27;div.ellipsis.rank01 &gt; span &gt; a&#x27;</span>)</span><br><span class="line"><span class="built_in">len</span>(title)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1</code></pre>
+<p>이번에는 해당 태그의 텍스트 부분만 출력해 보겠다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 곡 제목 가져오기</span></span><br><span class="line">title = song.select(<span class="string">&#x27;div.ellipsis.rank01 &gt; span &gt; a&#x27;</span>)[<span class="number">0</span>].text</span><br><span class="line">title</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;VVS (Feat. JUSTHIS) (Prod. GroovyRoom)&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 가수 찾기</span></span><br><span class="line">singer = song.select(<span class="string">&#x27;div.ellipsis.rank02 &gt; a&#x27;</span>)</span><br><span class="line"><span class="built_in">len</span>(singer)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>4</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 가수 정보 가져오기</span></span><br><span class="line">singer = song.select(<span class="string">&#x27;div.ellipsis.rank02 &gt; a&#x27;</span>)[<span class="number">0</span>].text</span><br><span class="line">singer</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;미란이 (Mirani)&#39;</code></pre>
+<p>이번에는 100곡의 노래에서 노래 제목과 가수 정보를 추출해 보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 멜론 100위 노래순위 정보 가져오기</span></span><br><span class="line"><span class="keyword">for</span> song <span class="keyword">in</span> songs:</span><br><span class="line">    title = song.select(<span class="string">&#x27;div.ellipsis.rank01 &gt; span &gt; a&#x27;</span>)[<span class="number">0</span>].text</span><br><span class="line">    singer = song.select(<span class="string">&#x27;div.ellipsis.rank02 &gt; a&#x27;</span>)[<span class="number">0</span>].text</span><br><span class="line">    print(title, singer, sep = <span class="string">&#x27;|&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>VVS (Feat. JUSTHIS) (Prod. GroovyRoom)|미란이 (Mirani)
+내일이 오면 (Feat. 기리보이, BIG Naughty (서동현))|릴보이 (lIlBOI)
+Dynamite|방탄소년단
+잠이 오질 않네요|장범준
+힘든 건 사랑이 아니다|임창정
+밤하늘의 별을(2020)|경서
+Achoo (Feat. pH-1, HAON) (Prod. GroovyRoom)|미란이 (Mirani)
+Lovesick Girls|BLACKPINK
+취기를 빌려 (취향저격 그녀 X 산들)|산들
+Life Goes On|방탄소년단
+Freak (Prod. Slom)|릴보이 (lIlBOI)
+뿌리 (Feat. JUSTHIS) (Prod. GroovyRoom)|Khundi Panda
+오래된 노래|스탠딩 에그
+All I Want For Christmas Is You|Mariah Carey
+Savage Love (Laxed - Siren Beat) (BTS Remix)|Jawsh 685
+내 마음이 움찔했던 순간 (취향저격 그녀 X 규현)|규현 (KYUHYUN)
+DON&#39;T TOUCH ME|환불원정대
+딩가딩가 (Dingga)|마마무 (Mamamoo)
+When We Disco (Duet with 선미)|박진영
+어떻게 이별까지 사랑하겠어, 널 사랑하는 거지|AKMU (악동뮤지션)
+적외선 카메라|원슈타인
+나랑 같이 걸을래 (바른연애 길잡이 X 적재)|적재
+에잇(Prod.&amp;Feat. SUGA of BTS)|아이유
+Santa Tell Me|Ariana Grande
+흔들리는 꽃들 속에서 네 샴푸향이 느껴진거야|장범준
+뻔한남자|이승기
+How You Like That|BLACKPINK
+어떻게 지내 (Prod. By VAN.C)|오반 (OVAN)
+Hate you|백예린 (Yerin Baek)
+늦은 밤 너의 집 앞 골목길에서|노을
+혼술하고 싶은 밤|벤
+I CAN’T STOP ME|TWICE (트와이스)
+Dolphin|오마이걸 (OH MY GIRL)
+아로하|조정석
+원해 (Feat. 팔로알토) (Prod. 코드 쿤스트)|스윙스
+가을밤에 든 생각|잔나비
+0415|백예린 (Yerin Baek)
+METEOR|창모 (CHANGMO)
+Lovegame|백예린 (Yerin Baek)
+Blueming|아이유
+눈누난나 (NUNU NANA)|제시 (Jessi)
+모든 날, 모든 순간 (Every day, Every Moment)|폴킴
+마리아 (Maria)|화사 (Hwa Sa)
+부어라 비워라 (Tricker) (Prod. GroovyRoom)|머쉬베놈 (MUSHVENOM)
+작은 것들을 위한 시 (Boy With Luv) (Feat. Halsey)|방탄소년단
+거짓말이라도 해서 널 보고싶어|백지영
+사실 나는 (Feat.전건호)|경서예지
+서면역에서|순순희
+Memories|Maroon 5
+잘할게|이승기
+Dance Monkey|Tones And I
+홀로|이하이
+사랑은 지날수록 더욱 선명하게 남아|전상근
+오늘도 빛나는 너에게 (To You My Light) (Feat.이라온)|마크툽 (MAKTUB)
+Downtown Baby|블루 (BLOO)
+마음을 드려요|아이유
+Snowman|Sia
+봄날|방탄소년단
+우리 왜 헤어져야 해|신예영
+어김없이 이 거리에|정승환
+2002|Anne-Marie
+소확행|임창정
+사랑 못해, 남들 쉽게 다 하는 거|먼데이 키즈 (Monday Kiz)
+놓아줘 (with 태연)|Crush
+살짝 설렜어 (Nonstop)|오마이걸 (OH MY GIRL)
+You’re so lonely now, so you need me back by your side again|백예린 (Yerin Baek)
+미리 메리 크리스마스 (Feat. 천둥 Of MBLAQ)|아이유
+내 방을 여행하는 법|방탄소년단
+Blue &amp; Grey|방탄소년단
+Bad Boy|청하
+너도 아는|폴킴
+처음처럼|엠씨더맥스 (M.C the MAX)
+사랑하게 될 줄 알았어|전미도
+안녕|폴킴
+행복해|송하예
+다시 여기 바닷가|싹쓰리 (유두래곤, 린다G, 비룡)
+시작|가호 (Gaho)
+I am not your ocean anymore|백예린 (Yerin Baek)
+Don&#39;t Start Now|Dua Lipa
+윈윈 (Feat. 개코, BewhY) (Prod. BewhY)|허성현 (Rose de Penny)
+별을 담은 시 (Ode To The Stars)|마크툽 (MAKTUB)
+이제 나만 믿어요|임영웅
+너를 만나|폴킴
+AYA|마마무 (Mamamoo)
+Panorama|IZ*ONE (아이즈원)
+ON|방탄소년단
+아무노래|지코 (ZICO)
+12:45 (Stripped)|Etham
+Black Mamba|aespa
+Love poem|아이유
+Hall&amp;Oates|백예린 (Yerin Baek)
+잠시|방탄소년단
+Maniac|Conan Gray
+Pretty Savage|BLACKPINK
+Paris In The Rain|Lauv
+덤디덤디 (DUMDi DUMDi)|(여자)아이들
+그때 그 아인|김필
+Ms. Delicate|백예린 (Yerin Baek)
+시든 꽃에 물을 주듯|HYNN (박혜원)
+도망가|MINO (송민호)</code></pre>
+<p>이로써 selenium과 BeautifulSoup을 활용해서 멜론 인기차트 웹페이지에서 인기차트 Top100의 노래 정보를 수집할 수 있었습니다. 전체 코드를 정리하자면 아래와 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">driver = webdriver.Chrome(<span class="string">&#x27;C:/Users/user/Desktop/chromedriver.exe&#x27;</span>) <span class="comment"># 경로 주의 해주세요</span></span><br><span class="line">url = <span class="string">&#x27;http://www.melon.com/chart/index.htm&#x27;</span></span><br><span class="line">driver.get(url)</span><br><span class="line"></span><br><span class="line">html = driver.page_source</span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line"></span><br><span class="line">songs = soup.select(<span class="string">&#x27;tbody &gt; tr&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> song <span class="keyword">in</span> songs:</span><br><span class="line">    title = song.select(<span class="string">&#x27;div.ellipsis.rank01 &gt; span &gt; a&#x27;</span>)[<span class="number">0</span>].text</span><br><span class="line">    singer = song.select(<span class="string">&#x27;div.ellipsis.rank02 &gt; a&#x27;</span>)[<span class="number">0</span>].text</span><br><span class="line">    print(title, singer, sep = <span class="string">&#x27;|&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>VVS (Feat. JUSTHIS) (Prod. GroovyRoom)|미란이 (Mirani)
+내일이 오면 (Feat. 기리보이, BIG Naughty (서동현))|릴보이 (lIlBOI)
+Dynamite|방탄소년단
+잠이 오질 않네요|장범준
+힘든 건 사랑이 아니다|임창정
+밤하늘의 별을(2020)|경서
+Achoo (Feat. pH-1, HAON) (Prod. GroovyRoom)|미란이 (Mirani)
+Lovesick Girls|BLACKPINK
+취기를 빌려 (취향저격 그녀 X 산들)|산들
+Life Goes On|방탄소년단
+Freak (Prod. Slom)|릴보이 (lIlBOI)
+뿌리 (Feat. JUSTHIS) (Prod. GroovyRoom)|Khundi Panda
+오래된 노래|스탠딩 에그
+All I Want For Christmas Is You|Mariah Carey
+Savage Love (Laxed - Siren Beat) (BTS Remix)|Jawsh 685
+내 마음이 움찔했던 순간 (취향저격 그녀 X 규현)|규현 (KYUHYUN)
+DON&#39;T TOUCH ME|환불원정대
+딩가딩가 (Dingga)|마마무 (Mamamoo)
+When We Disco (Duet with 선미)|박진영
+어떻게 이별까지 사랑하겠어, 널 사랑하는 거지|AKMU (악동뮤지션)
+적외선 카메라|원슈타인
+Hate you|백예린 (Yerin Baek)
+나랑 같이 걸을래 (바른연애 길잡이 X 적재)|적재
+에잇(Prod.&amp;Feat. SUGA of BTS)|아이유
+Santa Tell Me|Ariana Grande
+흔들리는 꽃들 속에서 네 샴푸향이 느껴진거야|장범준
+0415|백예린 (Yerin Baek)
+뻔한남자|이승기
+How You Like That|BLACKPINK
+어떻게 지내 (Prod. By VAN.C)|오반 (OVAN)
+늦은 밤 너의 집 앞 골목길에서|노을
+혼술하고 싶은 밤|벤
+I CAN’T STOP ME|TWICE (트와이스)
+Lovegame|백예린 (Yerin Baek)
+Dolphin|오마이걸 (OH MY GIRL)
+아로하|조정석
+가을밤에 든 생각|잔나비
+원해 (Feat. 팔로알토) (Prod. 코드 쿤스트)|스윙스
+METEOR|창모 (CHANGMO)
+Blueming|아이유
+눈누난나 (NUNU NANA)|제시 (Jessi)
+모든 날, 모든 순간 (Every day, Every Moment)|폴킴
+잘할게|이승기
+마리아 (Maria)|화사 (Hwa Sa)
+부어라 비워라 (Tricker) (Prod. GroovyRoom)|머쉬베놈 (MUSHVENOM)
+작은 것들을 위한 시 (Boy With Luv) (Feat. Halsey)|방탄소년단
+거짓말이라도 해서 널 보고싶어|백지영
+사실 나는 (Feat.전건호)|경서예지
+서면역에서|순순희
+Memories|Maroon 5
+Dance Monkey|Tones And I
+홀로|이하이
+사랑은 지날수록 더욱 선명하게 남아|전상근
+오늘도 빛나는 너에게 (To You My Light) (Feat.이라온)|마크툽 (MAKTUB)
+Downtown Baby|블루 (BLOO)
+마음을 드려요|아이유
+Snowman|Sia
+You’re so lonely now, so you need me back by your side again|백예린 (Yerin Baek)
+봄날|방탄소년단
+우리 왜 헤어져야 해|신예영
+2002|Anne-Marie
+어김없이 이 거리에|정승환
+소확행|임창정
+사랑 못해, 남들 쉽게 다 하는 거|먼데이 키즈 (Monday Kiz)
+놓아줘 (with 태연)|Crush
+I am not your ocean anymore|백예린 (Yerin Baek)
+살짝 설렜어 (Nonstop)|오마이걸 (OH MY GIRL)
+미리 메리 크리스마스 (Feat. 천둥 Of MBLAQ)|아이유
+내 방을 여행하는 법|방탄소년단
+Blue &amp; Grey|방탄소년단
+Bad Boy|청하
+너도 아는|폴킴
+처음처럼|엠씨더맥스 (M.C the MAX)
+사랑하게 될 줄 알았어|전미도
+안녕|폴킴
+시작|가호 (Gaho)
+행복해|송하예
+다시 여기 바닷가|싹쓰리 (유두래곤, 린다G, 비룡)
+Don&#39;t Start Now|Dua Lipa
+윈윈 (Feat. 개코, BewhY) (Prod. BewhY)|허성현 (Rose de Penny)
+별을 담은 시 (Ode To The Stars)|마크툽 (MAKTUB)
+Hall&amp;Oates|백예린 (Yerin Baek)
+이제 나만 믿어요|임영웅
+너를 만나|폴킴
+AYA|마마무 (Mamamoo)
+Panorama|IZ*ONE (아이즈원)
+ON|방탄소년단
+Ms. Delicate|백예린 (Yerin Baek)
+아무노래|지코 (ZICO)
+Black Mamba|aespa
+12:45 (Stripped)|Etham
+Love poem|아이유
+잠시|방탄소년단
+Maniac|Conan Gray
+Pretty Savage|BLACKPINK
+Paris In The Rain|Lauv
+덤디덤디 (DUMDi DUMDi)|(여자)아이들
+그때 그 아인|김필
+“HOMESWEETHOME”|백예린 (Yerin Baek)
+시든 꽃에 물을 주듯|HYNN (박혜원)</code></pre>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://kim-1994.github.io/2020/12/15/WebCrawling/" data-id="ckipfyafk00006ovj93m493d8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "HOya"
+        },
+        "headline": "데이터 분석 실무 with 파이썬",
+        "image": "http://KIM-1994.github.iohttps://user-images.githubusercontent.com/72365693/101738310-50b95600-3b09-11eb-8251-c60e9aadd908.png",
+        "keywords": "파이썬 crawling 웹 크롤링 기초",
+        "genre": "crawling 파이썬 웹 크롤링 기초",
+        "datePublished": "2020-12-15",
+        "dateCreated": "2020-12-15",
+        "dateModified": "2020-12-15",
+        "url": "http://KIM-1994.github.io/2020/12/15/WebCrawling/",
+        "description": "1. selenium과 크롬드라이버 설치
+1! pip install selenium
+
+Requirement already satisfied: selenium in c:\programdata\anaconda3\lib\site-packages (3.141.0)
+Requirement already satisfied: urllib3 in c:\programdata",
+        "wordCount": 3238
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/KIM-1994" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/12/23/ch12.graph/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            파이썬 알고리즘 인터뷰 그래프
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2020/12/10/function/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">점프 투 파이썬 함수</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/01/16/AnseongRiver%203/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/104875162-f331e800-5997-11eb-9a89-957ca64b6021.png)" alt="안성천3 지점 농도비교" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%95%88%EC%84%B1%EC%B2%9C3/">안성천3</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%95%88%EC%84%B1%EC%B2%9C3/%EC%8B%9C%EA%B0%81%ED%99%94/">시각화</a></p>
+                            <p class="item-title"><a href="/2021/01/16/AnseongRiver%203/" class="title">안성천3 지점 농도비교</a></p>
+                            <p class="item-date"><time datetime="2021-01-16T08:24:20.000Z" itemprop="datePublished">2021-01-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/01/16/Trend%20Visualization(1)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/103843767-c64e1d00-50db-11eb-8cf0-3c786ebb3f53.jpg)" alt="수능 Trend Visualization (1)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%88%98%EB%8A%A5/">수능</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%88%98%EB%8A%A5/%EC%8B%9C%EA%B0%81%ED%99%94/">시각화</a></p>
+                            <p class="item-title"><a href="/2021/01/16/Trend%20Visualization(1)/" class="title">수능 Trend Visualization (1)</a></p>
+                            <p class="item-date"><time datetime="2021-01-16T07:09:40.000Z" itemprop="datePublished">2021-01-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/01/02/National%20Tax%20Service/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/crawling/">crawling</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a></p>
+                            <p class="item-title"><a href="/2021/01/02/National%20Tax%20Service/" class="title">국세청 사업자 휴폐업 조회</a></p>
+                            <p class="item-date"><time datetime="2021-01-02T05:10:01.034Z" itemprop="datePublished">2021-01-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/01/01/hanabank/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/crawling/">crawling</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a></p>
+                            <p class="item-title"><a href="/2021/01/01/hanabank/" class="title">KEB 하나은행 환율조회</a></p>
+                            <p class="item-date"><time datetime="2020-12-31T16:50:08.068Z" itemprop="datePublished">2021-01-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/12/31/daum/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/crawling/">crawling</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a></p>
+                            <p class="item-title"><a href="/2020/12/31/daum/" class="title">다음-실시간 시청률 크롤링</a></p>
+                            <p class="item-date"><time datetime="2020-12-31T00:52:31.163Z" itemprop="datePublished">2020-12-31</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Transformation/">Data Transformation</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Transformation/Python/">Python</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Transformation/Python/Pandas-Merge/">Pandas Merge</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Transformation/Python/Pandas-Merge/Python-Basic/">Python Basic</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Transformation/Python/Pandas-Merge/Python-Basic/Numeric-Features/">Numeric Features</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kaggle/">Kaggle</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Kaggle/%EC%BA%90%EA%B8%80/">캐글</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Kaggle/%EC%BA%90%EA%B8%80/Colab/">Colab </a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Series/">Series</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Series/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0/">데이터 생성하기</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ala/">ala</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/">crawling</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EC%9B%B9-%ED%81%AC%EB%A1%A4%EB%A7%81-%EA%B8%B0%EC%B4%88/">웹 크롤링 기초</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B7%B8%EB%9E%98%ED%94%84/">그래프</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B7%B8%EB%9E%98%ED%94%84/DFS/">DFS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B7%B8%EB%A6%AC%EB%94%94/">그리디</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B7%B8%EB%A6%AC%EB%94%94/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%EC%8B%9C%EA%B0%81%ED%99%94/">시각화</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%EC%8B%9C%EA%B0%81%ED%99%94/%EC%82%B0%EC%A0%90%EB%8F%84/">산점도</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%EC%8B%9C%EA%B0%81%ED%99%94/%EC%82%B0%EC%A0%90%EB%8F%84/%EC%83%81%EC%9E%90%EA%B7%B8%EB%A6%BC/">상자그림</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%88%98%EB%8A%A5/">수능</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%88%98%EB%8A%A5/%EC%8B%9C%EA%B0%81%ED%99%94/">시각화</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%88%EC%84%B1%EC%B2%9C3/">안성천3</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%88%EC%84%B1%EC%B2%9C3/%EC%8B%9C%EA%B0%81%ED%99%94/">시각화</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%88%EC%84%B1%EC%B2%9C3/%EC%8B%9C%EA%B0%81%ED%99%94/%EB%86%8D%EB%8F%84%EB%B9%84%EA%B5%90/">농도비교</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95/">파이썬 기본 문법</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95/if%EB%AC%B8/">if문</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%95%A8%EC%88%98/">함수</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%95%A8%EC%88%98/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%A0%EA%B9%8C/">프로그램 입출력은 어떻게 할까?</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Colab-with-Kaggle/" rel="tag">Colab with Kaggle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EDA/" rel="tag">EDA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exploratory-Data-Analysis/" rel="tag">Exploratory Data Analysis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GBM-Gradient-Boosting-Machine/" rel="tag">GBM (Gradient Boosting Machine)</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kaggle/" rel="tag">Kaggle</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LightGBM/" rel="tag">LightGBM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Numeric-Features/" rel="tag">Numeric Features</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PCA/" rel="tag">PCA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Series/" rel="tag">Series</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/While%EB%AC%B8/" rel="tag">While문</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XGBoost-eXtra-Gradient-Boost/" rel="tag">XGBoost (eXtra Gradient Boost)</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawling/" rel="tag">crawling</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%EB%AC%B8/" rel="tag">for문</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if%EB%AC%B8/" rel="tag">if문</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B2%B0%EC%A0%95%ED%8A%B8%EB%A6%AC/" rel="tag">결정트리</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B7%B8%EB%9E%98%ED%94%84/" rel="tag">그래프</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/" rel="tag">그리디</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95/" rel="tag">기본 문법</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B8%B0%EC%B4%88%EB%AC%B8%EB%B2%95/" rel="tag">기초문법</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%86%8D%EB%8F%84%EB%B9%84%EA%B5%90/" rel="tag">농도비교</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">데이터</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0/" rel="tag">데이터 생성하기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%9E%9C%EB%8D%A4-%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8/" rel="tag">랜덤 포레스트</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B6%84%EB%A5%98-%EC%8B%A4%EC%8A%B5-%EC%BA%90%EA%B8%80-%EC%82%B0%ED%83%84%EB%8D%B0%EB%A5%B4-%EA%B3%A0%EA%B0%9D-%EB%A7%8C%EC%A1%B1-%EC%98%88%EC%B8%A1/" rel="tag">분류 실습 - 캐글 산탄데르 고객 만족 예측</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B6%84%EB%A5%98-%EC%8B%A4%EC%8A%B5-%EC%BA%90%EA%B8%80-%EC%8B%A0%EC%9A%A9%EC%B9%B4%EB%93%9C-%EC%82%AC%EA%B8%B0-%EA%B2%80%EC%B6%9C/" rel="tag">분류 실습 - 캐글 신용카드 사기 검출</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B6%84%EB%A5%98%EC%9D%98-%EA%B0%9C%EC%9A%94/" rel="tag">분류의 개요</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%82%B0%EC%A0%90%EB%8F%84/" rel="tag">산점도</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%83%81%EC%9E%90%EA%B7%B8%EB%A6%BC/" rel="tag">상자그림</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%88%98%EB%8A%A5/" rel="tag">수능</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%88%98%EC%A7%88%EB%86%8D%EB%8F%84/" rel="tag">수질농도</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%8A%A4%ED%83%9C%ED%82%B9-%EC%95%99%EC%83%81%EB%B8%94/" rel="tag">스태킹 앙상블</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%8B%9C%EA%B0%81%ED%99%94/" rel="tag">시각화</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%95%88%EC%84%B1%EC%B2%9C3/" rel="tag">안성천3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%95%99%EC%83%81%EB%B8%94-%ED%95%99%EC%8A%B5/" rel="tag">앙상블 학습</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" rel="tag">오픈소스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9B%B9-%ED%81%AC%EB%A1%A4%EB%A7%81-%EA%B8%B0%EC%B4%88/" rel="tag">웹 크롤링 기초</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag">점프 투 파이썬</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A7%84%EC%9C%84%EC%B2%9C/" rel="tag">진위천</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%BA%90%EA%B8%80/" rel="tag">캐글</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84/" rel="tag">통계</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" rel="tag">통계학</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag">파이썬</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%8F%89%ED%83%9D%EC%8B%9C/" rel="tag">평택시</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%A8%EC%88%98/" rel="tag">함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" rel="tag">확률분포</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Colab-with-Kaggle/" style="font-size: 10px;">Colab with Kaggle</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/EDA/" style="font-size: 10px;">EDA</a> <a href="/tags/Exploratory-Data-Analysis/" style="font-size: 10px;">Exploratory Data Analysis</a> <a href="/tags/GBM-Gradient-Boosting-Machine/" style="font-size: 15px;">GBM (Gradient Boosting Machine)</a> <a href="/tags/Kaggle/" style="font-size: 12.5px;">Kaggle</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/LightGBM/" style="font-size: 15px;">LightGBM</a> <a href="/tags/Numeric-Features/" style="font-size: 10px;">Numeric Features</a> <a href="/tags/PCA/" style="font-size: 10px;">PCA</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Series/" style="font-size: 10px;">Series</a> <a href="/tags/While%EB%AC%B8/" style="font-size: 10px;">While문</a> <a href="/tags/XGBoost-eXtra-Gradient-Boost/" style="font-size: 15px;">XGBoost (eXtra Gradient Boost)</a> <a href="/tags/crawling/" style="font-size: 17.5px;">crawling</a> <a href="/tags/for%EB%AC%B8/" style="font-size: 10px;">for문</a> <a href="/tags/if%EB%AC%B8/" style="font-size: 10px;">if문</a> <a href="/tags/%EA%B2%B0%EC%A0%95%ED%8A%B8%EB%A6%AC/" style="font-size: 15px;">결정트리</a> <a href="/tags/%EA%B7%B8%EB%9E%98%ED%94%84/" style="font-size: 10px;">그래프</a> <a href="/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/" style="font-size: 10px;">그리디</a> <a href="/tags/%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95/" style="font-size: 10px;">기본 문법</a> <a href="/tags/%EA%B8%B0%EC%B4%88%EB%AC%B8%EB%B2%95/" style="font-size: 12.5px;">기초문법</a> <a href="/tags/%EB%86%8D%EB%8F%84%EB%B9%84%EA%B5%90/" style="font-size: 10px;">농도비교</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" style="font-size: 15px;">데이터</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0/" style="font-size: 10px;">데이터 생성하기</a> <a href="/tags/%EB%9E%9C%EB%8D%A4-%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8/" style="font-size: 15px;">랜덤 포레스트</a> <a href="/tags/%EB%B6%84%EB%A5%98-%EC%8B%A4%EC%8A%B5-%EC%BA%90%EA%B8%80-%EC%82%B0%ED%83%84%EB%8D%B0%EB%A5%B4-%EA%B3%A0%EA%B0%9D-%EB%A7%8C%EC%A1%B1-%EC%98%88%EC%B8%A1/" style="font-size: 15px;">분류 실습 - 캐글 산탄데르 고객 만족 예측</a> <a href="/tags/%EB%B6%84%EB%A5%98-%EC%8B%A4%EC%8A%B5-%EC%BA%90%EA%B8%80-%EC%8B%A0%EC%9A%A9%EC%B9%B4%EB%93%9C-%EC%82%AC%EA%B8%B0-%EA%B2%80%EC%B6%9C/" style="font-size: 15px;">분류 실습 - 캐글 신용카드 사기 검출</a> <a href="/tags/%EB%B6%84%EB%A5%98%EC%9D%98-%EA%B0%9C%EC%9A%94/" style="font-size: 15px;">분류의 개요</a> <a href="/tags/%EC%82%B0%EC%A0%90%EB%8F%84/" style="font-size: 10px;">산점도</a> <a href="/tags/%EC%83%81%EC%9E%90%EA%B7%B8%EB%A6%BC/" style="font-size: 10px;">상자그림</a> <a href="/tags/%EC%88%98%EB%8A%A5/" style="font-size: 10px;">수능</a> <a href="/tags/%EC%88%98%EC%A7%88%EB%86%8D%EB%8F%84/" style="font-size: 10px;">수질농도</a> <a href="/tags/%EC%8A%A4%ED%83%9C%ED%82%B9-%EC%95%99%EC%83%81%EB%B8%94/" style="font-size: 15px;">스태킹 앙상블</a> <a href="/tags/%EC%8B%9C%EA%B0%81%ED%99%94/" style="font-size: 15px;">시각화</a> <a href="/tags/%EC%95%88%EC%84%B1%EC%B2%9C3/" style="font-size: 10px;">안성천3</a> <a href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" style="font-size: 10px;">알고리즘</a> <a href="/tags/%EC%95%99%EC%83%81%EB%B8%94-%ED%95%99%EC%8A%B5/" style="font-size: 15px;">앙상블 학습</a> <a href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" style="font-size: 12.5px;">오픈소스</a> <a href="/tags/%EC%9B%B9-%ED%81%AC%EB%A1%A4%EB%A7%81-%EA%B8%B0%EC%B4%88/" style="font-size: 10px;">웹 크롤링 기초</a> <a href="/tags/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/" style="font-size: 10px;">점프 투 파이썬</a> <a href="/tags/%EC%A7%84%EC%9C%84%EC%B2%9C/" style="font-size: 10px;">진위천</a> <a href="/tags/%EC%BA%90%EA%B8%80/" style="font-size: 10px;">캐글</a> <a href="/tags/%ED%86%B5%EA%B3%84/" style="font-size: 10px;">통계</a> <a href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" style="font-size: 12.5px;">통계학</a> <a href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" style="font-size: 20px;">파이썬</a> <a href="/tags/%ED%8F%89%ED%83%9D%EC%8B%9C/" style="font-size: 10px;">평택시</a> <a href="/tags/%ED%95%A8%EC%88%98/" style="font-size: 10px;">함수</a> <a href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" style="font-size: 10px;">확률분포</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 HOya</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://kim-1994.github.io/2020/12/15/WebCrawling/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
