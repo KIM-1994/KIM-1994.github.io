@@ -6,13 +6,13 @@
     
 
     
-    <title>Archive: 2021 | Welcome to HOya World</title>
+    <title>Category: 파이썬 | Welcome to HOya World</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta property="og:type" content="website">
 <meta property="og:title" content="Welcome to HOya World">
-<meta property="og:url" content="http://kim-1994.github.io/archives/2021/index.html">
+<meta property="og:url" content="http://kim-1994.github.io/categories/carawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/index.html">
 <meta property="og:site_name" content="Welcome to HOya World">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="HOya">
@@ -141,7 +141,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>Archive: 2021
+    <i class="icon fa fa-folder-open"></i>Category: <em class="page-title-link">파이썬</em>
     </h1>
 </div>
 
@@ -154,7 +154,7 @@
         
         <section class="archives-wrap">
             <div class="archive-year-wrap">
-                <a href="/archives/2021" class="archive-year"><i class="icon fa fa-calendar-o"></i>2021</a>
+                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
             </div>
             <div class="archives">
     
@@ -165,17 +165,17 @@
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2021/01/21/code%20check/" class="thumbnail">
+        <a href="/2020/11/25/numpy/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/img/numpy/output_2_2.png)" alt="numpy" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://kim-1994.github.io/2021/01/21/code%20check/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://kim-1994.github.io/2020/11/25/numpy/">0</span>
     
 </span>
 
@@ -186,289 +186,31 @@
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/%EC%BD%94%EB%93%9C-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">코드 버전 체크</a>
+            <a class="article-category-link" href="/categories/carawling/">carawling</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/carawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a>
             </div>
-            <div class="date"><time datetime="2021-01-21T11:34:37.981Z" itemprop="datePublished">2021-01-21</time></div>
+            <div class="date"><time datetime="2020-11-25T05:57:54.000Z" itemprop="datePublished">2020-11-25</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2021/01/21/code%20check/">코드 버전 체크</a>
+        <a href="/2020/11/25/numpy/">numpy</a>
         </h1>
     
 
         <p class="article-excerpt">
-            코드 버전 체크
-시각화를 사용할 때 코드상에는 문제가 없는데 간혹 실행이 되지 않을 때가 있다.
-
-에러는 뜨지않고, 코드도 문제가 없는데 왜? 실행이 안되는것일까?
-
-그 이유 중 하나는 패키지 버전이 다를 수 있다.
-
-예시로 패키지 버전을 확인하는 명령어를 알려주겠다.
+            numpy 모듈(1)12import numpy as npimport matplotlib.pyplot as plt
 
 
-1234567891011##### 예시import sysimport pandas as
-        </p>
-    </div>
-</article>
-    
+1234567x = np.array([1, 2, 3])y = np.array([2, 4, 6])print(x)print(y)plt.plot(x, y)
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2021/01/20/Trend%20Visualization(2)/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/105191122-12886b00-5b7a-11eb-9600-3d61c2235995.png)" alt="수능 Trend Visualization (2)" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://kim-1994.github.io/2021/01/20/Trend%20Visualization(2)/">0</span>
-    
-</span>
+[1 2 3]
+[2 4 6]
 
 
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a>
-            </div>
-            <div class="date"><time datetime="2021-01-20T14:47:52.000Z" itemprop="datePublished">2021-01-20</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2021/01/20/Trend%20Visualization(2)/">수능 Trend Visualization (2)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            수능 Trend Visualization (2)2. spines
-line plot과 bar plot이 네모 상자안에 갇혀 있습니다.
-불필요한 spines를 제거해서 시인성을 높여봅니다.
-
-1234567891011121314151617181920212223242526272829303132fig, ax = plt.subplots(figsize=(20, 9), 
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2021/01/16/AnseongRiver%203/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/104875162-f331e800-5997-11eb-9a89-957ca64b6021.png)" alt="안성천3 지점 농도비교(1)" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://kim-1994.github.io/2021/01/16/AnseongRiver%203/">0</span>
-    
-</span>
 
 
-    
-</a>
 
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a>
-            </div>
-            <div class="date"><time datetime="2021-01-16T08:24:20.000Z" itemprop="datePublished">2021-01-16</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2021/01/16/AnseongRiver%203/">안성천3 지점 농도비교(1)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            안성천3 지점1. 데이터 불러오기
-먼저, 시작하기전에 matplotlib가 최신버전인지 확인한다.
-
-12import matplotlibprint(&#x27;matplotlib:&#123;&#125;&#x27;.format(matplotlib. __version__))
-
-matplotlib:3.3.2
-
-필요한 모듈을 라이브러리 한다.
-다운받은 자료를 안성3에
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2021/01/16/Trend%20Visualization(1)/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/103843767-c64e1d00-50db-11eb-8cf0-3c786ebb3f53.jpg)" alt="수능 Trend Visualization (1)" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://kim-1994.github.io/2021/01/16/Trend%20Visualization(1)/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a>
-            </div>
-            <div class="date"><time datetime="2021-01-16T07:09:40.000Z" itemprop="datePublished">2021-01-16</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2021/01/16/Trend%20Visualization(1)/">수능 Trend Visualization (1)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            수능 Trend Visualization (1)
-
-대학수학능력시험은 94학번 이후 대학 진학을 결정하는 시험입니다.
-얼마 전에 끝난 2021학년도 수능을 포함해 29회의 수능이 있었습니다.
-근 30년간 응시생과 점수에 대한 트렌드를 확인해 보겠습니다.
-
-1. 데이터1.1 데이터 확보
-한국교육과정평가원 대학수학능력시험 정보
-
-
-수학능력시험 관련 데이터는 공공
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2021/01/02/National%20Tax%20Service/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://kim-1994.github.io/2021/01/02/National%20Tax%20Service/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/crawling/">crawling</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a>
-            </div>
-            <div class="date"><time datetime="2021-01-02T05:10:01.034Z" itemprop="datePublished">2021-01-02</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2021/01/02/National%20Tax%20Service/">국세청 사업자 휴폐업 조회</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            123456789101112131415161718192021# 셀레니움 드라이버 임포트import seleniumimport pandas as pd# 웹드라이버 임포트from selenium import webdriverfrom selenium.webdriver.common.keys import Keys# time 임포트import time# 크롬 창 크기
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2021/01/01/hanabank/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://kim-1994.github.io/2021/01/01/hanabank/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/crawling/">crawling</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a>
-            </div>
-            <div class="date"><time datetime="2020-12-31T16:50:08.068Z" itemprop="datePublished">2021-01-01</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2021/01/01/hanabank/">KEB 하나은행 환율조회</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152# 셀레니움 드라이버 임포트import selenium# 웹드라이버 임포트from selenium import webdriver# time 임포트import time# 크롬 창 크기를 최대
+[&lt;matplotlib.lines.Line2D 
         </p>
     </div>
 </article>
@@ -478,6 +220,7 @@ matplotlib:3.3.2
 
 
     </div></section>
+
 
 
 
