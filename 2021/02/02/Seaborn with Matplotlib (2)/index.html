@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Seaborn with Matplotlib (2) | Welcome to HOya World</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="Seaborn with Matplotlib (2)2. seaborn + matplotlib을 이용한 jointplot 보완 seaborn을 matplotlib과 섞어쓰는 방법입니다. 4부 중 두 번째 시간 입니다. seaborn jointplot의 단점을 보완합니다.  2.1. seaborn jointplot seaborn의 jointplot 은 매력적인">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Seaborn with Matplotlib (2)">
+<meta property="og:url" content="http://kim-1994.github.io/2021/02/02/Seaborn%20with%20Matplotlib%20(2)/index.html">
+<meta property="og:site_name" content="Welcome to HOya World">
+<meta property="og:description" content="Seaborn with Matplotlib (2)2. seaborn + matplotlib을 이용한 jointplot 보완 seaborn을 matplotlib과 섞어쓰는 방법입니다. 4부 중 두 번째 시간 입니다. seaborn jointplot의 단점을 보완합니다.  2.1. seaborn jointplot seaborn의 jointplot 은 매력적인">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/72365693/105937145-4db5fd00-6098-11eb-9dd3-97c1d4da01b6.PNG">
+<meta property="article:published_time" content="2021-02-02T00:51:08.000Z">
+<meta property="article:modified_time" content="2021-02-02T00:55:18.318Z">
+<meta property="article:author" content="HOya">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/72365693/105937145-4db5fd00-6098-11eb-9dd3-97c1d4da01b6.PNG">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Kaggle/">Kaggle</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/">crawling</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Seaborn with Matplotlib (2)" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Seaborn with Matplotlib (2)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2021/02/02/Seaborn%20with%20Matplotlib%20(2)/" class="article-date">
+       <time datetime="2021-02-02T00:51:08.000Z" itemprop="datePublished">2021-02-02</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2021/02/02/Seaborn%20with%20Matplotlib%20(2)/" class="article-date">
+     <time datetime="2021-02-02T00:55:18.318Z" itemprop="dateModified">2021-02-02</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="Seaborn-with-Matplotlib-2"><a href="#Seaborn-with-Matplotlib-2" class="headerlink" title="Seaborn with Matplotlib (2)"></a><strong>Seaborn with Matplotlib (2)</strong></h1><h2 id="2-seaborn-matplotlib을-이용한-jointplot-보완"><a href="#2-seaborn-matplotlib을-이용한-jointplot-보완" class="headerlink" title="2. seaborn + matplotlib을 이용한 jointplot 보완"></a><strong>2. seaborn + matplotlib을 이용한 jointplot 보완</strong></h2><ul>
+<li>seaborn을 matplotlib과 섞어쓰는 방법입니다.</li>
+<li>4부 중 두 번째 시간 입니다.</li>
+<li>seaborn jointplot의 단점을 보완합니다.</li>
+</ul>
+<h3 id="2-1-seaborn-jointplot"><a href="#2-1-seaborn-jointplot" class="headerlink" title="2.1. seaborn jointplot"></a><strong>2.1. seaborn jointplot</strong></h3><ul>
+<li><p>seaborn의 <code>jointplot</code> 은 매력적인 기능입니다.</p>
+<ul>
+<li>두 변수 <strong>각각의 분포</strong>와 <strong>2차원 분포</strong>를 함께 보여줍니다.</li>
+<li>각각의 분포는 <code>histogram</code><strong>과</strong> <code>kdeplot</code> 으로 표현할 수 있고</li>
+<li>2차원 분포는 <code>scatterplot</code>, <code>regression</code>, <code>kdeplot</code>, <code>hexbin</code> 등으로 표현할 수 있습니다.</li>
+</ul>
+</li>
+<li><p>만약 matplotlib에서 일일이 만들어야 한다고 눈물이 앞을 가릴 일입니다.</p>
+</li>
+<li><p>seaborn에서 <strong>단 한 줄</strong>로 이런 그림들이 탄생합니다.</p>
+</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/72365693/105937145-4db5fd00-6098-11eb-9dd3-97c1d4da01b6.PNG"></p>
+<h3 id="2-2-multiple-jointplot"><a href="#2-2-multiple-jointplot" class="headerlink" title="2.2. multiple jointplot"></a><strong>2.2. multiple jointplot</strong></h3><ul>
+<li>그러나 seaborn 만으로는 여러 jointplot이 합쳐진 그림을 <strong>표현할 수 없습니다.</strong></li>
+<li>y축을 공유시키는 것 만으로도 훨씬 기능이 강력해질텐데요.</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/72365693/105937261-8950c700-6098-11eb-9f7d-b91420a9fe08.PNG"></p>
+<ul>
+<li>현실적으로 가장 빠른 방법은 <strong>파워포인트</strong>입니다.</li>
+<li>같은 y축 범위로 그림을 여러 개 그린 후 붙이면 됩니다.</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/72365693/105937387-ccab3580-6098-11eb-8828-709a655c7af1.PNG"></p>
+<ul>
+<li>그러나 수작업이 동반되고, 오류 가능성이 커집니다.</li>
+<li>seaborn과 matplotlib의 힘을 합해서 그려봅시다.</li>
+</ul>
+<h3 id="2-3-matplotlib-seaborn"><a href="#2-3-matplotlib-seaborn" class="headerlink" title="2.3. matplotlib + seaborn"></a><strong>2.3. matplotlib + seaborn</strong></h3><ul>
+<li><a href="">지난 글</a>에서 <strong>seaborn과 matplotlib이 섞일 수 있음</strong>을 보였습니다.</li>
+<li><strong>matplottlib으로 틀을 만들고 여기에 seaborn을 삽입</strong>합니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"></span><br><span class="line">penguins = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)  <span class="comment"># 펭귄 데이터셋으로 시작합니다.</span></span><br><span class="line">penguins.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species</th>
+      <th>island</th>
+      <th>bill_length_mm</th>
+      <th>bill_depth_mm</th>
+      <th>flipper_length_mm</th>
+      <th>body_mass_g</th>
+      <th>sex</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.1</td>
+      <td>18.7</td>
+      <td>181.0</td>
+      <td>3750.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.5</td>
+      <td>17.4</td>
+      <td>186.0</td>
+      <td>3800.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>40.3</td>
+      <td>18.0</td>
+      <td>195.0</td>
+      <td>3250.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>36.7</td>
+      <td>19.3</td>
+      <td>193.0</td>
+      <td>3450.0</td>
+      <td>Female</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<ul>
+<li>가로축에 두 개의 데이터 : <code>bill_length_mm</code>, <code>filpper_length_mm</code></li>
+<li>세로축에 두 개의 데이터 : <code>bill_depth_mm</code>를 놓아보겠습니다.</li>
+</ul>
+<h3 id="2-3-1-축공간-배열-gridspec"><a href="#2-3-1-축공간-배열-gridspec" class="headerlink" title="2.3.1. 축공간 배열 : gridspec"></a><strong>2.3.1. 축공간 배열 : gridspec</strong></h3><ul>
+<li><p>저는 matplotlib을 객체지향 방식으로 사용할 때 이렇게 합니다.</p>
+<ul>
+<li><code>fig, ax = plt.subplots()</code> 명령으로 <code>figure</code>와 <code>axes</code>를 만드는데</li>
+<li>가로세로 여러 axes를 만들 때는 <code>ncols</code>, <code>nrows</code> 인자를 사용합니다.</li>
+<li>그러나 이렇게 하면 <strong>모든 축공간의 크기가 같아집니다.</strong></li>
+</ul>
+</li>
+<li><p><code>jointplot</code> 은 축공간의 크기가 일정하지 않습니다.</p>
+</li>
+<li><p><strong><code>gridspec</code></strong> 을 이용해서 비대칭 축공간을 만듭니다. </p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>,<span class="number">7</span>))</span><br><span class="line"></span><br><span class="line">widths = [<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>]</span><br><span class="line">heights = [<span class="number">1</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># widths 와 행,열 수가 맞아야한다</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 1. gridspec preparation</span></span><br><span class="line">spec = fig.add_gridspec(ncols=<span class="number">3</span>, nrows=<span class="number">2</span>, width_ratios=widths, height_ratios=heights)</span><br><span class="line"></span><br><span class="line"><span class="comment">### 2. setting axes</span></span><br><span class="line">axs = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(heights)*<span class="built_in">len</span>(widths)):</span><br><span class="line">    axs[i] = fig.add_subplot(spec[i//<span class="built_in">len</span>(widths), i%<span class="built_in">len</span>(widths)])</span><br><span class="line">    axs[i].text(<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="string">f&quot;axs[<span class="subst">&#123;i&#125;</span>]&quot;</span>, fontdict=&#123;<span class="string">&quot;horizontalalignment&quot;</span>:<span class="string">&quot;center&quot;</span>, <span class="string">&quot;color&quot;</span>:<span class="string">&quot;gray&quot;</span>&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://user-images.githubusercontent.com/72365693/106536675-4a10f300-653c-11eb-8b69-6f7eef4646de.png"></p>
+<ul>
+<li>축공간을 언래 2차원 배열입니다.</li>
+<li>하지만 이를 별로 좋아하지 않아서, <code>dictionary</code>를 사용해 1차원으로 취급합니다.</li>
+<li>개인적인 취향입니다. 꼭 따르지 않아도 좋습니다.</li>
+</ul>
+<h3 id="2-3-2-첫-번째-jointplot-scatterplot-kdeplot"><a href="#2-3-2-첫-번째-jointplot-scatterplot-kdeplot" class="headerlink" title="2.3.2. 첫 번째 jointplot : scatterplot + kdeplot"></a><strong>2.3.2. 첫 번째 jointplot : scatterplot + kdeplot</strong></h3><ul>
+<li>좌측 하단에 첫 번째 2차원 분포도를 그립니다.</li>
+<li>x축 변수는 <code>bill_length_mm</code>, y축 변수는 <code>bill_depth_mm</code>로 지정합니다.</li>
+<li>seaborn 명령의 <code>ax=</code> 인자를 사용해 축공간을 지정합니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>,<span class="number">7</span>))</span><br><span class="line"></span><br><span class="line">widths = [<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>]</span><br><span class="line">heights = [<span class="number">1</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. gridspec preparation</span></span><br><span class="line">spec = fig.add_gridspec(ncols=<span class="number">3</span>, nrows=<span class="number">2</span>, width_ratios=widths, height_ratios=heights)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. setting axes</span></span><br><span class="line">axs = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(heights)*<span class="built_in">len</span>(widths)):</span><br><span class="line">    axs[i] = fig.add_subplot(spec[i//<span class="built_in">len</span>(widths), i%<span class="built_in">len</span>(widths)])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. bill_length_mm vs bill_depth_mm</span></span><br><span class="line"><span class="comment"># 3.1. kdeplot</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;bill_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, alpha=<span class="number">0.3</span>, ax=axs[<span class="number">3</span>])</span><br><span class="line"><span class="comment"># 3.2. scatterplot</span></span><br><span class="line">sns.scatterplot(<span class="string">&quot;bill_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">3</span>])</span><br><span class="line">fig.tight_layout()</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> warnings  <span class="comment"># 에러 메시지 off</span></span><br><span class="line">warnings.filterwarnings(action=<span class="string">&#x27;ignore&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>C:\ProgramData\Anaconda3\lib\site-packages\seaborn\_decorators.py:36: FutureWarning: Pass the following variable as a keyword arg: y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
+  warnings.warn(
+C:\ProgramData\Anaconda3\lib\site-packages\seaborn\_decorators.py:36: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
+  warnings.warn(</code></pre>
+<p><img src="https://user-images.githubusercontent.com/72365693/106536677-4b422000-653c-11eb-8f40-e8888431b847.png"></p>
+<h3 id="2-3-3-첫-번째-jointplot-1차원-kdeplot"><a href="#2-3-3-첫-번째-jointplot-1차원-kdeplot" class="headerlink" title="2.3.3. 첫 번째 jointplot : 1차원 kdeplot"></a><strong>2.3.3. 첫 번째 jointplot : 1차원 kdeplot</strong></h3><ul>
+<li>첫 번째 jointplot의 상단과 우측에 1차원 분포도를 그립니다.  </li>
+</ul>
+<ul>
+<li>두 가지를 주의해야 합니다.</li>
+</ul>
+<ol>
+<li>중심이 되는 jointplot과 <strong>가로세로 범위를 일치</strong>시켜야 합니다.</li>
+<li>1차원 분포도의 <strong>눈금과 수치는 필요없으니 제거</strong>합니다.</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>,<span class="number">7</span>))</span><br><span class="line"></span><br><span class="line">widths = [<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>]</span><br><span class="line">heights = [<span class="number">1</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">### 1. gridspec preparation</span></span><br><span class="line">spec = fig.add_gridspec(ncols=<span class="number">3</span>, nrows=<span class="number">2</span>, width_ratios=widths, height_ratios=heights)</span><br><span class="line"></span><br><span class="line"><span class="comment">### 2. setting axes</span></span><br><span class="line">axs = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(heights)*<span class="built_in">len</span>(widths)):</span><br><span class="line">    axs[i] = fig.add_subplot(spec[i//<span class="built_in">len</span>(widths), i%<span class="built_in">len</span>(widths)])</span><br><span class="line"></span><br><span class="line"><span class="comment">### 3. bill_length_mm vs bill_depth_mm</span></span><br><span class="line"><span class="comment"># 3.1. kdeplot</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;bill_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, alpha=<span class="number">0.3</span>, ax=axs[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.2. scatterplot</span></span><br><span class="line">sns.scatterplot(<span class="string">&quot;bill_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.3. histogram (bill_length_mm)</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;bill_length_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">0</span>], legend=<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">0</span>].set_xlim(axs[<span class="number">3</span>].get_xlim())</span><br><span class="line">axs[<span class="number">0</span>].set_xlabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">axs[<span class="number">0</span>].set_xticklabels([])</span><br><span class="line">axs[<span class="number">0</span>].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">0</span>].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">0</span>].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.3. histogram (bill_depth_mm)</span></span><br><span class="line">sns.kdeplot(y=<span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">5</span>], legend=<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">5</span>].set_ylim(axs[<span class="number">3</span>].get_ylim())</span><br><span class="line">axs[<span class="number">5</span>].set_ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">axs[<span class="number">5</span>].set_yticklabels([])</span><br><span class="line">axs[<span class="number">5</span>].spines[<span class="string">&quot;bottom&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">5</span>].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">5</span>].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">fig.tight_layout()</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://user-images.githubusercontent.com/72365693/106536679-4bdab680-653c-11eb-9ea9-951da5fadc61.png"></p>
+<h3 id="2-3-4-두-번째-jointplot"><a href="#2-3-4-두-번째-jointplot" class="headerlink" title="2.3.4. 두 번째 jointplot"></a><strong>2.3.4. 두 번째 jointplot</strong></h3><ul>
+<li>같은 요령으로 두 번째 분포도 도시합니다.</li>
+<li>첫 번째 jointplot에서 x 변수만 바꿔주면 됩니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>,<span class="number">7</span>))</span><br><span class="line"></span><br><span class="line">widths = [<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>]</span><br><span class="line">heights = [<span class="number">1</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">### 1. gridspec preparation</span></span><br><span class="line">spec = fig.add_gridspec(ncols=<span class="number">3</span>, nrows=<span class="number">2</span>, width_ratios=widths, height_ratios=heights)</span><br><span class="line"></span><br><span class="line"><span class="comment">### 2. setting axes</span></span><br><span class="line">axs = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(heights)*<span class="built_in">len</span>(widths)):</span><br><span class="line">    axs[i] = fig.add_subplot(spec[i//<span class="built_in">len</span>(widths), i%<span class="built_in">len</span>(widths)])</span><br><span class="line"></span><br><span class="line"><span class="comment">### 3. bill_length_mm vs bill_depth_mm</span></span><br><span class="line"><span class="comment"># 3.1. kdeplot</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;bill_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, alpha=<span class="number">0.3</span>, ax=axs[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.2. scatterplot</span></span><br><span class="line">sns.scatterplot(<span class="string">&quot;bill_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.3. histogram (bill_length_mm)</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;bill_length_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">0</span>], legend=<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">0</span>].set_xlim(axs[<span class="number">3</span>].get_xlim())</span><br><span class="line">axs[<span class="number">0</span>].set_xlabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">axs[<span class="number">0</span>].set_xticklabels([])</span><br><span class="line">axs[<span class="number">0</span>].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">0</span>].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">0</span>].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.3. histogram (bill_depth_mm)</span></span><br><span class="line">sns.kdeplot(y=<span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">5</span>], legend=<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">5</span>].set_ylim(axs[<span class="number">3</span>].get_ylim())</span><br><span class="line">axs[<span class="number">5</span>].set_ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">axs[<span class="number">5</span>].set_yticklabels([])</span><br><span class="line">axs[<span class="number">5</span>].spines[<span class="string">&quot;bottom&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">5</span>].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">5</span>].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">### 4. flipper_length_mm vs bill_depth_mm</span></span><br><span class="line"><span class="comment"># 3.1. kdeplot</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;flipper_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, alpha=<span class="number">0.3</span>, ax=axs[<span class="number">4</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.2. scatterplot</span></span><br><span class="line">sns.scatterplot(<span class="string">&quot;flipper_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">4</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.3. histogram (bill_length_mm)</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;flipper_length_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">1</span>], legend=<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">1</span>].set_xlim(axs[<span class="number">4</span>].get_xlim())</span><br><span class="line">axs[<span class="number">1</span>].set_xlabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">axs[<span class="number">1</span>].set_xticklabels([])</span><br><span class="line">axs[<span class="number">1</span>].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">1</span>].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">1</span>].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">fig.tight_layout()</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://user-images.githubusercontent.com/72365693/106536681-4bdab680-653c-11eb-9607-e23c287786bf.png"></p>
+<h3 id="2-3-5-부대효과-조정-spines-grids-간격"><a href="#2-3-5-부대효과-조정-spines-grids-간격" class="headerlink" title="2.3.5 부대효과 조정 : spines, grids, 간격"></a><strong>2.3.5 부대효과 조정 : spines, grids, 간격</strong></h3><ul>
+<li>데이터는 모두 올라갔으니 부대 효과를 조정합니다.</li>
+<li>불필요한 요소(ex. <code>spines</code>)는 제거하고, 애매한 요소(ex. 위치)는 <code>grid</code>로 명확히 합니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>,<span class="number">7</span>))</span><br><span class="line"></span><br><span class="line">widths = [<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>]</span><br><span class="line">heights = [<span class="number">1</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">### 1. gridspec preparation</span></span><br><span class="line">spec = fig.add_gridspec(ncols=<span class="number">3</span>, nrows=<span class="number">2</span>, width_ratios=widths, height_ratios=heights, </span><br><span class="line">                        wspace=<span class="number">0.03</span>, hspace=<span class="number">0.03</span>)  <span class="comment"># setting spaces</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 2. setting axes</span></span><br><span class="line">axs = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(heights)*<span class="built_in">len</span>(widths)):</span><br><span class="line">    axs[i] = fig.add_subplot(spec[i//<span class="built_in">len</span>(widths), i%<span class="built_in">len</span>(widths)])</span><br><span class="line"></span><br><span class="line"><span class="comment">### 3. bill_length_mm vs bill_depth_mm</span></span><br><span class="line"><span class="comment"># 3.1. kdeplot</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;bill_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, alpha=<span class="number">0.3</span>, ax=axs[<span class="number">3</span>], zorder=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.2. scatterplot</span></span><br><span class="line">sns.scatterplot(<span class="string">&quot;bill_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">3</span>], zorder=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.3. histogram (bill_length_mm)</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;bill_length_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">0</span>], legend=<span class="literal">False</span>, zorder=<span class="number">1</span>)</span><br><span class="line">axs[<span class="number">0</span>].set_xlim(axs[<span class="number">3</span>].get_xlim())</span><br><span class="line">axs[<span class="number">0</span>].set_xlabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">axs[<span class="number">0</span>].set_xticklabels([])</span><br><span class="line">axs[<span class="number">0</span>].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">0</span>].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">0</span>].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.3. histogram (bill_depth_mm)</span></span><br><span class="line">sns.kdeplot(y=<span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">5</span>], legend=<span class="literal">False</span>, zorder=<span class="number">1</span>)</span><br><span class="line">axs[<span class="number">5</span>].set_ylim(axs[<span class="number">3</span>].get_ylim())</span><br><span class="line">axs[<span class="number">5</span>].set_ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">axs[<span class="number">5</span>].set_yticklabels([])</span><br><span class="line">axs[<span class="number">5</span>].spines[<span class="string">&quot;bottom&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">5</span>].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">5</span>].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">### 4. flipper_length_mm vs bill_depth_mm</span></span><br><span class="line"><span class="comment"># 4.1. kdeplot</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;flipper_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, alpha=<span class="number">0.3</span>, ax=axs[<span class="number">4</span>], zorder=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.2. scatterplot</span></span><br><span class="line">sns.scatterplot(<span class="string">&quot;flipper_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">4</span>], zorder=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.3. histogram (flipper_length_mm)</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;flipper_length_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">1</span>], legend=<span class="literal">False</span>, zorder=<span class="number">1</span>)</span><br><span class="line">axs[<span class="number">1</span>].set_xlim(axs[<span class="number">4</span>].get_xlim())</span><br><span class="line">axs[<span class="number">1</span>].set_xlabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">axs[<span class="number">1</span>].set_xticklabels([])</span><br><span class="line">axs[<span class="number">1</span>].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">1</span>].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">1</span>].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">### 5. unnecessary elements removal</span></span><br><span class="line"><span class="comment"># 5.1. upper-right axes</span></span><br><span class="line">axs[<span class="number">2</span>].axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5.2. margin kdeplot scale unification</span></span><br><span class="line">hist_range_max = <span class="built_in">max</span>(axs[<span class="number">0</span>].get_ylim()[<span class="number">-1</span>], axs[<span class="number">1</span>].get_ylim()[<span class="number">-1</span>], axs[<span class="number">5</span>].get_xlim()[<span class="number">-1</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(widths)<span class="number">-1</span>):</span><br><span class="line">    axs[i].set_ylim(<span class="number">0</span>, hist_range_max)</span><br><span class="line">axs[<span class="number">5</span>].set_xlim(<span class="number">0</span>, hist_range_max)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5.3. redundent labels and titles removal</span></span><br><span class="line">axs[<span class="number">1</span>].set_yticklabels([])</span><br><span class="line">axs[<span class="number">1</span>].set_ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">axs[<span class="number">4</span>].set_yticklabels([])</span><br><span class="line">axs[<span class="number">4</span>].set_ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5.4. grids</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(heights)*<span class="built_in">len</span>(widths)):</span><br><span class="line">    axs[i].grid(<span class="string">&quot;on&quot;</span>, color=<span class="string">&quot;lightgray&quot;</span>, zorder=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">fig.tight_layout()</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://user-images.githubusercontent.com/72365693/106536682-4c734d00-653c-11eb-8a47-8be6d2dc7ecf.png"></p>
+<ul>
+<li>1차원 분포의 스케일도 맞춰주었습니다.<ul>
+<li>그러나 꼭 필요한 작업인지는 의구심이 듭니다.</li>
+<li><strong>‘밀도’**라는 정의에 맞게 넓이를 1로 만드는 과정이 포함되어 있는데, 이로 인해 **x축 스케일이 크면 높이가 낮아지는 경향</strong>이 있기 때문입니다.</li>
+<li>데이터의 범위에 집중하고 싶다면 스케일을 맞추지 않는 것이 나을지도 모릅니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-6-마무리-작업"><a href="#2-3-6-마무리-작업" class="headerlink" title="2.3.6 마무리 작업"></a><strong>2.3.6 마무리 작업</strong></h3><ul>
+<li>데이터를 표현하는 작업을 사실상 완료되었습니다.</li>
+<li>폰트의 크기, 색상 등 가독성을 높입니다.</li>
+<li>이때도 seaborn의 <code>set_style()</code>과 <code>set_context()</code>를 사용하면 편리합니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">sns.set_style(<span class="string">&quot;white&quot;</span>)</span><br><span class="line">sns.set_context(<span class="string">&quot;talk&quot;</span>)</span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">14</span>,<span class="number">8</span>))</span><br><span class="line"></span><br><span class="line">widths = [<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>]</span><br><span class="line">heights = [<span class="number">1</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">### 1. gridspec preparation</span></span><br><span class="line">spec = fig.add_gridspec(ncols=<span class="number">3</span>, nrows=<span class="number">2</span>, width_ratios=widths, height_ratios=heights, </span><br><span class="line">                        wspace=<span class="number">0.03</span>, hspace=<span class="number">0.03</span>)  <span class="comment"># setting spaces</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 2. setting axes</span></span><br><span class="line">axs = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(heights)*<span class="built_in">len</span>(widths)):</span><br><span class="line">    axs[i] = fig.add_subplot(spec[i//<span class="built_in">len</span>(widths), i%<span class="built_in">len</span>(widths)])</span><br><span class="line"></span><br><span class="line"><span class="comment">### 3. bill_length_mm vs bill_depth_mm</span></span><br><span class="line"><span class="comment"># 3.1. kdeplot</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;bill_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, alpha=<span class="number">0.3</span>, ax=axs[<span class="number">3</span>], zorder=<span class="number">1</span>, legend=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.2. scatterplot</span></span><br><span class="line">sns.scatterplot(<span class="string">&quot;bill_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">3</span>], zorder=<span class="number">2</span>, legend=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.3. histogram (bill_length_mm)</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;bill_length_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">0</span>], legend=<span class="literal">False</span>, zorder=<span class="number">1</span>, fill=<span class="literal">True</span>)</span><br><span class="line">axs[<span class="number">0</span>].set_xlim(axs[<span class="number">3</span>].get_xlim())</span><br><span class="line">axs[<span class="number">0</span>].set_xlabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">axs[<span class="number">0</span>].set_xticklabels([])</span><br><span class="line">axs[<span class="number">0</span>].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">0</span>].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">0</span>].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.3. histogram (bill_depth_mm)</span></span><br><span class="line">sns.kdeplot(y=<span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">5</span>], legend=<span class="literal">False</span>, zorder=<span class="number">1</span>, fill=<span class="literal">True</span>)</span><br><span class="line">axs[<span class="number">5</span>].set_ylim(axs[<span class="number">3</span>].get_ylim())</span><br><span class="line">axs[<span class="number">5</span>].set_ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">axs[<span class="number">5</span>].set_yticklabels([])</span><br><span class="line">axs[<span class="number">5</span>].spines[<span class="string">&quot;bottom&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">5</span>].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">5</span>].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">### 4. flipper_length_mm vs bill_depth_mm</span></span><br><span class="line"><span class="comment"># 4.1. kdeplot</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;flipper_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, alpha=<span class="number">0.3</span>, ax=axs[<span class="number">4</span>], zorder=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.2. scatterplot</span></span><br><span class="line">sns.scatterplot(<span class="string">&quot;flipper_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">4</span>], zorder=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.3. histogram (flipper_length_mm)</span></span><br><span class="line">sns.kdeplot(<span class="string">&quot;flipper_length_mm&quot;</span>, data=penguins, hue=<span class="string">&quot;species&quot;</span>, ax=axs[<span class="number">1</span>], legend=<span class="literal">False</span>, zorder=<span class="number">1</span>, fill=<span class="literal">True</span>)</span><br><span class="line">axs[<span class="number">1</span>].set_xlim(axs[<span class="number">4</span>].get_xlim())</span><br><span class="line">axs[<span class="number">1</span>].set_xlabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">axs[<span class="number">1</span>].set_xticklabels([])</span><br><span class="line">axs[<span class="number">1</span>].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">1</span>].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">axs[<span class="number">1</span>].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">### 5. unnecessary elements removal</span></span><br><span class="line"><span class="comment"># 5.1. upper-right axes</span></span><br><span class="line">axs[<span class="number">2</span>].axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5.2. margin kdeplot scale unification</span></span><br><span class="line">hist_range_max = <span class="built_in">max</span>(axs[<span class="number">0</span>].get_ylim()[<span class="number">-1</span>], axs[<span class="number">1</span>].get_ylim()[<span class="number">-1</span>], axs[<span class="number">5</span>].get_xlim()[<span class="number">-1</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(widths)<span class="number">-1</span>):</span><br><span class="line">    axs[i].set_ylim(<span class="number">0</span>, hist_range_max)</span><br><span class="line">axs[<span class="number">5</span>].set_xlim(<span class="number">0</span>, hist_range_max)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5.3. redundent labels and titles removal</span></span><br><span class="line">axs[<span class="number">1</span>].set_yticklabels([])</span><br><span class="line">axs[<span class="number">1</span>].set_ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">axs[<span class="number">4</span>].set_yticklabels([])</span><br><span class="line">axs[<span class="number">4</span>].set_ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5.4. grids</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(heights)*<span class="built_in">len</span>(widths)):</span><br><span class="line">    axs[i].grid(<span class="string">&quot;on&quot;</span>, color=<span class="string">&quot;lightgray&quot;</span>, zorder=<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 5.5. labels</span></span><br><span class="line">font_label = &#123;<span class="string">&quot;color&quot;</span>:<span class="string">&quot;gray&quot;</span>&#125;</span><br><span class="line">axs[<span class="number">3</span>].set_xlabel(<span class="string">&quot;Bill Legnth (mm)&quot;</span>, fontdict=font_label, labelpad=<span class="number">12</span>)</span><br><span class="line">axs[<span class="number">3</span>].set_ylabel(<span class="string">&quot;Bill Depth (mm)&quot;</span>, fontdict=font_label, labelpad=<span class="number">12</span>)</span><br><span class="line">axs[<span class="number">4</span>].set_xlabel(<span class="string">&quot;Flipper Legnth (mm)&quot;</span>, fontdict=font_label, labelpad=<span class="number">12</span>)</span><br><span class="line">axs[<span class="number">0</span>].set_ylabel(<span class="string">&quot;Density&quot;</span>, fontdict=font_label, labelpad=<span class="number">12</span>)</span><br><span class="line">axs[<span class="number">5</span>].set_xlabel(<span class="string">&quot;Density&quot;</span>, fontdict=font_label, labelpad=<span class="number">12</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fig.tight_layout()</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://user-images.githubusercontent.com/72365693/106536683-4d0be380-653c-11eb-9a69-174baf98aeb4.png"></p>
+<ul>
+<li><code>jointplot</code>의 한계인 <strong>2중 jointplot이 구현되었습니다.</strong></li>
+</ul>
+<h3 id="2-3-7-generalize-함수로-만들기"><a href="#2-3-7-generalize-함수로-만들기" class="headerlink" title="2.3.7 generalize : 함수로 만들기"></a><strong>2.3.7 generalize : 함수로 만들기</strong></h3><ul>
+<li>하는 김에, 기능을 일반화 합시다.</li>
+<li>다중 jointplot 제작 기능을 함수로 만들고,</li>
+<li>x 변수의 수와 그림 크기, 1차원 분포 스케일 통일 등을 인자로 만듭니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">jointplots</span>(<span class="params">xs, y, data, hue=<span class="literal">None</span>, height=<span class="number">6</span>, ratio=<span class="number">5</span>, space=<span class="number">0.2</span>, xlabels=<span class="literal">None</span>, ylabel=<span class="literal">None</span>, margin_norm=<span class="literal">False</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    -------------------</span></span><br><span class="line"><span class="string">    Input Parameters</span></span><br><span class="line"><span class="string">    -------------------</span></span><br><span class="line"><span class="string">    xs      : (list or str) feature name(s) of data</span></span><br><span class="line"><span class="string">    y       : (str) feature name of data</span></span><br><span class="line"><span class="string">    data    : (pandas.DataFrame)</span></span><br><span class="line"><span class="string">    hue     : (str) semantic variable that is mapped to determine the color of plot elements. Semantic variable that is mapped to determine the color of plot elements.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    height  : (float) size of the figure</span></span><br><span class="line"><span class="string">    ratio   : (float) ratio of the joint axes height to marginal axes height.</span></span><br><span class="line"><span class="string">    space   : (float) space between the joint and marginal axes</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    xlabels : (list or str) xlabels</span></span><br><span class="line"><span class="string">    ylabel  : (str) ylabel</span></span><br><span class="line"><span class="string">    margin_norm : (boolean) if True, kdeplots at marginal axes have same scale.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment">### 1. input check</span></span><br><span class="line">    <span class="comment"># input type</span></span><br><span class="line">    <span class="keyword">assert</span> <span class="built_in">isinstance</span>(xs, <span class="built_in">list</span>) <span class="keyword">or</span> <span class="built_in">isinstance</span>(xs, <span class="built_in">str</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(xs, <span class="built_in">list</span>):</span><br><span class="line">        <span class="keyword">assert</span> <span class="built_in">all</span>([<span class="built_in">isinstance</span>(x, <span class="built_in">str</span>) <span class="keyword">for</span> x <span class="keyword">in</span> xs])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        xs = [xs]</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> xlabels != <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">assert</span> <span class="built_in">isinstance</span>(xlabels, <span class="built_in">list</span>) <span class="keyword">or</span> <span class="built_in">isinstance</span>(xlabels, <span class="built_in">str</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(xlabels, <span class="built_in">list</span>):</span><br><span class="line">            <span class="keyword">assert</span> <span class="built_in">all</span>([<span class="built_in">isinstance</span>(xlabel, <span class="built_in">str</span>) <span class="keyword">for</span> xlabel <span class="keyword">in</span> xlabels])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            xlabels = [xlabels]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ylabel != <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">assert</span> <span class="built_in">isinstance</span>(ylabel, <span class="built_in">str</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> hue != <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">assert</span> <span class="built_in">isinstance</span>(hue, <span class="built_in">str</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># input data</span></span><br><span class="line">    <span class="keyword">assert</span> <span class="built_in">all</span>([x <span class="keyword">in</span> data.columns <span class="keyword">for</span> x <span class="keyword">in</span> xs])</span><br><span class="line">    <span class="keyword">assert</span> y <span class="keyword">in</span> data.columns</span><br><span class="line">    <span class="keyword">if</span> hue != <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">assert</span> hue <span class="keyword">in</span> data.columns</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">### 2. figure</span></span><br><span class="line">    h_margin = height / (ratio + <span class="number">1</span>)</span><br><span class="line">    h_joint = height - h_margin</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(xs, <span class="built_in">list</span>):</span><br><span class="line">        n_x = <span class="built_in">len</span>(xs)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        n_x = <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    widths = [h_joint] * n_x + [h_margin]</span><br><span class="line">    heights = [h_margin, h_joint]</span><br><span class="line">    ncols = <span class="built_in">len</span>(widths)</span><br><span class="line">    nrows = <span class="built_in">len</span>(heights)</span><br><span class="line">    </span><br><span class="line">    fig = plt.figure(figsize=(<span class="built_in">sum</span>(widths), <span class="built_in">sum</span>(heights)))</span><br><span class="line">    </span><br><span class="line">    <span class="comment">### 3. gridspec preparation</span></span><br><span class="line">    spec = fig.add_gridspec(ncols=ncols, nrows=nrows, </span><br><span class="line">                            width_ratios = widths, height_ratios = heights,</span><br><span class="line">                            wspace=space, hspace=space</span><br><span class="line">                           )</span><br><span class="line">    </span><br><span class="line">    <span class="comment">### 4. setting axes</span></span><br><span class="line">    axs = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(ncols * nrows):</span><br><span class="line">        axs[i] = fig.add_subplot(spec[i//ncols, i%ncols])</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">### 5. jointplots (scatterplot + kdeplot)</span></span><br><span class="line">    <span class="keyword">for</span> i, x <span class="keyword">in</span> <span class="built_in">enumerate</span>(xs, ncols):</span><br><span class="line">        <span class="keyword">if</span> i == ncols:</span><br><span class="line">            legend=<span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            legend=<span class="literal">False</span></span><br><span class="line">        sns.kdeplot(x=x, y=y, data=data, hue=hue, alpha=<span class="number">0.3</span>, ax=axs[i], zorder=<span class="number">2</span>, legend=<span class="literal">False</span>)</span><br><span class="line">        sns.scatterplot(x=x, y=y, data=data, hue=hue, alpha=<span class="number">0.8</span>, ax=axs[i], zorder=<span class="number">3</span>, legend=legend)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">### 6. kdeplots at marginal axes</span></span><br><span class="line">    axs[ncols<span class="number">-1</span>].axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    axes_mx = <span class="built_in">list</span>(<span class="built_in">range</span>(ncols<span class="number">-1</span>))</span><br><span class="line">    axes_my = <span class="number">2</span>*ncols - <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i, x <span class="keyword">in</span> <span class="built_in">zip</span>(axes_mx, xs):</span><br><span class="line">        sns.kdeplot(x=x, data=data, hue=hue, fill=<span class="literal">True</span>, ax=axs[i], zorder=<span class="number">2</span>, legend=<span class="literal">False</span>)</span><br><span class="line">        axs[i].set_xlim(axs[i+ncols].get_xlim())</span><br><span class="line">        axs[i].set_xlabel(<span class="string">&quot;&quot;</span>)</span><br><span class="line">        axs[i].set_xticklabels([])</span><br><span class="line">        axs[i].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">        axs[i].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">        axs[i].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">    </span><br><span class="line">    sns.kdeplot(y=y, data=data, hue=hue, fill=<span class="literal">True</span>, ax=axs[axes_my], zorder=<span class="number">2</span>, legend=<span class="literal">False</span>)</span><br><span class="line">    axs[axes_my].set_ylim(axs[ncols].get_ylim())</span><br><span class="line">    axs[axes_my].set_ylabel(<span class="string">&quot;&quot;</span>)</span><br><span class="line">    axs[axes_my].set_yticklabels([])</span><br><span class="line">    axs[axes_my].spines[<span class="string">&quot;bottom&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">    axs[axes_my].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">    axs[axes_my].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> margin_norm == <span class="literal">True</span>:</span><br><span class="line">        hist_range_max = <span class="built_in">max</span>([axs[m].get_ylim()[<span class="number">-1</span>] <span class="keyword">for</span> m <span class="keyword">in</span> axes_mx] + [axs[axes_my].get_xlim()[<span class="number">-1</span>]])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> axes_mx:</span><br><span class="line">            axs[i].set_ylim(<span class="number">0</span>, hist_range_max)</span><br><span class="line">        axs[axes_my].set_xlim(<span class="number">0</span>, hist_range_max)</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    <span class="comment">### 7. unnecessary elements removal</span></span><br><span class="line">    <span class="comment"># 7.1. labels and ticklabels</span></span><br><span class="line">    axes_j = <span class="built_in">list</span>(<span class="built_in">range</span>(ncols, <span class="number">2</span>*ncols<span class="number">-1</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> axes_j:</span><br><span class="line">        <span class="keyword">if</span> i != ncols:</span><br><span class="line">            axs[i].set_ylabel(<span class="string">&quot;&quot;</span>)</span><br><span class="line">            axs[i].set_yticklabels([])</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 7.2. marginal axes</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> axes_mx:</span><br><span class="line">        <span class="keyword">if</span> i != <span class="number">0</span>:</span><br><span class="line">            axs[i].set_ylabel(<span class="string">&quot;&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        axs[i].grid(<span class="string">&quot;on&quot;</span>, color=<span class="string">&quot;lightgray&quot;</span>, zorder=<span class="number">0</span>)</span><br><span class="line">        axs[i].set_yticklabels([])</span><br><span class="line">        </span><br><span class="line">        yticks = axs[i].get_yticks()</span><br><span class="line">        ylim = axs[i].get_ylim()</span><br><span class="line">        <span class="keyword">for</span> ytick <span class="keyword">in</span> yticks:</span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span> &lt; ytick &lt; ylim[<span class="number">-1</span>]:</span><br><span class="line">                axs[i].text(axs[i].get_xlim()[<span class="number">0</span>], ytick, <span class="built_in">str</span>(ytick), </span><br><span class="line">                            fontdict=&#123;<span class="string">&quot;verticalalignment&quot;</span>:<span class="string">&quot;center&quot;</span>&#125;)</span><br><span class="line">        </span><br><span class="line">    axs[axes_my].grid(<span class="string">&quot;on&quot;</span>, color=<span class="string">&quot;lightgray&quot;</span>, zorder=<span class="number">0</span>)</span><br><span class="line">    axs[axes_my].set_xticklabels([])</span><br><span class="line">    axes_my_xticks = axs[axes_my].get_xticks()</span><br><span class="line">    axes_my_xlim = axs[axes_my].get_xlim()</span><br><span class="line">    <span class="keyword">for</span> xtick <span class="keyword">in</span> axes_my_xticks:</span><br><span class="line">        <span class="keyword">if</span> <span class="number">0</span> &lt; xtick &lt; axes_my_xlim[<span class="number">-1</span>]:</span><br><span class="line">            axs[axes_my].text(xtick, axs[axes_my].get_ylim()[<span class="number">0</span>], <span class="built_in">str</span>(xtick), </span><br><span class="line">                              rotation=<span class="number">270</span>, fontdict=&#123;<span class="string">&quot;horizontalalignment&quot;</span>:<span class="string">&quot;center&quot;</span>&#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 7.3. labels</span></span><br><span class="line">    font_label = &#123;<span class="string">&quot;color&quot;</span>: <span class="string">&quot;gray&quot;</span>, <span class="string">&quot;fontsize&quot;</span>:<span class="string">&quot;large&quot;</span>&#125;</span><br><span class="line">    labelpad = <span class="number">12</span></span><br><span class="line">    <span class="keyword">for</span> i, x <span class="keyword">in</span> <span class="built_in">zip</span>(axes_j, xlabels):</span><br><span class="line">        axs[i].set_xlabel(x, fontdict=font_label, labelpad=labelpad)</span><br><span class="line">        <span class="keyword">if</span> i == ncols:</span><br><span class="line">            axs[i].set_ylabel(ylabel, fontdict=font_label, labelpad=labelpad)</span><br><span class="line">    </span><br><span class="line">    axs[<span class="number">0</span>].set_ylabel(<span class="string">&quot;Density&quot;</span>, fontdict=font_label, labelpad=labelpad)</span><br><span class="line">    axs[<span class="number">2</span>*ncols<span class="number">-1</span>].set_xlabel(<span class="string">&quot;Density&quot;</span>, fontdict=font_label, labelpad=labelpad)</span><br><span class="line">    </span><br><span class="line">    fig.align_ylabels([axs[<span class="number">0</span>], axs[ncols]])</span><br><span class="line">    fig.align_xlabels([axs[x] <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(ncols, <span class="number">2</span>*ncols)])</span><br><span class="line">    plt.tight_layout()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> fig, axs</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>x인자의 수가 바뀌어도</strong> jointplot이 안정적으로 그려집니다.</li>
+<li>1차원 분포도 <strong>표현 방식을 바꾸어</strong> 전보다 깔끔해졌습니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jointplots([<span class="string">&quot;bill_length_mm&quot;</span>, <span class="string">&quot;bill_depth_mm&quot;</span>, <span class="string">&quot;flipper_length_mm&quot;</span>], <span class="string">&quot;body_mass_g&quot;</span>, penguins, hue=<span class="string">&quot;species&quot;</span>, </span><br><span class="line">            height=<span class="number">8</span>, ratio=<span class="number">5</span>, space=<span class="number">0.03</span>, </span><br><span class="line">            xlabels=[<span class="string">&quot;Bill Length (mm)&quot;</span>, <span class="string">&quot;Bill Depth (mm)&quot;</span>, <span class="string">&quot;Flipper Length (mm)&quot;</span>], ylabel=<span class="string">&quot;Body Mass (g)&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(&lt;Figure size 1536x576 with 8 Axes&gt;,
+ &#123;0: &lt;AxesSubplot:ylabel=&#39;Density&#39;&gt;,
+  1: &lt;AxesSubplot:&gt;,
+  2: &lt;AxesSubplot:&gt;,
+  3: &lt;AxesSubplot:&gt;,
+  4: &lt;AxesSubplot:xlabel=&#39;Bill Length (mm)&#39;, ylabel=&#39;Body Mass (g)&#39;&gt;,
+  5: &lt;AxesSubplot:xlabel=&#39;Bill Depth (mm)&#39;&gt;,
+  6: &lt;AxesSubplot:xlabel=&#39;Flipper Length (mm)&#39;&gt;,
+  7: &lt;AxesSubplot:xlabel=&#39;Density&#39;&gt;&#125;)</code></pre>
+<p><img src="https://user-images.githubusercontent.com/72365693/106536685-4da47a00-653c-11eb-80dd-61c13b94e04f.png"></p>
+<h3 id="2-4-결론"><a href="#2-4-결론" class="headerlink" title="2.4 결론"></a><strong>2.4 결론</strong></h3><ul>
+<li><p>seaborn의 jointplot을 가져다 쓰는데 그치지 않았습니다.</p>
+</li>
+<li><p><strong>matplotlib의 객체지향 방식을 이용해 seaborn의 한계를 벗어날 수 있었습니다.</strong></p>
+</li>
+<li><p>본 예제에서는 <code>scatterplot0</code>과 2차원 <code>kdeplot</code>만 결합했습니다.</p>
+</li>
+<li><p>그러나 이 외에도 seaborn과 matplotlib이 제공하는 거의 모든 기능을 결합할 수 있습니다.</p>
+</li>
+<li><p>메뉴얼의 한계에 얽매이지 말고 상상력을 동원해 보시면 어떨까요.</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://jehyunlee.github.io/2020/10/03/Python-DS-35-seaborn_matplotlib2/">출처</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://kim-1994.github.io/2021/02/02/Seaborn%20with%20Matplotlib%20(2)/" data-id="ckknalqx70000lwvjdxwa730t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "HOya"
+        },
+        "headline": "Seaborn with Matplotlib (2)",
+        "image": "http://KIM-1994.github.iohttps://user-images.githubusercontent.com/72365693/105937145-4db5fd00-6098-11eb-9dd3-97c1d4da01b6.PNG",
+        "keywords": "",
+        "genre": "시각화 공부",
+        "datePublished": "2021-02-02",
+        "dateCreated": "2021-02-02",
+        "dateModified": "2021-02-02",
+        "url": "http://KIM-1994.github.io/2021/02/02/Seaborn with Matplotlib (2)/",
+        "description": "Seaborn with Matplotlib (2)2. seaborn + matplotlib을 이용한 jointplot 보완
+seaborn을 matplotlib과 섞어쓰는 방법입니다.
+4부 중 두 번째 시간 입니다.
+seaborn jointplot의 단점을 보완합니다.
+
+2.1. seaborn jointplot
+seaborn의 jointplot 은 매력적인 ",
+        "wordCount": 4881
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/KIM-1994" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2021/01/29/Seaborn%20with%20Matplotlib%20(1)/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Seaborn with Matplotlib (1)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/02/02/Seaborn%20with%20Matplotlib%20(2)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/105937145-4db5fd00-6098-11eb-9dd3-97c1d4da01b6.PNG)" alt="Seaborn with Matplotlib (2)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></p>
+                            <p class="item-title"><a href="/2021/02/02/Seaborn%20with%20Matplotlib%20(2)/" class="title">Seaborn with Matplotlib (2)</a></p>
+                            <p class="item-date"><time datetime="2021-02-02T00:51:08.000Z" itemprop="datePublished">2021-02-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/01/29/Seaborn%20with%20Matplotlib%20(1)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/105783198-43710180-5fb9-11eb-8d01-11264a97a58b.png)" alt="Seaborn with Matplotlib (1)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></p>
+                            <p class="item-title"><a href="/2021/01/29/Seaborn%20with%20Matplotlib%20(1)/" class="title">Seaborn with Matplotlib (1)</a></p>
+                            <p class="item-date"><time datetime="2021-01-29T06:13:46.000Z" itemprop="datePublished">2021-01-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/01/24/Trend%20Visualization(3)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/105472661-914ae880-5cdf-11eb-80a8-5ae9ed6a3096.PNG)" alt="수능 Trend Visualization (3)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></p>
+                            <p class="item-title"><a href="/2021/01/24/Trend%20Visualization(3)/" class="title">수능 Trend Visualization (3)</a></p>
+                            <p class="item-date"><time datetime="2021-01-24T12:48:00.000Z" itemprop="datePublished">2021-01-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/01/22/AnseongRiver%203(2)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/105455469-e1698100-5cc6-11eb-9f7d-48013cc49f61.png)" alt="안성천3 지점 농도비교(2)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></p>
+                            <p class="item-title"><a href="/2021/01/22/AnseongRiver%203(2)/" class="title">안성천3 지점 농도비교(2)</a></p>
+                            <p class="item-date"><time datetime="2021-01-22T06:29:56.000Z" itemprop="datePublished">2021-01-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/01/21/code%20check/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a></p>
+                            <p class="item-title"><a href="/2021/01/21/code%20check/" class="title">패키지 버전 체크</a></p>
+                            <p class="item-date"><time datetime="2021-01-21T11:34:37.981Z" itemprop="datePublished">2021-01-21</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Kaggle/">Kaggle</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/">crawling</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a><span class="category-list-count">2</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawling/" rel="tag">crawling</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">데이터</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" rel="tag">오픈소스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84/" rel="tag">통계</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" rel="tag">통계학</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag">파이썬</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" rel="tag">확률분포</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/crawling/" style="font-size: 20px;">crawling</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" style="font-size: 15px;">데이터</a> <a href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" style="font-size: 15px;">오픈소스</a> <a href="/tags/%ED%86%B5%EA%B3%84/" style="font-size: 10px;">통계</a> <a href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" style="font-size: 15px;">통계학</a> <a href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" style="font-size: 20px;">파이썬</a> <a href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" style="font-size: 10px;">확률분포</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 HOya</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://kim-1994.github.io/2021/02/02/Seaborn%20with%20Matplotlib%20(2)/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
