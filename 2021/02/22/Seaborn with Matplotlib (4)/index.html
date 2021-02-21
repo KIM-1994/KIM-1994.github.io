@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Seaborn with Matplotlib (4) | Welcome to HOya World</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="Seaborn with Matplotlib (4)4. seaborn figure-level 다듬기 seaborn + matplotlib 마지막 시간입니다. figure-level 그림을 그리고 다듬어 봅니다. 자체적으로 지원하는 명령어를 사용해보고 개흉 심장마사지 방법을 알아보겠습니다.   seaborn APIseaborn tutorialseaborn wi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Seaborn with Matplotlib (4)">
+<meta property="og:url" content="http://kim-1994.github.io/2021/02/22/Seaborn%20with%20Matplotlib%20(4)/index.html">
+<meta property="og:site_name" content="Welcome to HOya World">
+<meta property="og:description" content="Seaborn with Matplotlib (4)4. seaborn figure-level 다듬기 seaborn + matplotlib 마지막 시간입니다. figure-level 그림을 그리고 다듬어 봅니다. 자체적으로 지원하는 명령어를 사용해보고 개흉 심장마사지 방법을 알아보겠습니다.   seaborn APIseaborn tutorialseaborn wi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/72365693/106899537-d25be780-6738-11eb-8a63-680d9f2d7ecf.PNG">
+<meta property="article:published_time" content="2021-02-21T23:45:14.000Z">
+<meta property="article:modified_time" content="2021-02-21T23:51:10.302Z">
+<meta property="article:author" content="HOya">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/72365693/106899537-d25be780-6738-11eb-8a63-680d9f2d7ecf.PNG">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Kaggle/">Kaggle</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/">crawling</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Seaborn with Matplotlib (4)" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Seaborn with Matplotlib (4)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2021/02/22/Seaborn%20with%20Matplotlib%20(4)/" class="article-date">
+       <time datetime="2021-02-21T23:45:14.000Z" itemprop="datePublished">2021-02-22</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2021/02/22/Seaborn%20with%20Matplotlib%20(4)/" class="article-date">
+     <time datetime="2021-02-21T23:51:10.302Z" itemprop="dateModified">2021-02-22</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="Seaborn-with-Matplotlib-4"><a href="#Seaborn-with-Matplotlib-4" class="headerlink" title="Seaborn with Matplotlib (4)"></a><strong>Seaborn with Matplotlib (4)</strong></h1><h2 id="4-seaborn-figure-level-다듬기"><a href="#4-seaborn-figure-level-다듬기" class="headerlink" title="4. seaborn figure-level 다듬기"></a><strong>4. seaborn <code>figure-level</code> 다듬기</strong></h2><ul>
+<li>seaborn + matplotlib 마지막 시간입니다.</li>
+<li><code>figure-level</code> 그림을 그리고 다듬어 봅니다.</li>
+<li>자체적으로 지원하는 명령어를 사용해보고</li>
+<li>개흉 심장마사지 방법을 알아보겠습니다.</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://seaborn.pydata.org/api.html">seaborn API</a><br><a target="_blank" rel="noopener" href="https://seaborn.pydata.org/tutorial.html">seaborn tutorial</a><br><a target="_blank" rel="noopener" href="https://jehyunlee.github.io/2020/10/06/Python-DS-36-seaborn_matplotlib3/">seaborn with matplotlib</a></p>
+</blockquote>
+<h2 id="4-1-figure-level으로-편리하게-그리기-pairplot"><a href="#4-1-figure-level으로-편리하게-그리기-pairplot" class="headerlink" title="4.1 figure-level으로 편리하게 그리기 : pairplot()"></a><strong>4.1 <code>figure-level</code>으로 편리하게 그리기 : <code>pairplot()</code></strong></h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Exploratory_data_analysis">wikipedia: Exploratory data analysis</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">wikipedia: Anscombe’s quartet</a><br><a target="_blank" rel="noopener" href="https://www.autodesk.com/research/publications/same-stats-different-graphs">autodesk: datasaurus</a><br><a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot">seaborn.pairplot</a></p>
+</blockquote>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Exploratory_data_analysis">EDA</a>에서 피할 수 없는 과정이 상관도입니다.</p>
+<ul>
+<li>두 변수 사이의 관계를 그려 관계를 파악합니다.</li>
+<li>대개 산점도 <code>scatter plot</code>나 밀도 함수 <code>density plot</code>를 쓰고</li>
+<li>추세선 <code>regression</code>을 덧붙이는 경우도 있습니다.</li>
+</ul>
+</li>
+<li><p>데이터 분포는 통계값으로만 확인하면 안됩니다.</p>
+<ul>
+<li><strong>평균과 표준편차는 같은데 분포는 다른 경우</strong>가 많습니다.</li>
+<li><strong>반드시 분포를 그려 봐야</strong>합니다.</li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Anscombe’s quartet</a>이 아주 좋은 예시입니다.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/72365693/106899537-d25be780-6738-11eb-8a63-680d9f2d7ecf.PNG"></p>
+<ul>
+<li><p>N개의 인자 사이에는 \frac{N(N-1)}{2}가지 관계가 있습니다.</p>
+</li>
+<li><p>seaborn의 <code>pairplot()</code>은 여러 인자 사이의 수많은 상관도를 쉽게 그려줍니다.</p>
+</li>
+<li><p>붓꽃 <code>iris</code> 데이터셋으로 상관도를 그려봅니다.</p>
+<ul>
+<li>꽃받침 <code>sepal</code>과 꽃잎 <code>peta</code>,</li>
+<li>길이 <code>length</code>와 폭 <code>width</code> 네 가지 인자로부터</li>
+<li>여섯 가지의 상관도,</li>
+<li>네 가지의 히스토그램이 나옵니다.</li>
+</ul>
+</li>
+<li><p>코드 한 줄로 그려봅시다.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"></span><br><span class="line">iris = sns.load_dataset(<span class="string">&quot;iris&quot;</span>)</span><br><span class="line"></span><br><span class="line">g = sns.pairplot(iris, hue = <span class="string">&quot;species&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://user-images.githubusercontent.com/72365693/108642759-78a23e00-74ea-11eb-8275-7675fbd89c8b.png"></p>
+<ul>
+<li><p>종 <code>species</code>별 분포를 그려봅니다.</p>
+</li>
+<li><p><code>hue=</code>라는 인자 하나만 추가했을 뿐입니다.</p>
+<ul>
+<li>그림이 갑자기 예뻐졌습니다.</li>
+<li>히스토그램도 밀도함수로 바뀌어서 훨씬 보기 좋습니다.</li>
+</ul>
+</li>
+<li><p>여기에 다른 그림을 겹쳐보겠습니다.</p>
+<ul>
+<li><strong>대각선 위</strong> : 2차원 밀도함수 + 추세선</li>
+<li><strong>대각선 아래</strong> : 2차원 밀도함수 + 산포도</li>
+</ul>
+</li>
+<li><p>seaborn <code>figurre-level</code> 기능만으로 가능합니다.</p>
+</li>
+<li><p><code>map_lower()</code>와 <code>map_upper</code>를 사용합니다.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g = sns.pairplot(iris, hue=<span class="string">&quot;species&quot;</span>, kind=<span class="string">&quot;kde&quot;</span>, plot_kws=&#123;<span class="string">&quot;alpha&quot;</span>:<span class="number">0.3</span>&#125;)</span><br><span class="line">g.map_lower(sns.scatterplot)</span><br><span class="line">g.map_upper(sns.regplot, scatter=<span class="literal">False</span>, truncate=<span class="literal">False</span>, ci=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.PairGrid at 0x230e6e3a730&gt;</code></pre>
+<p><img src="https://user-images.githubusercontent.com/72365693/108642761-7a6c0180-74ea-11eb-8ee4-df8fe14bba7f.png"></p>
+<ul>
+<li><code>map_lower()</code>와 <code>map_upper()</code>는 대각선의 위와 아래에 <strong>그림을 덧씌우는 <code>map</code>함수</strong>입니다.<ul>
+<li>앞서 완성한 pairplot에 새로운 그림을 덧붙입니다.</li>
+<li>인자로는 <strong>함수 이름</strong>과 <strong>이 함수의 옵션들</strong>을 연달아 넣어 줍니다.</li>
+<li>함수에 맞는 인자를 넣어줘야 합니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-2-figure-level그림-뼈대부터-세우기-PairGrid"><a href="#4-2-figure-level그림-뼈대부터-세우기-PairGrid" class="headerlink" title="4.2 figure-level그림 뼈대부터 세우기 : PairGrid()"></a><strong>4.2 <code>figure-level</code>그림 뼈대부터 세우기 : <code>PairGrid()</code></strong></h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.PairGrid.html">seaborn.PairGrid</a></p>
+</blockquote>
+<ul>
+<li><p>pairplot을 단계별로 그리는 방법입니다.</p>
+<ul>
+<li>코드 양은 <code>pairplot()</code>한 줄보다 늘어납니다.</li>
+<li>그러나 자윧가 늘어납니다.</li>
+</ul>
+</li>
+<li><p><code>.pairplot()</code>으로는 위 아래를 완전히 다르게 할 수 없습니다.</p>
+</li>
+<li><p>대각선의 아래엔 산점도와 추세선을 그리고</p>
+</li>
+<li><p>대각선 위에는 밀도함수만 그려보겠습니다.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 틀 만들기</span></span><br><span class="line">g = sns.PairGrid(iris, hue=<span class="string">&quot;species&quot;</span>, diag_sharey=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># diagonal</span></span><br><span class="line">g.map_diag(sns.kdeplot, fill=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># lower</span></span><br><span class="line">g.map_lower(plt.scatter, s=<span class="number">30</span>, edgecolor=<span class="string">&quot;w&quot;</span>)</span><br><span class="line">g.map_lower(sns.regplot, scatter=<span class="literal">False</span>, truncate=<span class="literal">False</span>, ci=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># upper</span></span><br><span class="line">g.map_upper(sns.kdeplot, alpha=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># legend</span></span><br><span class="line">g.add_legend()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.PairGrid at 0x230e8490610&gt;</code></pre>
+<p><img src="https://user-images.githubusercontent.com/72365693/108642763-7a6c0180-74ea-11eb-8d1a-9e4aebef88b0.png"></p>
+<ul>
+<li><p><code>.pairplot()</code>과 같은 형식의 그림이 나왔습니다.</p>
+</li>
+<li><p>내 의도를 더 잘 반영할 수 있게 되었습니다.</p>
+</li>
+<li><p>8번째 줄에는 <code>plt.scatter</code>가 들어가 있습니다.</p>
+</li>
+<li><p><code>.pairplot()</code>도 마찬가지지만 <code>.map()</code>에는 seaborn대신 matplotlib 함수를 사용할 수 있습니다.</p>
+</li>
+<li><p>중복되는 오른쪽 윗부분을 생략할 수 있습니다.</p>
+<ul>
+<li><code>corner=True</code>를 넣어줍니다.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">g = sns.PairGrid(iris, hue=<span class="string">&quot;species&quot;</span>, diag_sharey=<span class="literal">False</span>, corner=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># corner : 모서리 부분 생략</span></span><br><span class="line"><span class="comment"># diag : 대각행렬</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># diagonal</span></span><br><span class="line">g.map_diag(sns.kdeplot, fill=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># lower</span></span><br><span class="line">g.map_lower(plt.scatter, s=<span class="number">30</span>, edgecolor=<span class="string">&quot;w&quot;</span>)</span><br><span class="line">g.map_lower(sns.regplot, scatter=<span class="literal">False</span>, truncate=<span class="literal">False</span>, ci=<span class="literal">False</span>)</span><br><span class="line">g.map_lower(sns.kdeplot, alpha=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># legend</span></span><br><span class="line">g.add_legend()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.PairGrid at 0x230e66d5580&gt;</code></pre>
+<p><img src="https://user-images.githubusercontent.com/72365693/108642764-7b049800-74ea-11eb-9222-c4fa5818304c.png"></p>
+<ul>
+<li><p>이제 작은 수정을 해봅니다.</p>
+<ol>
+<li>대각선에 <strong>사각 테두리</strong> 치기</li>
+<li><strong>범례를 그림 안으로</strong> 가져오기</li>
+</ol>
+</li>
+<li><p>가슴을 열고 심장마사지를 할 시간입니다.</p>
+</li>
+</ul>
+<h2 id="4-3-figure-level-그림-객체-접근"><a href="#4-3-figure-level-그림-객체-접근" class="headerlink" title="4.3 figure-level 그림 객체 접근"></a><strong>4.3 <code>figure-level</code> 그림 객체 접근</strong></h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.FacetGrid.html?highlight=facetgrid#seaborn.FacetGrid">seaborn.FacetGrid</a><br><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html">matplotlib.figure.Figure</a><br><a target="_blank" rel="noopener" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes">matplotlib.aexs.Axxes</a></p>
+</blockquote>
+<ul>
+<li>matplotlib 그림은 <a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html">figure</a>와 <a target="_blank" rel="noopener" href="https://matplotlib.org/3.3.2/api/axes_api.html">axes</a>로 나뉩니다.<ul>
+<li>seaborn 그림도 결국 matplotlib 그림입니다.</li>
+<li><strong>seaborn의 figure와 axes</strong>에 접근하면 됩니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-1-axes-axes"><a href="#4-3-1-axes-axes" class="headerlink" title="4.3.1 axes : .axes"></a><strong>4.3.1 axes : <code>.axes</code></strong></h3><ul>
+<li><a target="_blank" rel="noopener" href="https://jehyunlee.github.io/2020/10/03/Python-DS-35-seaborn_matplotlib2/">이전 글</a>에서 <code>axes</code>를 이용해 jointplot을 재현했습니다.</li>
+<li>axes 객체는 <code>.axes</code>를 이용해 접근 가능합니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.axes</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[&lt;AxesSubplot:&gt;, None, None, None],
+       [&lt;AxesSubplot:ylabel=&#39;sepal_width&#39;&gt;, &lt;AxesSubplot:&gt;, None, None],
+       [&lt;AxesSubplot:ylabel=&#39;petal_length&#39;&gt;, &lt;AxesSubplot:&gt;,
+        &lt;AxesSubplot:&gt;, None],
+       [&lt;AxesSubplot:xlabel=&#39;sepal_length&#39;, ylabel=&#39;petal_width&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;sepal_width&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;petal_length&#39;&gt;,
+        &lt;AxesSubplot:xlabel=&#39;petal_width&#39;&gt;]], dtype=object)</code></pre>
+<ul>
+<li>확인 결과 <code>AxeSubplot</code>의 array입니다.</li>
+</ul>
+<h4 id="4-3-1-1-특정-axes-윤곽선-그리기"><a href="#4-3-1-1-특정-axes-윤곽선-그리기" class="headerlink" title="4.3.1.1 특정 axes 윤곽선 그리기"></a><strong>4.3.1.1 특정 axes 윤곽선 그리기</strong></h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://jehyunlee.github.io/2020/10/03/Python-DS-35-seaborn_matplotlib2/">Seaborn with Matplotlib(2)</a><br><a target="_blank" rel="noopener" href="https://jehyunlee.github.io/2020/08/27/Python-DS-28-mpl_spines_grids/">Spines &amp; Grids</a></p>
+</blockquote>
+<ul>
+<li>정체를 알았으니 <code>axes[i][j]</code>로 접근할 수 있습니다.</li>
+<li><code>g.axes[i][j]</code>의 spine을 보이게 합니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">g = sns.PairGrid(iris, hue=<span class="string">&quot;species&quot;</span>, diag_sharey=<span class="literal">False</span>, corner=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># diagonal</span></span><br><span class="line">g.map_diag(sns.kdeplot, fill=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># lower</span></span><br><span class="line">g.map_lower(plt.scatter, s=<span class="number">30</span>, edgecolor=<span class="string">&quot;w&quot;</span>)</span><br><span class="line">g.map_lower(sns.regplot, scatter=<span class="literal">False</span>, truncate=<span class="literal">False</span>, ci=<span class="literal">False</span>)</span><br><span class="line">g.map_lower(sns.kdeplot, alpha=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># legend</span></span><br><span class="line">g.add_legend()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.PairGrid at 0x230e9580a30&gt;</code></pre>
+<p><img src="https://user-images.githubusercontent.com/72365693/108642766-7b9d2e80-74ea-11eb-833c-a5be585ee6f9.png"></p>
+<h4 id="4-3-1-2-범례-조정"><a href="#4-3-1-2-범례-조정" class="headerlink" title="4.3.1.2 범례 조정"></a><strong>4.3.1.2 범례 조정</strong></h4><blockquote>
+<p>seaborn axisgrid.py 소스코드<br>matplotlib.axes.Axes.get_legend_handle_labels<br>matplotlib.axes.Axes.legend</p>
+</blockquote>
+<ul>
+<li><p>legend 정보를 가져와서 legend로 삽입합니다.</p>
+<ul>
+<li>대게 legend에 필요한 handels와 labels는 <code>.get_legend_handles_labels()</code>로 가져옵니다.</li>
+<li>하지만 seaborn <code>figure-level</code> 그림엔 이 명령이 통하지 않습니다.</li>
+<li>private처럼 보이는 **<code>._legend_data</code>**를 사용합니다.</li>
+</ul>
+<ul>
+<li><strong>공식 문서에 없습니다. 소스 코드를 뒤적여야 합니다.</strong></li>
+</ul>
+</li>
+<li><p><code>._legend_data</code> 정체를 확인합니다.</p>
+</li>
+<li><p>범례가 <code>dict</code> 형식으로 들어 있습니다.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g._legend_data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#123;&#39;setosa&#39;: &lt;matplotlib.collections.PathCollection at 0x230e9de5b50&gt;,
+ &#39;versicolor&#39;: &lt;matplotlib.collections.PathCollection at 0x230e9dbe910&gt;,
+ &#39;virginica&#39;: &lt;matplotlib.collections.PathCollection at 0x230e9de54c0&gt;&#125;</code></pre>
+<ul>
+<li>아래 코드를 추가하여 범례를 이동합니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">g = sns.PairGrid(iris, hue=<span class="string">&quot;species&quot;</span>, diag_sharey=<span class="literal">False</span>, corner=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># diagonal</span></span><br><span class="line">g.map_diag(sns.kdeplot, fill=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># lower</span></span><br><span class="line">g.map_lower(plt.scatter, s=<span class="number">30</span>, edgecolor=<span class="string">&quot;w&quot;</span>)</span><br><span class="line">g.map_lower(sns.regplot, scatter=<span class="literal">False</span>, truncate=<span class="literal">False</span>, ci=<span class="literal">False</span>)</span><br><span class="line">g.map_lower(sns.kdeplot, alpha=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line">handles = g._legend_data.values()</span><br><span class="line">labels = g._legend_data.keys()</span><br><span class="line"></span><br><span class="line"><span class="comment"># axes[1][0] 기준으로 오른쪽 멀리 범례 삽입</span></span><br><span class="line">g.axes[<span class="number">1</span>][<span class="number">0</span>].legend(handles=handles, labels=labels,</span><br><span class="line">                    bbox_to_anchor=(<span class="number">3.45</span>, <span class="number">1</span>),</span><br><span class="line">                    fontsize=<span class="string">&quot;large&quot;</span>, frameon=<span class="literal">False</span></span><br><span class="line">                   )</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.legend.Legend at 0x230ea1ad370&gt;</code></pre>
+<p><img src="https://user-images.githubusercontent.com/72365693/108642767-7b9d2e80-74ea-11eb-894a-f64e12d1786c.png"></p>
+<ul>
+<li>이런 방식으로 특정 axes만 제어할 수 있습니다.<ul>
+<li><strong>원하는 그림, 글자</strong>을 넣을 수 있고</li>
+<li><strong>특정 데이터의 색상</strong>을 변경할 수 있습니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-2-figure-fig"><a href="#4-3-2-figure-fig" class="headerlink" title="4.3.2 figure: .fig"></a><strong>4.3.2 figure: <code>.fig</code></strong></h3><ul>
+<li>개별 공간은 axes로 제어하지만</li>
+<li>여러 axes가 연관된 공간은 figure로 제어합니다,</li>
+<li>figure객체는 <code>.fig</code>를 이용해 접근 가능합니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span>(g.fig)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>matplotlib.figure.Figure</code></pre>
+<ul>
+<li><code>type()</code>으로 감싸주지 않으면 그림이 통으로 출력됩니다.</li>
+</ul>
+<h4 id="4-3-2-1-ylabel-alignment"><a href="#4-3-2-1-ylabel-alignment" class="headerlink" title="4.3.2.1 ylabel alignment"></a><strong>4.3.2.1 ylabel alignment</strong></h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://matplotlib.org/3.3.1/api/_as_gen/matplotlib.figure.Figure.html?highlight=align_ylabels#matplotlib.figure.Figure.align_ylabels">matplotlib.figure.Figure #align_ylabels</a><br><a target="_blank" rel="noopener" href="https://matplotlib.org/3.3.1/gallery/pyplots/align_ylabels.html">matplotlib Align y-labels</a></p>
+</blockquote>
+<ul>
+<li><p>위 그림에서 ylabel 줄이 맞지 않습니다.</p>
+<ul>
+<li>맨 왼쪽 아래 axes[3][0]의 label이 비죽 나왔네요.</li>
+<li>다른 ylabel을 움직여서 열을 맞춰 봅시다.</li>
+</ul>
+</li>
+<li><p>위 그림 코드의 맨 마지막 줄에 한 줄만 추가합니다.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">g = sns.PairGrid(iris, hue=<span class="string">&quot;species&quot;</span>, diag_sharey=<span class="literal">False</span>, corner=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># diagonal</span></span><br><span class="line">g.map_diag(sns.kdeplot, fill=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># lower</span></span><br><span class="line">g.map_lower(plt.scatter, s=<span class="number">30</span>, edgecolor=<span class="string">&quot;w&quot;</span>)</span><br><span class="line">g.map_lower(sns.regplot, scatter=<span class="literal">False</span>, truncate=<span class="literal">False</span>, ci=<span class="literal">False</span>)</span><br><span class="line">g.map_lower(sns.kdeplot, alpha=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">handles = g._legend_data.values()</span><br><span class="line">labels = g._legend_data.keys()</span><br><span class="line"></span><br><span class="line"><span class="comment"># axes[1][0] 기준으로 오른쪽 멀리 범례 삽입</span></span><br><span class="line">g.axes[<span class="number">1</span>][<span class="number">0</span>].legend(handles=handles, labels=labels,</span><br><span class="line">                    bbox_to_anchor=(<span class="number">3.45</span>, <span class="number">1</span>),</span><br><span class="line">                    fontsize=<span class="string">&quot;large&quot;</span>, frameon=<span class="literal">False</span></span><br><span class="line">                   )</span><br><span class="line"></span><br><span class="line">g.fig.align_ylabels(g.axes[:,<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://user-images.githubusercontent.com/72365693/108642768-7c35c500-74ea-11eb-8c02-ef237a69dfbb.png"></p>
+<h4 id="4-3-2-2-범례-조정"><a href="#4-3-2-2-범례-조정" class="headerlink" title="4.3.2.2 범례 조정"></a><strong>4.3.2.2 범례 조정</strong></h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://matplotlib.org/3.3.1/api/_as_gen/matplotlib.figure.Figure.html?highlight=legend#matplotlib.figure.Figure.legend">matplotlib.figure.Figure #legend</a></p>
+</blockquote>
+<ul>
+<li>범례는 figure 기준으로도 삽입 가능합니다.</li>
+<li>아래 코드는 위의 <code>axes[1][0].legend()</code>와 동일합니다.</li>
+<li>전체적인 그림의 위치를 잡을 수 있어 더 좋습니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">g = sns.PairGrid(iris, hue=<span class="string">&quot;species&quot;</span>, diag_sharey=<span class="literal">False</span>, corner=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># diagonal</span></span><br><span class="line">g.map_diag(sns.kdeplot, fill=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># lower</span></span><br><span class="line">g.map_lower(plt.scatter, s=<span class="number">30</span>, edgecolor=<span class="string">&quot;w&quot;</span>)</span><br><span class="line">g.map_lower(sns.regplot, scatter=<span class="literal">False</span>, truncate=<span class="literal">False</span>, ci=<span class="literal">False</span>)</span><br><span class="line">g.map_lower(sns.kdeplot, alpha=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">handles = g._legend_data.values()</span><br><span class="line">labels = g._legend_data.keys()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">g.fig.align_ylabels(g.axes[:,<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">g.fig.legend(handles=handles, labels=labels,</span><br><span class="line">             bbox_to_anchor=(<span class="number">0.75</span>, <span class="number">0.75</span>), <span class="comment"># 범례박스 위치</span></span><br><span class="line">             fontsize=<span class="string">&quot;large&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.legend.Legend at 0x230ed3c46d0&gt;</code></pre>
+<p><img src="https://user-images.githubusercontent.com/72365693/108642771-7c35c500-74ea-11eb-9cf4-1440350f6cb3.png"></p>
+<h4 id="4-3-2-3-suptitle"><a href="#4-3-2-3-suptitle" class="headerlink" title="4.3.2.3 suptitle"></a><strong>4.3.2.3 suptitle</strong></h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://matplotlib.org/3.3.1/api/_as_gen/matplotlib.figure.Figure.html?highlight=suptitle#matplotlib.figure.Figure.suptitle">matplotlib.figure.Figure #suptitle</a></p>
+</blockquote>
+<ul>
+<li>그림 전체에 제목을 붙일 수 있습니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">g = sns.PairGrid(iris, hue=<span class="string">&quot;species&quot;</span>, diag_sharey=<span class="literal">False</span>, corner=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># diagonal</span></span><br><span class="line">g.map_diag(sns.kdeplot, fill=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># lower</span></span><br><span class="line">g.map_lower(plt.scatter, s=<span class="number">30</span>, edgecolor=<span class="string">&quot;w&quot;</span>)</span><br><span class="line">g.map_lower(sns.regplot, scatter=<span class="literal">False</span>, truncate=<span class="literal">False</span>, ci=<span class="literal">False</span>)</span><br><span class="line">g.map_lower(sns.kdeplot, alpha=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">handles = g._legend_data.values()</span><br><span class="line">labels = g._legend_data.keys()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">g.fig.align_ylabels(g.axes[:,<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">g.fig.legend(handles=handles, labels=labels,</span><br><span class="line">             bbox_to_anchor=(<span class="number">0.75</span>, <span class="number">0.75</span>), <span class="comment"># 범례박스 위치</span></span><br><span class="line">             fontsize=<span class="string">&quot;large&quot;</span>)</span><br><span class="line"></span><br><span class="line">g.fig.suptitle(<span class="string">&quot;iris dataset&quot;</span>, y=<span class="number">1.01</span>,     <span class="comment"># 배경 제목</span></span><br><span class="line">               weight=<span class="string">&quot;bold&quot;</span>, fontsize=<span class="string">&quot;x-large&quot;</span></span><br><span class="line">              )</span><br><span class="line">g.fig.tight_layout()</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://user-images.githubusercontent.com/72365693/108642772-7cce5b80-74ea-11eb-8a35-abcea5d24b61.png"></p>
+<h4 id="4-3-2-4-facecolor-edgeolor"><a href="#4-3-2-4-facecolor-edgeolor" class="headerlink" title="4.3.2.4 facecolor, edgeolor"></a><strong>4.3.2.4 facecolor, edgeolor</strong></h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://matplotlib.org/3.3.1/api/_as_gen/matplotlib.figure.Figure.html?highlight=set_facecolor#matplotlib.figure.Figure.set_facecolor">matplotlib.figure.Figure #set_facecolor</a></p>
+</blockquote>
+<ul>
+<li>그림 바탕색을 칠합니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">g = sns.PairGrid(iris, hue=<span class="string">&quot;species&quot;</span>, diag_sharey=<span class="literal">False</span>, corner=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># diagonal</span></span><br><span class="line">g.map_diag(sns.kdeplot, fill=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># lower</span></span><br><span class="line">g.map_lower(plt.scatter, s=<span class="number">30</span>, edgecolor=<span class="string">&quot;w&quot;</span>)</span><br><span class="line">g.map_lower(sns.regplot, scatter=<span class="literal">False</span>, truncate=<span class="literal">False</span>, ci=<span class="literal">False</span>)</span><br><span class="line">g.map_lower(sns.kdeplot, alpha=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">handles = g._legend_data.values()</span><br><span class="line">labels = g._legend_data.keys()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">g.fig.align_ylabels(g.axes[:,<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">g.fig.legend(handles=handles, labels=labels,</span><br><span class="line">             bbox_to_anchor=(<span class="number">0.75</span>, <span class="number">0.75</span>), <span class="comment"># 범례박스 위치</span></span><br><span class="line">             fontsize=<span class="string">&quot;large&quot;</span>)</span><br><span class="line"></span><br><span class="line">g.fig.suptitle(<span class="string">&quot;iris dataset&quot;</span>, y=<span class="number">1.01</span>,     <span class="comment"># 배경 제목</span></span><br><span class="line">               weight=<span class="string">&quot;bold&quot;</span>, fontsize=<span class="string">&quot;x-large&quot;</span></span><br><span class="line">              )</span><br><span class="line">g.fig.tight_layout()</span><br><span class="line"></span><br><span class="line">g.fig.set_facecolor(<span class="string">&quot;whitesmoke&quot;</span>) <span class="comment"># 배경색</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://user-images.githubusercontent.com/72365693/108642773-7d66f200-74ea-11eb-8f59-df48141a011a.png"></p>
+<h3 id="4-3-3-최종"><a href="#4-3-3-최종" class="headerlink" title="4.3.3 최종"></a><strong>4.3.3 최종</strong></h3><ul>
+<li>x,ylabel까지 정리하면 이렇습니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">g = sns.PairGrid(iris, hue=<span class="string">&quot;species&quot;</span>, diag_sharey=<span class="literal">False</span>, corner=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># diagonal</span></span><br><span class="line">g.map_diag(sns.kdeplot, fill=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;left&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;top&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    g.axes[i][i].spines[<span class="string">&quot;right&quot;</span>].set_visible(<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># lower</span></span><br><span class="line">g.map_lower(plt.scatter, s=<span class="number">30</span>, edgecolor=<span class="string">&quot;w&quot;</span>)</span><br><span class="line">g.map_lower(sns.regplot, scatter=<span class="literal">False</span>, truncate=<span class="literal">False</span>, ci=<span class="literal">False</span>)</span><br><span class="line">g.map_lower(sns.kdeplot, alpha=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># legend</span></span><br><span class="line">handles = g._legend_data.values()</span><br><span class="line">labels = g._legend_data.keys()</span><br><span class="line">g.fig.legend(handles=handles, labels=labels,</span><br><span class="line">             bbox_to_anchor=(<span class="number">0.75</span>, <span class="number">0.75</span>),</span><br><span class="line">             fontsize=<span class="string">&quot;large&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># x, y labels</span></span><br><span class="line">labels = [<span class="string">&quot;Sepal Length&quot;</span>, <span class="string">&quot;Sepal Width&quot;</span>, <span class="string">&quot;Petal Length&quot;</span>, <span class="string">&quot;Petal Width&quot;</span>]</span><br><span class="line">font_labels = &#123;<span class="string">&quot;fontsize&quot;</span>:<span class="string">&quot;large&quot;</span>, <span class="string">&quot;color&quot;</span>:<span class="string">&quot;gray&quot;</span>, <span class="string">&quot;fontweight&quot;</span>:<span class="string">&quot;bold&quot;</span>&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    g.axes[<span class="number">3</span>, i].set_xlabel(labels[i], fontdict=font_labels)</span><br><span class="line">    g.axes[i, <span class="number">0</span>].set_ylabel(labels[i], fontdict=font_labels)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ylabel alignment</span></span><br><span class="line">g.fig.align_ylabels(g.axes[:,<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># suptitle</span></span><br><span class="line">g.fig.suptitle(<span class="string">&quot;iris dataset&quot;</span>, y=<span class="number">1.01</span>,</span><br><span class="line">               weight=<span class="string">&quot;bold&quot;</span>, fontsize=<span class="string">&quot;x-large&quot;</span></span><br><span class="line">              )</span><br><span class="line">g.fig.tight_layout()</span><br><span class="line"></span><br><span class="line"><span class="comment"># facecolor</span></span><br><span class="line">g.fig.set_facecolor(<span class="string">&quot;whitesmoke&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://user-images.githubusercontent.com/72365693/108642774-7d66f200-74ea-11eb-8f9d-8b656e5d16f0.png"></p>
+<h2 id="5-결론"><a href="#5-결론" class="headerlink" title="5. 결론"></a><strong>5. 결론</strong></h2><ul>
+<li><p>네 편의 글에 걸쳐 matplotlib + seaborn 연계기를 정리했습니다.</p>
+<ul>
+<li>개별적인 코드와 기술보다는 <strong>본질</strong>에 집중합시다.</li>
+<li><strong>figure</strong>와 <strong>axes</strong>를 통하면 <strong>웬만한건 다 된다</strong>는 겁니다.</li>
+</ul>
+</li>
+<li><p>0.11에서 seaborn의 공식문서가 대폭 정리됐습니다.</p>
+<ul>
+<li>하지만 아직 부족한 점이 많습니다.</li>
+<li>특히 많은 경우 matplotlib에 숙달되었다고 전체합니다.</li>
+<li><strong>일단 matplotlib</strong>부터 제대로 익혀봅시다.</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://kim-1994.github.io/2021/02/22/Seaborn%20with%20Matplotlib%20(4)/" data-id="cklft1sza00001cvj8jgq5az8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "HOya"
+        },
+        "headline": "Seaborn with Matplotlib (4)",
+        "image": "http://KIM-1994.github.iohttps://user-images.githubusercontent.com/72365693/106899537-d25be780-6738-11eb-8a63-680d9f2d7ecf.PNG",
+        "keywords": "",
+        "genre": "시각화 공부",
+        "datePublished": "2021-02-22",
+        "dateCreated": "2021-02-22",
+        "dateModified": "2021-02-22",
+        "url": "http://KIM-1994.github.io/2021/02/22/Seaborn with Matplotlib (4)/",
+        "description": "Seaborn with Matplotlib (4)4. seaborn figure-level 다듬기
+seaborn + matplotlib 마지막 시간입니다.
+figure-level 그림을 그리고 다듬어 봅니다.
+자체적으로 지원하는 명령어를 사용해보고
+개흉 심장마사지 방법을 알아보겠습니다.
+
+
+seaborn APIseaborn tutorialseaborn wi",
+        "wordCount": 2199
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/KIM-1994" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2021/02/04/Seaborn%20with%20Matplotlib%20(3)/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Seaborn with Matplotlib (3)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/02/22/Seaborn%20with%20Matplotlib%20(4)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/106899537-d25be780-6738-11eb-8a63-680d9f2d7ecf.PNG)" alt="Seaborn with Matplotlib (4)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></p>
+                            <p class="item-title"><a href="/2021/02/22/Seaborn%20with%20Matplotlib%20(4)/" class="title">Seaborn with Matplotlib (4)</a></p>
+                            <p class="item-date"><time datetime="2021-02-21T23:45:14.000Z" itemprop="datePublished">2021-02-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/02/04/Seaborn%20with%20Matplotlib%20(3)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/106707226-3943a880-6634-11eb-8da8-354464b37786.PNG)" alt="Seaborn with Matplotlib (3)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></p>
+                            <p class="item-title"><a href="/2021/02/04/Seaborn%20with%20Matplotlib%20(3)/" class="title">Seaborn with Matplotlib (3)</a></p>
+                            <p class="item-date"><time datetime="2021-02-03T16:03:20.000Z" itemprop="datePublished">2021-02-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/02/02/Seaborn%20with%20Matplotlib%20(2)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/105937145-4db5fd00-6098-11eb-9dd3-97c1d4da01b6.PNG)" alt="Seaborn with Matplotlib (2)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></p>
+                            <p class="item-title"><a href="/2021/02/02/Seaborn%20with%20Matplotlib%20(2)/" class="title">Seaborn with Matplotlib (2)</a></p>
+                            <p class="item-date"><time datetime="2021-02-02T00:51:08.000Z" itemprop="datePublished">2021-02-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/01/29/Seaborn%20with%20Matplotlib%20(1)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/105783198-43710180-5fb9-11eb-8d01-11264a97a58b.png)" alt="Seaborn with Matplotlib (1)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></p>
+                            <p class="item-title"><a href="/2021/01/29/Seaborn%20with%20Matplotlib%20(1)/" class="title">Seaborn with Matplotlib (1)</a></p>
+                            <p class="item-date"><time datetime="2021-01-29T06:13:46.000Z" itemprop="datePublished">2021-01-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/01/24/Trend%20Visualization(3)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/105472661-914ae880-5cdf-11eb-80a8-5ae9ed6a3096.PNG)" alt="수능 Trend Visualization (3)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></p>
+                            <p class="item-title"><a href="/2021/01/24/Trend%20Visualization(3)/" class="title">수능 Trend Visualization (3)</a></p>
+                            <p class="item-date"><time datetime="2021-01-24T12:48:00.000Z" itemprop="datePublished">2021-01-24</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Kaggle/">Kaggle</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/">crawling</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a><span class="category-list-count">2</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawling/" rel="tag">crawling</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">데이터</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" rel="tag">오픈소스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84/" rel="tag">통계</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" rel="tag">통계학</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag">파이썬</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" rel="tag">확률분포</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/crawling/" style="font-size: 20px;">crawling</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" style="font-size: 15px;">데이터</a> <a href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" style="font-size: 15px;">오픈소스</a> <a href="/tags/%ED%86%B5%EA%B3%84/" style="font-size: 10px;">통계</a> <a href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" style="font-size: 15px;">통계학</a> <a href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" style="font-size: 20px;">파이썬</a> <a href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" style="font-size: 10px;">확률분포</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 HOya</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://kim-1994.github.io/2021/02/22/Seaborn%20with%20Matplotlib%20(4)/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
