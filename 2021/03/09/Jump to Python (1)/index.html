@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>파이썬 기초 (1) | Welcome to HOya World</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="파이썬 프로그래밍의 기초, 자료형2-1 숫자형    항목 파이썬 사용 예    정수 123, -345, 0   실수 123.45, -1234.5, 3.4e10   8진수 0o34, 0o25   16진수 0x2A, 0xFF   정수형양의 정수와 음의 정수, 0 123a &#x3D; 123a &#x3D; -178a &#x3D; 0  실수형소수점을 포함된 숫자 12345a &#x3D; 1.2a &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="파이썬 기초 (1)">
+<meta property="og:url" content="http://kim-1994.github.io/2021/03/09/Jump%20to%20Python%20(1)/index.html">
+<meta property="og:site_name" content="Welcome to HOya World">
+<meta property="og:description" content="파이썬 프로그래밍의 기초, 자료형2-1 숫자형    항목 파이썬 사용 예    정수 123, -345, 0   실수 123.45, -1234.5, 3.4e10   8진수 0o34, 0o25   16진수 0x2A, 0xFF   정수형양의 정수와 음의 정수, 0 123a &#x3D; 123a &#x3D; -178a &#x3D; 0  실수형소수점을 포함된 숫자 12345a &#x3D; 1.2a &#x3D;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/72365693/110462287-d1412000-8113-11eb-89ef-79dc03721218.PNG">
+<meta property="article:published_time" content="2021-03-09T12:43:23.544Z">
+<meta property="article:modified_time" content="2021-03-09T12:51:11.887Z">
+<meta property="article:author" content="HOya">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/72365693/110462287-d1412000-8113-11eb-89ef-79dc03721218.PNG">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Kaggle/">Kaggle</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/">crawling</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Jump to Python (1)" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        파이썬 기초 (1)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2021/03/09/Jump%20to%20Python%20(1)/" class="article-date">
+       <time datetime="2021-03-09T12:43:23.544Z" itemprop="datePublished">2021-03-09</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2021/03/09/Jump%20to%20Python%20(1)/" class="article-date">
+     <time datetime="2021-03-09T12:51:11.887Z" itemprop="dateModified">2021-03-09</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="파이썬-프로그래밍의-기초-자료형"><a href="#파이썬-프로그래밍의-기초-자료형" class="headerlink" title="파이썬 프로그래밍의 기초, 자료형"></a>파이썬 프로그래밍의 기초, 자료형</h1><h2 id="2-1-숫자형"><a href="#2-1-숫자형" class="headerlink" title="2-1 숫자형"></a>2-1 숫자형</h2><hr>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>항목</strong></th>
+<th><strong>파이썬 사용 예</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">정수</td>
+<td>123, -345, 0</td>
+</tr>
+<tr>
+<td align="center">실수</td>
+<td>123.45, -1234.5, 3.4e10</td>
+</tr>
+<tr>
+<td align="center">8진수</td>
+<td>0o34, 0o25</td>
+</tr>
+<tr>
+<td align="center">16진수</td>
+<td>0x2A, 0xFF</td>
+</tr>
+</tbody></table>
+<h3 id="정수형"><a href="#정수형" class="headerlink" title="정수형"></a>정수형</h3><p><strong>양의 정수와 음의 정수, 0</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">123</span></span><br><span class="line">a = <span class="number">-178</span></span><br><span class="line">a = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="실수형"><a href="#실수형" class="headerlink" title="실수형"></a>실수형</h3><p><strong>소수점을 포함된 숫자</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1.2</span></span><br><span class="line">a = <span class="number">-3.45</span></span><br><span class="line">a = <span class="number">4.24E10</span></span><br><span class="line">a = <span class="number">4.24e10</span></span><br><span class="line"><span class="comment"># e와 E 둘 중 어느 것을 사용해도 무방하다.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="8진수와-16진수"><a href="#8진수와-16진수" class="headerlink" title="8진수와 16진수"></a>8진수와 16진수</h3><p><strong>숫자가 0o 또는 0O(숫자 0 + 알파벳 소문자 o 또는 대문자 O</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 8진수</span></span><br><span class="line">a = <span class="number">0o177</span> </span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 16진수</span></span><br><span class="line">a = <span class="number">0x8ff</span></span><br><span class="line">b = <span class="number">0xABC</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="사칙연산"><a href="#사칙연산" class="headerlink" title="사칙연산"></a>사칙연산</h3><p><strong>(+,-,+,/)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line">b = <span class="number">4</span></span><br><span class="line">a + b</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>7</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a * b</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>12</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a / b</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0.75</code></pre>
+<h3 id="x의-y제곱을-나타내는-연산자"><a href="#x의-y제곱을-나타내는-연산자" class="headerlink" title="x의 y제곱을 나타내는 **연산자"></a>x의 y제곱을 나타내는 **연산자</h3><p><strong>x의 y제곱($x^y$) 값을 돌려준다.</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line">b = <span class="number">4</span></span><br><span class="line">a ** b</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>81</code></pre>
+<h3 id="나눗셈-후-나머지를-반환하는-연산자"><a href="#나눗셈-후-나머지를-반환하는-연산자" class="headerlink" title="나눗셈 후 나머지를 반환하는 % 연산자"></a>나눗셈 후 나머지를 반환하는 % 연산자</h3><p><strong>나눗셈의 나머지 값을 돌려주는 연산자</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7</span> % <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> % <span class="number">7</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>3</code></pre>
+<h3 id="나눗셈-후-몫을-반환하는-연산자"><a href="#나눗셈-후-몫을-반환하는-연산자" class="headerlink" title="나눗셈 후 몫을 반환하는 // 연산자"></a>나눗셈 후 몫을 반환하는 // 연산자</h3><p><strong>정수값만 돌려주는 연산자</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7</span> / <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.75</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7</span> // <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1</code></pre>
+<h2 id="2-2-문자열-자료형"><a href="#2-2-문자열-자료형" class="headerlink" title="2-2 문자열 자료형"></a>2-2 문자열 자료형</h2><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 문자열은 큰따옴표(&quot;&quot;)를 사용</span></span><br><span class="line"><span class="string">&quot;Life is too short, You need Python&quot;</span></span><br><span class="line"><span class="string">&quot;a&quot;</span></span><br><span class="line"><span class="string">&quot;123&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;123&#39;</code></pre>
+<ol>
+<li>큰따옴표(“)로 양쪽 둘러싸기</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Hellow World&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Hellow World&#39;</code></pre>
+<ol start="2">
+<li>작은따옴표(‘)로 양쪽 둘러싸기</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;Python is fun&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Python is fun&#39;</code></pre>
+<ol start="3">
+<li>큰따옴표 3개를 연속(“””)으로 써서 양쪽 둘러싸기</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;Life is too short, You need python&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Life is too short, You need python&#39;</code></pre>
+<ol start="4">
+<li>작은따옴표 3개를 연속(‘’’)으로 써서 양쪽 둘러싸기</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;Life is too short, You need python&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Life is too short, You need python&#39;</code></pre>
+<h4 id="문자열-안에-작은따옴표나-큰따옴표를-포함시키고-싶을-때"><a href="#문자열-안에-작은따옴표나-큰따옴표를-포함시키고-싶을-때" class="headerlink" title="문자열 안에 작은따옴표나 큰따옴표를 포함시키고 싶을 때"></a>문자열 안에 작은따옴표나 큰따옴표를 포함시키고 싶을 때</h4><ol>
+<li>문자열에 작은따옴표 (‘) 포함시키기</li>
+</ol>
+<p>Python’s favorite food is perl</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">food = <span class="string">&quot;Pthon&#x27;s favorite food is perl&quot;</span></span><br><span class="line">food</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&quot;Pthon&#39;s favorite food is perl&quot;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">food = <span class="string">&#x27;Python&#x27;</span>s favorite food <span class="keyword">is</span> perl<span class="string">&#x27;</span></span><br><span class="line"><span class="string">food</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># &#x27;</span>Python<span class="string">&#x27;이 문자열로 인식되어 구문오류(invalid syntax)가 발생한다.</span></span><br></pre></td></tr></table></figure>
+
+
+<pre><code>  File &quot;&lt;ipython-input-25-1f04e10d502e&gt;&quot;, line 1
+    food = &#39;Python&#39;s favorite food is perl&#39;
+                   ^
+SyntaxError: invalid syntax</code></pre>
+<ol start="2">
+<li>문자열에 큰따옴표(“) 포함시키기</li>
+</ol>
+<p>“Python is very easy.” he says.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">say = <span class="string">&#x27;&quot;Python is very easy.&quot; he syas&#x27;</span></span><br><span class="line">say</span><br><span class="line"></span><br><span class="line"><span class="comment"># 작은따옴표(&#x27;) 안에 사용된 큰따옴표(&quot;)를 문자열을 만드는 기호로 인식되지 않는다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;&quot;Python is very easy.&quot; he syas&#39;</code></pre>
+<ol start="3">
+<li>백슬래시(|)를 사용해서 작은 따옴표(‘)와 큰따옴표(“)를 문자열에 포함시키기</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">food = <span class="string">&#x27;Python\&#x27;s favorite food is perl&#x27;</span></span><br><span class="line">say = <span class="string">&quot;\&quot;Python is very easy.\&quot; he says.&quot;</span></span><br><span class="line"></span><br><span class="line">food</span><br><span class="line">say</span><br><span class="line"></span><br><span class="line"><span class="comment"># 백슬래시(\)를 작은따옴표(&#x27;&#x27;)나 큰따옴표(&quot;&quot;) 앞에 삽입하면 백슬래시(\) 뒤의 작은 따옴표, 큰따옴표는 문자열을 둘러싸는 기호의 의미가 아니라 문자(&#x27;&#x27;),(&quot;&quot;) 그 자체를 뜻하게된다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;&quot;Python is very easy.&quot; he says.&#39;</code></pre>
+<p>여러 줄인 문자열을 변수에 대입하고 싶을 때</p>
+<p>Life is too short<br>You need python</p>
+<ol>
+<li>줄을 바꾸는 이스케이프 코드’\n’ 삽입하기</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">multiline = <span class="string">&quot;Life is too short\nYou need python&quot;</span></span><br><span class="line">print(multiline)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 단점 : 읽기에 불편하고 줄이 길어짐</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>Life is too short
+You need python</code></pre>
+<ol start="2">
+<li>연속된 작은따옴표 3개(‘’’) 또는 큰따옴표 3개(‘’’) 사용하기 (위의 단점 개선)</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">multiline = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">Life is too short</span></span><br><span class="line"><span class="string">You need python</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">print(multiline)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>Life is too short
+You need python</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">multiline = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Life is too short </span></span><br><span class="line"><span class="string">You need python</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">print(multiline)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>Life is too short 
+You need python</code></pre>
+<p><img src="https://user-images.githubusercontent.com/72365693/110462287-d1412000-8113-11eb-89ef-79dc03721218.PNG"></p>
+<h2 id="문자열-연산하기"><a href="#문자열-연산하기" class="headerlink" title="문자열 연산하기"></a>문자열 연산하기</h2><hr>
+<h3 id="1-문자열-더해서-연결하기-Concatenation"><a href="#1-문자열-더해서-연결하기-Concatenation" class="headerlink" title="1. 문자열 더해서 연결하기(Concatenation)"></a>1. 문자열 더해서 연결하기(Concatenation)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">head = <span class="string">&quot;Python&quot;</span></span><br><span class="line">tail = <span class="string">&quot;is fun!&quot;</span></span><br><span class="line">head + tail</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Pythonis fun!&#39;</code></pre>
+<h3 id="2-문자열-곱하기"><a href="#2-문자열-곱하기" class="headerlink" title="2. 문자열 곱하기"></a>2. 문자열 곱하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;python&quot;</span></span><br><span class="line">a * <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;pythonpython&#39;</code></pre>
+<h3 id="3-문자열-곱하기-응용"><a href="#3-문자열-곱하기-응용" class="headerlink" title="3. 문자열 곱하기 응용"></a>3. 문자열 곱하기 응용</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&quot;=&quot;</span> * <span class="number">50</span>)</span><br><span class="line">print(<span class="string">&quot;My Program&quot;</span>)</span><br><span class="line">print(<span class="string">&quot;=&quot;</span> * <span class="number">50</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>==================================================
+My Program
+==================================================</code></pre>
+<h3 id="4-문자열-인덱싱과-슬라이싱"><a href="#4-문자열-인덱싱과-슬라이싱" class="headerlink" title="4. 문자열 인덱싱과 슬라이싱"></a>4. 문자열 인덱싱과 슬라이싱</h3><h4 id="문자열-인덱싱이란"><a href="#문자열-인덱싱이란" class="headerlink" title="문자열 인덱싱이란?"></a>문자열 인덱싱이란?</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short, You need Python&quot;</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Life is too short, You need Python&#39;</code></pre>
+<p><img src="https://user-images.githubusercontent.com/72365693/110463051-c5a22900-8114-11eb-9193-22b091696e73.PNG"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short, You need Python&quot;</span></span><br><span class="line">a[<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;e&#39;</code></pre>
+<p><strong>“파이썬은 0부터 숫자를 센다”</strong></p>
+<p><img src="https://user-images.githubusercontent.com/72365693/110463319-1c0f6780-8115-11eb-9810-a0133b304bec.PNG"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">-0</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;L&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">-2</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;o&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">-5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;y&#39;</code></pre>
+<h4 id="문자열-슬라이싱이란"><a href="#문자열-슬라이싱이란" class="headerlink" title="문자열 슬라이싱이란?"></a>문자열 슬라이싱이란?</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short, You need Python&quot;</span></span><br><span class="line">b = a[<span class="number">0</span>] + a[<span class="number">1</span>] + a[<span class="number">2</span>] + a[<span class="number">3</span>]</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Life&#39;</code></pre>
+<blockquote>
+<p>※ 인덱싱 기법과 슬라이싱 기법은 뒤에서 배울 자료형인 리스트나 튜플에서도 사용할 수 있다.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short, You need Python&quot;</span></span><br><span class="line">a[<span class="number">0</span>:<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Life&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">0</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Lif&#39;</code></pre>
+<h4 id="문자열을-슬라이싱하는-방법"><a href="#문자열을-슬라이싱하는-방법" class="headerlink" title="문자열을 슬라이싱하는 방법"></a>문자열을 슬라이싱하는 방법</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">0</span>:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Life &#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">0</span>:<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Li&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">5</span>:<span class="number">7</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;is&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">12</span>:<span class="number">17</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;short&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">19</span>:] <span class="comment"># a[시작번호 : 끝 번호]에서 끝 번호 생략하면 시작 번호부터 그 문자열의 끝까지 뽑아낸다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;You need Python&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[:<span class="number">17</span>] <span class="comment"># a[시작번호 : 끝 번호]에서 시작번호 생략</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Life is too short&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[:] <span class="comment"># a[시작 번호 : 끝 번호]에서 시작번호와 끝 번호 생략</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Life is too short, You need Python&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a[19:-7]이 뜻하는 것은 a[19]에서부터 a[-8]까지를 말한다. </span></span><br><span class="line"><span class="comment"># 이 역시 a[-7]은 포함하지 않는다.</span></span><br><span class="line">a[<span class="number">19</span>:<span class="number">-7</span>] </span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;You need&#39;</code></pre>
+<h4 id="슬라이싱-문자열-나누기"><a href="#슬라이싱-문자열-나누기" class="headerlink" title="슬라이싱 문자열 나누기"></a>슬라이싱 문자열 나누기</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;20010331Rainy&quot;</span></span><br><span class="line">date = a[:<span class="number">8</span>] <span class="comment"># 처음부터 a[7]까지</span></span><br><span class="line">date</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;20010331&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">weather = a[<span class="number">8</span>:] <span class="comment"># a[8]부터 마지막까지</span></span><br><span class="line">weather</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Rainy&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;20010331Rainy&quot;</span></span><br><span class="line">year = a[:<span class="number">4</span>]</span><br><span class="line">year</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;2001&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">day = a[<span class="number">4</span>:<span class="number">8</span>] <span class="comment"># a[4]부터 a[7]까지</span></span><br><span class="line">day</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;0331&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">weather = a[<span class="number">8</span>:]</span><br><span class="line">weather</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Rainy&#39;</code></pre>
+<p><strong>“Pithon”이라는 문자열을 “Python”으로 바꾸려면?</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Pithon&quot;</span></span><br><span class="line">a[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;i&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">1</span>] = <span class="string">&#x27;y&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-45-d5923cc78d10&gt; in &lt;module&gt;
+----&gt; 1 a[1] = &#39;y&#39;
+
+
+TypeError: &#39;str&#39; object does not support item assignment</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Pithon&quot;</span></span><br><span class="line">a[:<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;P&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Pithon&quot;</span></span><br><span class="line">a[<span class="number">2</span>:]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;thon&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[:<span class="number">1</span>] + <span class="string">&#x27;y&#x27;</span> + a[<span class="number">2</span>:]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Python&#39;</code></pre>
+<h2 id="문자열-포매팅"><a href="#문자열-포매팅" class="headerlink" title="문자열 포매팅"></a>문자열 포매팅</h2><hr>
+<h3 id="1-숫자-바로-대입"><a href="#1-숫자-바로-대입" class="headerlink" title="1. 숫자 바로 대입"></a>1. 숫자 바로 대입</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I eat %d apples.&quot;</span> % <span class="number">3</span> <span class="comment"># %d 정수형</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;I eat 3 apples.&#39;</code></pre>
+<h3 id="2-문자열-바로-대입"><a href="#2-문자열-바로-대입" class="headerlink" title="2. 문자열 바로 대입"></a>2. 문자열 바로 대입</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I eat %s apples.&quot;</span> % <span class="string">&quot;five&quot;</span> <span class="comment"># %s 문자형</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;I eat five apples.&#39;</code></pre>
+<blockquote>
+<p>※ 문자열을 대입할 때는 앞에서 배운 것처럼 큰따옴표나 작은따옴표를 반드시 써주어야 한다.</p>
+</blockquote>
+<h3 id="3-숫자-값을-나타내는-변수로-대입"><a href="#3-숫자-값을-나타내는-변수로-대입" class="headerlink" title="3. 숫자 값을 나타내는 변수로 대입"></a>3. 숫자 값을 나타내는 변수로 대입</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">number = <span class="number">3</span></span><br><span class="line"><span class="string">&quot;I eat %d apples.&quot;</span> % number</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;I eat 3 apples.&#39;</code></pre>
+<h3 id="4-2개-이상의-값-넣기"><a href="#4-2개-이상의-값-넣기" class="headerlink" title="4. 2개 이상의 값 넣기"></a>4. 2개 이상의 값 넣기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">number = <span class="number">10</span></span><br><span class="line">day = <span class="string">&quot;three&quot;</span></span><br><span class="line"><span class="string">&quot;I ate %d apples. so I was sick for %s days.&quot;</span> % (number, day)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;I ate 10 apples. so I was sick for three days.&#39;</code></pre>
+<h2 id="문자열-포맷-코드"><a href="#문자열-포맷-코드" class="headerlink" title="문자열 포맷 코드"></a>문자열 포맷 코드</h2><table>
+<thead>
+<tr>
+<th align="center"><strong>코드</strong></th>
+<th align="left"><strong>설명</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">%s</td>
+<td align="left">문자열(String)</td>
+</tr>
+<tr>
+<td align="center">%c</td>
+<td align="left">문자 1개(character)</td>
+</tr>
+<tr>
+<td align="center">%d</td>
+<td align="left">정수(Integer)</td>
+</tr>
+<tr>
+<td align="center">%f</td>
+<td align="left">부동소수(floating-point)</td>
+</tr>
+<tr>
+<td align="center">%o</td>
+<td align="left">8진수</td>
+</tr>
+<tr>
+<td align="center">%x</td>
+<td align="left">16진수</td>
+</tr>
+<tr>
+<td align="center">%%</td>
+<td align="left">Literal % (문자 <code>%</code> 자체)</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I have %s apples&quot;</span> % <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;I have 3 apples&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;rate is %s&quot;</span> % <span class="number">3.234</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;rate is 3.234&#39;</code></pre>
+<p><strong>%s는 자동으로 % 뒤에 있는 값을 문자열로 바꾸기 때문이다</strong></p>
+<h4 id="포매팅-연산자-d와-를-같이-쓸-때는-를-쓴다"><a href="#포매팅-연산자-d와-를-같이-쓸-때는-를-쓴다" class="headerlink" title="포매팅 연산자 %d와 %를 같이 쓸 때는 %%를 쓴다"></a><strong>포매팅 연산자 %d와 %를 같이 쓸 때는 %%를 쓴다</strong></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Error is %d%.&quot;</span> % <span class="number">98</span></span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+&lt;ipython-input-59-061de263c4b7&gt; in &lt;module&gt;
+----&gt; 1 &quot;Error is %d%.&quot; % 98
+
+
+ValueError: incomplete format</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Error is %d%%.&quot;</span> %<span class="number">98</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Error is 98%.&#39;</code></pre>
+<h2 id="포맷-코드와-숫자-함께-사용하기"><a href="#포맷-코드와-숫자-함께-사용하기" class="headerlink" title="포맷 코드와 숫자 함께 사용하기"></a>포맷 코드와 숫자 함께 사용하기</h2><h3 id="1-정렬과-공백"><a href="#1-정렬과-공백" class="headerlink" title="1. 정렬과 공백"></a>1. 정렬과 공백</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;%10s&quot;</span> % <span class="string">&quot;hi&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;        hi&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;%-10sjane.&quot;</span> % <span class="string">&#x27;hi&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;hi        jane.&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;%10.4f&quot;</span> % <span class="number">3.421434234</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;    3.4214&#39;</code></pre>
+<h2 id="format-함수를-사용한-포매팅"><a href="#format-함수를-사용한-포매팅" class="headerlink" title="format 함수를 사용한 포매팅"></a>format 함수를 사용한 포매팅</h2><h3 id="숫자로-바로-대입하기"><a href="#숫자로-바로-대입하기" class="headerlink" title="숫자로 바로 대입하기"></a>숫자로 바로 대입하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I eat &#123;0&#125; apples&quot;</span>.<span class="built_in">format</span>(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;I eat 3 apples&#39;</code></pre>
+<h3 id="문자열-바로-대입하기"><a href="#문자열-바로-대입하기" class="headerlink" title="문자열 바로 대입하기"></a>문자열 바로 대입하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I eat &#123;0&#125; apples&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;five&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;I eat five apples&#39;</code></pre>
+<h3 id="숫자-값을-가진-변수로-대입하기"><a href="#숫자-값을-가진-변수로-대입하기" class="headerlink" title="숫자 값을 가진 변수로 대입하기"></a>숫자 값을 가진 변수로 대입하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">number = <span class="number">3</span></span><br><span class="line"><span class="string">&quot;I eat &#123;0&#125; apples&quot;</span> .<span class="built_in">format</span>(number)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;I eat 3 apples&#39;</code></pre>
+<h3 id="2개-이상의-값-넣기"><a href="#2개-이상의-값-넣기" class="headerlink" title="2개 이상의 값 넣기"></a>2개 이상의 값 넣기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">number = <span class="number">10</span></span><br><span class="line">day = <span class="string">&quot;three&quot;</span></span><br><span class="line"><span class="string">&quot;I ate &#123;0&#125; apples. so I was sick for &#123;1&#125; days.&quot;</span> .<span class="built_in">format</span>(number, day)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;I ate 10 apples. so I was sick for three days.&#39;</code></pre>
+<h3 id="이름으로-넣기"><a href="#이름으로-넣기" class="headerlink" title="이름으로 넣기"></a>이름으로 넣기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I ate &#123;number&#125; apples. so I was sick for &#123;day&#125;.&quot;</span> .<span class="built_in">format</span>(number = <span class="number">10</span>, day = <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;I ate 10 apples. so I was sick for 3.&#39;</code></pre>
+<h3 id="인덱스와-이름을-혼용해서-넣기"><a href="#인덱스와-이름을-혼용해서-넣기" class="headerlink" title="인덱스와 이름을 혼용해서 넣기"></a>인덱스와 이름을 혼용해서 넣기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I ate &#123;0&#125; apples. so I was sick for &#123;day&#125; days.&quot;</span> .<span class="built_in">format</span>(<span class="number">10</span>, day = <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;I ate 10 apples. so I was sick for 3 days.&#39;</code></pre>
+<h3 id="왼쪽-정렬"><a href="#왼쪽-정렬" class="headerlink" title="왼쪽 정렬"></a>왼쪽 정렬</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;0:&lt;10&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hi&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;hi        &#39;</code></pre>
+<h3 id="오른쪽-정렬"><a href="#오른쪽-정렬" class="headerlink" title="오른쪽 정렬"></a>오른쪽 정렬</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;0:&gt;10&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&#x27;hi&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;        hi&#39;</code></pre>
+<h3 id="가운데-정렬"><a href="#가운데-정렬" class="headerlink" title="가운데 정렬"></a>가운데 정렬</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;0:^10&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hi&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;    hi    &#39;</code></pre>
+<h3 id="공백-채우기"><a href="#공백-채우기" class="headerlink" title="공백 채우기"></a>공백 채우기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;0:=^10&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&#x27;hi&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;====hi====&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;0:!&lt;10&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&#x27;hi&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;hi!!!!!!!!&#39;</code></pre>
+<h3 id="소수점-표현하기"><a href="#소수점-표현하기" class="headerlink" title="소수점 표현하기"></a>소수점 표현하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = <span class="number">3.42134234</span></span><br><span class="line"><span class="string">&quot;&#123;0:0.4f&#125;&quot;</span>.<span class="built_in">format</span>(y) <span class="comment"># 4f 소수점 4자릿수까지 표현.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;3.4213&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;0:10.4f&#125;&quot;</span>.<span class="built_in">format</span>(y)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;    3.4213&#39;</code></pre>
+<h3 id="또는-문자-표현하기"><a href="#또는-문자-표현하기" class="headerlink" title="{ 또는 } 문자 표현하기"></a><code>&#123;</code> 또는 <code>&#125;</code> 문자 표현하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;&#123; and &#125;&#125;&quot;</span>.<span class="built_in">format</span>() </span><br><span class="line"><span class="comment"># 문자 그대로 사용하고 싶은 경우에는 위 예의 &#123;&#123; &#125;&#125;처럼 2개를 연속해서 사용하면 된다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;&#123; and &#125;&#39;</code></pre>
+<h3 id="f-문자열-포매팅"><a href="#f-문자열-포매팅" class="headerlink" title="f 문자열 포매팅"></a>f 문자열 포매팅</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;강동원&quot;</span></span><br><span class="line">age = <span class="number">30</span></span><br><span class="line"><span class="string">f&#x27;나의 이름은 <span class="subst">&#123;name&#125;</span>입니다. 나이는 <span class="subst">&#123;age&#125;</span>입니다.&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;나의 이름은 강동원입니다. 나이는 30입니다.&#39;</code></pre>
+<blockquote>
+<p>※ 표현식이란 문자열 안에서 변수와 +, -와 같은 수식을 함께 사용하는 것을 말한다.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">30</span></span><br><span class="line"><span class="string">f&#x27;나는 내년이면 <span class="subst">&#123;age+<span class="number">1</span>&#125;</span>살이 된다.&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;나는 내년이면 31살이 된다.&#39;</code></pre>
+<blockquote>
+<p>※ 딕셔너리는 Key와 Value라는 것을 한 쌍으로 갖는 자료형이다. 02-5에서 자세히 알아본다.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;강동원&#x27;</span>, <span class="string">&#x27;age&#x27;</span>:<span class="number">30</span>&#125;</span><br><span class="line"><span class="string">f&#x27;나의 이름은 <span class="subst">&#123;d[<span class="string">&quot;name&quot;</span>]&#125;</span>입니다. 나이는 <span class="subst">&#123;d[<span class="string">&quot;age&quot;</span>]&#125;</span>입니다.&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;나의 이름은 강동원입니다. 나이는 30입니다.&#39;</code></pre>
+<p>{d[“name”]} {}안에 d = Key , “name” = Value(변수는 [])</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">f&#x27;<span class="subst">&#123;<span class="string">&quot;hi&quot;</span>:=^<span class="number">10</span>&#125;</span>&#x27;</span> <span class="comment"># 가운데 정렬하고 &#x27;=&#x27; 문자로 공백 채우기</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;====hi====&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">f&#x27;<span class="subst">&#123;<span class="string">&quot;hi&quot;</span>:!&lt;<span class="number">10</span>&#125;</span>&#x27;</span> <span class="comment"># 왼쪽 정렬하고 &#x27;!&#x27; 문자로 공백 채우기</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;hi!!!!!!!!&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = <span class="number">3.42134234</span></span><br><span class="line"><span class="string">f&#x27;<span class="subst">&#123;y:<span class="number">0.4</span>f&#125;</span>&#x27;</span> <span class="comment"># 소수점 4자리까지만 표현</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;3.4213&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">f&#x27;<span class="subst">&#123;y:<span class="number">10.4</span>&#125;</span>&#x27;</span> <span class="comment"># 소수점 4자리까지 표현하고 총 자리수를 10으로 맞춤</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;     3.421&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">f&#x27;&#123;&#123; and &#125;&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;&#123; and &#125;&#39;</code></pre>
+<h2 id="문자열-관련-함수들"><a href="#문자열-관련-함수들" class="headerlink" title="문자열 관련 함수들"></a>문자열 관련 함수들</h2><hr>
+<h3 id="문자-개수-세기-count"><a href="#문자-개수-세기-count" class="headerlink" title="문자 개수 세기(count)"></a>문자 개수 세기(count)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;hobby&quot;</span></span><br><span class="line">a.count(<span class="string">&#x27;b&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2</code></pre>
+<h3 id="위치-알려주기-1-find"><a href="#위치-알려주기-1-find" class="headerlink" title="위치 알려주기 1(find)"></a>위치 알려주기 1(find)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Python is the best choice&quot;</span></span><br><span class="line">a.find(<span class="string">&#x27;b&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>14</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.find(<span class="string">&#x27;k&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>-1</code></pre>
+<blockquote>
+<p>※ 파이썬은 숫자를 0부터 세기 때문에 b의 위치는 15가 아닌 14가 된다.</p>
+</blockquote>
+<h3 id="위치-알려주기-2-index"><a href="#위치-알려주기-2-index" class="headerlink" title="위치 알려주기 2(index)"></a>위치 알려주기 2(index)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short&quot;</span></span><br><span class="line">a.index(<span class="string">&#x27;t&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>8</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.index(<span class="string">&#x27;k&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+&lt;ipython-input-100-cb6c8ec35229&gt; in &lt;module&gt;
+----&gt; 1 a.index(&#39;k&#39;)
+
+
+ValueError: substring not found</code></pre>
+<h3 id="문자열-삽입-join"><a href="#문자열-삽입-join" class="headerlink" title="문자열 삽입(join)"></a>문자열 삽입(join)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;,&quot;</span>.join(<span class="string">&#x27;abcd&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;a,b,c,d&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;,&quot;</span>.join([<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;a,b,c,d&#39;</code></pre>
+<h3 id="소문자를-대문자로-바꾸기-upper"><a href="#소문자를-대문자로-바꾸기-upper" class="headerlink" title="소문자를 대문자로 바꾸기(upper)"></a>소문자를 대문자로 바꾸기(upper)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;hi&quot;</span></span><br><span class="line">a.upper()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;HI&#39;</code></pre>
+<h3 id="대문자를-소문자로-바꾸기-lower"><a href="#대문자를-소문자로-바꾸기-lower" class="headerlink" title="대문자를 소문자로 바꾸기(lower)"></a>대문자를 소문자로 바꾸기(lower)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;HI&quot;</span></span><br><span class="line">a.lower()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;hi&#39;</code></pre>
+<h3 id="왼쪽-공백-지우기-lstrip"><a href="#왼쪽-공백-지우기-lstrip" class="headerlink" title="왼쪽 공백 지우기(lstrip)"></a>왼쪽 공백 지우기(lstrip)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot; hi &quot;</span></span><br><span class="line">a.lstrip()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;hi &#39;</code></pre>
+<h3 id="오른쪽-공백-지우기-rstrip"><a href="#오른쪽-공백-지우기-rstrip" class="headerlink" title="오른쪽 공백 지우기(rstrip)"></a>오른쪽 공백 지우기(rstrip)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot; hi &quot;</span></span><br><span class="line">a.rstrip()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39; hi&#39;</code></pre>
+<h3 id="양쪽-공백-지우기-strip"><a href="#양쪽-공백-지우기-strip" class="headerlink" title="양쪽 공백 지우기(strip)"></a>양쪽 공백 지우기(strip)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot; hi &quot;</span></span><br><span class="line">a.strip()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;hi&#39;</code></pre>
+<h3 id="문자열-바꾸기-replace"><a href="#문자열-바꾸기-replace" class="headerlink" title="문자열 바꾸기(replace)"></a>문자열 바꾸기(replace)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short&quot;</span></span><br><span class="line">a.replace(<span class="string">&quot;Life&quot;</span>, <span class="string">&quot;Your leg&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;Your leg is too short&#39;</code></pre>
+<h3 id="문자열-나누기-split"><a href="#문자열-나누기-split" class="headerlink" title="문자열 나누기(split)"></a>문자열 나누기(split)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short&quot;</span></span><br><span class="line">a.split()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&#39;Life&#39;, &#39;is&#39;, &#39;too&#39;, &#39;short&#39;]</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b = <span class="string">&quot;a:b:c:d&quot;</span></span><br><span class="line">b.split(<span class="string">&#x27;:&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]</code></pre>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://kim-1994.github.io/2021/03/09/Jump%20to%20Python%20(1)/" data-id="ckm20jfdz0000qkvjh8bj1wps" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "HOya"
+        },
+        "headline": "파이썬 기초 (1)",
+        "image": "http://KIM-1994.github.iohttps://user-images.githubusercontent.com/72365693/110462287-d1412000-8113-11eb-89ef-79dc03721218.PNG",
+        "keywords": "",
+        "genre": "점프 투 파이썬",
+        "datePublished": "2021-03-09",
+        "dateCreated": "2021-03-09",
+        "dateModified": "2021-03-09",
+        "url": "http://KIM-1994.github.io/2021/03/09/Jump to Python (1)/",
+        "description": "파이썬 프로그래밍의 기초, 자료형2-1 숫자형
+
+
+
+항목
+파이썬 사용 예
+
+
+
+정수
+123, -345, 0
+
+
+실수
+123.45, -1234.5, 3.4e10
+
+
+8진수
+0o34, 0o25
+
+
+16진수
+0x2A, 0xFF
+
+
+정수형양의 정수와 음의 정수, 0
+123a = 123a = -178a = 0
+
+실수형소수점을 포함된 숫자
+12345a = 1.2a =",
+        "wordCount": 2645
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/KIM-1994" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2021/02/22/Seaborn%20with%20Matplotlib%20(4)/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Seaborn with Matplotlib (4)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/09/Jump%20to%20Python%20(1)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/110462287-d1412000-8113-11eb-89ef-79dc03721218.PNG)" alt="파이썬 기초 (1)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></p>
+                            <p class="item-title"><a href="/2021/03/09/Jump%20to%20Python%20(1)/" class="title">파이썬 기초 (1)</a></p>
+                            <p class="item-date"><time datetime="2021-03-09T12:43:23.544Z" itemprop="datePublished">2021-03-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/02/22/Seaborn%20with%20Matplotlib%20(4)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/106899537-d25be780-6738-11eb-8a63-680d9f2d7ecf.PNG)" alt="Seaborn with Matplotlib (4)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></p>
+                            <p class="item-title"><a href="/2021/02/22/Seaborn%20with%20Matplotlib%20(4)/" class="title">Seaborn with Matplotlib (4)</a></p>
+                            <p class="item-date"><time datetime="2021-02-21T23:45:14.000Z" itemprop="datePublished">2021-02-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/02/04/Seaborn%20with%20Matplotlib%20(3)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/106707226-3943a880-6634-11eb-8da8-354464b37786.PNG)" alt="Seaborn with Matplotlib (3)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></p>
+                            <p class="item-title"><a href="/2021/02/04/Seaborn%20with%20Matplotlib%20(3)/" class="title">Seaborn with Matplotlib (3)</a></p>
+                            <p class="item-date"><time datetime="2021-02-03T16:03:20.000Z" itemprop="datePublished">2021-02-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/02/02/Seaborn%20with%20Matplotlib%20(2)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/105937145-4db5fd00-6098-11eb-9dd3-97c1d4da01b6.PNG)" alt="Seaborn with Matplotlib (2)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></p>
+                            <p class="item-title"><a href="/2021/02/02/Seaborn%20with%20Matplotlib%20(2)/" class="title">Seaborn with Matplotlib (2)</a></p>
+                            <p class="item-date"><time datetime="2021-02-02T00:51:08.000Z" itemprop="datePublished">2021-02-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/01/29/Seaborn%20with%20Matplotlib%20(1)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/105783198-43710180-5fb9-11eb-8d01-11264a97a58b.png)" alt="Seaborn with Matplotlib (1)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></p>
+                            <p class="item-title"><a href="/2021/01/29/Seaborn%20with%20Matplotlib%20(1)/" class="title">Seaborn with Matplotlib (1)</a></p>
+                            <p class="item-date"><time datetime="2021-01-29T06:13:46.000Z" itemprop="datePublished">2021-01-29</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Kaggle/">Kaggle</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/">crawling</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a><span class="category-list-count">2</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawling/" rel="tag">crawling</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">데이터</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" rel="tag">오픈소스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84/" rel="tag">통계</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" rel="tag">통계학</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag">파이썬</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" rel="tag">확률분포</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/crawling/" style="font-size: 20px;">crawling</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" style="font-size: 15px;">데이터</a> <a href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" style="font-size: 15px;">오픈소스</a> <a href="/tags/%ED%86%B5%EA%B3%84/" style="font-size: 10px;">통계</a> <a href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" style="font-size: 15px;">통계학</a> <a href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" style="font-size: 20px;">파이썬</a> <a href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" style="font-size: 10px;">확률분포</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 HOya</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://kim-1994.github.io/2021/03/09/Jump%20to%20Python%20(1)/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
