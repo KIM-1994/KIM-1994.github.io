@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>판다스(1) | Welcome to HOya World</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="2. 판다스 시작하기 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 2-1 데이터 집합 불러오기2-2 데이터 추출하기2-3 기초적인 통계 계산하기2-4 그래프 그리기  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 2-1 데이터 집합 불러오기시리즈와 데이터프레임1234import pandas as pddf &#x3D; pd.read_cs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="판다스(1)">
+<meta property="og:url" content="http://kim-1994.github.io/2021/03/23/Pandas(1)/index.html">
+<meta property="og:site_name" content="Welcome to HOya World">
+<meta property="og:description" content="2. 판다스 시작하기 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 2-1 데이터 집합 불러오기2-2 데이터 추출하기2-3 기초적인 통계 계산하기2-4 그래프 그리기  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 2-1 데이터 집합 불러오기시리즈와 데이터프레임1234import pandas as pddf &#x3D; pd.read_cs">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-23T13:07:27.073Z">
+<meta property="article:modified_time" content="2021-03-23T13:13:36.163Z">
+<meta property="article:author" content="HOya">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Kaggle/">Kaggle</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/">crawling</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Pandas(1)" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        판다스(1)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2021/03/23/Pandas(1)/" class="article-date">
+       <time datetime="2021-03-23T13:07:27.073Z" itemprop="datePublished">2021-03-23</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2021/03/23/Pandas(1)/" class="article-date">
+     <time datetime="2021-03-23T13:13:36.163Z" itemprop="dateModified">2021-03-23</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="2-판다스-시작하기"><a href="#2-판다스-시작하기" class="headerlink" title="2. 판다스 시작하기"></a>2. 판다스 시작하기</h1><hr>
+<p>=================================</p>
+<p>2-1 데이터 집합 불러오기<br>2-2 데이터 추출하기<br>2-3 기초적인 통계 계산하기<br>2-4 그래프 그리기 </p>
+<p>=================================</p>
+<h2 id="2-1-데이터-집합-불러오기"><a href="#2-1-데이터-집합-불러오기" class="headerlink" title="2-1 데이터 집합 불러오기"></a>2-1 데이터 집합 불러오기</h2><h3 id="시리즈와-데이터프레임"><a href="#시리즈와-데이터프레임" class="headerlink" title="시리즈와 데이터프레임"></a>시리즈와 데이터프레임</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;Doit_판다스입문_소스/data/gapminder.tsv&#x27;</span>, sep = <span class="string">&#x27;\t&#x27;</span>)  <span class="comment"># \t 는 탭을 의미한다</span></span><br><span class="line"></span><br><span class="line">print(df.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>       country continent  year  lifeExp       pop   gdpPercap
+0  Afghanistan      Asia  1952   28.801   8425333  779.445314
+1  Afghanistan      Asia  1957   30.332   9240934  820.853030
+2  Afghanistan      Asia  1962   31.997  10267083  853.100710
+3  Afghanistan      Asia  1967   34.020  11537966  836.197138
+4  Afghanistan      Asia  1972   36.088  13079460  739.981106</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="built_in">type</span>(df))   <span class="comment"># type 메서드는 파이썬 내장 메서드</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.shape)   <span class="comment"># shape는 속성값 (메서드가 아니다.), 행과 열의 크기를 확인할 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>(1704, 6)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.columns)  <span class="comment"># columns는 데이터프레임의 열 이름을 확인할 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>Index([&#39;country&#39;, &#39;continent&#39;, &#39;year&#39;, &#39;lifeExp&#39;, &#39;pop&#39;, &#39;gdpPercap&#39;], dtype=&#39;object&#39;)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.dtypes)  <span class="comment"># 데이터프레임 구성하는 값의 자료형 확인</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>country       object
+continent     object
+year           int64
+lifeExp      float64
+pop            int64
+gdpPercap    float64
+dtype: object</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.info())  <span class="comment"># 데이터프레임 구성하는 값의 자료형 확인</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1704 entries, 0 to 1703
+Data columns (total 6 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   country    1704 non-null   object 
+ 1   continent  1704 non-null   object 
+ 2   year       1704 non-null   int64  
+ 3   lifeExp    1704 non-null   float64
+ 4   pop        1704 non-null   int64  
+ 5   gdpPercap  1704 non-null   float64
+dtypes: float64(2), int64(2), object(2)
+memory usage: 80.0+ KB
+None</code></pre>
+<h3 id="판다스와-파이썬-자료형-비교"><a href="#판다스와-파이썬-자료형-비교" class="headerlink" title="판다스와 파이썬 자료형 비교"></a>판다스와 파이썬 자료형 비교</h3><p>판다스와 파이썬은 같은 자료형도 다르게 인식한다. 예를 들어 판다스는 문자열 자료형을 object라는 이름으로 인식하고 파이썬은 string이라는 이름으로 인식한다. </p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>판다스 자료형</strong></th>
+<th align="center"><strong>파이썬 자료형</strong></th>
+<th align="center"><strong>설명</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">object</td>
+<td align="center">string</td>
+<td align="center">문자열</td>
+</tr>
+<tr>
+<td align="center">int64</td>
+<td align="center">int</td>
+<td align="center">정수</td>
+</tr>
+<tr>
+<td align="center">float64</td>
+<td align="center">float</td>
+<td align="center">소수점을 가진 숫자</td>
+</tr>
+<tr>
+<td align="center">datetime64</td>
+<td align="center">datetime</td>
+<td align="center">파이썬 표준 라이브러리인 datetime이 반환하는 자료형</td>
+</tr>
+</tbody></table>
+<h2 id="2-2-데이터-추출하기"><a href="#2-2-데이터-추출하기" class="headerlink" title="2-2 데이터 추출하기"></a>2-2 데이터 추출하기</h2><h3 id="열-단위-데이터-추출하기"><a href="#열-단위-데이터-추출하기" class="headerlink" title="열 단위 데이터 추출하기"></a>열 단위 데이터 추출하기</h3><p>데이터프레임에서 데이터를 열 단위로 추출하려면 <strong>대괄호</strong>와 열 이름을 사용해야 한다. 이때 열 이름은 꼭 <strong>작은따옴표</strong>를 사용해서 지정해야 하고 추출한 열은 변수에 저장해서 사용할 수도 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">country_df = df[<span class="string">&#x27;country&#x27;</span>]</span><br><span class="line">print(<span class="built_in">type</span>(country_df))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.series.Series&#39;&gt;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(country_df.head())  <span class="comment"># head 가장 앞 5개 추출</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>0    Afghanistan
+1    Afghanistan
+2    Afghanistan
+3    Afghanistan
+4    Afghanistan
+Name: country, dtype: object</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(country_df.tail())  <span class="comment"># tail 가장 뒤에 5개 추출</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>1699    Zimbabwe
+1700    Zimbabwe
+1701    Zimbabwe
+1702    Zimbabwe
+1703    Zimbabwe
+Name: country, dtype: object</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subset = df[[<span class="string">&#x27;country&#x27;</span>,<span class="string">&#x27;continent&#x27;</span>,<span class="string">&#x27;year&#x27;</span>]]  <span class="comment"># 열이 2개 이상일 시 대괄호 2개</span></span><br><span class="line">print(<span class="built_in">type</span>(subset))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(subset.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>       country continent  year
+0  Afghanistan      Asia  1952
+1  Afghanistan      Asia  1957
+2  Afghanistan      Asia  1962
+3  Afghanistan      Asia  1967
+4  Afghanistan      Asia  1972</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(subset.tail())</span><br></pre></td></tr></table></figure>
+
+<pre><code>       country continent  year
+1699  Zimbabwe    Africa  1987
+1700  Zimbabwe    Africa  1992
+1701  Zimbabwe    Africa  1997
+1702  Zimbabwe    Africa  2002
+1703  Zimbabwe    Africa  2007</code></pre>
+<h3 id="행-단위-데이터-추출하기"><a href="#행-단위-데이터-추출하기" class="headerlink" title="행 단위 데이터 추출하기"></a>행 단위 데이터 추출하기</h3><table>
+<thead>
+<tr>
+<th><strong>속성</strong></th>
+<th align="center"><strong>설명</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>loc</td>
+<td align="center">인덱스를 기준으로 행 데이터 추출</td>
+</tr>
+<tr>
+<td>iloc</td>
+<td align="center">행 번호를 기준으로 행 데이터 추출</td>
+</tr>
+</tbody></table>
+<p>파이썬에서 자료형에 저장된 데이터의 순서를 인덱스라고 알고 있을 것이다. 하지만 판다스에서는 이런 개념을 행 번호라고 부른다.(판다스에서 인덱스는 조금 다른 의미로 사용된다.)</p>
+<h3 id="인덱스와-행-번호-개념-알아보기"><a href="#인덱스와-행-번호-개념-알아보기" class="headerlink" title="인덱스와 행 번호 개념 알아보기"></a>인덱스와 행 번호 개념 알아보기</h3><h4 id="loc-속성으로-행-데이터-추출하기"><a href="#loc-속성으로-행-데이터-추출하기" class="headerlink" title="loc 속성으로 행 데이터 추출하기"></a>loc 속성으로 행 데이터 추출하기</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.loc[<span class="number">0</span>])    <span class="comment"># loc속성에 대괄호를 이용하여 인덱스를 전달하면 행 데이터를 추출할 수 있다. </span></span><br></pre></td></tr></table></figure>
+
+<pre><code>country      Afghanistan
+continent           Asia
+year                1952
+lifeExp           28.801
+pop              8425333
+gdpPercap     779.445314
+Name: 0, dtype: object</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.loc[<span class="number">99</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>country      Bangladesh
+continent          Asia
+year               1967
+lifeExp          43.453
+pop            62821884
+gdpPercap    721.186086
+Name: 99, dtype: object</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.loc[<span class="number">-1</span>])   <span class="comment"># 만약 -1과 같이 인덱스에 없는 값을 사용하면 오류가 발생하니 주의하자</span></span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+C:\ProgramData\Anaconda3\lib\site-packages\pandas\core\indexes\range.py in get_loc(self, key, method, tolerance)
+    350                 try:
+--&gt; 351                     return self._range.index(new_key)
+    352                 except ValueError as err:
+
+
+ValueError: -1 is not in range
+
+
+The above exception was the direct cause of the following exception:
+
+
+KeyError                                  Traceback (most recent call last)
+
+&lt;ipython-input-15-1991253f2308&gt; in &lt;module&gt;
+----&gt; 1 print(df.loc[-1])   # 만약 -1과 같이 인덱스에 없는 값을 사용하면 오류가 발생하니 주의하자
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\pandas\core\indexing.py in __getitem__(self, key)
+    893 
+    894             maybe_callable = com.apply_if_callable(key, self.obj)
+--&gt; 895             return self._getitem_axis(maybe_callable, axis=axis)
+    896 
+    897     def _is_scalar_access(self, key: Tuple):
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\pandas\core\indexing.py in _getitem_axis(self, key, axis)
+   1122         # fall thru to straight lookup
+   1123         self._validate_key(key, axis)
+-&gt; 1124         return self._get_label(key, axis=axis)
+   1125 
+   1126     def _get_slice_axis(self, slice_obj: slice, axis: int):
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\pandas\core\indexing.py in _get_label(self, label, axis)
+   1071     def _get_label(self, label, axis: int):
+   1072         # GH#5667 this will fail if the label is not present in the axis.
+-&gt; 1073         return self.obj.xs(label, axis=axis)
+   1074 
+   1075     def _handle_lowerdim_multi_index_axis0(self, tup: Tuple):
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\pandas\core\generic.py in xs(self, key, axis, level, drop_level)
+   3737                 raise TypeError(f&quot;Expected label or tuple of labels, got &#123;key&#125;&quot;) from e
+   3738         else:
+-&gt; 3739             loc = index.get_loc(key)
+   3740 
+   3741             if isinstance(loc, np.ndarray):
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\pandas\core\indexes\range.py in get_loc(self, key, method, tolerance)
+    351                     return self._range.index(new_key)
+    352                 except ValueError as err:
+--&gt; 353                     raise KeyError(key) from err
+    354             raise KeyError(key)
+    355         return super().get_loc(key, method=method, tolerance=tolerance)
+
+
+KeyError: -1</code></pre>
+<p>만약 데이터프레임 마지막 행 데이터를 추출하려면 어떠헥 해야 할까? 마지막 행 데이터의 인덱스를 알아내야 한다. shape[0]에 행 크게(1704)가 저장되어 있다는 점을 이용하여 마지막 행의 인덱스를 구하면 된다. 다음은 shape[0]에서 1을 뺀 값으로(1704 - 1 = 1703)마지막 행 데이터를 추출한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">number_of_row = df.shape[<span class="number">0</span>]</span><br><span class="line">last_row_index = number_of_row - <span class="number">1</span></span><br><span class="line">print(df.loc[last_row_index])</span><br></pre></td></tr></table></figure>
+
+<pre><code>country        Zimbabwe
+continent        Africa
+year               2007
+lifeExp          43.487
+pop            12311143
+gdpPercap    469.709298
+Name: 1703, dtype: object</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">number_of_row = df.shape[<span class="number">0</span>] - <span class="number">1</span></span><br><span class="line">print(df.loc[number_of_row])</span><br></pre></td></tr></table></figure>
+
+<pre><code>country        Zimbabwe
+continent        Africa
+year               2007
+lifeExp          43.487
+pop            12311143
+gdpPercap    469.709298
+Name: 1703, dtype: object</code></pre>
+<p>데이터프레임의 마지막 행 데이터를 추출하는 또 다른 방법으로는 tail 메서드를 사용하는 방법이 있다. 다음과 같이 tail 메서드의 인자 n에 1을 전달하면 마지막 행의 데이터를 추출할 수 있다. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.tail(n=<span class="number">1</span>))   <span class="comment"># 2를 전달하면 2개의 데이터를 추출할 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>       country continent  year  lifeExp       pop   gdpPercap
+1703  Zimbabwe    Africa  2007   43.487  12311143  469.709298</code></pre>
+<p>만약 인덱스가 0, 99, 999인 데이터를 한 번에 추출하려면 리스트에 원하는 인덱스를 담아 loc속성에 전달하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.loc[[<span class="number">0</span>, <span class="number">99</span>, <span class="number">999</span>]])</span><br></pre></td></tr></table></figure>
+
+<pre><code>         country continent  year  lifeExp       pop    gdpPercap
+0    Afghanistan      Asia  1952   28.801   8425333   779.445314
+99    Bangladesh      Asia  1967   43.453  62821884   721.186086
+999     Mongolia      Asia  1967   51.253   1149500  1226.041130</code></pre>
+<p><strong>tail 메서드와 loc 속성이 반환하는 자료형은 서로 다르다.</strong></p>
+<p>tail 메서드와 loc 속성이 반환하는 데이터의 자료형은 다르다. 다음은 tail 메서드와 loc 속성으로 추출한 데이터의 자료형을 type 메서드로 확인한 것이다. loc 속성이 반환한 데이터 자료형은 시리즈이고 tail 메서드가 반환한 데이터 자료형은 데이터프레임이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">subset_loc = df.loc[<span class="number">0</span>]</span><br><span class="line">subset_tail = df.tail(n=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="built_in">type</span>(subset_loc))</span><br><span class="line">print(<span class="built_in">type</span>(subset_tail))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.series.Series&#39;&gt;
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code></pre>
+<h4 id="iloc-속성으로-행-데이터-추출하기"><a href="#iloc-속성으로-행-데이터-추출하기" class="headerlink" title="iloc 속성으로 행 데이터 추출하기"></a>iloc 속성으로 행 데이터 추출하기</h4><p>iloc 속성으로 행 데이터를 추출하는 방법에 대해 알아보겠다. loc 속성은 데이터프레임의 인덱스를 사용하여 데이터를 추출했지만 iloc 속성은 데이터 순서를 의미하는 행 번호를 사용하여 데이터를 추출한다. 지금은 인덱스와 행 번호가 동일하여 동일한 결괏값이 출력된다. 다음은 iloc 속성에 1을 전달하여 데이터를 추출한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.iloc[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>country      Afghanistan
+continent           Asia
+year                1957
+lifeExp           30.332
+pop              9240934
+gdpPercap      820.85303
+Name: 1, dtype: object</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.iloc[<span class="number">99</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>country      Bangladesh
+continent          Asia
+year               1967
+lifeExp          43.453
+pop            62821884
+gdpPercap    721.186086
+Name: 99, dtype: object</code></pre>
+<p>iloc 속성은 <strong>음수</strong>를 사용해도 데이터를 추출할 수 있다. 다음은 -1을 전달하여 마지막 행 데이터를 추출한 것이다. 하지만 데이터프레임에 아예 존재하지 않는 행 번호를 전달하면 오류가 발생한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.iloc[<span class="number">-1</span>])   <span class="comment"># iloc 속성은 -1을 사용하여 마지막 행 데이터를 추출할 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>country        Zimbabwe
+continent        Africa
+year               2007
+lifeExp          43.487
+pop            12311143
+gdpPercap    469.709298
+Name: 1703, dtype: object</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.iloc[<span class="number">1710</span>])</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+IndexError                                Traceback (most recent call last)
+
+&lt;ipython-input-26-e91d411323c7&gt; in &lt;module&gt;
+----&gt; 1 print(df.iloc[1710])
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\pandas\core\indexing.py in __getitem__(self, key)
+    893 
+    894             maybe_callable = com.apply_if_callable(key, self.obj)
+--&gt; 895             return self._getitem_axis(maybe_callable, axis=axis)
+    896 
+    897     def _is_scalar_access(self, key: Tuple):
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\pandas\core\indexing.py in _getitem_axis(self, key, axis)
+   1499 
+   1500             # validate the location
+-&gt; 1501             self._validate_integer(key, axis)
+   1502 
+   1503             return self.obj._ixs(key, axis=axis)
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\pandas\core\indexing.py in _validate_integer(self, key, axis)
+   1442         len_axis = len(self.obj._get_axis(axis))
+   1443         if key &gt;= len_axis or key &lt; -len_axis:
+-&gt; 1444             raise IndexError(&quot;single positional indexer is out-of-bounds&quot;)
+   1445 
+   1446     # -------------------------------------------------------------------
+
+
+IndexError: single positional indexer is out-of-bounds</code></pre>
+<p>iloc 속성도 여러 데이터를 한 번에 추출할 수 있다. loc 속성을 사용했던 것처럼 원하는 데이터의 행 번호를 리스트에 담아 전달하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.iloc[[<span class="number">0</span>, <span class="number">99</span>, <span class="number">999</span>]])</span><br></pre></td></tr></table></figure>
+
+<pre><code>         country continent  year  lifeExp       pop    gdpPercap
+0    Afghanistan      Asia  1952   28.801   8425333   779.445314
+99    Bangladesh      Asia  1967   43.453  62821884   721.186086
+999     Mongolia      Asia  1967   51.253   1149500  1226.041130</code></pre>
+<h3 id="loc-iloc속성-자유자재로-사용하기"><a href="#loc-iloc속성-자유자재로-사용하기" class="headerlink" title="loc, iloc속성 자유자재로 사용하기"></a>loc, iloc속성 자유자재로 사용하기</h3><p>loc, iloc 속성을 좀 더 자유자재로 사용하려면 추출할 데이터의 행과 열을 지정하는 방법을 알아야 한다. 두 속성 모두 추출할 데이터의 행을 먼저 지정하고 그런 다음 열을 지정하는 방법으로 데이터를 추출한다. 즉, **df.loc[[행],[열]**이나 **df.iloc[[행],[열]]**과 같은 방법으로 코드를 작성하면 된다.</p>
+<h4 id="데이터-추출하기-슬라이싱-구문-rnage-메서드"><a href="#데이터-추출하기-슬라이싱-구문-rnage-메서드" class="headerlink" title="데이터 추출하기 - 슬라이싱 구문, rnage 메서드"></a>데이터 추출하기 - 슬라이싱 구문, rnage 메서드</h4><h5 id="1-슬라이싱-구문으로-데이터-추출하기"><a href="#1-슬라이싱-구문으로-데이터-추출하기" class="headerlink" title="1. 슬라이싱 구문으로 데이터 추출하기"></a>1. 슬라이싱 구문으로 데이터 추출하기</h5><p>다음은 모든 행(:)의 데이터에 대해 year, pop 열을 추출하는 방법이다. 이때 loc와 iloc속성에 전달하는 열 지정값은 반드시 형식에 맞게 전달해야 한다. 예를 들어 loc속성의 열 지정값에 정수 리스트를 전달하면 오류가 발생한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subset = df.loc[:, [<span class="string">&#x27;year&#x27;</span>,<span class="string">&#x27;pop&#x27;</span>]]</span><br><span class="line">print(subset.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>   year       pop
+0  1952   8425333
+1  1957   9240934
+2  1962  10267083
+3  1967  11537966
+4  1972  13079460</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subset = df.iloc[:, [<span class="number">2</span>,<span class="number">4</span>,<span class="number">-1</span>]]</span><br><span class="line">print(subset.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>   year       pop   gdpPercap
+0  1952   8425333  779.445314
+1  1957   9240934  820.853030
+2  1962  10267083  853.100710
+3  1967  11537966  836.197138
+4  1972  13079460  739.981106</code></pre>
+<h5 id="2-range-메서드로-데이터-추출하기"><a href="#2-range-메서드로-데이터-추출하기" class="headerlink" title="2. range 메서드로 데이터 추출하기"></a>2. range 메서드로 데이터 추출하기</h5><p>range메서드는 지정한 구간의 정수 리스트를 반환해 준다. iloc 속성의 열 지정값에는 정수 리스트를 전달해야 한다는 점과 range 메서드의 반환값이 정수 리스트인 점을 이용하여 원하는 데이터를 추출하는 것이다.</p>
+<p>그런데 range 메서드는 조금 더 정확하게 말하면 지정한 범위의 정수 리스트를 반환하는것이 아니라 제네레이터를 반환한다. iloc 속성은 제네레이터로 데이터 추출을 할 수 없다. 다행히 제네레이터는 간단하게 리스트로 변환할 수 있다. 다음은 range(5)가 반환한 제네레이터를 정수값을 가진 리스트 [0,1,2,3,4]로 변환하여 iloc의 열 지정값에 전달한 것이다. 자주 사용하는 방법은 아니지만 알아두면 유용할 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">small_range = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">5</span>))</span><br><span class="line">print(small_range)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0, 1, 2, 3, 4]</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="built_in">type</span>(small_range))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;list&#39;&gt;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subset = df.iloc[:, small_range]     <span class="comment"># 열 0~4까지 추출</span></span><br><span class="line">print(subset.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>       country continent  year  lifeExp       pop
+0  Afghanistan      Asia  1952   28.801   8425333
+1  Afghanistan      Asia  1957   30.332   9240934
+2  Afghanistan      Asia  1962   31.997  10267083
+3  Afghanistan      Asia  1967   34.020  11537966
+4  Afghanistan      Asia  1972   36.088  13079460</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">small_range = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">3</span>,<span class="number">6</span>))</span><br><span class="line">print(small_range)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[3, 4, 5]</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subset = df.iloc[:, small_range]    <span class="comment"># 3~5 범위의 정수리스트를 구하려면 list(range(3,6))이라고 입력하면 된다.</span></span><br><span class="line">print(subset.head())                <span class="comment"># # 열 3 ~ 5까지 추출</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>   lifeExp       pop   gdpPercap
+0   28.801   8425333  779.445314
+1   30.332   9240934  820.853030
+2   31.997  10267083  853.100710
+3   34.020  11537966  836.197138
+4   36.088  13079460  739.981106</code></pre>
+<h5 id="3-range-메서드에-대해-조금-더-알아보자"><a href="#3-range-메서드에-대해-조금-더-알아보자" class="headerlink" title="3. range 메서드에 대해 조금 더 알아보자"></a>3. range 메서드에 대해 조금 더 알아보자</h5><p>range 메서드에 range(0,6,2)와 같은 방법으로 3개의 인자를 전달하면 어떻게 될까? 0부터 5까지 2만큼 건너뛰는 제네레이터를 생성한다. 이 제네레이터를 리스트로 변환하면 범위는 0 ~ 5이고 짝수로 된 정수 리스트를 얻을 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">small_range = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">0</span>,<span class="number">6</span>,<span class="number">2</span>))</span><br><span class="line">subset = df.iloc[:, small_range]</span><br><span class="line">print(subset.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>       country  year       pop
+0  Afghanistan  1952   8425333
+1  Afghanistan  1957   9240934
+2  Afghanistan  1962  10267083
+3  Afghanistan  1967  11537966
+4  Afghanistan  1972  13079460</code></pre>
+<h5 id="4-슬라이싱-구문과-range-메서드-비교하기"><a href="#4-슬라이싱-구문과-range-메서드-비교하기" class="headerlink" title="4. 슬라이싱 구문과 range 메서드 비교하기"></a>4. 슬라이싱 구문과 range 메서드 비교하기</h5><p>list(range(3))과 [:3]의 결과값은 동일하다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subset = df.iloc[:, :<span class="number">3</span>]</span><br><span class="line">print(subset.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>       country continent  year
+0  Afghanistan      Asia  1952
+1  Afghanistan      Asia  1957
+2  Afghanistan      Asia  1962
+3  Afghanistan      Asia  1967
+4  Afghanistan      Asia  1972</code></pre>
+<h5 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h5><p>0:6:2를 열 지정값에 전달하면 과정 <strong>3</strong>에서 얻은 결과값과 동일한 결과값을 얻을 수 있다. range 메서드와 슬라이싱 구문을 비교해 보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subset = df.iloc[:, <span class="number">0</span>:<span class="number">6</span>:<span class="number">2</span>]</span><br><span class="line">print(subset.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>       country  year       pop
+0  Afghanistan  1952   8425333
+1  Afghanistan  1957   9240934
+2  Afghanistan  1962  10267083
+3  Afghanistan  1967  11537966
+4  Afghanistan  1972  13079460</code></pre>
+<h5 id="6-loc-iloc-속성-자유자재로-사용하기"><a href="#6-loc-iloc-속성-자유자재로-사용하기" class="headerlink" title="6. loc, iloc 속성 자유자재로 사용하기"></a>6. loc, iloc 속성 자유자재로 사용하기</h5><p>만약 iloc 속성으로 0, 99, 999번째 행의 0,3,5번째 데이터를 추출하려면 다음과 같이 코드를 작성하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.iloc[[<span class="number">0</span>,<span class="number">99</span>,<span class="number">999</span>],[<span class="number">0</span>,<span class="number">3</span>,<span class="number">5</span>]])</span><br></pre></td></tr></table></figure>
+
+<pre><code>         country  lifeExp    gdpPercap
+0    Afghanistan   28.801   779.445314
+99    Bangladesh   43.453   721.186086
+999     Mongolia   51.253  1226.041130</code></pre>
+<h5 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h5><p>iloc 속성의 열 지정값으로 정수 리스트를 전달하는 것이 간편해 보일 수 있겠지만 이렇게 작성한 코드는 나중에 어떤 데이터를 추출하기 위한 코드인지 파악하지 못 할 수도 있다. 그래서 보통 다음과 같은 방법으로 loc 속성을 이용해 열 지정값으로 열 이름을 전달한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(df.loc[[<span class="number">0</span>,<span class="number">99</span>,<span class="number">999</span>],[<span class="string">&#x27;country&#x27;</span>,<span class="string">&#x27;lifeExp&#x27;</span>,<span class="string">&#x27;gdpPercap&#x27;</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 큰 규모의 데이터 분석 프로젝트에서는 loc 속성이 더 유용하다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>         country  lifeExp    gdpPercap
+0    Afghanistan   28.801   779.445314
+99    Bangladesh   43.453   721.186086
+999     Mongolia   51.253  1226.041130</code></pre>
+<h5 id="8"><a href="#8" class="headerlink" title="8."></a>8.</h5><p>앞에서 배운 내용을 모두 응용하여 데이터를 추출해 보자. 다음은 인덱스가 10인 행부터 13인 행의 country, lifeExp, gdpPercap 열 데이터를 추출하는 코드이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.loc[<span class="number">10</span>:<span class="number">13</span>, [<span class="string">&#x27;country&#x27;</span>,<span class="string">&#x27;lifeExp&#x27;</span>,<span class="string">&#x27;gdpPercap&#x27;</span>]])</span><br></pre></td></tr></table></figure>
+
+<pre><code>        country  lifeExp    gdpPercap
+10  Afghanistan   42.129   726.734055
+11  Afghanistan   43.828   974.580338
+12      Albania   55.230  1601.056136
+13      Albania   59.280  1942.284244</code></pre>
+<p>출처 : Do it 판다스</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://kim-1994.github.io/2021/03/23/Pandas(1)/" data-id="ckmm1i19d00000wvja562679l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "HOya"
+        },
+        "headline": "판다스(1)",
+        "image": "http://KIM-1994.github.io",
+        "keywords": "",
+        "genre": "Do it 판다스",
+        "datePublished": "2021-03-23",
+        "dateCreated": "2021-03-23",
+        "dateModified": "2021-03-23",
+        "url": "http://KIM-1994.github.io/2021/03/23/Pandas(1)/",
+        "description": "2. 판다스 시작하기
+=================================
+2-1 데이터 집합 불러오기2-2 데이터 추출하기2-3 기초적인 통계 계산하기2-4 그래프 그리기 
+=================================
+2-1 데이터 집합 불러오기시리즈와 데이터프레임1234import pandas as pddf = pd.read_cs",
+        "wordCount": 3812
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/KIM-1994" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2021/03/15/Jump%20to%20Python(11)/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">파이썬 기초(11)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/23/Pandas(1)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/03/23/Pandas(1)/" class="title">판다스(1)</a></p>
+                            <p class="item-date"><time datetime="2021-03-23T13:07:27.073Z" itemprop="datePublished">2021-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/15/Jump%20to%20Python(11)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></p>
+                            <p class="item-title"><a href="/2021/03/15/Jump%20to%20Python(11)/" class="title">파이썬 기초(11)</a></p>
+                            <p class="item-date"><time datetime="2021-03-14T15:51:25.940Z" itemprop="datePublished">2021-03-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/14/Jump%20to%20Python(10)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></p>
+                            <p class="item-title"><a href="/2021/03/14/Jump%20to%20Python(10)/" class="title">파이썬 기초(10)</a></p>
+                            <p class="item-date"><time datetime="2021-03-14T14:46:30.352Z" itemprop="datePublished">2021-03-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/13/Jump%20to%20Python(9)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://wikidocs.net/images/page/12392/setdata.png)" alt="파이썬 기초(9)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></p>
+                            <p class="item-title"><a href="/2021/03/13/Jump%20to%20Python(9)/" class="title">파이썬 기초(9)</a></p>
+                            <p class="item-date"><time datetime="2021-03-13T02:46:43.736Z" itemprop="datePublished">2021-03-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/12/Jump%20to%20Python(8)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></p>
+                            <p class="item-title"><a href="/2021/03/12/Jump%20to%20Python(8)/" class="title">파이썬 기초(8)</a></p>
+                            <p class="item-date"><time datetime="2021-03-12T03:41:49.952Z" itemprop="datePublished">2021-03-12</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kaggle/">Kaggle</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/">crawling</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a><span class="category-list-count">2</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawling/" rel="tag">crawling</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">데이터</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" rel="tag">오픈소스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84/" rel="tag">통계</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" rel="tag">통계학</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag">파이썬</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" rel="tag">확률분포</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/crawling/" style="font-size: 20px;">crawling</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" style="font-size: 15px;">데이터</a> <a href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" style="font-size: 15px;">오픈소스</a> <a href="/tags/%ED%86%B5%EA%B3%84/" style="font-size: 10px;">통계</a> <a href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" style="font-size: 15px;">통계학</a> <a href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" style="font-size: 20px;">파이썬</a> <a href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" style="font-size: 10px;">확률분포</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 HOya</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://kim-1994.github.io/2021/03/23/Pandas(1)/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
