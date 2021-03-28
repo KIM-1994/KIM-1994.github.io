@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>판다스 데이터프레임과 시리즈 | Welcome to HOya World</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="3-1 나만의 데이터 만들기시리즈와 데이터프레임 직접 만들기1. 시리즈 만들기판다스의 Series 메서드에 리스트를 전달하여 시리즈를 생성합니다. 123import pandas as pds &#x3D; pd.Series([&amp;#x27;banana&amp;#x27;,42])print(s)  0    banana 1        42 dtype: object 2.2장에서 인덱스">
+<meta property="og:type" content="article">
+<meta property="og:title" content="판다스 데이터프레임과 시리즈">
+<meta property="og:url" content="http://kim-1994.github.io/2021/03/28/pandas(2)/index.html">
+<meta property="og:site_name" content="Welcome to HOya World">
+<meta property="og:description" content="3-1 나만의 데이터 만들기시리즈와 데이터프레임 직접 만들기1. 시리즈 만들기판다스의 Series 메서드에 리스트를 전달하여 시리즈를 생성합니다. 123import pandas as pds &#x3D; pd.Series([&amp;#x27;banana&amp;#x27;,42])print(s)  0    banana 1        42 dtype: object 2.2장에서 인덱스">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-28T14:55:52.559Z">
+<meta property="article:modified_time" content="2021-03-28T14:58:33.762Z">
+<meta property="article:author" content="HOya">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Kaggle/">Kaggle</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/">crawling</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-pandas(2)" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        판다스 데이터프레임과 시리즈
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2021/03/28/pandas(2)/" class="article-date">
+       <time datetime="2021-03-28T14:55:52.559Z" itemprop="datePublished">2021-03-28</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2021/03/28/pandas(2)/" class="article-date">
+     <time datetime="2021-03-28T14:58:33.762Z" itemprop="dateModified">2021-03-28</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="3-1-나만의-데이터-만들기"><a href="#3-1-나만의-데이터-만들기" class="headerlink" title="3-1 나만의 데이터 만들기"></a>3-1 나만의 데이터 만들기</h1><h4 id="시리즈와-데이터프레임-직접-만들기"><a href="#시리즈와-데이터프레임-직접-만들기" class="headerlink" title="시리즈와 데이터프레임 직접 만들기"></a>시리즈와 데이터프레임 직접 만들기</h4><h5 id="1-시리즈-만들기"><a href="#1-시리즈-만들기" class="headerlink" title="1. 시리즈 만들기"></a>1. 시리즈 만들기</h5><p>판다스의 Series 메서드에 리스트를 전달하여 시리즈를 생성합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">s = pd.Series([<span class="string">&#x27;banana&#x27;</span>,<span class="number">42</span>])</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    banana
+1        42
+dtype: object</code></pre>
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p>2장에서 인덱스는 보통 0부터 시작한다고 설명했다 하지만 시리즈를 생성할 때 문자열을 인덱스로 지정할 수도 있다. 문자열을 인덱스로 지정하려면 Series 메서드의 index 인자를 통해 인덱스로 사용하고자 하는 문자열을 리스트에 담아 전달하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = pd.Series([<span class="string">&#x27;Wes McKinney&#x27;</span>,<span class="string">&#x27;Creator of Pandas&#x27;</span>])</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0         Wes McKinney
+1    Creator of Pandas
+dtype: object</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = pd.Series([<span class="string">&#x27;Wes McKinney&#x27;</span>,<span class="string">&#x27;Creator of Pandas&#x27;</span>], index = [<span class="string">&#x27;Person&#x27;</span>,<span class="string">&#x27;Who&#x27;</span>])</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Person         Wes McKinney
+Who       Creator of Pandas
+dtype: object</code></pre>
+<h4 id="3-데이터프레임-만들기"><a href="#3-데이터프레임-만들기" class="headerlink" title="3. 데이터프레임 만들기"></a>3. 데이터프레임 만들기</h4><p>데이터프레임을 만들기 위해서는 딕셔너리를 DataFrame 클래스에 전달해야 한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">scientists = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">&#x27;Name&#x27;</span> : [<span class="string">&#x27;Rosaline Franklin&#x27;</span>, <span class="string">&#x27;William Gosset&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;Occupation&#x27;</span>: [<span class="string">&#x27;Chemist&#x27;</span>,<span class="string">&#x27;Statistician&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;Born&#x27;</span>: [<span class="string">&#x27;1970-7-25&#x27;</span>, <span class="string">&#x27;1876-06-13&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;Died&#x27;</span> : [<span class="string">&#x27;1950-04-16&#x27;</span>, <span class="string">&#x27;1937-10-16&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;Age&#x27;</span> : [<span class="number">37</span>,<span class="number">61</span>]</span><br><span class="line">&#125;)</span><br><span class="line">print(scientists)</span><br></pre></td></tr></table></figure>
+
+<pre><code>                Name    Occupation        Born        Died  Age
+0  Rosaline Franklin       Chemist   1970-7-25  1950-04-16   37
+1     William Gosset  Statistician  1876-06-13  1937-10-16   61</code></pre>
+<h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p>시리즈와 마찬가지로 데이터프레임도 인덱스를 따로 지정하지 않으면 인덱스를 0부터 자동으로 생성한다. 인덱스를 따로 지정하려면 index 인자에 리스트를 전달하면 된다. 또 columns 인자를 사용하면 데이터프레임의 열 순서를 지정할 수 있다. 예를 들어 데이터프레임을 만들 때 Occupation, Born, Died, Age의 순서로 딕셔너리를 전달했어도 columns 인자에 Occupation, Born, Age, Died의 순서로 열 이름을 전달하면 생성된 데이터프레임의 열 순서는 columns에 전달한 값을 따라간다. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">scientists = pd.DataFrame(</span><br><span class="line">    data = &#123;<span class="string">&#x27;Occupation&#x27;</span> : [<span class="string">&#x27;Chemist&#x27;</span>, <span class="string">&#x27;Statistician&#x27;</span>],</span><br><span class="line">           <span class="string">&#x27;Born&#x27;</span> : [<span class="string">&#x27;1920-07-25&#x27;</span>, <span class="string">&#x27;1876-06-13&#x27;</span>],</span><br><span class="line">           <span class="string">&#x27;Died&#x27;</span> : [<span class="string">&#x27;1958-04-16&#x27;</span>, <span class="string">&#x27;1937-10-16&#x27;</span>],</span><br><span class="line">           <span class="string">&#x27;Age&#x27;</span> : [<span class="number">37</span>, <span class="number">61</span>]&#125;,</span><br><span class="line">    index = [<span class="string">&#x27;Rosaline Franklin&#x27;</span>, <span class="string">&#x27;William Gosset&#x27;</span>],</span><br><span class="line">    columns = [<span class="string">&#x27;Occupation&#x27;</span>, <span class="string">&#x27;Born&#x27;</span>, <span class="string">&#x27;Age&#x27;</span>, <span class="string">&#x27;Died&#x27;</span>]</span><br><span class="line">)</span><br><span class="line">print(scientists)</span><br></pre></td></tr></table></figure>
+
+<pre><code>                     Occupation        Born  Age        Died
+Rosaline Franklin       Chemist  1920-07-25   37  1958-04-16
+William Gosset     Statistician  1876-06-13   61  1937-10-16</code></pre>
+<h4 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h4><p>과정 <strong>1</strong>에서 데이터프레임을 만들 때 딕셔너리를 전달한다고 했다. 그런데 딕셔너리는 키(Key)와 값(Value)으로 이루어진 한 쌍의 데이터들의 순서는 보장하지 않는다. 만약 순서가 보장된 딕셔너리를 전달하려면 OrderedDict를 사용해야 한다. 다음과 같이 입력하면 딕셔너리의 데이터 순서를 그대로 유지하면서 데이터프레임을 만들 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"></span><br><span class="line">scientists = pd.DataFrame(OrderedDict([</span><br><span class="line">    (<span class="string">&#x27;Name&#x27;</span>, [<span class="string">&#x27;Rosaline Franklin&#x27;</span>, <span class="string">&#x27;William Gosset&#x27;</span>]),</span><br><span class="line">    (<span class="string">&#x27;Occupation&#x27;</span>, [<span class="string">&#x27;Chemist&#x27;</span>, <span class="string">&#x27;Statistician&#x27;</span>]),</span><br><span class="line">    (<span class="string">&#x27;Born&#x27;</span>, [<span class="string">&#x27;1920-07-25&#x27;</span>, <span class="string">&#x27;1876-06-13&#x27;</span>]),</span><br><span class="line">    (<span class="string">&#x27;Died&#x27;</span>, [<span class="string">&#x27;1958-04-16&#x27;</span>, <span class="string">&#x27;1937-10-16&#x27;</span>]),</span><br><span class="line">    (<span class="string">&#x27;Age&#x27;</span>, [<span class="number">37</span>,<span class="number">61</span>])</span><br><span class="line">]))</span><br><span class="line">print(scientists)</span><br></pre></td></tr></table></figure>
+
+<pre><code>                Name    Occupation        Born        Died  Age
+0  Rosaline Franklin       Chemist  1920-07-25  1958-04-16   37
+1     William Gosset  Statistician  1876-06-13  1937-10-16   61</code></pre>
+<h1 id="3-2-시리즈-다루기-기초"><a href="#3-2-시리즈-다루기-기초" class="headerlink" title="3-2 시리즈 다루기 - 기초"></a>3-2 시리즈 다루기 - 기초</h1><h3 id="데이터프레임에서-시리즈-선택하기"><a href="#데이터프레임에서-시리즈-선택하기" class="headerlink" title="데이터프레임에서 시리즈 선택하기"></a>데이터프레임에서 시리즈 선택하기</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p>먼저 변수 scientists에 데이터프레임을 준비한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">scientists = pd.DataFrame(</span><br><span class="line">    data = &#123;<span class="string">&#x27;Occupation&#x27;</span>: [<span class="string">&#x27;Chemist&#x27;</span>, <span class="string">&#x27;Statistician&#x27;</span>],</span><br><span class="line">           <span class="string">&#x27;Born&#x27;</span> : [<span class="string">&#x27;1920-07-25&#x27;</span>, <span class="string">&#x27;1876-06-13&#x27;</span>],</span><br><span class="line">            <span class="string">&#x27;Died&#x27;</span> : [<span class="string">&#x27;1958-04-16&#x27;</span>, <span class="string">&#x27;1937-10-16&#x27;</span>],</span><br><span class="line">            <span class="string">&#x27;Age&#x27;</span> : [<span class="number">37</span>,<span class="number">61</span>]&#125;,</span><br><span class="line">    index = [<span class="string">&#x27;Rosaline Franklin&#x27;</span>, <span class="string">&#x27;William Gosset&#x27;</span>],</span><br><span class="line">    columns = [<span class="string">&#x27;Occupation&#x27;</span>, <span class="string">&#x27;Born&#x27;</span>, <span class="string">&#x27;Died&#x27;</span>,<span class="string">&#x27;Age&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1"><a href="#2-1" class="headerlink" title="2."></a>2.</h4><p>데이터프레임에서 시리즈를 선택하려면 loc속성에 인덱스(과학자 이름)을 전달하면 된다. 정말 시리즈를 선택한 것인지 확인하기 위해 type으로 한 번 더 검사한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">first_row = scientists.loc[<span class="string">&#x27;William Gosset&#x27;</span>]</span><br><span class="line">print(<span class="built_in">type</span>(first_row))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.series.Series&#39;&gt;</code></pre>
+<h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><p>first_row를 출력해 보겠다. 여기서 주목해야 할 점은 데이터프레임을 만들 때 Age열에 정수형 리스트를 전달해도 시리즈(first_row)를 출력해 보면 시리즈의 자료형을 오브젝트로 인식한다는 점이다. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(first_row)  <span class="comment"># Age의 자료형은 무시된다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>Occupation    Statistician
+Born            1876-06-13
+Died            1937-10-16
+Age                     61
+Name: William Gosset, dtype: object</code></pre>
+<h2 id="시리즈-속성과-메서드-사용하기-index-values-keys"><a href="#시리즈-속성과-메서드-사용하기-index-values-keys" class="headerlink" title="시리즈 속성과 메서드 사용하기 - index, values, keys"></a>시리즈 속성과 메서드 사용하기 - index, values, keys</h2><h3 id="index-values-속성과-keys-메서드-사용하기"><a href="#index-values-속성과-keys-메서드-사용하기" class="headerlink" title="index, values 속성과 keys 메서드 사용하기"></a>index, values 속성과 keys 메서드 사용하기</h3><h4 id="1-index-속성-사용하기"><a href="#1-index-속성-사용하기" class="headerlink" title="1. index 속성 사용하기"></a>1. index 속성 사용하기</h4><p>먼저 index 속성을 사용해 보겠다. index 속성에는 시리즈의 인덱스가 들어 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(first_row.index)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Index([&#39;Occupation&#39;, &#39;Born&#39;, &#39;Died&#39;, &#39;Age&#39;], dtype=&#39;object&#39;)</code></pre>
+<h4 id="2-values-속성-사용하기"><a href="#2-values-속성-사용하기" class="headerlink" title="2. values 속성 사용하기"></a>2. values 속성 사용하기</h4><p>values 속성에는 시리즈의 데이터가 저장되어 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(first_row.values)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;Statistician&#39; &#39;1876-06-13&#39; &#39;1937-10-16&#39; 61]</code></pre>
+<h4 id="3-keys-메서드-사용하기"><a href="#3-keys-메서드-사용하기" class="headerlink" title="3. keys 메서드 사용하기"></a>3. keys 메서드 사용하기</h4><p>keys는 속성이 아니라 메서드 이다. keys 메서드의 기능은 무엇일까? keys 메서드는 index 속성과 같은 역할을 한다. 즉, 과정 <strong>1</strong>의 결과와 동일한 결과값을 얻을 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(first_row.keys())</span><br></pre></td></tr></table></figure>
+
+<pre><code>Index([&#39;Occupation&#39;, &#39;Born&#39;, &#39;Died&#39;, &#39;Age&#39;], dtype=&#39;object&#39;)</code></pre>
+<h4 id="4-index-속성-응용하기"><a href="#4-index-속성-응용하기" class="headerlink" title="4. index 속성 응용하기"></a>4. index 속성 응용하기</h4><p>만약 index 속성의 첫 번째 값을 추출하려면 다음과 같이 코드를 작성하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(first_row.index[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>Occupation</code></pre>
+<h4 id="5-keys-메서드-응용하기"><a href="#5-keys-메서드-응용하기" class="headerlink" title="5. keys 메서드 응용하기"></a>5. keys 메서드 응용하기</h4><p>keys 메서드의 결과값을 이용하여 인덱스의 첫 번재 값을 추출하는 방법은 다음과 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(first_row.keys()[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>Occupation</code></pre>
+<h2 id="시리즈의-기초-통계-메서드-사용하기"><a href="#시리즈의-기초-통계-메서드-사용하기" class="headerlink" title="시리즈의 기초 통계 메서드 사용하기"></a>시리즈의 기초 통계 메서드 사용하기</h2><p>시리즈에는 keys 메서드 외에도 다양한 메서드가 있다. 이번에는 시리즈에 미리 정의되어 있는 mean, min,max,std 메서드의 사용 방법을 알아보겠다.</p>
+<h3 id="시리즈의-mean-min-max-std-메서드-사용하기"><a href="#시리즈의-mean-min-max-std-메서드-사용하기" class="headerlink" title="시리즈의 mean, min, max,std 메서드 사용하기"></a>시리즈의 mean, min, max,std 메서드 사용하기</h3><h4 id="1-1"><a href="#1-1" class="headerlink" title="1."></a>1.</h4><p>이번에는 scientists의 Age 열을 추출해 보겠다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ages = scientists[<span class="string">&#x27;Age&#x27;</span>]</span><br><span class="line">print(ages)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Rosaline Franklin    37
+William Gosset       61
+Name: Age, dtype: int64</code></pre>
+<h4 id="2-2"><a href="#2-2" class="headerlink" title="2."></a>2.</h4><p>만약 시리즈를 구성하는 데이터가 정수라면 mean,min,max,std와 같은 통계 메서드를 사용할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ages.mean())</span><br></pre></td></tr></table></figure>
+
+<pre><code>49.0</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ages.<span class="built_in">min</span>())</span><br></pre></td></tr></table></figure>
+
+<pre><code>37</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ages.<span class="built_in">max</span>())</span><br></pre></td></tr></table></figure>
+
+<pre><code>61</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ages.std())     <span class="comment"># var : 분산, std : 표준편차 </span></span><br></pre></td></tr></table></figure>
+
+<pre><code>16.97056274847714</code></pre>
+<h4 id="시리즈-메서드-정리"><a href="#시리즈-메서드-정리" class="headerlink" title="시리즈 메서드 정리"></a>시리즈 메서드 정리</h4><table>
+<thead>
+<tr>
+<th><strong>시리즈 메서드</strong></th>
+<th align="left"><strong>설명</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>append</td>
+<td align="left">2개 이사으이 시리즈 연결</td>
+</tr>
+<tr>
+<td>describe</td>
+<td align="left">요약 통계량 계산</td>
+</tr>
+<tr>
+<td>drop_duplicates</td>
+<td align="left">중복값이 없는 시리즈 변환</td>
+</tr>
+<tr>
+<td>equals</td>
+<td align="left">시리즈에 해당 값을 가진 요소가 있는지 확인</td>
+</tr>
+<tr>
+<td>get_values</td>
+<td align="left">시리즈 값 구하기(values 속성과 동일)</td>
+</tr>
+<tr>
+<td>isin</td>
+<td align="left">시리즈에 포함된 값이 있는지 확인</td>
+</tr>
+<tr>
+<td>min</td>
+<td align="left">최고값 반환</td>
+</tr>
+<tr>
+<td>max</td>
+<td align="left">최대값 반환</td>
+</tr>
+<tr>
+<td>mean</td>
+<td align="left">산술 평균 반환</td>
+</tr>
+<tr>
+<td>median</td>
+<td align="left">중간값 반환</td>
+</tr>
+<tr>
+<td>replace</td>
+<td align="left">특정 값을 가진 시리즈 값을 교체</td>
+</tr>
+<tr>
+<td>sample</td>
+<td align="left">시리즈에서 임의의 값을 반환</td>
+</tr>
+<tr>
+<td>sort_values</td>
+<td align="left">값을 정렬</td>
+</tr>
+<tr>
+<td>to_frame</td>
+<td align="left">시리즈를 데이터프레임으로 변환</td>
+</tr>
+</tbody></table>
+<h1 id="3-3-시리즈-다루기-응용"><a href="#3-3-시리즈-다루기-응용" class="headerlink" title="3-3 시리즈 다루기 - 응용"></a>3-3 시리즈 다루기 - 응용</h1><h2 id="시리즈와-불린-추출"><a href="#시리즈와-불린-추출" class="headerlink" title="시리즈와 불린 추출"></a>시리즈와 불린 추출</h2><p>2장에서는 원하는 데이터를 추출할 때 특정 인덱스를 지정하여 추출하였다. 하지만 보통은 추출할 데이터의 정확한 인덱스를 모르는 경우가 더 많다. 이런 경우에 사용하는 방법이 <strong>불린 추출</strong>이다. 불린 추출은 특정 조건을 만족하는 값만 추출할 수 있다.</p>
+<h3 id="시리즈와-불린-추출-사용하기"><a href="#시리즈와-불린-추출-사용하기" class="headerlink" title="시리즈와 불린 추출 사용하기"></a>시리즈와 불린 추출 사용하기</h3><h4 id="1-2"><a href="#1-2" class="headerlink" title="1."></a>1.</h4><p>이번에는 ‘scientists.csv’라는 이름의 데이터를 불러온다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scientists = pd.read_csv(<span class="string">&#x27;Doit_판다스입문_소스/data/scientists.csv&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3"><a href="#2-3" class="headerlink" title="2."></a>2.</h4><p>앞에서 시리즈의 mean,min,max,std 메서드를 호출하여 통계 수치를 계산했던 것을 기억하는가? 통계 수치의 결과값을 이용하여 불린 추출을 진행해 보겠다. 다음은 Age열을 추출하여 max, mean 메서드를 사용한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ages = scientists[<span class="string">&#x27;Age&#x27;</span>]</span><br><span class="line">print(ages.<span class="built_in">max</span>())</span><br></pre></td></tr></table></figure>
+
+<pre><code>90</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ages.mean())</span><br></pre></td></tr></table></figure>
+
+<pre><code>59.125</code></pre>
+<h4 id="3-1"><a href="#3-1" class="headerlink" title="3."></a>3.</h4><p>이제 불린 추출을 사용할 차례이다. 예를 들어 평균 나이보다 나이가 많은 사람의 데이터를 추출하려면 어떻게 해야 할까? 다음 코드를 실행하면 평균 나이보다 나이가 많은 사람의 데이터만을 출력된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ages[ages &gt; ages.mean()])</span><br></pre></td></tr></table></figure>
+
+<pre><code>1    61
+2    90
+3    66
+7    77
+Name: Age, dtype: int64</code></pre>
+<h4 id="4-1"><a href="#4-1" class="headerlink" title="4."></a>4.</h4><p>그런데 어떻게 이런 일이 가능할까? 먼저 ages &gt; ages.mean()의 결과를 출력해 보겠다. 그러면 1,2,3,7 인덱스의 데이터가 참(True)이라는 것을 알 수 있다. 즉, 조건식을 만족한 값만 출력된 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ages &gt; ages.mean())</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    False
+1     True
+2     True
+3     True
+4    False
+5    False
+6    False
+7     True
+Name: Age, dtype: bool</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="built_in">type</span>(ages &gt; ages.mean()))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.series.Series&#39;&gt;</code></pre>
+<h4 id="5-1"><a href="#5-1" class="headerlink" title="5."></a>5.</h4><p>과정 <strong>3</strong>과 <strong>4</strong>를 모두 합친 코드는 다음과 같다. 즉, 리스트 형태로 참이나 거짓을 담아 시리즈에 전달하면 참인 인덱스의 데이터만 추출할 수 있다. 바로 이것을 불린 추출이라고 한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">manual_bool_values = [<span class="literal">True</span>,<span class="literal">True</span>,<span class="literal">False</span>,<span class="literal">False</span>,<span class="literal">True</span>,<span class="literal">True</span>,<span class="literal">False</span>,<span class="literal">True</span>]</span><br><span class="line">print(ages[manual_bool_values])</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    37
+1    61
+4    56
+5    45
+7    77
+Name: Age, dtype: int64</code></pre>
+<h2 id="시리즈와-브로드캐스팅"><a href="#시리즈와-브로드캐스팅" class="headerlink" title="시리즈와 브로드캐스팅"></a>시리즈와 브로드캐스팅</h2><p>그런데 ages &gt; ages.mean()의 결과값의 개수가 여러 개라는 것이 이상하지 않았나? 이렇게 시리즈나 데이터프레임에 있는 모든 데이터에 대해 한 번에 연산하는 것을 브로드캐스팅(Broadcasting)이라고 한다. 그리고 시리즈처럼 여러 개의 값을 가진 데이터를 <strong>벡터</strong>라하고 단순 크기를 나타내는 데이터를 <strong>스칼라</strong>라고 한다. 벡터와 스칼라라는 용어는 자주 사용하므로 기억해 두자.</p>
+<p><em>참고로 시리즈는 벡터의 한 종류이다.</em></p>
+<h3 id="벡터와-스칼라로-브로드캐스팅-수행하기"><a href="#벡터와-스칼라로-브로드캐스팅-수행하기" class="headerlink" title="벡터와 스칼라로 브로드캐스팅 수행하기"></a>벡터와 스칼라로 브로드캐스팅 수행하기</h3><h4 id="1-3"><a href="#1-3" class="headerlink" title="1."></a>1.</h4><p>다음은 같은 길이의 벡터로 더하기 연산과 곱하기 연산을 수행한 것이다. 결과값으로 같은 길이의 벡터가 출력된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ages + ages)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0     74
+1    122
+2    180
+3    132
+4    112
+5     90
+6     82
+7    154
+Name: Age, dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ages * ages)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    1369
+1    3721
+2    8100
+3    4356
+4    3136
+5    2025
+6    1681
+7    5929
+Name: Age, dtype: int64</code></pre>
+<h4 id="2-4"><a href="#2-4" class="headerlink" title="2."></a>2.</h4><p>만약 벡터에 스칼라를 연산하면 어떻게 될까? 다음은 벡터의 모든 값에 스칼라를 적용하여 브로드캐스팅한 결과이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ages + <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    137
+1    161
+2    190
+3    166
+4    156
+5    145
+6    141
+7    177
+Name: Age, dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ages * <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0     74
+1    122
+2    180
+3    132
+4    112
+5     90
+6     82
+7    154
+Name: Age, dtype: int64</code></pre>
+<h4 id="3-2"><a href="#3-2" class="headerlink" title="3."></a>3.</h4><p>길이가 서로 다른 벡터를 연산하면 어떻게 될까? 시리즈와 시리즈를 연산하는 경우 같은 인덱스의 값만 계산한다. 다음은 데이터의 개수가 2개인 시리즈와 8개인 시리즈를 더한 것이다. 결과값을 살펴보면 인덱스가 일치한 0,1만 계산했다는 것을 알 수 있다. 나머지는 인덱스(2~7)는 계산을 할 수 없기 때문에 누락값(NaN)으로 처리한다.</p>
+<p><em>참고로 벡터의 자료형에 따라 브로드캐스팅 방식이 달라진다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.Series([<span class="number">1</span>, <span class="number">100</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0      1
+1    100
+dtype: int64</code></pre>
+<h4 id="4-2"><a href="#4-2" class="headerlink" title="4."></a>4.</h4><p>다음은 sort_index 메서드를 사용한 것이다. 이때 ascending(오름차순) 인자로 False를 전달하여 인덱스 역순으로 데이터를 정렬했다.</p>
+<p><em>참고로 데이터의 역순이 아니다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rev_ages = ages.sort_index(ascending = <span class="literal">False</span>)</span><br><span class="line">print(rev_ages)</span><br></pre></td></tr></table></figure>
+
+<pre><code>7    77
+6    41
+5    45
+4    56
+3    66
+2    90
+1    61
+0    37
+Name: Age, dtype: int64</code></pre>
+<h4 id="5-2"><a href="#5-2" class="headerlink" title="5."></a>5.</h4><p>그러면 인덱스 순서대로 정렬된 ages와 인덱스의 역순으로 정렬된 rev_ages를 연산하면 어떻게 될까? ages의 데이터와 rev_ages의 데이터를 순서대로 더할 것 같지만 그렇지 않다. 다음은 ages * 2와 ages + rev_ages의 결과값을 출력한 것이다. 어떤가? ages * 2와 ages + rev_ages의 결과값이 동일하다. ages의 인덱스(0<del>7)와 rev_ages의 인덱스(0</del>7)가 일치하는 값끼리 연산했기 때문이다. <strong>벡터와 벡터의 연산은 일치하는 인덱스의 값끼리 수행한다는 것을 잊지말자!</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ages * <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0     74
+1    122
+2    180
+3    132
+4    112
+5     90
+6     82
+7    154
+Name: Age, dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ages + rev_ages)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0     74
+1    122
+2    180
+3    132
+4    112
+5     90
+6     82
+7    154
+Name: Age, dtype: int64</code></pre>
+<h1 id="3-4-데이터프레임-다루기"><a href="#3-4-데이터프레임-다루기" class="headerlink" title="3-4 데이터프레임 다루기"></a>3-4 데이터프레임 다루기</h1><p>데이터프레임도 시리즈와 마찬가지로 불린 추출과 브로드캐스팅을 할 수 있다. 그러면 불린 추출부터 실습해 보겠다.</p>
+<h3 id="불린-추출과-브로드캐스팅"><a href="#불린-추출과-브로드캐스팅" class="headerlink" title="불린 추출과 브로드캐스팅"></a>불린 추출과 브로드캐스팅</h3><h4 id="1-불린-추출하기"><a href="#1-불린-추출하기" class="headerlink" title="1. 불린 추출하기"></a>1. 불린 추출하기</h4><p>데이터프레임도 불린 추출을 할 수 있다. 다음은 데이터프레임의 Age 열에서 Age 열의 평균보다 높은 행만 출력한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(scientists[scientists[<span class="string">&#x27;Age&#x27;</span>] &gt; scientists[<span class="string">&#x27;Age&#x27;</span>].mean()])</span><br></pre></td></tr></table></figure>
+
+<pre><code>                   Name        Born        Died  Age     Occupation
+1        William Gosset  1876-06-13  1937-10-16   61   Statistician
+2  Florence Nightingale  1820-05-12  1910-08-13   90          Nurse
+3           Marie Curie  1867-11-07  1934-07-04   66        Chemist
+7          Johann Gauss  1777-04-30  1855-02-23   77  Mathematician</code></pre>
+<h4 id="2-5"><a href="#2-5" class="headerlink" title="2."></a>2.</h4><p>시리즈에 리스트로 참,거짓을 전달하여 데이터를 추출했던 것을 기억하는가? 참,거짓을 담은 리스트를 <strong>bool 벡터</strong>라고 부른다. 만약 bool 벡터의 길이가 데이터프레임의 행 길이보다 짧으면 bool 벡터의 길이만큼만 연산한다. 다음은 데이터프레임의 loc속성에 길이가 4인 bool 벡터를 전달한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(scientists.loc[[<span class="literal">True</span>, <span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">True</span>,<span class="literal">True</span>, <span class="literal">False</span>,<span class="literal">False</span>,<span class="literal">True</span>]]) <span class="comment"># 인덱스가 2인 행 데이터는 bool값이 False라 출력되지 않는다.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pandas 버전에 따라 row 와 boolean list 의 길이가 같아야 한다고 한다.</span></span><br><span class="line"><span class="comment"># 현재 버전 1.2.3으로 행과 불린을 맞추었다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>                Name        Born        Died  Age     Occupation
+0  Rosaline Franklin  1920-07-25  1958-04-16   37        Chemist
+1     William Gosset  1876-06-13  1937-10-16   61   Statistician
+3        Marie Curie  1867-11-07  1934-07-04   66        Chemist
+4      Rachel Carson  1907-05-27  1964-04-14   56      Biologist
+7       Johann Gauss  1777-04-30  1855-02-23   77  Mathematician</code></pre>
+<h4 id="3-브로드캐스팅하기"><a href="#3-브로드캐스팅하기" class="headerlink" title="3. 브로드캐스팅하기"></a>3. 브로드캐스팅하기</h4><p>데이터프레임에 스칼라 연산을 적용하면 어떻게 될까? 앞에서 시리즈에 스칼라 연산을 적용할 때는 모든 요소에 스칼라를 적용하여 연산했다. 데이터프레임도 마찬가지이다. scientists 데이터프레임에 2를 곱하면 정수 데이터는 2를 곱한 숫자가 되고 문자열 데이터는 문자열이 2배로 늘어난다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(scientists * <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>                                       Name                  Born  \
+0        Rosaline FranklinRosaline Franklin  1920-07-251920-07-25   
+1              William GossetWilliam Gosset  1876-06-131876-06-13   
+2  Florence NightingaleFlorence Nightingale  1820-05-121820-05-12   
+3                    Marie CurieMarie Curie  1867-11-071867-11-07   
+4                Rachel CarsonRachel Carson  1907-05-271907-05-27   
+5                        John SnowJohn Snow  1813-03-151813-03-15   
+6                    Alan TuringAlan Turing  1912-06-231912-06-23   
+7                  Johann GaussJohann Gauss  1777-04-301777-04-30   
+
+                   Died  Age                            Occupation  
+0  1958-04-161958-04-16   74                        ChemistChemist  
+1  1937-10-161937-10-16  122              StatisticianStatistician  
+2  1910-08-131910-08-13  180                            NurseNurse  
+3  1934-07-041934-07-04  132                        ChemistChemist  
+4  1964-04-141964-04-14  112                    BiologistBiologist  
+5  1858-06-161858-06-16   90                    PhysicianPhysician  
+6  1954-06-071954-06-07   82  Computer ScientistComputer Scientist  
+7  1855-02-231855-02-23  154            MathematicianMathematician  </code></pre>
+<h1 id="3-5-시리즈와-데이터프레임의-데이터-처리하기"><a href="#3-5-시리즈와-데이터프레임의-데이터-처리하기" class="headerlink" title="3-5 시리즈와 데이터프레임의 데이터 처리하기"></a>3-5 시리즈와 데이터프레임의 데이터 처리하기</h1><p>지금까지는 시리즈와 데이터프레임에서 데이터를 추출하는 여러 방법에 대해 알아 보았다. 이번에는 시리즈와 데이터프레임에 있는 데이터를 처리하는 방법에 대해 알아보겠다.</p>
+<h3 id="시리즈와-데이터프레임의-데이터-처리하기"><a href="#시리즈와-데이터프레임의-데이터-처리하기" class="headerlink" title="시리즈와 데이터프레임의 데이터 처리하기"></a>시리즈와 데이터프레임의 데이터 처리하기</h3><h4 id="1-열의-자료형-바꾸기와-새로운-열-추가하기"><a href="#1-열의-자료형-바꾸기와-새로운-열-추가하기" class="headerlink" title="1.열의 자료형 바꾸기와 새로운 열 추가하기"></a>1.열의 자료형 바꾸기와 새로운 열 추가하기</h4><p>scientists 데이터프레임의 Born과 Died 열의 자료형을 확인해 보겠다. 각각의 자료형은 문자열(오브젝트)이다.</p>
+<p><em>참고로 파이썬 문자열은 판다스에서 오브젝트로 취급한다고 2장에서 설명하였다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(scientists[<span class="string">&#x27;Born&#x27;</span>].dtype)</span><br></pre></td></tr></table></figure>
+
+<pre><code>object</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(scientists[<span class="string">&#x27;Died&#x27;</span>].dtype)</span><br></pre></td></tr></table></figure>
+
+<pre><code>object</code></pre>
+<h4 id="2-6"><a href="#2-6" class="headerlink" title="2."></a>2.</h4><p>날짜를 문자열로 저장한 데이터는 시간 관련 작업을 할 수 있도록 datetime 자료형으로 바꾸는 것이 더 좋다. 다음은 Born과 Died 열의 자료형을 datetime이라는 자료형으로 바꾼 다음 format 속성을 ‘%Y-%m-%d’로 지정하여 날짜 형식을 지정한 것이다.</p>
+<p><em>참고로 datetime 자료형은 12장에서 더 자세히 나온다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">born_datetime = pd.to_datetime(scientists[<span class="string">&#x27;Born&#x27;</span>], <span class="built_in">format</span>=<span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line">print(born_datetime)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0   1920-07-25
+1   1876-06-13
+2   1820-05-12
+3   1867-11-07
+4   1907-05-27
+5   1813-03-15
+6   1912-06-23
+7   1777-04-30
+Name: Born, dtype: datetime64[ns]</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">died_datetime = pd.to_datetime(scientists[<span class="string">&#x27;Died&#x27;</span>], <span class="built_in">format</span> = <span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line">print(died_datetime)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0   1958-04-16
+1   1937-10-16
+2   1910-08-13
+3   1934-07-04
+4   1964-04-14
+5   1858-06-16
+6   1954-06-07
+7   1855-02-23
+Name: Died, dtype: datetime64[ns]</code></pre>
+<h4 id="3-3"><a href="#3-3" class="headerlink" title="3."></a>3.</h4><p>과정 <strong>2</strong>에서 각 데이터의 자료형을 datetime으로 바꿔 born_datetime, died_datetime에 저장했으니 이제 데이터프레임에 각각의 값을 새로운 열로 추가해 보겠다. 다음은 scientists 데이터프레임에 born_dt, died_dt 열을 추가한 것이다. shape 속성으로 데이터프레임의 형태를 살펴보면 (8,5)에서 (8,7)로 2개의 열이 추가되었다는 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scientists[<span class="string">&#x27;born_dt&#x27;</span>], scientists[<span class="string">&#x27;died_dt&#x27;</span>] = (born_datetime, died_datetime)</span><br><span class="line">print(scientists.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>                   Name        Born        Died  Age    Occupation    born_dt  \
+0     Rosaline Franklin  1920-07-25  1958-04-16   37       Chemist 1920-07-25   
+1        William Gosset  1876-06-13  1937-10-16   61  Statistician 1876-06-13   
+2  Florence Nightingale  1820-05-12  1910-08-13   90         Nurse 1820-05-12   
+3           Marie Curie  1867-11-07  1934-07-04   66       Chemist 1867-11-07   
+4         Rachel Carson  1907-05-27  1964-04-14   56     Biologist 1907-05-27   
+
+     died_dt  
+0 1958-04-16  
+1 1937-10-16  
+2 1910-08-13  
+3 1934-07-04  
+4 1964-04-14  </code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(scientists.shape)  <span class="comment"># shape의 두 번째 값은 열의 크기를 의미한다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>(8, 7)</code></pre>
+<h4 id="4-3"><a href="#4-3" class="headerlink" title="4."></a>4.</h4><p>이제 시간 계산을 해보자 died_dt 열에서 born_dt를 빼면 과학자가 얼마 동안 세상을 살다가 떠났는지 계산할 수 있다. 만약 결과값이 제대로 출력되지 않는다면 과정 <strong>1~3</strong>을 다시 실행해 보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scientists[<span class="string">&#x27;age_dats_dt&#x27;</span>] = (scientists[<span class="string">&#x27;died_dt&#x27;</span>] - scientists[<span class="string">&#x27;born_dt&#x27;</span>])</span><br><span class="line">print(scientists)</span><br></pre></td></tr></table></figure>
+
+<pre><code>                   Name        Born        Died  Age          Occupation  \
+0     Rosaline Franklin  1920-07-25  1958-04-16   37             Chemist   
+1        William Gosset  1876-06-13  1937-10-16   61        Statistician   
+2  Florence Nightingale  1820-05-12  1910-08-13   90               Nurse   
+3           Marie Curie  1867-11-07  1934-07-04   66             Chemist   
+4         Rachel Carson  1907-05-27  1964-04-14   56           Biologist   
+5             John Snow  1813-03-15  1858-06-16   45           Physician   
+6           Alan Turing  1912-06-23  1954-06-07   41  Computer Scientist   
+7          Johann Gauss  1777-04-30  1855-02-23   77       Mathematician   
+
+     born_dt    died_dt age_dats_dt  
+0 1920-07-25 1958-04-16  13779 days  
+1 1876-06-13 1937-10-16  22404 days  
+2 1820-05-12 1910-08-13  32964 days  
+3 1867-11-07 1934-07-04  24345 days  
+4 1907-05-27 1964-04-14  20777 days  
+5 1813-03-15 1858-06-16  16529 days  
+6 1912-06-23 1954-06-07  15324 days  
+7 1777-04-30 1855-02-23  28422 days  </code></pre>
+<h4 id="5-시리즈-데이터프레임의-데이터-섞기"><a href="#5-시리즈-데이터프레임의-데이터-섞기" class="headerlink" title="5. 시리즈, 데이터프레임의 데이터 섞기"></a>5. 시리즈, 데이터프레임의 데이터 섞기</h4><p>가끔은 데이터를 적당히 섞어야 하는 경우도 있다. 판다스는 시리즈나 데이터프레임의 데이터를 무작위로 섞어볼 수도 있다. 먼저 Age 값을 출력하여 살펴보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(scientists[<span class="string">&#x27;Age&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    37
+1    61
+2    90
+3    66
+4    56
+5    45
+6    41
+7    77
+Name: Age, dtype: int64</code></pre>
+<h4 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h4><p>Age 열의 데이터를 섞으려면 random 라이브러리를 불러와야 한다. random 라이브러리에는 데이터를 섞어주는 shuffle 메서드가 있다. shuffle 메서드에 Age 열을 전달하여 데이터를 섞어보겠다. Age 열을 출력해 보면 인덱스 0~7에 해당하는 값이 잘 섞여 있음을 알 수 있다.</p>
+<p><em>참고로 seed 메서드는 컴퓨터가 생성하는 난수의 기준값을 정하기 위해 사용한다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">random.seed(<span class="number">42</span>)</span><br><span class="line">random.shuffle(scientists[<span class="string">&#x27;Age&#x27;</span>])</span><br><span class="line">print(scientists[<span class="string">&#x27;Age&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    77
+1    90
+2    37
+3    61
+4    41
+5    45
+6    66
+7    56
+Name: Age, dtype: int64</code></pre>
+<h4 id="7-데이터프레임의-열-삭제하기"><a href="#7-데이터프레임의-열-삭제하기" class="headerlink" title="7. 데이터프레임의 열 삭제하기"></a>7. 데이터프레임의 열 삭제하기</h4><p>때로는 열을 통째로 삭제해야 하는 경우도 있다. 먼저 scientists 데이터프레임의 열을 확인해 보겠다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(scientists.columns)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Index([&#39;Name&#39;, &#39;Born&#39;, &#39;Died&#39;, &#39;Age&#39;, &#39;Occupation&#39;, &#39;born_dt&#39;, &#39;died_dt&#39;,
+       &#39;age_dats_dt&#39;],
+      dtype=&#39;object&#39;)</code></pre>
+<h4 id="8"><a href="#8" class="headerlink" title="8."></a>8.</h4><p>데이터프레임에서 열을 삭제하려면 데이터프레임의 drop 메서드를 사용해야 합니다. shuffle 메서드로 섞은 Age 열을 삭제해 보겠다. drop 메서드의 첫 번째 인자에 열 이름을 리스트에 담아 전달하고 두 번째 인자에는 axis = 1을 전달하면 Age 열을 삭제할 수 있다.</p>
+<p><em>참고로 drop 메서드는 삭제한 열을 반환한다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scientists_dropped = scientists.drop([<span class="string">&#x27;Age&#x27;</span>], axis = <span class="number">1</span>)</span><br><span class="line">print(scientists_dropped.columns)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Index([&#39;Name&#39;, &#39;Born&#39;, &#39;Died&#39;, &#39;Occupation&#39;, &#39;born_dt&#39;, &#39;died_dt&#39;,
+       &#39;age_dats_dt&#39;],
+      dtype=&#39;object&#39;)</code></pre>
+<h1 id="3-6-데이터-저장하고-불러오기"><a href="#3-6-데이터-저장하고-불러오기" class="headerlink" title="3-6 데이터 저장하고 불러오기"></a>3-6 데이터 저장하고 불러오기</h1><p>지금까지 데이터를 추출하고 처리하는 방법에 대해 알아보았다. 일종의 ‘데이터 가공처리’를 거친 것이다. 이렇게 잘 가공한 데이터는 안전하게 보관해야 다음에 또 사용할 수 있다. 판다스는 데이터를 저장하는 다양한 방법을 제공한다. 여기서는 가공한 데이터를 피클,CSV,TSV 파일로 저장하고 다시 불러오는 방법에 대해 살펴본다.</p>
+<h3 id="데이터를-피클-CSV-TSV-파일로-저장하고-불러오기"><a href="#데이터를-피클-CSV-TSV-파일로-저장하고-불러오기" class="headerlink" title="데이터를 피클,CSV,TSV 파일로 저장하고 불러오기"></a>데이터를 피클,CSV,TSV 파일로 저장하고 불러오기</h3><h4 id="1-피클로-저장하기"><a href="#1-피클로-저장하기" class="headerlink" title="1. 피클로 저장하기"></a>1. 피클로 저장하기</h4><p>피클은 데이터를 바이너리 형태로 직렬화한 오브젝트를 저장하는 방법이다. 피클로 저장하면 스프레드시트보다 더 작은 용량으로 데이터를 저장할 수 있어 매우 편리하다. 시리즈를 피클로 저장하려면 to_pickle 메서드를 사용하면 되는데 이때 저장 경로를 문자열로 전달해야 한다.</p>
+<p><em>참고로 데이터를 오래 보관한다는 뜻으로 피클이라는 이름이 붙여진 것이다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">names = scientists[<span class="string">&#x27;Name&#x27;</span>]</span><br><span class="line">names.to_pickle(<span class="string">&#x27;Doit_판다스입문_소스/output/scientists_names_series.pickle&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 피클 저장을 개인적 경로에 다시 저장해서 불러와 보았다</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-7"><a href="#2-7" class="headerlink" title="2."></a>2.</h4><p>데이터프레임도 피클로 저장할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scientists.to_pickle(<span class="string">&#x27;Doit_판다스입문_소스/output/scientists_df.pickle&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-4"><a href="#3-4" class="headerlink" title="3."></a>3.</h4><p>피클은 바이너리 형태의 오브젝트이기 때문에 저장된 피클 데이터를 편집기와 같은 프로그램으로 열어보면 이상한 문자가 나타난다. 피클 데이터는 반드시 read_pickle 메서드로 읽어 들여야 한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scientist_names_from_pickle = pd.read_pickle(<span class="string">&#x27;Doit_판다스입문_소스/output/scientists_names_series.pickle&#x27;</span>)</span><br><span class="line">print(scientist_names_from_pickle)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0       Rosaline Franklin
+1          William Gosset
+2    Florence Nightingale
+3             Marie Curie
+4           Rachel Carson
+5               John Snow
+6             Alan Turing
+7            Johann Gauss
+Name: Name, dtype: object</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scientists_from_pickle = pd.read_pickle(<span class="string">&#x27;Doit_판다스입문_소스/output/scientists_df.pickle&#x27;</span>)</span><br><span class="line">print(scientists_from_pickle)</span><br></pre></td></tr></table></figure>
+
+<pre><code>                   Name        Born        Died  Age          Occupation  \
+0     Rosaline Franklin  1920-07-25  1958-04-16   77             Chemist   
+1        William Gosset  1876-06-13  1937-10-16   90        Statistician   
+2  Florence Nightingale  1820-05-12  1910-08-13   37               Nurse   
+3           Marie Curie  1867-11-07  1934-07-04   61             Chemist   
+4         Rachel Carson  1907-05-27  1964-04-14   41           Biologist   
+5             John Snow  1813-03-15  1858-06-16   45           Physician   
+6           Alan Turing  1912-06-23  1954-06-07   66  Computer Scientist   
+7          Johann Gauss  1777-04-30  1855-02-23   56       Mathematician   
+
+     born_dt    died_dt age_dats_dt  
+0 1920-07-25 1958-04-16  13779 days  
+1 1876-06-13 1937-10-16  22404 days  
+2 1820-05-12 1910-08-13  32964 days  
+3 1867-11-07 1934-07-04  24345 days  
+4 1907-05-27 1964-04-14  20777 days  
+5 1813-03-15 1858-06-16  16529 days  
+6 1912-06-23 1954-06-07  15324 days  
+7 1777-04-30 1855-02-23  28422 days  </code></pre>
+<h4 id="4-CSV-파일과-TSV-파일로-저장하기"><a href="#4-CSV-파일과-TSV-파일로-저장하기" class="headerlink" title="4. CSV 파일과 TSV 파일로 저장하기"></a>4. CSV 파일과 TSV 파일로 저장하기</h4><p>CSV 파일은 데이터를 <strong>쉼표로 구분</strong>하여 저장한 파일이고 TSV 파일은 데이터를 <strong>탭으로 구분</strong>하여 저장한 파일이다. 실제로 각각의 파일을 텍스트 편집기로 열어 살펴보면 데이터가 쉼표, 탭으로 구분되어 있는 것을 알 수 있다. 다음은 data 폴더의 ‘concat_1.csv’파일과 ‘gapminder.tsv’ 파일을 비주얼 스튜디오 코드가 없다면 컴퓨터에 설치된 텍스트 편집기로 파일을 열어보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&#x27;Doit_판다스입문_소스/data/concat_1.csv&#x27;</span>)</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>    A   B   C   D
+0  a0  b0  c0  d0
+1  a1  b1  c1  d1
+2  a2  b2  c2  d2
+3  a3  b3  c3  d3</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df1 = pd.read_csv(<span class="string">&#x27;Doit_판다스입문_소스/data/gapminder.tsv&#x27;</span>, sep = <span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">print(df1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 다시한번 말하지만 \t는 tsv(탭)을 의미</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>          country continent  year  lifeExp       pop   gdpPercap
+0     Afghanistan      Asia  1952   28.801   8425333  779.445314
+1     Afghanistan      Asia  1957   30.332   9240934  820.853030
+2     Afghanistan      Asia  1962   31.997  10267083  853.100710
+3     Afghanistan      Asia  1967   34.020  11537966  836.197138
+4     Afghanistan      Asia  1972   36.088  13079460  739.981106
+...           ...       ...   ...      ...       ...         ...
+1699     Zimbabwe    Africa  1987   62.351   9216418  706.157306
+1700     Zimbabwe    Africa  1992   60.377  10704340  693.420786
+1701     Zimbabwe    Africa  1997   46.809  11404948  792.449960
+1702     Zimbabwe    Africa  2002   39.989  11926563  672.038623
+1703     Zimbabwe    Africa  2007   43.487  12311143  469.709298
+
+[1704 rows x 6 columns]</code></pre>
+<h4 id="5-3"><a href="#5-3" class="headerlink" title="5."></a>5.</h4><p>to_csv 메서드로 시리즈(names)와 데이터프레임(scientists)을 CSV 파일로 저장할 수 있다. 이때 sep 인자를 추가하여 ‘\t’를 지정하고 파일의 확장자를 ‘.tsv’로 지정하면 TSV 파일로 저장할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">names.to_csv(<span class="string">&#x27;Doit_판다스입문_소스/output/scientist_names_series.csv&#x27;</span>)</span><br><span class="line">scientists.to_csv(<span class="string">&#x27;Doit_판다스입문_소스/output/scientists_df.tsv&#x27;</span>, sep = <span class="string">&#x27;\t&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="시리즈와-데이터프레임을-엑셀-파일로-저장하기"><a href="#시리즈와-데이터프레임을-엑셀-파일로-저장하기" class="headerlink" title="시리즈와 데이터프레임을 엑셀 파일로 저장하기"></a>시리즈와 데이터프레임을 엑셀 파일로 저장하기</h4><p>시리즈는 엑셀 구조와 맞지 않기 때문에 엑셀 파일로 저장할 수 없다. 엑셀 파일로 저장할 수 있는 데이터프레임으로 변환해야 한다. 물론 데이터프레임은 엑셀 파일로 바로 저장할 수 있다. 단, xls 파일로 저장하려면 xlwt 라이브러리가 필요하고, xlsx 파일로 저장하려면 openpyxl 라이브러리가 필요하다. 다음 명령어를 아나콘다 프롬포트에 입력하여 xlwt 라이브러리와 openpyxl 라이브러리를 설치하자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install xlwt</span><br><span class="line">pip install openpyxl</span><br></pre></td></tr></table></figure>
+
+<p>시리즈는 to_frame이라는 메서드를 사용해 데이터프레임으로 변환한 다음 엑셀 파일로 저장해야 한다. 다음은 시리즈를 데이터프레임으로 변환한 다음 엑셀 파일(확장자 xls, xlsx)로 저장한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">names_df = names.to_frame()</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> xlwt</span><br><span class="line">names_df.to_excel(<span class="string">&#x27;Doit_판다스입문_소스/output/scientist_names_series_df.xls&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line">names_df.to_excel(<span class="string">&#x27;Doit_판다스입문_소스/output/scientist_names_series_df.xlsx&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>출처 : Do it 판다스</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://kim-1994.github.io/2021/03/28/pandas(2)/" data-id="ckmtaisku0000tgvj0t4re7kj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "HOya"
+        },
+        "headline": "판다스 데이터프레임과 시리즈",
+        "image": "http://KIM-1994.github.io",
+        "keywords": "",
+        "genre": "Do it 판다스",
+        "datePublished": "2021-03-28",
+        "dateCreated": "2021-03-28",
+        "dateModified": "2021-03-28",
+        "url": "http://KIM-1994.github.io/2021/03/28/pandas(2)/",
+        "description": "3-1 나만의 데이터 만들기시리즈와 데이터프레임 직접 만들기1. 시리즈 만들기판다스의 Series 메서드에 리스트를 전달하여 시리즈를 생성합니다.
+123import pandas as pds = pd.Series([&#x27;banana&#x27;,42])print(s)
+
+0    banana
+1        42
+dtype: object
+2.2장에서 인덱스",
+        "wordCount": 5662
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/KIM-1994" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2021/03/25/pandas(1)/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">판다스 시작하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/28/pandas(2)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/03/28/pandas(2)/" class="title">판다스 데이터프레임과 시리즈</a></p>
+                            <p class="item-date"><time datetime="2021-03-28T14:55:52.559Z" itemprop="datePublished">2021-03-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/25/pandas(1)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/112465950-a0661980-8da8-11eb-9c33-4550e1cbe45d.png)" alt="판다스 시작하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/03/25/pandas(1)/" class="title">판다스 시작하기</a></p>
+                            <p class="item-date"><time datetime="2021-03-25T11:21:12.000Z" itemprop="datePublished">2021-03-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/15/Jump%20to%20Python(11)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></p>
+                            <p class="item-title"><a href="/2021/03/15/Jump%20to%20Python(11)/" class="title">파이썬 기초(11)</a></p>
+                            <p class="item-date"><time datetime="2021-03-14T15:51:25.940Z" itemprop="datePublished">2021-03-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/14/Jump%20to%20Python(10)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></p>
+                            <p class="item-title"><a href="/2021/03/14/Jump%20to%20Python(10)/" class="title">파이썬 기초(10)</a></p>
+                            <p class="item-date"><time datetime="2021-03-14T14:46:30.352Z" itemprop="datePublished">2021-03-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/13/Jump%20to%20Python(9)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://wikidocs.net/images/page/12392/setdata.png)" alt="파이썬 기초(9)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></p>
+                            <p class="item-title"><a href="/2021/03/13/Jump%20to%20Python(9)/" class="title">파이썬 기초(9)</a></p>
+                            <p class="item-date"><time datetime="2021-03-13T02:46:43.736Z" itemprop="datePublished">2021-03-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kaggle/">Kaggle</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/">crawling</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a><span class="category-list-count">2</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawling/" rel="tag">crawling</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">데이터</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" rel="tag">오픈소스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84/" rel="tag">통계</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" rel="tag">통계학</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag">파이썬</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" rel="tag">확률분포</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/crawling/" style="font-size: 20px;">crawling</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" style="font-size: 15px;">데이터</a> <a href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" style="font-size: 15px;">오픈소스</a> <a href="/tags/%ED%86%B5%EA%B3%84/" style="font-size: 10px;">통계</a> <a href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" style="font-size: 15px;">통계학</a> <a href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" style="font-size: 20px;">파이썬</a> <a href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" style="font-size: 10px;">확률분포</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 HOya</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://kim-1994.github.io/2021/03/28/pandas(2)/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
