@@ -6,25 +6,23 @@
     
 
     
-    <title>파이썬 기초 (1) | Welcome to HOya World</title>
+    <title>누락값 처리하기 | Welcome to HOya World</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="" />
     
-    <meta name="description" content="파이썬 프로그래밍의 기초, 자료형2-1 숫자형    항목 파이썬 사용 예    정수 123, -345, 0   실수 123.45, -1234.5, 3.4e10   8진수 0o34, 0o25   16진수 0x2A, 0xFF   정수형양의 정수와 음의 정수, 0 123a &#x3D; 123a &#x3D; -178a &#x3D; 0  실수형소수점을 포함된 숫자 12345a &#x3D; 1.2a &#x3D;">
+    <meta name="description" content="6-1 누락값이란?누락값과 누락값 확인하기누락값(NaN)은 NaN, NAN, nan과 같은 방법으로 표기할 수 있다. 이 책에서는 누락값을 NaN이라고 표기하여 사용한다. 그러면 바로 실습을 진행해 보면서 누락값이 무엇인지 알아보자. 참고로 누락값을 파이썬에 사용하려면 넘파이(numpy) 라이브러리가 필요하다. 넘파이 라이브러리는 수학이나 과학 연산을 위해">
 <meta property="og:type" content="article">
-<meta property="og:title" content="파이썬 기초 (1)">
-<meta property="og:url" content="http://kim-1994.github.io/2021/03/09/Jump%20to%20Python(1)/index.html">
+<meta property="og:title" content="누락값 처리하기">
+<meta property="og:url" content="http://kim-1994.github.io/2021/03/30/pandas(5)/index.html">
 <meta property="og:site_name" content="Welcome to HOya World">
-<meta property="og:description" content="파이썬 프로그래밍의 기초, 자료형2-1 숫자형    항목 파이썬 사용 예    정수 123, -345, 0   실수 123.45, -1234.5, 3.4e10   8진수 0o34, 0o25   16진수 0x2A, 0xFF   정수형양의 정수와 음의 정수, 0 123a &#x3D; 123a &#x3D; -178a &#x3D; 0  실수형소수점을 포함된 숫자 12345a &#x3D; 1.2a &#x3D;">
+<meta property="og:description" content="6-1 누락값이란?누락값과 누락값 확인하기누락값(NaN)은 NaN, NAN, nan과 같은 방법으로 표기할 수 있다. 이 책에서는 누락값을 NaN이라고 표기하여 사용한다. 그러면 바로 실습을 진행해 보면서 누락값이 무엇인지 알아보자. 참고로 누락값을 파이썬에 사용하려면 넘파이(numpy) 라이브러리가 필요하다. 넘파이 라이브러리는 수학이나 과학 연산을 위해">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://user-images.githubusercontent.com/72365693/110462287-d1412000-8113-11eb-89ef-79dc03721218.PNG">
-<meta property="article:published_time" content="2021-03-09T12:53:06.564Z">
-<meta property="article:modified_time" content="2021-03-09T12:53:06.566Z">
+<meta property="article:published_time" content="2021-03-30T14:14:38.570Z">
+<meta property="article:modified_time" content="2021-03-30T14:17:50.181Z">
 <meta property="article:author" content="HOya">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/72365693/110462287-d1412000-8113-11eb-89ef-79dc03721218.PNG">
     
 
     
@@ -149,19 +147,19 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a>
+    <a class="page-title-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Jump to Python(1)" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-pandas(5)" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        파이썬 기초 (1)
+        누락값 처리하기
         </h1>
     
 
@@ -172,16 +170,16 @@
                 
   <div class="article-date">
     <i class="fa fa-calendar"></i>
-    <a href="/2021/03/09/Jump%20to%20Python(1)/" class="article-date">
-       <time datetime="2021-03-09T12:53:06.564Z" itemprop="datePublished">2021-03-09</time>
+    <a href="/2021/03/30/pandas(5)/" class="article-date">
+       <time datetime="2021-03-30T14:14:38.570Z" itemprop="datePublished">2021-03-30</time>
     </a>
   </div>
 
 
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
-  <a href="/2021/03/09/Jump%20to%20Python(1)/" class="article-date">
-     <time datetime="2021-03-09T12:53:06.566Z" itemprop="dateModified">2021-03-09</time>
+  <a href="/2021/03/30/pandas(5)/" class="article-date">
+     <time datetime="2021-03-30T14:17:50.181Z" itemprop="dateModified">2021-03-30</time>
   </a>
 </div>
 
@@ -203,736 +201,332 @@
 
             
 
-            <h1 id="파이썬-프로그래밍의-기초-자료형"><a href="#파이썬-프로그래밍의-기초-자료형" class="headerlink" title="파이썬 프로그래밍의 기초, 자료형"></a>파이썬 프로그래밍의 기초, 자료형</h1><h2 id="2-1-숫자형"><a href="#2-1-숫자형" class="headerlink" title="2-1 숫자형"></a>2-1 숫자형</h2><hr>
-<table>
-<thead>
-<tr>
-<th align="center"><strong>항목</strong></th>
-<th><strong>파이썬 사용 예</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">정수</td>
-<td>123, -345, 0</td>
-</tr>
-<tr>
-<td align="center">실수</td>
-<td>123.45, -1234.5, 3.4e10</td>
-</tr>
-<tr>
-<td align="center">8진수</td>
-<td>0o34, 0o25</td>
-</tr>
-<tr>
-<td align="center">16진수</td>
-<td>0x2A, 0xFF</td>
-</tr>
-</tbody></table>
-<h3 id="정수형"><a href="#정수형" class="headerlink" title="정수형"></a>정수형</h3><p><strong>양의 정수와 음의 정수, 0</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">123</span></span><br><span class="line">a = <span class="number">-178</span></span><br><span class="line">a = <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="실수형"><a href="#실수형" class="headerlink" title="실수형"></a>실수형</h3><p><strong>소수점을 포함된 숫자</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1.2</span></span><br><span class="line">a = <span class="number">-3.45</span></span><br><span class="line">a = <span class="number">4.24E10</span></span><br><span class="line">a = <span class="number">4.24e10</span></span><br><span class="line"><span class="comment"># e와 E 둘 중 어느 것을 사용해도 무방하다.</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="8진수와-16진수"><a href="#8진수와-16진수" class="headerlink" title="8진수와 16진수"></a>8진수와 16진수</h3><p><strong>숫자가 0o 또는 0O(숫자 0 + 알파벳 소문자 o 또는 대문자 O</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 8진수</span></span><br><span class="line">a = <span class="number">0o177</span> </span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 16진수</span></span><br><span class="line">a = <span class="number">0x8ff</span></span><br><span class="line">b = <span class="number">0xABC</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="사칙연산"><a href="#사칙연산" class="headerlink" title="사칙연산"></a>사칙연산</h3><p><strong>(+,-,+,/)</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line">b = <span class="number">4</span></span><br><span class="line">a + b</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>7</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a * b</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>12</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a / b</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>0.75</code></pre>
-<h3 id="x의-y제곱을-나타내는-연산자"><a href="#x의-y제곱을-나타내는-연산자" class="headerlink" title="x의 y제곱을 나타내는 **연산자"></a>x의 y제곱을 나타내는 **연산자</h3><p><strong>x의 y제곱($x^y$) 값을 돌려준다.</strong> </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line">b = <span class="number">4</span></span><br><span class="line">a ** b</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>81</code></pre>
-<h3 id="나눗셈-후-나머지를-반환하는-연산자"><a href="#나눗셈-후-나머지를-반환하는-연산자" class="headerlink" title="나눗셈 후 나머지를 반환하는 % 연산자"></a>나눗셈 후 나머지를 반환하는 % 연산자</h3><p><strong>나눗셈의 나머지 값을 돌려주는 연산자</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7</span> % <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>1</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> % <span class="number">7</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>3</code></pre>
-<h3 id="나눗셈-후-몫을-반환하는-연산자"><a href="#나눗셈-후-몫을-반환하는-연산자" class="headerlink" title="나눗셈 후 몫을 반환하는 // 연산자"></a>나눗셈 후 몫을 반환하는 // 연산자</h3><p><strong>정수값만 돌려주는 연산자</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7</span> / <span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>1.75</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7</span> // <span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>1</code></pre>
-<h2 id="2-2-문자열-자료형"><a href="#2-2-문자열-자료형" class="headerlink" title="2-2 문자열 자료형"></a>2-2 문자열 자료형</h2><hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 문자열은 큰따옴표(&quot;&quot;)를 사용</span></span><br><span class="line"><span class="string">&quot;Life is too short, You need Python&quot;</span></span><br><span class="line"><span class="string">&quot;a&quot;</span></span><br><span class="line"><span class="string">&quot;123&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;123&#39;</code></pre>
-<ol>
-<li>큰따옴표(“)로 양쪽 둘러싸기</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Hellow World&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Hellow World&#39;</code></pre>
-<ol start="2">
-<li>작은따옴표(‘)로 양쪽 둘러싸기</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;Python is fun&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Python is fun&#39;</code></pre>
-<ol start="3">
-<li>큰따옴표 3개를 연속(“””)으로 써서 양쪽 둘러싸기</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;Life is too short, You need python&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Life is too short, You need python&#39;</code></pre>
-<ol start="4">
-<li>작은따옴표 3개를 연속(‘’’)으로 써서 양쪽 둘러싸기</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;Life is too short, You need python&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Life is too short, You need python&#39;</code></pre>
-<h4 id="문자열-안에-작은따옴표나-큰따옴표를-포함시키고-싶을-때"><a href="#문자열-안에-작은따옴표나-큰따옴표를-포함시키고-싶을-때" class="headerlink" title="문자열 안에 작은따옴표나 큰따옴표를 포함시키고 싶을 때"></a>문자열 안에 작은따옴표나 큰따옴표를 포함시키고 싶을 때</h4><ol>
-<li>문자열에 작은따옴표 (‘) 포함시키기</li>
-</ol>
-<p>Python’s favorite food is perl</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">food = <span class="string">&quot;Pthon&#x27;s favorite food is perl&quot;</span></span><br><span class="line">food</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&quot;Pthon&#39;s favorite food is perl&quot;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">food = <span class="string">&#x27;Python&#x27;</span>s favorite food <span class="keyword">is</span> perl<span class="string">&#x27;</span></span><br><span class="line"><span class="string">food</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># &#x27;</span>Python<span class="string">&#x27;이 문자열로 인식되어 구문오류(invalid syntax)가 발생한다.</span></span><br></pre></td></tr></table></figure>
-
-
-<pre><code>  File &quot;&lt;ipython-input-25-1f04e10d502e&gt;&quot;, line 1
-    food = &#39;Python&#39;s favorite food is perl&#39;
-                   ^
-SyntaxError: invalid syntax</code></pre>
-<ol start="2">
-<li>문자열에 큰따옴표(“) 포함시키기</li>
-</ol>
-<p>“Python is very easy.” he says.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">say = <span class="string">&#x27;&quot;Python is very easy.&quot; he syas&#x27;</span></span><br><span class="line">say</span><br><span class="line"></span><br><span class="line"><span class="comment"># 작은따옴표(&#x27;) 안에 사용된 큰따옴표(&quot;)를 문자열을 만드는 기호로 인식되지 않는다.</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;&quot;Python is very easy.&quot; he syas&#39;</code></pre>
-<ol start="3">
-<li>백슬래시(|)를 사용해서 작은 따옴표(‘)와 큰따옴표(“)를 문자열에 포함시키기</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">food = <span class="string">&#x27;Python\&#x27;s favorite food is perl&#x27;</span></span><br><span class="line">say = <span class="string">&quot;\&quot;Python is very easy.\&quot; he says.&quot;</span></span><br><span class="line"></span><br><span class="line">food</span><br><span class="line">say</span><br><span class="line"></span><br><span class="line"><span class="comment"># 백슬래시(\)를 작은따옴표(&#x27;&#x27;)나 큰따옴표(&quot;&quot;) 앞에 삽입하면 백슬래시(\) 뒤의 작은 따옴표, 큰따옴표는 문자열을 둘러싸는 기호의 의미가 아니라 문자(&#x27;&#x27;),(&quot;&quot;) 그 자체를 뜻하게된다.</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;&quot;Python is very easy.&quot; he says.&#39;</code></pre>
-<p>여러 줄인 문자열을 변수에 대입하고 싶을 때</p>
-<p>Life is too short<br>You need python</p>
-<ol>
-<li>줄을 바꾸는 이스케이프 코드’\n’ 삽입하기</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">multiline = <span class="string">&quot;Life is too short\nYou need python&quot;</span></span><br><span class="line">print(multiline)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 단점 : 읽기에 불편하고 줄이 길어짐</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>Life is too short
-You need python</code></pre>
-<ol start="2">
-<li>연속된 작은따옴표 3개(‘’’) 또는 큰따옴표 3개(‘’’) 사용하기 (위의 단점 개선)</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">multiline = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">Life is too short</span></span><br><span class="line"><span class="string">You need python</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">print(multiline)</span><br></pre></td></tr></table></figure>
-
-
-<pre><code>Life is too short
-You need python</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">multiline = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Life is too short </span></span><br><span class="line"><span class="string">You need python</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">print(multiline)</span><br></pre></td></tr></table></figure>
-
-
-<pre><code>Life is too short 
-You need python</code></pre>
-<p><img src="https://user-images.githubusercontent.com/72365693/110462287-d1412000-8113-11eb-89ef-79dc03721218.PNG"></p>
-<h2 id="문자열-연산하기"><a href="#문자열-연산하기" class="headerlink" title="문자열 연산하기"></a>문자열 연산하기</h2><hr>
-<h3 id="1-문자열-더해서-연결하기-Concatenation"><a href="#1-문자열-더해서-연결하기-Concatenation" class="headerlink" title="1. 문자열 더해서 연결하기(Concatenation)"></a>1. 문자열 더해서 연결하기(Concatenation)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">head = <span class="string">&quot;Python&quot;</span></span><br><span class="line">tail = <span class="string">&quot;is fun!&quot;</span></span><br><span class="line">head + tail</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Pythonis fun!&#39;</code></pre>
-<h3 id="2-문자열-곱하기"><a href="#2-문자열-곱하기" class="headerlink" title="2. 문자열 곱하기"></a>2. 문자열 곱하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;python&quot;</span></span><br><span class="line">a * <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;pythonpython&#39;</code></pre>
-<h3 id="3-문자열-곱하기-응용"><a href="#3-문자열-곱하기-응용" class="headerlink" title="3. 문자열 곱하기 응용"></a>3. 문자열 곱하기 응용</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&quot;=&quot;</span> * <span class="number">50</span>)</span><br><span class="line">print(<span class="string">&quot;My Program&quot;</span>)</span><br><span class="line">print(<span class="string">&quot;=&quot;</span> * <span class="number">50</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>==================================================
-My Program
-==================================================</code></pre>
-<h3 id="4-문자열-인덱싱과-슬라이싱"><a href="#4-문자열-인덱싱과-슬라이싱" class="headerlink" title="4. 문자열 인덱싱과 슬라이싱"></a>4. 문자열 인덱싱과 슬라이싱</h3><h4 id="문자열-인덱싱이란"><a href="#문자열-인덱싱이란" class="headerlink" title="문자열 인덱싱이란?"></a>문자열 인덱싱이란?</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short, You need Python&quot;</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Life is too short, You need Python&#39;</code></pre>
-<p><img src="https://user-images.githubusercontent.com/72365693/110463051-c5a22900-8114-11eb-9193-22b091696e73.PNG"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short, You need Python&quot;</span></span><br><span class="line">a[<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;e&#39;</code></pre>
-<p><strong>“파이썬은 0부터 숫자를 센다”</strong></p>
-<p><img src="https://user-images.githubusercontent.com/72365693/110463319-1c0f6780-8115-11eb-9810-a0133b304bec.PNG"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">-0</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;L&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">-2</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;o&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">-5</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;y&#39;</code></pre>
-<h4 id="문자열-슬라이싱이란"><a href="#문자열-슬라이싱이란" class="headerlink" title="문자열 슬라이싱이란?"></a>문자열 슬라이싱이란?</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short, You need Python&quot;</span></span><br><span class="line">b = a[<span class="number">0</span>] + a[<span class="number">1</span>] + a[<span class="number">2</span>] + a[<span class="number">3</span>]</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Life&#39;</code></pre>
-<blockquote>
-<p>※ 인덱싱 기법과 슬라이싱 기법은 뒤에서 배울 자료형인 리스트나 튜플에서도 사용할 수 있다.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short, You need Python&quot;</span></span><br><span class="line">a[<span class="number">0</span>:<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Life&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">0</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Lif&#39;</code></pre>
-<h4 id="문자열을-슬라이싱하는-방법"><a href="#문자열을-슬라이싱하는-방법" class="headerlink" title="문자열을 슬라이싱하는 방법"></a>문자열을 슬라이싱하는 방법</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">0</span>:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Life &#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">0</span>:<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Li&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">5</span>:<span class="number">7</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;is&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">12</span>:<span class="number">17</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;short&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">19</span>:] <span class="comment"># a[시작번호 : 끝 번호]에서 끝 번호 생략하면 시작 번호부터 그 문자열의 끝까지 뽑아낸다.</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;You need Python&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[:<span class="number">17</span>] <span class="comment"># a[시작번호 : 끝 번호]에서 시작번호 생략</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Life is too short&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[:] <span class="comment"># a[시작 번호 : 끝 번호]에서 시작번호와 끝 번호 생략</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Life is too short, You need Python&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a[19:-7]이 뜻하는 것은 a[19]에서부터 a[-8]까지를 말한다. </span></span><br><span class="line"><span class="comment"># 이 역시 a[-7]은 포함하지 않는다.</span></span><br><span class="line">a[<span class="number">19</span>:<span class="number">-7</span>] </span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;You need&#39;</code></pre>
-<h4 id="슬라이싱-문자열-나누기"><a href="#슬라이싱-문자열-나누기" class="headerlink" title="슬라이싱 문자열 나누기"></a>슬라이싱 문자열 나누기</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;20010331Rainy&quot;</span></span><br><span class="line">date = a[:<span class="number">8</span>] <span class="comment"># 처음부터 a[7]까지</span></span><br><span class="line">date</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;20010331&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">weather = a[<span class="number">8</span>:] <span class="comment"># a[8]부터 마지막까지</span></span><br><span class="line">weather</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Rainy&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;20010331Rainy&quot;</span></span><br><span class="line">year = a[:<span class="number">4</span>]</span><br><span class="line">year</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;2001&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">day = a[<span class="number">4</span>:<span class="number">8</span>] <span class="comment"># a[4]부터 a[7]까지</span></span><br><span class="line">day</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;0331&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">weather = a[<span class="number">8</span>:]</span><br><span class="line">weather</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Rainy&#39;</code></pre>
-<p><strong>“Pithon”이라는 문자열을 “Python”으로 바꾸려면?</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Pithon&quot;</span></span><br><span class="line">a[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;i&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">1</span>] = <span class="string">&#x27;y&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-<pre><code>---------------------------------------------------------------------------
-
-TypeError                                 Traceback (most recent call last)
-
-&lt;ipython-input-45-d5923cc78d10&gt; in &lt;module&gt;
-----&gt; 1 a[1] = &#39;y&#39;
-
-
-TypeError: &#39;str&#39; object does not support item assignment</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Pithon&quot;</span></span><br><span class="line">a[:<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;P&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Pithon&quot;</span></span><br><span class="line">a[<span class="number">2</span>:]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;thon&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[:<span class="number">1</span>] + <span class="string">&#x27;y&#x27;</span> + a[<span class="number">2</span>:]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Python&#39;</code></pre>
-<h2 id="문자열-포매팅"><a href="#문자열-포매팅" class="headerlink" title="문자열 포매팅"></a>문자열 포매팅</h2><hr>
-<h3 id="1-숫자-바로-대입"><a href="#1-숫자-바로-대입" class="headerlink" title="1. 숫자 바로 대입"></a>1. 숫자 바로 대입</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I eat %d apples.&quot;</span> % <span class="number">3</span> <span class="comment"># %d 정수형</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;I eat 3 apples.&#39;</code></pre>
-<h3 id="2-문자열-바로-대입"><a href="#2-문자열-바로-대입" class="headerlink" title="2. 문자열 바로 대입"></a>2. 문자열 바로 대입</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I eat %s apples.&quot;</span> % <span class="string">&quot;five&quot;</span> <span class="comment"># %s 문자형</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;I eat five apples.&#39;</code></pre>
-<blockquote>
-<p>※ 문자열을 대입할 때는 앞에서 배운 것처럼 큰따옴표나 작은따옴표를 반드시 써주어야 한다.</p>
-</blockquote>
-<h3 id="3-숫자-값을-나타내는-변수로-대입"><a href="#3-숫자-값을-나타내는-변수로-대입" class="headerlink" title="3. 숫자 값을 나타내는 변수로 대입"></a>3. 숫자 값을 나타내는 변수로 대입</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">number = <span class="number">3</span></span><br><span class="line"><span class="string">&quot;I eat %d apples.&quot;</span> % number</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;I eat 3 apples.&#39;</code></pre>
-<h3 id="4-2개-이상의-값-넣기"><a href="#4-2개-이상의-값-넣기" class="headerlink" title="4. 2개 이상의 값 넣기"></a>4. 2개 이상의 값 넣기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">number = <span class="number">10</span></span><br><span class="line">day = <span class="string">&quot;three&quot;</span></span><br><span class="line"><span class="string">&quot;I ate %d apples. so I was sick for %s days.&quot;</span> % (number, day)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;I ate 10 apples. so I was sick for three days.&#39;</code></pre>
-<h2 id="문자열-포맷-코드"><a href="#문자열-포맷-코드" class="headerlink" title="문자열 포맷 코드"></a>문자열 포맷 코드</h2><table>
-<thead>
-<tr>
-<th align="center"><strong>코드</strong></th>
-<th align="left"><strong>설명</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">%s</td>
-<td align="left">문자열(String)</td>
-</tr>
-<tr>
-<td align="center">%c</td>
-<td align="left">문자 1개(character)</td>
-</tr>
-<tr>
-<td align="center">%d</td>
-<td align="left">정수(Integer)</td>
-</tr>
-<tr>
-<td align="center">%f</td>
-<td align="left">부동소수(floating-point)</td>
-</tr>
-<tr>
-<td align="center">%o</td>
-<td align="left">8진수</td>
-</tr>
-<tr>
-<td align="center">%x</td>
-<td align="left">16진수</td>
-</tr>
-<tr>
-<td align="center">%%</td>
-<td align="left">Literal % (문자 <code>%</code> 자체)</td>
-</tr>
-</tbody></table>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I have %s apples&quot;</span> % <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;I have 3 apples&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;rate is %s&quot;</span> % <span class="number">3.234</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;rate is 3.234&#39;</code></pre>
-<p><strong>%s는 자동으로 % 뒤에 있는 값을 문자열로 바꾸기 때문이다</strong></p>
-<h4 id="포매팅-연산자-d와-를-같이-쓸-때는-를-쓴다"><a href="#포매팅-연산자-d와-를-같이-쓸-때는-를-쓴다" class="headerlink" title="포매팅 연산자 %d와 %를 같이 쓸 때는 %%를 쓴다"></a><strong>포매팅 연산자 %d와 %를 같이 쓸 때는 %%를 쓴다</strong></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Error is %d%.&quot;</span> % <span class="number">98</span></span><br></pre></td></tr></table></figure>
-
-
-<pre><code>---------------------------------------------------------------------------
-
-ValueError                                Traceback (most recent call last)
-
-&lt;ipython-input-59-061de263c4b7&gt; in &lt;module&gt;
-----&gt; 1 &quot;Error is %d%.&quot; % 98
-
-
-ValueError: incomplete format</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Error is %d%%.&quot;</span> %<span class="number">98</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Error is 98%.&#39;</code></pre>
-<h2 id="포맷-코드와-숫자-함께-사용하기"><a href="#포맷-코드와-숫자-함께-사용하기" class="headerlink" title="포맷 코드와 숫자 함께 사용하기"></a>포맷 코드와 숫자 함께 사용하기</h2><h3 id="1-정렬과-공백"><a href="#1-정렬과-공백" class="headerlink" title="1. 정렬과 공백"></a>1. 정렬과 공백</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;%10s&quot;</span> % <span class="string">&quot;hi&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;        hi&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;%-10sjane.&quot;</span> % <span class="string">&#x27;hi&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;hi        jane.&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;%10.4f&quot;</span> % <span class="number">3.421434234</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;    3.4214&#39;</code></pre>
-<h2 id="format-함수를-사용한-포매팅"><a href="#format-함수를-사용한-포매팅" class="headerlink" title="format 함수를 사용한 포매팅"></a>format 함수를 사용한 포매팅</h2><h3 id="숫자로-바로-대입하기"><a href="#숫자로-바로-대입하기" class="headerlink" title="숫자로 바로 대입하기"></a>숫자로 바로 대입하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I eat &#123;0&#125; apples&quot;</span>.<span class="built_in">format</span>(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;I eat 3 apples&#39;</code></pre>
-<h3 id="문자열-바로-대입하기"><a href="#문자열-바로-대입하기" class="headerlink" title="문자열 바로 대입하기"></a>문자열 바로 대입하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I eat &#123;0&#125; apples&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;five&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;I eat five apples&#39;</code></pre>
-<h3 id="숫자-값을-가진-변수로-대입하기"><a href="#숫자-값을-가진-변수로-대입하기" class="headerlink" title="숫자 값을 가진 변수로 대입하기"></a>숫자 값을 가진 변수로 대입하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">number = <span class="number">3</span></span><br><span class="line"><span class="string">&quot;I eat &#123;0&#125; apples&quot;</span> .<span class="built_in">format</span>(number)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;I eat 3 apples&#39;</code></pre>
-<h3 id="2개-이상의-값-넣기"><a href="#2개-이상의-값-넣기" class="headerlink" title="2개 이상의 값 넣기"></a>2개 이상의 값 넣기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">number = <span class="number">10</span></span><br><span class="line">day = <span class="string">&quot;three&quot;</span></span><br><span class="line"><span class="string">&quot;I ate &#123;0&#125; apples. so I was sick for &#123;1&#125; days.&quot;</span> .<span class="built_in">format</span>(number, day)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;I ate 10 apples. so I was sick for three days.&#39;</code></pre>
-<h3 id="이름으로-넣기"><a href="#이름으로-넣기" class="headerlink" title="이름으로 넣기"></a>이름으로 넣기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I ate &#123;number&#125; apples. so I was sick for &#123;day&#125;.&quot;</span> .<span class="built_in">format</span>(number = <span class="number">10</span>, day = <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;I ate 10 apples. so I was sick for 3.&#39;</code></pre>
-<h3 id="인덱스와-이름을-혼용해서-넣기"><a href="#인덱스와-이름을-혼용해서-넣기" class="headerlink" title="인덱스와 이름을 혼용해서 넣기"></a>인덱스와 이름을 혼용해서 넣기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;I ate &#123;0&#125; apples. so I was sick for &#123;day&#125; days.&quot;</span> .<span class="built_in">format</span>(<span class="number">10</span>, day = <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;I ate 10 apples. so I was sick for 3 days.&#39;</code></pre>
-<h3 id="왼쪽-정렬"><a href="#왼쪽-정렬" class="headerlink" title="왼쪽 정렬"></a>왼쪽 정렬</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;0:&lt;10&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hi&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;hi        &#39;</code></pre>
-<h3 id="오른쪽-정렬"><a href="#오른쪽-정렬" class="headerlink" title="오른쪽 정렬"></a>오른쪽 정렬</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;0:&gt;10&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&#x27;hi&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;        hi&#39;</code></pre>
-<h3 id="가운데-정렬"><a href="#가운데-정렬" class="headerlink" title="가운데 정렬"></a>가운데 정렬</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;0:^10&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hi&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;    hi    &#39;</code></pre>
-<h3 id="공백-채우기"><a href="#공백-채우기" class="headerlink" title="공백 채우기"></a>공백 채우기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;0:=^10&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&#x27;hi&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;====hi====&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;0:!&lt;10&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&#x27;hi&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;hi!!!!!!!!&#39;</code></pre>
-<h3 id="소수점-표현하기"><a href="#소수점-표현하기" class="headerlink" title="소수점 표현하기"></a>소수점 표현하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = <span class="number">3.42134234</span></span><br><span class="line"><span class="string">&quot;&#123;0:0.4f&#125;&quot;</span>.<span class="built_in">format</span>(y) <span class="comment"># 4f 소수점 4자릿수까지 표현.</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;3.4213&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;0:10.4f&#125;&quot;</span>.<span class="built_in">format</span>(y)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;    3.4213&#39;</code></pre>
-<h3 id="또는-문자-표현하기"><a href="#또는-문자-표현하기" class="headerlink" title="{ 또는 } 문자 표현하기"></a><code>&#123;</code> 또는 <code>&#125;</code> 문자 표현하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;&#123; and &#125;&#125;&quot;</span>.<span class="built_in">format</span>() </span><br><span class="line"><span class="comment"># 문자 그대로 사용하고 싶은 경우에는 위 예의 &#123;&#123; &#125;&#125;처럼 2개를 연속해서 사용하면 된다.</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;&#123; and &#125;&#39;</code></pre>
-<h3 id="f-문자열-포매팅"><a href="#f-문자열-포매팅" class="headerlink" title="f 문자열 포매팅"></a>f 문자열 포매팅</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;강동원&quot;</span></span><br><span class="line">age = <span class="number">30</span></span><br><span class="line"><span class="string">f&#x27;나의 이름은 <span class="subst">&#123;name&#125;</span>입니다. 나이는 <span class="subst">&#123;age&#125;</span>입니다.&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;나의 이름은 강동원입니다. 나이는 30입니다.&#39;</code></pre>
-<blockquote>
-<p>※ 표현식이란 문자열 안에서 변수와 +, -와 같은 수식을 함께 사용하는 것을 말한다.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">30</span></span><br><span class="line"><span class="string">f&#x27;나는 내년이면 <span class="subst">&#123;age+<span class="number">1</span>&#125;</span>살이 된다.&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;나는 내년이면 31살이 된다.&#39;</code></pre>
-<blockquote>
-<p>※ 딕셔너리는 Key와 Value라는 것을 한 쌍으로 갖는 자료형이다. 02-5에서 자세히 알아본다.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;강동원&#x27;</span>, <span class="string">&#x27;age&#x27;</span>:<span class="number">30</span>&#125;</span><br><span class="line"><span class="string">f&#x27;나의 이름은 <span class="subst">&#123;d[<span class="string">&quot;name&quot;</span>]&#125;</span>입니다. 나이는 <span class="subst">&#123;d[<span class="string">&quot;age&quot;</span>]&#125;</span>입니다.&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;나의 이름은 강동원입니다. 나이는 30입니다.&#39;</code></pre>
-<p>{d[“name”]} {}안에 d = Key , “name” = Value(변수는 [])</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">f&#x27;<span class="subst">&#123;<span class="string">&quot;hi&quot;</span>:=^<span class="number">10</span>&#125;</span>&#x27;</span> <span class="comment"># 가운데 정렬하고 &#x27;=&#x27; 문자로 공백 채우기</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;====hi====&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">f&#x27;<span class="subst">&#123;<span class="string">&quot;hi&quot;</span>:!&lt;<span class="number">10</span>&#125;</span>&#x27;</span> <span class="comment"># 왼쪽 정렬하고 &#x27;!&#x27; 문자로 공백 채우기</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;hi!!!!!!!!&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = <span class="number">3.42134234</span></span><br><span class="line"><span class="string">f&#x27;<span class="subst">&#123;y:<span class="number">0.4</span>f&#125;</span>&#x27;</span> <span class="comment"># 소수점 4자리까지만 표현</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;3.4213&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">f&#x27;<span class="subst">&#123;y:<span class="number">10.4</span>&#125;</span>&#x27;</span> <span class="comment"># 소수점 4자리까지 표현하고 총 자리수를 10으로 맞춤</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;     3.421&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">f&#x27;&#123;&#123; and &#125;&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;&#123; and &#125;&#39;</code></pre>
-<h2 id="문자열-관련-함수들"><a href="#문자열-관련-함수들" class="headerlink" title="문자열 관련 함수들"></a>문자열 관련 함수들</h2><hr>
-<h3 id="문자-개수-세기-count"><a href="#문자-개수-세기-count" class="headerlink" title="문자 개수 세기(count)"></a>문자 개수 세기(count)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;hobby&quot;</span></span><br><span class="line">a.count(<span class="string">&#x27;b&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>2</code></pre>
-<h3 id="위치-알려주기-1-find"><a href="#위치-알려주기-1-find" class="headerlink" title="위치 알려주기 1(find)"></a>위치 알려주기 1(find)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Python is the best choice&quot;</span></span><br><span class="line">a.find(<span class="string">&#x27;b&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>14</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.find(<span class="string">&#x27;k&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>-1</code></pre>
-<blockquote>
-<p>※ 파이썬은 숫자를 0부터 세기 때문에 b의 위치는 15가 아닌 14가 된다.</p>
-</blockquote>
-<h3 id="위치-알려주기-2-index"><a href="#위치-알려주기-2-index" class="headerlink" title="위치 알려주기 2(index)"></a>위치 알려주기 2(index)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short&quot;</span></span><br><span class="line">a.index(<span class="string">&#x27;t&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>8</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.index(<span class="string">&#x27;k&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-<pre><code>---------------------------------------------------------------------------
-
-ValueError                                Traceback (most recent call last)
-
-&lt;ipython-input-100-cb6c8ec35229&gt; in &lt;module&gt;
-----&gt; 1 a.index(&#39;k&#39;)
-
-
-ValueError: substring not found</code></pre>
-<h3 id="문자열-삽입-join"><a href="#문자열-삽입-join" class="headerlink" title="문자열 삽입(join)"></a>문자열 삽입(join)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;,&quot;</span>.join(<span class="string">&#x27;abcd&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;a,b,c,d&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;,&quot;</span>.join([<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;a,b,c,d&#39;</code></pre>
-<h3 id="소문자를-대문자로-바꾸기-upper"><a href="#소문자를-대문자로-바꾸기-upper" class="headerlink" title="소문자를 대문자로 바꾸기(upper)"></a>소문자를 대문자로 바꾸기(upper)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;hi&quot;</span></span><br><span class="line">a.upper()</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;HI&#39;</code></pre>
-<h3 id="대문자를-소문자로-바꾸기-lower"><a href="#대문자를-소문자로-바꾸기-lower" class="headerlink" title="대문자를 소문자로 바꾸기(lower)"></a>대문자를 소문자로 바꾸기(lower)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;HI&quot;</span></span><br><span class="line">a.lower()</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;hi&#39;</code></pre>
-<h3 id="왼쪽-공백-지우기-lstrip"><a href="#왼쪽-공백-지우기-lstrip" class="headerlink" title="왼쪽 공백 지우기(lstrip)"></a>왼쪽 공백 지우기(lstrip)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot; hi &quot;</span></span><br><span class="line">a.lstrip()</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;hi &#39;</code></pre>
-<h3 id="오른쪽-공백-지우기-rstrip"><a href="#오른쪽-공백-지우기-rstrip" class="headerlink" title="오른쪽 공백 지우기(rstrip)"></a>오른쪽 공백 지우기(rstrip)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot; hi &quot;</span></span><br><span class="line">a.rstrip()</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39; hi&#39;</code></pre>
-<h3 id="양쪽-공백-지우기-strip"><a href="#양쪽-공백-지우기-strip" class="headerlink" title="양쪽 공백 지우기(strip)"></a>양쪽 공백 지우기(strip)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot; hi &quot;</span></span><br><span class="line">a.strip()</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;hi&#39;</code></pre>
-<h3 id="문자열-바꾸기-replace"><a href="#문자열-바꾸기-replace" class="headerlink" title="문자열 바꾸기(replace)"></a>문자열 바꾸기(replace)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short&quot;</span></span><br><span class="line">a.replace(<span class="string">&quot;Life&quot;</span>, <span class="string">&quot;Your leg&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&#39;Your leg is too short&#39;</code></pre>
-<h3 id="문자열-나누기-split"><a href="#문자열-나누기-split" class="headerlink" title="문자열 나누기(split)"></a>문자열 나누기(split)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Life is too short&quot;</span></span><br><span class="line">a.split()</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&#39;Life&#39;, &#39;is&#39;, &#39;too&#39;, &#39;short&#39;]</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b = <span class="string">&quot;a:b:c:d&quot;</span></span><br><span class="line">b.split(<span class="string">&#x27;:&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]</code></pre>
+            <h1 id="6-1-누락값이란"><a href="#6-1-누락값이란" class="headerlink" title="6-1 누락값이란?"></a>6-1 누락값이란?</h1><h2 id="누락값과-누락값-확인하기"><a href="#누락값과-누락값-확인하기" class="headerlink" title="누락값과 누락값 확인하기"></a>누락값과 누락값 확인하기</h2><p>누락값(NaN)은 NaN, NAN, nan과 같은 방법으로 표기할 수 있다. 이 책에서는 누락값을 NaN이라고 표기하여 사용한다. 그러면 바로 실습을 진행해 보면서 누락값이 무엇인지 알아보자.</p>
+<p><em>참고로 누락값을 파이썬에 사용하려면 넘파이(numpy) 라이브러리가 필요하다. 넘파이 라이브러리는 수학이나 과학 연산을 위해 만든 파이썬 라이브러리이다.</em></p>
+<h3 id="누락값-확인하기"><a href="#누락값-확인하기" class="headerlink" title="누락값 확인하기"></a>누락값 확인하기</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p>먼저 누락값을 사용하기 위해 numpy에서 누락값을 불러온다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> NaN, NAN, nan</span><br></pre></td></tr></table></figure>
+
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p>누락값은 0, ‘’와 같은 결과는 다른 개념이라는 것에 주의해야 한다. 누락값은 말 그대로 데이터 자체가 없다는 것을 의미한다. 그래서 ‘같다’라는 개념도 없다. 다음은 누락값과 True, False, 0, ‘’을 비교한 결과이다.</p>
+<p><em>참고로 비교할 값 자체가 없으니 모두 False를 출력한다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(NaN == <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>False</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(NaN == <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>False</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(NaN == <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>False</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(NaN == <span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>False</code></pre>
+<h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><p>과정 <strong>2</strong>에서도 언급했듯이 누락값은 값 자체가 없기 때문에 자기 자신과 비교해도 True가 아닌 False가 출력된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(NaN == NaN)</span><br></pre></td></tr></table></figure>
+
+<pre><code>False</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(NaN == nan)</span><br></pre></td></tr></table></figure>
+
+<pre><code>False</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(NaN == NAN)</span><br></pre></td></tr></table></figure>
+
+<pre><code>False</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(nan == NAN)</span><br></pre></td></tr></table></figure>
+
+<pre><code>False</code></pre>
+<h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p>그러면 누락값은 어떻게 확인할 수 있을까? 다행히 판다스에는 누락값을 확인하는 메서드인 isnull이 있다. 오른쪽은 isnull 메서드로 누락값을 검사한 예이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">print(pd.isnull(NaN))</span><br></pre></td></tr></table></figure>
+
+<pre><code>True</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.isnull(nan))</span><br></pre></td></tr></table></figure>
+
+<pre><code>True</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.isnull(NAN))</span><br></pre></td></tr></table></figure>
+
+<pre><code>True</code></pre>
+<h4 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h4><p>반대의 경우(누락값이 아닌 경우)도 검사할 수 있다. 오른쪽은 notnull 메서드로 누락값이 아닌 경우를 검사한 예이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.notnull(NaN))</span><br></pre></td></tr></table></figure>
+
+<pre><code>False</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.notnull(nan))</span><br></pre></td></tr></table></figure>
+
+<pre><code>False</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.notnull(NAN))</span><br></pre></td></tr></table></figure>
+
+<pre><code>False</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.notnull(<span class="string">&#x27;missing&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>True</code></pre>
+<h2 id="누락값이-생기는-이유"><a href="#누락값이-생기는-이유" class="headerlink" title="누락값이 생기는 이유"></a>누락값이 생기는 이유</h2><p>누락값은 왜 생길까? 누락값은 처음부터 누락값이 있는 데이터를 불러오거나 데이터를 연결, 입력하는 등의 과정에서 생길 수 있다. 그러면 다음 예제를 통해 누락값이 생기는 이유의 대해 자세히 알아보자.</p>
+<h3 id="누락값이-생기는-이유-알아보기"><a href="#누락값이-생기는-이유-알아보기" class="headerlink" title="누락값이 생기는 이유 알아보기"></a>누락값이 생기는 이유 알아보기</h3><h4 id="1-누락값이-있는-데이터-집합을-연결할-때-누락값이-생기는-경우"><a href="#1-누락값이-있는-데이터-집합을-연결할-때-누락값이-생기는-경우" class="headerlink" title="1. 누락값이 있는 데이터 집합을 연결할 때 누락값이 생기는 경우"></a>1. 누락값이 있는 데이터 집합을 연결할 때 누락값이 생기는 경우</h4><p>이번에는 사용할 데이터 집합은 누락값이 포함되어 있다. 누락값이 포함되어 있는 데이터 집합을 연결하면 어떻게 될까? 누락값이 포함되어 있는 데이터 집합을 연결하면 더 많은 누락값이 생긴다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">visited = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/survey_visited.csv&#x27;</span>)</span><br><span class="line">survey = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/survey_survey.csv&#x27;</span>)</span><br><span class="line"></span><br><span class="line">print(visited)</span><br><span class="line"></span><br><span class="line"><span class="comment"># visited와 survey 데이터프레임의 누락값이 몇 개 안된다고 해서 함부로 연결하면 안된다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>   ident   site       dated
+0    619   DR-1  1927-02-08
+1    622   DR-1  1927-02-10
+2    734   DR-3  1939-01-07
+3    735   DR-3  1930-01-12
+4    751   DR-3  1930-02-26
+5    752   DR-3         NaN
+6    837  MSK-4  1932-01-14
+7    844   DR-1  1932-03-22</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(survey)</span><br></pre></td></tr></table></figure>
+
+<pre><code>    taken person quant  reading
+0     619   dyer   rad     9.82
+1     619   dyer   sal     0.13
+2     622   dyer   rad     7.80
+3     622   dyer   sal     0.09
+4     734     pb   rad     8.41
+5     734   lake   sal     0.05
+6     734     pb  temp   -21.50
+7     735     pb   rad     7.22
+8     735    NaN   sal     0.06
+9     735    NaN  temp   -26.00
+10    751     pb   rad     4.35
+11    751     pb  temp   -18.50
+12    751   lake   sal     0.10
+13    752   lake   rad     2.19
+14    752   lake   sal     0.09
+15    752   lake  temp   -16.00
+16    752    roe   sal    41.60
+17    837   lake   rad     1.46
+18    837   lake   sal     0.21
+19    837    roe   sal    22.50
+20    844    roe   rad    11.25</code></pre>
+<h4 id="2-1"><a href="#2-1" class="headerlink" title="2."></a>2.</h4><p>과정 <strong>1</strong>에서 구한 데이터 집합을 연결해 보자. 그러면 누락값이 많이 생겨난 것을 볼 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vs = visited.merge(survey, left_on = <span class="string">&#x27;ident&#x27;</span>, right_on = <span class="string">&#x27;taken&#x27;</span>)</span><br><span class="line">print(vs)</span><br></pre></td></tr></table></figure>
+
+<pre><code>    ident   site       dated  taken person quant  reading
+0     619   DR-1  1927-02-08    619   dyer   rad     9.82
+1     619   DR-1  1927-02-08    619   dyer   sal     0.13
+2     622   DR-1  1927-02-10    622   dyer   rad     7.80
+3     622   DR-1  1927-02-10    622   dyer   sal     0.09
+4     734   DR-3  1939-01-07    734     pb   rad     8.41
+5     734   DR-3  1939-01-07    734   lake   sal     0.05
+6     734   DR-3  1939-01-07    734     pb  temp   -21.50
+7     735   DR-3  1930-01-12    735     pb   rad     7.22
+8     735   DR-3  1930-01-12    735    NaN   sal     0.06
+9     735   DR-3  1930-01-12    735    NaN  temp   -26.00
+10    751   DR-3  1930-02-26    751     pb   rad     4.35
+11    751   DR-3  1930-02-26    751     pb  temp   -18.50
+12    751   DR-3  1930-02-26    751   lake   sal     0.10
+13    752   DR-3         NaN    752   lake   rad     2.19
+14    752   DR-3         NaN    752   lake   sal     0.09
+15    752   DR-3         NaN    752   lake  temp   -16.00
+16    752   DR-3         NaN    752    roe   sal    41.60
+17    837  MSK-4  1932-01-14    837   lake   rad     1.46
+18    837  MSK-4  1932-01-14    837   lake   sal     0.21
+19    837  MSK-4  1932-01-14    837    roe   sal    22.50
+20    844   DR-1  1932-03-22    844    roe   rad    11.25</code></pre>
+<h4 id="3-데이터를-입력할-때-누락값이-생기는-이유"><a href="#3-데이터를-입력할-때-누락값이-생기는-이유" class="headerlink" title="3. 데이터를 입력할 때 누락값이 생기는 이유"></a>3. 데이터를 입력할 때 누락값이 생기는 이유</h4><p>누락값은 데이터를 잘못 입력하여 생길 수도 있다. 다음은 시리즈를 생성할 때 데이터프레임에 없는 열과 행 데이터를 입력하여 누락값이 생긴 것이다. scientists 데이터프레임을 확인하면 missing이라는 열과 함께 행 데이터에 누락값이 추가된 것을 확인할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num_legs = pd.Series(&#123;<span class="string">&#x27;goat&#x27;</span>:<span class="number">4</span>, <span class="string">&#x27;amoeba&#x27;</span>: nan&#125;)</span><br><span class="line">print(num_legs)</span><br><span class="line">print(<span class="built_in">type</span>(num_legs))</span><br></pre></td></tr></table></figure>
+
+<pre><code>goat      4.0
+amoeba    NaN
+dtype: float64
+&lt;class &#39;pandas.core.series.Series&#39;&gt;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">scientists = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">&#x27;Name&#x27;</span>:[<span class="string">&#x27;Rosaline Franklin&#x27;</span>, <span class="string">&#x27;William Gosset&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;Occupation&#x27;</span> : [<span class="string">&#x27;Chemist&#x27;</span>, <span class="string">&#x27;Statistician&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;Born&#x27;</span> : [<span class="string">&#x27;1920-07-25&#x27;</span>, <span class="string">&#x27;1876-06-13&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;Died&#x27;</span> : [<span class="string">&#x27;1958-04-16&#x27;</span>, <span class="string">&#x27;1937-10-16&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;missing&#x27;</span> : [NaN, nan]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">print(scientists)</span><br><span class="line">print(<span class="built_in">type</span>(scientists))</span><br></pre></td></tr></table></figure>
+
+<pre><code>                Name    Occupation        Born        Died  missing
+0  Rosaline Franklin       Chemist  1920-07-25  1958-04-16      NaN
+1     William Gosset  Statistician  1876-06-13  1937-10-16      NaN
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code></pre>
+<h4 id="4-범위를-지정하여-데이터를-추출할-때-누락값이-생기는-경우"><a href="#4-범위를-지정하여-데이터를-추출할-때-누락값이-생기는-경우" class="headerlink" title="4. 범위를 지정하여 데이터를 추출할 때 누락값이 생기는 경우"></a>4. 범위를 지정하여 데이터를 추출할 때 누락값이 생기는 경우</h4><p>데이터프레임에 존재하지 않는 데이터를 추출하면 누락값이 생긴다. 이번에는 갭마인더 데이터 집합을 불러와 실습해 보겠다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gapminder = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/gapminder.tsv&#x27;</span>, sep = <span class="string">&#x27;\t&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-1"><a href="#5-1" class="headerlink" title="5."></a>5.</h4><p>다음은 gapminder 데이터프레임을 연도별로 그룹화한 다음 lifeExp 열의 평균을 구한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">life_exp = gapminder.groupby([<span class="string">&#x27;year&#x27;</span>])[<span class="string">&#x27;lifeExp&#x27;</span>].mean()</span><br><span class="line">print(life_exp)</span><br></pre></td></tr></table></figure>
+
+<pre><code>year
+1952    49.057620
+1957    51.507401
+1962    53.609249
+1967    55.678290
+1972    57.647386
+1977    59.570157
+1982    61.533197
+1987    63.212613
+1992    64.160338
+1997    65.014676
+2002    65.694923
+2007    67.007423
+Name: lifeExp, dtype: float64</code></pre>
+<h4 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h4><p>앞에서 발생한 문제를 해결하기 위해서는 불린 추출을 이용하여 데이터를 추출하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y2000 = life_exp[life_exp.index &gt; <span class="number">2000</span>]</span><br><span class="line">print(y2000)</span><br></pre></td></tr></table></figure>
+
+<pre><code>year
+2002    65.694923
+2007    67.007423
+Name: lifeExp, dtype: float64</code></pre>
+<h2 id="누락값의-개수"><a href="#누락값의-개수" class="headerlink" title="누락값의 개수"></a>누락값의 개수</h2><p>지금까지 누락값이 생기는 다양한 경우에 대해 알아보았다. 이번에는 누락값의 개수를 구하는 방법에 대해 알아보자.</p>
+<h3 id="누락값의-개수-구하기"><a href="#누락값의-개수-구하기" class="headerlink" title="누락값의 개수 구하기"></a>누락값의 개수 구하기</h3><h4 id="1-1"><a href="#1-1" class="headerlink" title="1."></a>1.</h4><p>다음과 같이 입력하여 데이터를 불러온다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ebola = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/country_timeseries.csv&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-먼저-count-메서드로-누락값이-아닌-값의-개수를-구해-보겠다"><a href="#2-먼저-count-메서드로-누락값이-아닌-값의-개수를-구해-보겠다" class="headerlink" title="2. 먼저 count 메서드로 누락값이 아닌 값의 개수를 구해 보겠다."></a>2. 먼저 count 메서드로 누락값이 아닌 값의 개수를 구해 보겠다.</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.count())</span><br></pre></td></tr></table></figure>
+
+<pre><code>Date                   122
+Day                    122
+Cases_Guinea            93
+Cases_Liberia           83
+Cases_SierraLeone       87
+Cases_Nigeria           38
+Cases_Senegal           25
+Cases_UnitedStates      18
+Cases_Spain             16
+Cases_Mali              12
+Deaths_Guinea           92
+Deaths_Liberia          81
+Deaths_SierraLeone      87
+Deaths_Nigeria          38
+Deaths_Senegal          22
+Deaths_UnitedStates     18
+Deaths_Spain            16
+Deaths_Mali             12
+dtype: int64</code></pre>
+<h4 id="3-1"><a href="#3-1" class="headerlink" title="3."></a>3.</h4><p>과정 <strong>2</strong>의 결과만 잘 활용해도 누락값의 개수를 쉽게 구할 수 있다. shape[0]에 전체 행의 데이터 개수가 저장되어 있다는 점을 이용하여 shape[0]에서 누락값이 아닌 값의 개수를 빼면 누락값의 개수를 구할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num_rows = ebola.shape[<span class="number">0</span>]</span><br><span class="line">num_missing = num_rows - ebola.count()</span><br><span class="line">print(num_missing)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Date                     0
+Day                      0
+Cases_Guinea            29
+Cases_Liberia           39
+Cases_SierraLeone       35
+Cases_Nigeria           84
+Cases_Senegal           97
+Cases_UnitedStates     104
+Cases_Spain            106
+Cases_Mali             110
+Deaths_Guinea           30
+Deaths_Liberia          41
+Deaths_SierraLeone      35
+Deaths_Nigeria          84
+Deaths_Senegal         100
+Deaths_UnitedStates    104
+Deaths_Spain           106
+Deaths_Mali            110
+dtype: int64</code></pre>
+<h4 id="4-1"><a href="#4-1" class="headerlink" title="4."></a>4.</h4><p>count 메서드를 사용해도 되지만 count_nonzero, isnull 메서드를 조합해도 누락값의 개수를 구할 수 있다.</p>
+<p><em>참고로 count_nonzero 메서드는 배열에서 0이 아닌 값의 개수를 세는 메서드이다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">print(np.count_nonzero(ebola.isnull()))</span><br></pre></td></tr></table></figure>
+
+<pre><code>1214</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(np.count_nonzero(ebola[<span class="string">&#x27;Cases_Guinea&#x27;</span>].isnull()))</span><br></pre></td></tr></table></figure>
+
+<pre><code>29</code></pre>
+<h4 id="5-2"><a href="#5-2" class="headerlink" title="5."></a>5.</h4><p>시리즈에 포함된 value_counts 메서드는 지정한 열의 빈도를 구하는 메서드이다. value_counts 메서드를 사용해 Cases_Guinea 열의 누락값 개수를 구하려면 다음과 같이 입력한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.Cases_Guinea.value_counts(dropna=<span class="literal">False</span>).head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>NaN      29
+86.0      3
+112.0     2
+390.0     2
+495.0     2
+Name: Cases_Guinea, dtype: int64</code></pre>
+<h2 id="누락값-처리하기"><a href="#누락값-처리하기" class="headerlink" title="누락값 처리하기"></a>누락값 처리하기</h2><p>누락값은 누락값을 임의의 값으로 변경하거나 데이터프레임에 이미 있는 값으로 대신 채우는 방법 등으로 처리할 수 있다. 그러면 누락값을 처리하는 방법을 하나씩 알아보자.</p>
+<h3 id="누락값-처리하기-변경-삭제"><a href="#누락값-처리하기-변경-삭제" class="headerlink" title="누락값 처리하기 - 변경, 삭제"></a>누락값 처리하기 - 변경, 삭제</h3><h4 id="1-누락값-변경하기"><a href="#1-누락값-변경하기" class="headerlink" title="1. 누락값 변경하기"></a>1. 누락값 변경하기</h4><p>데이터프레임에 포함된 fillna 메서드에 0을 대입하면 누락값을 0으로 변경한다. fillna 메서드는 처리해야 하는 데이터프레임의 크기가 매우 크고 메모리를 효율적으로 사용해야 하는 경우에 자주 사용하는 메서드이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.fillna(<span class="number">0</span>).iloc[<span class="number">0</span>:<span class="number">10</span>, <span class="number">0</span>:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>         Date  Day  Cases_Guinea  Cases_Liberia  Cases_SierraLeone
+0    1/5/2015  289        2776.0            0.0            10030.0
+1    1/4/2015  288        2775.0            0.0             9780.0
+2    1/3/2015  287        2769.0         8166.0             9722.0
+3    1/2/2015  286           0.0         8157.0                0.0
+4  12/31/2014  284        2730.0         8115.0             9633.0
+5  12/28/2014  281        2706.0         8018.0             9446.0
+6  12/27/2014  280        2695.0            0.0             9409.0
+7  12/24/2014  277        2630.0         7977.0             9203.0
+8  12/21/2014  273        2597.0            0.0             9004.0
+9  12/20/2014  272        2571.0         7862.0             8939.0</code></pre>
+<h4 id="2-2"><a href="#2-2" class="headerlink" title="2."></a>2.</h4><p>fillna 메서드의 method 인잣값을 ffill로 지정하면 누락값이 나타나기 전의 값으로 누락값이 변경된다. 예를 들어 6행의 누락값은 누락값이 나타나기 전의 값인 5행의 값을 사용하여 누락값을 처리한다. 하지만 0,1행은 처음부터 누락값이기 때문에 누락값이 그대로 남아 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.fillna(method = <span class="string">&#x27;ffill&#x27;</span>).iloc[<span class="number">0</span>:<span class="number">10</span>, <span class="number">0</span>:<span class="number">5</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3행</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>         Date  Day  Cases_Guinea  Cases_Liberia  Cases_SierraLeone
+0    1/5/2015  289        2776.0            NaN            10030.0
+1    1/4/2015  288        2775.0            NaN             9780.0
+2    1/3/2015  287        2769.0         8166.0             9722.0
+3    1/2/2015  286        2769.0         8157.0             9722.0
+4  12/31/2014  284        2730.0         8115.0             9633.0
+5  12/28/2014  281        2706.0         8018.0             9446.0
+6  12/27/2014  280        2695.0         8018.0             9409.0
+7  12/24/2014  277        2630.0         7977.0             9203.0
+8  12/21/2014  273        2597.0         7977.0             9004.0
+9  12/20/2014  272        2571.0         7862.0             8939.0</code></pre>
+<h4 id="3-2"><a href="#3-2" class="headerlink" title="3."></a>3.</h4><p>method 인잣값을 bfill로 지정하면 누락값이 나타난 이후의 첫 번째 값으로 앞쪽의 누락값이 모두 변경된다. 즉, 과정 <strong>2</strong>의 반대방향으로 누락값을 처리한다고 생각하면 된다. 하지만 이 방법도 마지막 값이 누락값인 경우에는 처리하지 못한다는 단점이 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.fillna(method = <span class="string">&#x27;bfill&#x27;</span>).iloc[:<span class="number">10</span>, :<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>         Date  Day  Cases_Guinea  Cases_Liberia  Cases_SierraLeone
+0    1/5/2015  289        2776.0         8166.0            10030.0
+1    1/4/2015  288        2775.0         8166.0             9780.0
+2    1/3/2015  287        2769.0         8166.0             9722.0
+3    1/2/2015  286        2730.0         8157.0             9633.0
+4  12/31/2014  284        2730.0         8115.0             9633.0
+5  12/28/2014  281        2706.0         8018.0             9446.0
+6  12/27/2014  280        2695.0         7977.0             9409.0
+7  12/24/2014  277        2630.0         7977.0             9203.0
+8  12/21/2014  273        2597.0         7862.0             9004.0
+9  12/20/2014  272        2571.0         7862.0             8939.0</code></pre>
+<h4 id="4-2"><a href="#4-2" class="headerlink" title="4."></a>4.</h4><p>과정 <strong>2, 3</strong>에서는 데이터프레임의 값을 그대로 사용하여 누락값을 처리했다. interpolate 메서드는 누락값 양쪽에 있는 값을 이용하여 중간값을 구한 다음 누락값을 처리한다. 이렇게 하면 데이터프레임이 일정한 간격을 유지하고 있는 것처럼 수정할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.interpolate().iloc[:<span class="number">10</span>, :<span class="number">5</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3행</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>         Date  Day  Cases_Guinea  Cases_Liberia  Cases_SierraLeone
+0    1/5/2015  289        2776.0            NaN            10030.0
+1    1/4/2015  288        2775.0            NaN             9780.0
+2    1/3/2015  287        2769.0         8166.0             9722.0
+3    1/2/2015  286        2749.5         8157.0             9677.5
+4  12/31/2014  284        2730.0         8115.0             9633.0
+5  12/28/2014  281        2706.0         8018.0             9446.0
+6  12/27/2014  280        2695.0         7997.5             9409.0
+7  12/24/2014  277        2630.0         7977.0             9203.0
+8  12/21/2014  273        2597.0         7919.5             9004.0
+9  12/20/2014  272        2571.0         7862.0             8939.0</code></pre>
+<h4 id="5-누락값-삭제하기"><a href="#5-누락값-삭제하기" class="headerlink" title="5. 누락값 삭제하기"></a>5. 누락값 삭제하기</h4><p>누락값이 필요 없을 경우에는 누락값을 삭제해도 된다. 하지만 누락값을 무작정 삭제하면 데이터가 너무 편향되거나 데이터의 개수가 너무 적어질 수도 있다. 그래서 누락값을 삭제할 때는 분석하는 사람이 잘 판단해야 한다. 먼저 ebola의 데이터 구조를 확인해 보겠다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(122, 18)</code></pre>
+<h4 id="6-1"><a href="#6-1" class="headerlink" title="6."></a>6.</h4><p>누락값을 삭제하기 위해 dropna 메서드를 사용해보겠다. 누락값이 포함된 행들이 모두 삭제되기 때문에 많은 데이터가 삭제되었다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ebola_dropna = ebola.dropna()</span><br><span class="line">print(ebola_dropna.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(1, 18)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(ebola_dropna)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터가 너무 많이 삭제되었다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>          Date  Day  Cases_Guinea  Cases_Liberia  Cases_SierraLeone  \
+19  11/18/2014  241        2047.0         7082.0             6190.0   
+
+    Cases_Nigeria  Cases_Senegal  Cases_UnitedStates  Cases_Spain  Cases_Mali  \
+19           20.0            1.0                 4.0          1.0         6.0   
+
+    Deaths_Guinea  Deaths_Liberia  Deaths_SierraLeone  Deaths_Nigeria  \
+19         1214.0          2963.0              1267.0             8.0   
+
+    Deaths_Senegal  Deaths_UnitedStates  Deaths_Spain  Deaths_Mali  
+19             0.0                  1.0           0.0          6.0  </code></pre>
+<h2 id="누락값이-포함된-데이터-계산하기"><a href="#누락값이-포함된-데이터-계산하기" class="headerlink" title="누락값이 포함된 데이터 계산하기"></a>누락값이 포함된 데이터 계산하기</h2><p>만약 누락값이 포함된 데이터를 계산하려면 어떻게 해야 할까? 다음은 여러 지역에서 발생한 ebola 발병 수를 구하는 실습이다. ebola 데이터프레임에는 누락값이 많다. 이 점을 염두에 두고 다음 실습을 진행해 보자.</p>
+<h3 id="누락값이-포함된-데이터-계산하기-1"><a href="#누락값이-포함된-데이터-계산하기-1" class="headerlink" title="누락값이 포함된 데이터 계산하기"></a>누락값이 포함된 데이터 계산하기</h3><h4 id="1-2"><a href="#1-2" class="headerlink" title="1."></a>1.</h4><p>Guinea, Liberia, SierraLeone 열에는 누락값들이 존재한다. 만약 누락값이 존재하는 Guinea, Liberia, SierraLeone 열을 가지고 ebola 발병 수의 합을 계산하면 어떻게 될까? 다음은 Cases_Guinea, Cases_Liberia, Cases_SierraLeone 열을 더하여 Cases_multiple 열을 새로 만든 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ebola[<span class="string">&#x27;Cases_multiple&#x27;</span>] = ebola[<span class="string">&#x27;Cases_Guinea&#x27;</span>] + ebola[<span class="string">&#x27;Cases_Liberia&#x27;</span>] + ebola[<span class="string">&#x27;Cases_SierraLeone&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3"><a href="#2-3" class="headerlink" title="2."></a>2.</h4><p>과정 <strong>1</strong>에서 계산한 Cases_multiple 열을 포함하여 ebola_subset이라는 데이터프레임을 새로 만들어서 어떤 값이 존재하는지 확인해 보겠다. Cases_Guinea, Cases_Liberia, Cases_SierraLeone에서 누락값이 하나라도 있는 행은 계산 결과(Cases_multiple)가 NaN이 되었음을 알 수 있다. 즉, 계산 결과 누락값이 더 많이 생겼다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ebola_subset = ebola.loc[:, [<span class="string">&#x27;Cases_Guinea&#x27;</span>, <span class="string">&#x27;Cases_Liberia&#x27;</span>, <span class="string">&#x27;Cases_SierraLeone&#x27;</span>, <span class="string">&#x27;Cases_multiple&#x27;</span>]]</span><br><span class="line">print(ebola_subset.head(n=<span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>   Cases_Guinea  Cases_Liberia  Cases_SierraLeone  Cases_multiple
+0        2776.0            NaN            10030.0             NaN
+1        2775.0            NaN             9780.0             NaN
+2        2769.0         8166.0             9722.0         20657.0
+3           NaN         8157.0                NaN             NaN
+4        2730.0         8115.0             9633.0         20478.0
+5        2706.0         8018.0             9446.0         20170.0
+6        2695.0            NaN             9409.0             NaN
+7        2630.0         7977.0             9203.0         19810.0
+8        2597.0            NaN             9004.0             NaN
+9        2571.0         7862.0             8939.0         19372.0</code></pre>
+<h4 id="3-3"><a href="#3-3" class="headerlink" title="3."></a>3.</h4><p>Cases_multiple 열을 sum 메서드를 사용해 더하면 세 지역의 ebola 발병 수의 합을 구할 수 있다. 이때 sum 메서드를 그냥 사용하면 누락값을 포함해 계산한다. 따라서 결괏값도 누락값이 된다. 누락값을 무시한 채 계산하려면 skipna 인잣값을 True로 설정하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.Cases_Guinea.<span class="built_in">sum</span>(skipna = <span class="literal">True</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>84729.0</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.Cases_Guinea.<span class="built_in">sum</span>(skipna = <span class="literal">False</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>nan</code></pre>
+<h2 id="마무리하며"><a href="#마무리하며" class="headerlink" title="마무리하며"></a>마무리하며</h2><p>데이터 분석 분야에서는 누락값을 처리하는 능력이 매우 중요하다. 데이터를 통해 의사결정이나 추론을 하려면 반드시 필요한 능력이다. 이 장에서는 누락값을 처리하는 여러 가지 방법을 알아보았다. 언제 어디서든 생길 수 있기 때문에 누락값을 처리하는 방법은 반드시 알아두어야 한다.</p>
+<p>출처 : Do it 판다스</p>
 
         </div>
         <footer class="article-footer">
@@ -940,7 +534,7 @@ ValueError: substring not found</code></pre>
 
 
 
-    <a data-url="http://kim-1994.github.io/2021/03/09/Jump%20to%20Python(1)/" data-id="ckm39p5mp0000s0vj2zcv38ah" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kim-1994.github.io/2021/03/30/pandas(5)/" data-id="ckmw3v8z40000rgvj1fea0z5m" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -1010,45 +604,17 @@ ValueError: substring not found</code></pre>
             "@type": "Person",
             "name": "HOya"
         },
-        "headline": "파이썬 기초 (1)",
-        "image": "http://KIM-1994.github.iohttps://user-images.githubusercontent.com/72365693/110462287-d1412000-8113-11eb-89ef-79dc03721218.PNG",
+        "headline": "누락값 처리하기",
+        "image": "http://KIM-1994.github.io",
         "keywords": "",
-        "genre": "점프 투 파이썬",
-        "datePublished": "2021-03-09",
-        "dateCreated": "2021-03-09",
-        "dateModified": "2021-03-09",
-        "url": "http://KIM-1994.github.io/2021/03/09/Jump to Python(1)/",
-        "description": "파이썬 프로그래밍의 기초, 자료형2-1 숫자형
-
-
-
-항목
-파이썬 사용 예
-
-
-
-정수
-123, -345, 0
-
-
-실수
-123.45, -1234.5, 3.4e10
-
-
-8진수
-0o34, 0o25
-
-
-16진수
-0x2A, 0xFF
-
-
-정수형양의 정수와 음의 정수, 0
-123a = 123a = -178a = 0
-
-실수형소수점을 포함된 숫자
-12345a = 1.2a =",
-        "wordCount": 2645
+        "genre": "Do it 판다스",
+        "datePublished": "2021-03-30",
+        "dateCreated": "2021-03-30",
+        "dateModified": "2021-03-30",
+        "url": "http://KIM-1994.github.io/2021/03/30/pandas(5)/",
+        "description": "6-1 누락값이란?누락값과 누락값 확인하기누락값(NaN)은 NaN, NAN, nan과 같은 방법으로 표기할 수 있다. 이 책에서는 누락값을 NaN이라고 표기하여 사용한다. 그러면 바로 실습을 진행해 보면서 누락값이 무엇인지 알아보자.
+참고로 누락값을 파이썬에 사용하려면 넘파이(numpy) 라이브러리가 필요하다. 넘파이 라이브러리는 수학이나 과학 연산을 위해",
+        "wordCount": 5241
     }
 </script>
 
@@ -1089,20 +655,10 @@ ValueError: substring not found</code></pre>
         
 <nav id="article-nav">
     
-        <a href="/2021/03/10/Jump%20to%20Python(2)/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            파이썬 기초 (2)
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2021/02/22/Seaborn%20with%20Matplotlib%20(4)/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2021/03/30/pandas(4)/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">Seaborn with Matplotlib (4)</p>
+        <p class="article-nav-title">데이터 연결하기</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -1319,7 +875,7 @@ ValueError: substring not found</code></pre>
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://kim-1994.github.io/2021/03/09/Jump%20to%20Python(1)/';
+    var disqus_url = 'http://kim-1994.github.io/2021/03/30/pandas(5)/';
     
     (function() {
     var dsq = document.createElement('script');
