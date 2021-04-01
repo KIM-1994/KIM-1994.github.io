@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>그룹 연산 | Welcome to HOya World</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 11-1 데이터 집계11-2 데이터 변환11-3 데이터 필터링11-4 그룹 오브젝트 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 11-1 데이터 집계데이터 집계하기 - groupby 메서드2장에서 갭마인더 데이터 집합으로 각 연도로 평균 수명을 구했던 것을 기억하는가? 수집한 데이">
+<meta property="og:type" content="article">
+<meta property="og:title" content="그룹 연산">
+<meta property="og:url" content="http://kim-1994.github.io/2021/04/01/pandas(10)/index.html">
+<meta property="og:site_name" content="Welcome to HOya World">
+<meta property="og:description" content="&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 11-1 데이터 집계11-2 데이터 변환11-3 데이터 필터링11-4 그룹 오브젝트 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 11-1 데이터 집계데이터 집계하기 - groupby 메서드2장에서 갭마인더 데이터 집합으로 각 연도로 평균 수명을 구했던 것을 기억하는가? 수집한 데이">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-01T13:30:58.890Z">
+<meta property="article:modified_time" content="2021-04-01T13:33:08.143Z">
+<meta property="article:author" content="HOya">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Kaggle/">Kaggle</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/">crawling</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-pandas(10)" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        그룹 연산
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2021/04/01/pandas(10)/" class="article-date">
+       <time datetime="2021-04-01T13:30:58.890Z" itemprop="datePublished">2021-04-01</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2021/04/01/pandas(10)/" class="article-date">
+     <time datetime="2021-04-01T13:33:08.143Z" itemprop="dateModified">2021-04-01</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>=================================</p>
+<p>11-1 데이터 집계<br>11-2 데이터 변환<br>11-3 데이터 필터링<br>11-4 그룹 오브젝트</p>
+<p>=================================</p>
+<h1 id="11-1-데이터-집계"><a href="#11-1-데이터-집계" class="headerlink" title="11-1 데이터 집계"></a>11-1 데이터 집계</h1><h2 id="데이터-집계하기-groupby-메서드"><a href="#데이터-집계하기-groupby-메서드" class="headerlink" title="데이터 집계하기 - groupby 메서드"></a>데이터 집계하기 - groupby 메서드</h2><p>2장에서 갭마인더 데이터 집합으로 각 연도로 평균 수명을 구했던 것을 기억하는가? 수집한 데이터를 바탕으로 평균이나 합 등을 구하여 의미 있는 값을 도출해 내는 것을 ‘집계’라고 한다. 데이터를 집계하면 전체 데이터를 요약, 정리하여 볼 수 있기 때문에 데이터 분석이 훨씬 편해진다. 그러면 groupby 메서드로 평균값을 구하는 과정을 통해 데이터 집계가 무엇인지 알아보겠다.</p>
+<h3 id="groupby-메서드로-평균값-구하기"><a href="#groupby-메서드로-평균값-구하기" class="headerlink" title="groupby 메서드로 평균값 구하기"></a>groupby 메서드로 평균값 구하기</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p>먼저 갭마인더 데이터 집합을 불러온다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/gapminder.tsv&#x27;</span>, sep = <span class="string">&#x27;\t&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p>다음은 year 열을 기준으로 데이터를 그룹화한 다음 lifeExp 열의 평균을 구한 것이다.</p>
+<p><em>참고로 df.groupby(‘year’)[‘lifeExp’].mean()도 같은 결과를 얻을 수 있다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">avg_life_exp_by_year = df.groupby(<span class="string">&#x27;year&#x27;</span>).lifeExp.mean()</span><br><span class="line">print(avg_life_exp_by_year)</span><br></pre></td></tr></table></figure>
+
+<pre><code>year
+1952    49.057620
+1957    51.507401
+1962    53.609249
+1967    55.678290
+1972    57.647386
+1977    59.570157
+1982    61.533197
+1987    63.212613
+1992    64.160338
+1997    65.014676
+2002    65.694923
+2007    67.007423
+Name: lifeExp, dtype: float64</code></pre>
+<h2 id="분할-반영-결합-과정-살펴보기-groupby-메서드"><a href="#분할-반영-결합-과정-살펴보기-groupby-메서드" class="headerlink" title="분할-반영-결합 과정 살펴보기 - groupby 메서드"></a>분할-반영-결합 과정 살펴보기 - groupby 메서드</h2><p>앞에서 groupby 메서드를 사용해 lifeExp 열의 연도별 평균값을 구했다. 그러면 실제로 groupby 메서드는 어떤 과정을 통해 데이터를 집계할까? groupby 메서드 자체를 분해하여 살펴보는 것은 불가능하기 때문에 비슷한 연산을 수행하는 메서드를 순서대로 실행하며 알아보겠다.</p>
+<h3 id="분할-반영-결합-과정-살펴보기"><a href="#분할-반영-결합-과정-살펴보기" class="headerlink" title="분할-반영-결합 과정 살펴보기"></a>분할-반영-결합 과정 살펴보기</h3><h4 id="1-1"><a href="#1-1" class="headerlink" title="1."></a>1.</h4><p>실제로 groupby 메서드에 life 열을 전달하면 가장 먼저 연도별로 데이터를 나누는 과정이 진행된다. 다음은 year 열의 데이터를 중복 없이 추출한 것이다. groupby 메서드에 열 이름을 전달하면 이런 <strong>‘분할’</strong> 작업이 먼저 일어난다고 이해하자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">years = df.year.unique()</span><br><span class="line">print(years)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002 2007]</code></pre>
+<h4 id="2-1"><a href="#2-1" class="headerlink" title="2."></a>2.</h4><p>그런 다음에는 연도별로 평균값을 구한다. 그러려면 일단 각 연도별로 데이터를 추출해야한다. 다음은 1952년의 데이터를 추출한 것이다. 이 과정을 **’반영’**작업의 한 부분이라고 이해하자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y1952 = df.loc[df.year == <span class="number">1952</span>, :]</span><br><span class="line">print(y1952.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>        country continent  year  lifeExp       pop    gdpPercap
+0   Afghanistan      Asia  1952   28.801   8425333   779.445314
+12      Albania    Europe  1952   55.230   1282697  1601.056136
+24      Algeria    Africa  1952   43.077   9279525  2449.008185
+36       Angola    Africa  1952   30.015   4232095  3520.610273
+48    Argentina  Americas  1952   62.485  17876956  5911.315053</code></pre>
+<h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><p>아직 lifeExp 열의 평균값을 구하지 않았다. 다음은 과정 <strong>2</strong>에서 추출한 1952년의 데이터에서 lifeExp 열의 평균값을 구한 것이다. 이 과정도 <strong>‘반영’</strong> 작업의 한 부분이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y1952_mean = y1952.lifeExp.mean()</span><br><span class="line">print(y1952_mean)</span><br></pre></td></tr></table></figure>
+
+<pre><code>49.05761971830987</code></pre>
+<h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p>과정 <strong>2~3</strong>을 반복하여 남은 연도의 평균값을 구하면 비로소 ‘반영’ 작업이 끝난다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">y1957 = df.loc[df.year == <span class="number">1957</span>, :]</span><br><span class="line">y1957_mean = y1957.lifeExp.mean()</span><br><span class="line">print(y1957_mean)</span><br></pre></td></tr></table></figure>
+
+<pre><code>51.507401126760534</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">y1962 = df.loc[df.year == <span class="number">1962</span>, :]</span><br><span class="line">y1962_mean = y1962.lifeExp.mean()</span><br><span class="line">print(y1962_mean)</span><br></pre></td></tr></table></figure>
+
+<pre><code>53.60924901408449</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">y2007 = df.loc[df.year == <span class="number">2007</span>, :]</span><br><span class="line">y2007_mean = y2007.lifeExp.mean()</span><br><span class="line">print(y2007_mean)</span><br></pre></td></tr></table></figure>
+
+<pre><code>67.00742253521126</code></pre>
+<h4 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h4><p>마지막으로 연도별로 계산한 lifeExp의 평균값을 합친다. 바로 이 과정이 <strong>‘결합’</strong> 작업이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df2 = pd.DataFrame(&#123;<span class="string">&quot;year&quot;</span> : [<span class="number">1652</span>, <span class="number">1957</span>, <span class="number">1962</span>, <span class="number">2007</span>],</span><br><span class="line">                   <span class="string">&quot;&quot;</span>:[y1952_mean, y1957_mean, y1962_mean, y2007_mean]&#125;)</span><br><span class="line"></span><br><span class="line">print(df2)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   year           
+0  1652  49.057620
+1  1957  51.507401
+2  1962  53.609249
+3  2007  67.007423</code></pre>
+<h2 id="groupby-메서드와-함께-사용하는-집계-메서드"><a href="#groupby-메서드와-함께-사용하는-집계-메서드" class="headerlink" title="groupby 메서드와 함께 사용하는 집계 메서드"></a>groupby 메서드와 함께 사용하는 집계 메서드</h2><p>다음은 집계 메서드를 정리한 표이다. 이후에 수행할 실습에서 자주 등장하는 메서드이니 미리 읽어보고 넘어가는 것이 좋다.</p>
+<p><strong>집계 메서드</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>메서드</strong></th>
+<th><strong>설명</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>count</td>
+<td>누락값을 제외한 데이터 수를 반환</td>
+</tr>
+<tr>
+<td>size</td>
+<td>누락값을 포함한 데이터 수를 반환</td>
+</tr>
+<tr>
+<td>mean</td>
+<td>평균값 반한</td>
+</tr>
+<tr>
+<td>std</td>
+<td>표준편차 반환</td>
+</tr>
+<tr>
+<td>min</td>
+<td>최솟값 반환</td>
+</tr>
+<tr>
+<td>quantile(q=0.25)</td>
+<td>백분위수 25%</td>
+</tr>
+<tr>
+<td>quantile(q=0.50)</td>
+<td>백분위수 50%</td>
+</tr>
+<tr>
+<td>quantile(q=0.75)</td>
+<td>백분위수 75%</td>
+</tr>
+<tr>
+<td>max</td>
+<td>최댓값 반환</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>전체 합 반환</td>
+</tr>
+<tr>
+<td>var</td>
+<td>분산 반환</td>
+</tr>
+<tr>
+<td>sem</td>
+<td>평균의 표준편차 반환</td>
+</tr>
+<tr>
+<td>describe</td>
+<td>데이터 수, 평균, 표준편차, 최소값, 백분위수(25%,50%,75%), 최댓값을 모두 반환</td>
+</tr>
+<tr>
+<td>first</td>
+<td>첫 번째 행 반환</td>
+</tr>
+<tr>
+<td>last</td>
+<td>마지막 행 반환</td>
+</tr>
+<tr>
+<td>nth</td>
+<td>n번째 행 반환</td>
+</tr>
+</tbody></table>
+<h2 id="agg-메서드로-사용자-함수와-groupby-메서드-조합하기"><a href="#agg-메서드로-사용자-함수와-groupby-메서드-조합하기" class="headerlink" title="agg 메서드로 사용자 함수와 groupby 메서드 조합하기"></a>agg 메서드로 사용자 함수와 groupby 메서드 조합하기</h2><p>라이브러리에서 제공하는 집계 메서드로 원하는 값을 계산할 수 없는 경우에는 직접 함수를 만들어서 사용해야 한다. 이번에는 사용자 함수와 groupby 메서드를 조합해서 사용해 보겠다. 사용자 함수와 groupby 메서드를 조합하려면 agg 메서드를 이용해야 한다.</p>
+<h3 id="평균값을-구하는-사용자-함수와-groupby-메서드"><a href="#평균값을-구하는-사용자-함수와-groupby-메서드" class="headerlink" title="평균값을 구하는 사용자 함수와 groupby 메서드"></a>평균값을 구하는 사용자 함수와 groupby 메서드</h3><h4 id="1-2"><a href="#1-2" class="headerlink" title="1."></a>1.</h4><p>다음은 입력받은 열의 평균값을 구하는 함수이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_mean</span>(<span class="params">values</span>):</span></span><br><span class="line">    n = <span class="built_in">len</span>(values)</span><br><span class="line">    <span class="built_in">sum</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> values:</span><br><span class="line">        <span class="built_in">sum</span> += value</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sum</span> / n</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2"><a href="#2-2" class="headerlink" title="2."></a>2.</h4><p>다음은 과정 <strong>1</strong>에서 만든 함수를 groupby 메서드와 조합하기 위해 agg 메서드를 사용한 것이다. 결과를 보면 mean 메서드를 사용하여 얻은 값과 동일하다는 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">agg_my_mean = df.groupby(<span class="string">&#x27;year&#x27;</span>).lifeExp.agg(my_mean)</span><br><span class="line">print(agg_my_mean)</span><br></pre></td></tr></table></figure>
+
+<pre><code>year
+1952    49.057620
+1957    51.507401
+1962    53.609249
+1967    55.678290
+1972    57.647386
+1977    59.570157
+1982    61.533197
+1987    63.212613
+1992    64.160338
+1997    65.014676
+2002    65.694923
+2007    67.007423
+Name: lifeExp, dtype: float64</code></pre>
+<h3 id="2개의-인잣값을-받아-처리하는-사용자-함수와-groupby-메서드"><a href="#2개의-인잣값을-받아-처리하는-사용자-함수와-groupby-메서드" class="headerlink" title="2개의 인잣값을 받아 처리하는 사용자 함수와 groupby 메서드"></a>2개의 인잣값을 받아 처리하는 사용자 함수와 groupby 메서드</h3><h4 id="1-3"><a href="#1-3" class="headerlink" title="1."></a>1.</h4><p>이번에는 2개의 인잣값을 받아 처리하는 사용자 정의 함수(my_mean_diff)를 만들어 보겠다. 다음은 첫 번째 인자로 받은 열의 평균값을 구하여 두 번째 인자로 받은 값과의 차이를 계산한 다음 반환하는 함수이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_mean_diff</span>(<span class="params">values, diff_value</span>):</span></span><br><span class="line">    n = <span class="built_in">len</span>(values)</span><br><span class="line">    <span class="built_in">sum</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> values:</span><br><span class="line">        <span class="built_in">sum</span> += value</span><br><span class="line">    mean = <span class="built_in">sum</span> / n</span><br><span class="line">    <span class="keyword">return</span> mean - diff_value</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3"><a href="#2-3" class="headerlink" title="2."></a>2.</h4><p>다음은 연도별 평균 수명에서 전체 평균 수명을 뺀 값을 구한 것이다. agg 메서드의 첫 번째 인자에 my_mean_diff 함수를 전달하고 두 번째 인자에 전체 평균 수명값을 전달 했다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">global_mean = df.lifeExp.mean()</span><br><span class="line">print(global_mean)</span><br></pre></td></tr></table></figure>
+
+<pre><code>59.47443936619714</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">agg_mean_diff = df.groupby(<span class="string">&#x27;year&#x27;</span>).lifeExp.agg(my_mean_diff, diff_value = global_mean)</span><br><span class="line">print(agg_mean_diff)</span><br></pre></td></tr></table></figure>
+
+<pre><code>year
+1952   -10.416820
+1957    -7.967038
+1962    -5.865190
+1967    -3.796150
+1972    -1.827053
+1977     0.095718
+1982     2.058758
+1987     3.738173
+1992     4.685899
+1997     5.540237
+2002     6.220483
+2007     7.532983
+Name: lifeExp, dtype: float64</code></pre>
+<h2 id="여러-개의-집계-메서드-한-번에-사용하기"><a href="#여러-개의-집계-메서드-한-번에-사용하기" class="headerlink" title="여러 개의 집계 메서드 한 번에 사용하기"></a>여러 개의 집계 메서드 한 번에 사용하기</h2><p>여러 개의 집계 메서드를 한 번에 사용하고 싶다면 어떻게 해야 할까? 집계 메서드를 리스트나 딕셔너리에 담아 agg 메서드에 전달하면 된다.</p>
+<h3 id="집계-메서드를-리스트-딕셔너리에-담아-전달하기"><a href="#집계-메서드를-리스트-딕셔너리에-담아-전달하기" class="headerlink" title="집계 메서드를 리스트, 딕셔너리에 담아 전달하기"></a>집계 메서드를 리스트, 딕셔너리에 담아 전달하기</h3><h4 id="1-4"><a href="#1-4" class="headerlink" title="1."></a>1.</h4><p>다음은 연도별로 그룹화한 lifeExp 열의 0이 아닌 값의 개수, 평균, 표준편차를 한 번에 계산하여 출력한 것이다. 넘파이 메서드인 count_nonzero, mean, std를 리스트에 담아 agg 메서드에 전달했다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">gdf = df.groupby(<span class="string">&#x27;year&#x27;</span>).lifeExp.agg([np.count_nonzero, np.mean, np.std])</span><br><span class="line">print(gdf)</span><br></pre></td></tr></table></figure>
+
+<pre><code>      count_nonzero       mean        std
+year                                     
+1952          142.0  49.057620  12.225956
+1957          142.0  51.507401  12.231286
+1962          142.0  53.609249  12.097245
+1967          142.0  55.678290  11.718858
+1972          142.0  57.647386  11.381953
+1977          142.0  59.570157  11.227229
+1982          142.0  61.533197  10.770618
+1987          142.0  63.212613  10.556285
+1992          142.0  64.160338  11.227380
+1997          142.0  65.014676  11.559439
+2002          142.0  65.694923  12.279823
+2007          142.0  67.007423  12.073021</code></pre>
+<h4 id="2-4"><a href="#2-4" class="headerlink" title="2."></a>2.</h4><p>이번에는 집계 메서드를 딕셔너리에 담아 agg 메서드에 전달해 보겠다. 딕셔너리의 키로 집계 메서드를 적용할 열 이름을 전달하고 딕셔너리의 값으로 집계 메서드를 전달 하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gdf_dict = df.groupby(<span class="string">&#x27;year&#x27;</span>).agg(&#123;<span class="string">&#x27;lifeExp&#x27;</span>: <span class="string">&#x27;mean&#x27;</span>, <span class="string">&#x27;pop&#x27;</span>: <span class="string">&#x27;median&#x27;</span>, <span class="string">&#x27;gdpPercap&#x27;</span>: <span class="string">&#x27;median&#x27;</span>&#125;)</span><br><span class="line">print(gdf_dict)</span><br></pre></td></tr></table></figure>
+
+<pre><code>        lifeExp         pop    gdpPercap
+year                                    
+1952  49.057620   3943953.0  1968.528344
+1957  51.507401   4282942.0  2173.220291
+1962  53.609249   4686039.5  2335.439533
+1967  55.678290   5170175.5  2678.334740
+1972  57.647386   5877996.5  3339.129407
+1977  59.570157   6404036.5  3798.609244
+1982  61.533197   7007320.0  4216.228428
+1987  63.212613   7774861.5  4280.300366
+1992  64.160338   8688686.5  4386.085502
+1997  65.014676   9735063.5  4781.825478
+2002  65.694923  10372918.5  5319.804524
+2007  67.007423  10517531.0  6124.371108</code></pre>
+<h1 id="11-2-데이터-변환"><a href="#11-2-데이터-변환" class="headerlink" title="11-2 데이터 변환"></a>11-2 데이터 변환</h1><p>11-1에서는 집계 메서드의 활용법을 알아보았다. 이번에는 데이터 변환 메서드에 대해 알아보겠다. 데이터 변환 메서드는 데이터와 메서드를 일대일로 대응시켜 계산하기 때문에 데이터의 양이 줄어들지 않는다. 말 그대로 데이터를 변환하는데 사용한다.</p>
+<h2 id="표준점수-계산하기"><a href="#표준점수-계산하기" class="headerlink" title="표준점수 계산하기"></a>표준점수 계산하기</h2><p>통계 분야에서는 데이터의 평균과 표준편차의 차이를 표준점수라고 부른다. 표준점수를 구하면 변화한 데이터의 평균값이 0이 되고 표준편차는 1이 된다. 그러면 데이터가 표준화되어 서로 다른 데이터를 쉽게 비교할 수 있게 된다. 표준점수는 통계에서 자주 사용하는 지표이다.</p>
+<p><em>참고로 표준점수는 Z점수, z-점수 등 다양한 이름으로 불린다.</em></p>
+<h3 id="표준점수-계산하기-1"><a href="#표준점수-계산하기-1" class="headerlink" title="표준점수 계산하기"></a>표준점수 계산하기</h3><h4 id="1-5"><a href="#1-5" class="headerlink" title="1."></a>1.</h4><p>다음은 표준점수를 계산하는 함수이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_zscore</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> (x - x.mean()) / x.std()</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-5"><a href="#2-5" class="headerlink" title="2."></a>2.</h4><p>다음은 각 연도별 lifeExp 열의 표준점수를 계산한 것이다. my_zscore 함수를 적용하기 위해 transform 메서드를 사용했다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">transform_z = df.groupby(<span class="string">&#x27;year&#x27;</span>).lifeExp.transform(my_zscore)</span><br><span class="line"></span><br><span class="line">print(transform_z)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0      -1.656854
+1      -1.731249
+2      -1.786543
+3      -1.848157
+4      -1.894173
+          ...   
+1699   -0.081621
+1700   -0.336974
+1701   -1.574962
+1702   -2.093346
+1703   -1.948180
+Name: lifeExp, Length: 1704, dtype: float64</code></pre>
+<h4 id="3-1"><a href="#3-1" class="headerlink" title="3."></a>3.</h4><p>my_zscore 함수는 데이터를 표준화할 뿐 집계는 하지 않는다. 즉, 데이터의 양이 줄어들지 않는다. 다음은 원본 데이터프레임(df)의 데이터 크기와 변환한 데이터프레임(transform_z)의 데이터 크기를 비교한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(1704, 6)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(transform_z.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터의 행 개수가 줄어들지 않았다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>(1704,)</code></pre>
+<h2 id="누락값을-평균값으로-처리하기"><a href="#누락값을-평균값으로-처리하기" class="headerlink" title="누락값을 평균값으로 처리하기"></a>누락값을 평균값으로 처리하기</h2><p>6장에서 누락값을 처리하는 다양한 방법에 대해 살펴보았다. 하지만 가끔은 누락값을 평균값으로 처리하는 것이 더 좋을 때가 있다. 이번에는 누락값을 평균값으로 처리하는 방법을 알아보겠다.</p>
+<h3 id="누락값을-평균값으로-처리하기-1"><a href="#누락값을-평균값으로-처리하기-1" class="headerlink" title="누락값을 평균값으로 처리하기"></a>누락값을 평균값으로 처리하기</h3><h4 id="1-6"><a href="#1-6" class="headerlink" title="1."></a>1.</h4><p>다음은 seaborn 라이브러리의 tips 데이터 집합에서 10개의 행 데이터만 가져온 다음 total_bill 열의 값 4개를 임의로 선택하여 누락값으로 바꾼 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">42</span>)</span><br><span class="line">tips_10 = sns.load_dataset(<span class="string">&#x27;tips&#x27;</span>).sample(<span class="number">10</span>)</span><br><span class="line">tips_10.loc[np.random.permutation(tips_10.index)[:<span class="number">4</span>], <span class="string">&#x27;total_bill&#x27;</span>] = np.NaN</span><br><span class="line">print(tips_10)</span><br></pre></td></tr></table></figure>
+
+<pre><code>     total_bill   tip     sex smoker   day    time  size
+24        19.82  3.18    Male     No   Sat  Dinner     2
+6          8.77  2.00    Male     No   Sun  Dinner     2
+153         NaN  2.00    Male     No   Sun  Dinner     4
+211         NaN  5.16    Male    Yes   Sat  Dinner     4
+198         NaN  2.00  Female    Yes  Thur   Lunch     2
+176         NaN  2.00    Male    Yes   Sun  Dinner     2
+192       28.44  2.56    Male    Yes  Thur   Lunch     2
+124       12.48  2.52  Female     No  Thur   Lunch     2
+9         14.78  3.23    Male     No   Sun  Dinner     2
+101       15.38  3.00  Female    Yes   Fri  Dinner     2</code></pre>
+<h4 id="2-6"><a href="#2-6" class="headerlink" title="2."></a>2.</h4><p>그런데 total_bill 열의 누락값을 단순히 total_bill 열의 평균값으로 채우면 안된다. 무슨 말일까? 현재 tips_10의 데이터는 여성보다 남성이 더 많다. 즉, 여성과 남성을 구분하여 total_bill 열의 평균값을 구하지 않으면 여성 데이터가 남성 데이터의 영향을 많이 받아 여성의 데이터가 훼손될 수 있다. 다음은 성별로 그룹화한 다음 각 열의 데이터 수를 구한 것이다. total_bill 열을 살펴보면 남성의 누락값은 3개, 여성의 누락값은 1개라는 것을 알 수 있다.</p>
+<p><em>참고로 여성의 tip, smoker, day, time, size 값은 모두 3인데 total_bill의 값은 2이다. 즉, 누락값이 1개이다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">count_sex = tips_10.groupby(<span class="string">&#x27;sex&#x27;</span>).count()</span><br><span class="line">print(count_sex)</span><br></pre></td></tr></table></figure>
+
+<pre><code>        total_bill  tip  smoker  day  time  size
+sex                                             
+Male             4    7       7    7     7     7
+Female           2    3       3    3     3     3</code></pre>
+<h4 id="3-2"><a href="#3-2" class="headerlink" title="3."></a>3.</h4><p>다음은 성별을 구분하여 total_bill 열의 데이터를 받아 평균값을 구하는 함수이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fill_na_mean</span>(<span class="params">x</span>):</span></span><br><span class="line">    avg = x.mean()</span><br><span class="line">    <span class="keyword">return</span> x.fillna(avg)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-1"><a href="#4-1" class="headerlink" title="4."></a>4.</h4><p>다음은 성별을 구분한 total_bill 열의 데이터를 fill_na_mean 함수에 전달하여 평균값을 구한 다음 tips_10에 새로운 열로 추가한 것이다. 남성과 여성의 누락값을 고려하여 계산한 평균값으로 잘 채워져 있는 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">total_bill_group_mean = tips_10.groupby(<span class="string">&#x27;sex&#x27;</span>).total_bill.transform(fill_na_mean)</span><br><span class="line">tips_10[<span class="string">&#x27;fill_total_bill&#x27;</span>] = total_bill_group_mean</span><br><span class="line">print(tips_10)</span><br></pre></td></tr></table></figure>
+
+<pre><code>     total_bill   tip     sex smoker   day    time  size  fill_total_bill
+24        19.82  3.18    Male     No   Sat  Dinner     2          19.8200
+6          8.77  2.00    Male     No   Sun  Dinner     2           8.7700
+153         NaN  2.00    Male     No   Sun  Dinner     4          17.9525
+211         NaN  5.16    Male    Yes   Sat  Dinner     4          17.9525
+198         NaN  2.00  Female    Yes  Thur   Lunch     2          13.9300
+176         NaN  2.00    Male    Yes   Sun  Dinner     2          17.9525
+192       28.44  2.56    Male    Yes  Thur   Lunch     2          28.4400
+124       12.48  2.52  Female     No  Thur   Lunch     2          12.4800
+9         14.78  3.23    Male     No   Sun  Dinner     2          14.7800
+101       15.38  3.00  Female    Yes   Fri  Dinner     2          15.3800</code></pre>
+<h1 id="11-3-데이터-필터링"><a href="#11-3-데이터-필터링" class="headerlink" title="11-3 데이터 필터링"></a>11-3 데이터 필터링</h1><p>만약 그룹화한 데이터에서 원하는 데이터를 걸러내고 싶다면 어떻게 해야할까? 그럴 때는 데이터 필터링을 사용하면 된다. 데이터 필터링을 사용하면 기준에 맞는 데이터를 걸러낼 수 있다. 다음 예제를 통해 데이터 필터링이 무엇인지 알아보겠다.</p>
+<h3 id="데이터-필터링-사용하기-filter-메서드"><a href="#데이터-필터링-사용하기-filter-메서드" class="headerlink" title="데이터 필터링 사용하기 - filter 메서드"></a>데이터 필터링 사용하기 - filter 메서드</h3><h4 id="1-7"><a href="#1-7" class="headerlink" title="1."></a>1.</h4><p>다음과 같이 tips 데이터 집합을 불러와 데이터 크기를 확인한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tips = sns.load_dataset(<span class="string">&#x27;tips&#x27;</span>)</span><br><span class="line">print(tips.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(244, 7)</code></pre>
+<h4 id="2-7"><a href="#2-7" class="headerlink" title="2."></a>2.</h4><p>size 열의 데이터 수를 확인해 보면 1, 5, 6 테이블의 주문이 매우 적다는 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(tips[<span class="string">&#x27;size&#x27;</span>].value_counts())</span><br></pre></td></tr></table></figure>
+
+<pre><code>2    156
+3     38
+4     37
+5      5
+1      4
+6      4
+Name: size, dtype: int64</code></pre>
+<h4 id="3-3"><a href="#3-3" class="headerlink" title="3."></a>3.</h4><p>상황에 따라 이런 데이터는 제외하기도 한다. 만약 30번 이상의 주문이 있는 테이블만 추려 데이터 분석을 하려면 어떻게 해야 할까? 다음은 30번 이상의 주문이 있는 테이블만 그룹화하여 변수 tips_filtered에 저장한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tips_filtered = tips.\</span><br><span class="line">groupby(<span class="string">&#x27;size&#x27;</span>).\</span><br><span class="line"><span class="built_in">filter</span>(<span class="keyword">lambda</span> x : x[<span class="string">&#x27;size&#x27;</span>].count() &gt;=<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2"><a href="#4-2" class="headerlink" title="4."></a>4.</h4><p>과정 <strong>3</strong>을 거치고 나면 1,5,6 테이블의 데이터가 제외되었다는 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(tips_filtered.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(231, 7)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(tips_filtered[<span class="string">&#x27;size&#x27;</span>].value_counts())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 13개의 데이터가 제외되었다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>2    156
+3     38
+4     37
+Name: size, dtype: int64</code></pre>
+<h1 id="11-4-그룹-오브젝트"><a href="#11-4-그룹-오브젝트" class="headerlink" title="11-4 그룹 오브젝트"></a>11-4 그룹 오브젝트</h1><h2 id="그룹-오브젝트-살펴보기"><a href="#그룹-오브젝트-살펴보기" class="headerlink" title="그룹 오브젝트 살펴보기"></a>그룹 오브젝트 살펴보기</h2><p>지금까지는 groupby 메서드에 바로 집계 메서드를 사용하여 결과를 확인했다. 즉, groupby 메서드가 반환하는 값인 그룹 오브젝트에 대해서는 언급하지 않았다. 이번에는 groupby 메서드의 결괏값인 그룹 오브젝트를 자세히 살펴보겠다.</p>
+<h3 id="그룹-오브젝트-저장하여-살펴보기"><a href="#그룹-오브젝트-저장하여-살펴보기" class="headerlink" title="그룹 오브젝트 저장하여 살펴보기"></a>그룹 오브젝트 저장하여 살펴보기</h3><h4 id="1-8"><a href="#1-8" class="headerlink" title="1."></a>1.</h4><p>다음은 tips 데이터 집합에서 임의로 10개의 데이터를 추출한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tips_10 = sns.load_dataset(<span class="string">&#x27;tips&#x27;</span>).sample(<span class="number">10</span>, random_state = <span class="number">42</span>)</span><br><span class="line">print(tips_10)</span><br></pre></td></tr></table></figure>
+
+<pre><code>     total_bill   tip     sex smoker   day    time  size
+24        19.82  3.18    Male     No   Sat  Dinner     2
+6          8.77  2.00    Male     No   Sun  Dinner     2
+153       24.55  2.00    Male     No   Sun  Dinner     4
+211       25.89  5.16    Male    Yes   Sat  Dinner     4
+198       13.00  2.00  Female    Yes  Thur   Lunch     2
+176       17.89  2.00    Male    Yes   Sun  Dinner     2
+192       28.44  2.56    Male    Yes  Thur   Lunch     2
+124       12.48  2.52  Female     No  Thur   Lunch     2
+9         14.78  3.23    Male     No   Sun  Dinner     2
+101       15.38  3.00  Female    Yes   Fri  Dinner     2</code></pre>
+<h4 id="2-8"><a href="#2-8" class="headerlink" title="2."></a>2.</h4><p>groupby 메서드의 결괏값을 출력하면 자료형이 그룹 오브젝트라는 것을 확인할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grouped = tips_10.groupby(<span class="string">&#x27;sex&#x27;</span>)</span><br><span class="line">print(grouped)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x000002571DB29A60&gt;</code></pre>
+<h4 id="3-4"><a href="#3-4" class="headerlink" title="3."></a>3.</h4><p>그룹 오브젝트에 포함된 그룹을 보려면 groups 속성을 출력하면 된다. 그러면 sex 열로 그룹화한 데이터프레임의 인덱스를 확인할 수 있다. 이 그룹 오브젝트로 집계, 변환, 필터 작업을 수행하면 되는 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(grouped.groups)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&#123;&#39;Male&#39;: [24, 6, 153, 211, 176, 192, 9], &#39;Female&#39;: [198, 124, 101]&#125;</code></pre>
+<h2 id="한-번에-그룹-오브젝트-계산하기"><a href="#한-번에-그룹-오브젝트-계산하기" class="headerlink" title="한 번에 그룹 오브젝트 계산하기"></a>한 번에 그룹 오브젝트 계산하기</h2><p>바로 앞의 실습에서 구한 그룹 오브젝트(grouped)는 smoker, day, time 열과 같은 평균값을 구할 수 없는 열도 포함하고 있다. 이런 그룹 오브젝트에 mean 메서드와 같은 집계 메서드를 사용하면 어떻게 될까? 오류가 발생할까? 아니다. 다행히 파이썬은 자동으로 계산할 수 있는 열을 골라주는 기능을 제공한다. 따라서 그룹 오브젝트에 mean 메서드를 사용해도 바로 평균값을 구할 수 있다.</p>
+<h3 id="그룹-오브젝트의-평균-구하기"><a href="#그룹-오브젝트의-평균-구하기" class="headerlink" title="그룹 오브젝트의 평균 구하기"></a>그룹 오브젝트의 평균 구하기</h3><h4 id="1-9"><a href="#1-9" class="headerlink" title="1."></a>1.</h4><p>일단 앞에서 만든 그룹 오브젝트(grouped)를 이용하여 평균을 구해 보겠다. 그러면 tips 데이터 집합의 모든 열의 평균을 구한 것이 아니라 total_bill, tip, size 열의 평균을 구했다는 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">avgs = grouped.mean()</span><br><span class="line">print(avgs)</span><br></pre></td></tr></table></figure>
+
+<pre><code>        total_bill       tip      size
+sex                                   
+Male         20.02  2.875714  2.571429
+Female       13.62  2.506667  2.000000</code></pre>
+<h4 id="2-9"><a href="#2-9" class="headerlink" title="2."></a>2.</h4><p>tips 데이터 집합의 열을 확인해 보면 평균값을 계산할 수 없는 열인 smoker, day, time 열은 그룹 연산에서 제외되었다는 것을 알 수 있다. 이처럼 파이썬은 그룹 연산에 적합한 열을 알아서 골라준다.</p>
+<p><em>참고로 sex 열을 그룹화의 기준으로 사용했다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(tips_10.columns)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Index([&#39;total_bill&#39;, &#39;tip&#39;, &#39;sex&#39;, &#39;smoker&#39;, &#39;day&#39;, &#39;time&#39;, &#39;size&#39;], dtype=&#39;object&#39;)</code></pre>
+<h2 id="그룹-오브젝트-활용하기"><a href="#그룹-오브젝트-활용하기" class="headerlink" title="그룹 오브젝트 활용하기"></a>그룹 오브젝트 활용하기</h2><p>이번에는 그룹 오브젝트를 좀 더 다양하게 활용하는 방법에 대해 알아보겠다. 그룹 오브젝트를 활용하는 방법은 아주 많다. 여기에서 실습을 통해 소개할 내용은 그룹 오브젝트에서 ‘데이터 추출하기’와 ‘반복문 사용하기’이다. 만약 그룹 오브젝트를 활용하는 방법을 더 알고 싶다면 다음 웹 사이트를 참고하자</p>
+<p>(<a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.groupby.html">https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.groupby.html</a>)</p>
+<h3 id="그룹-오브젝트에서-데이터-추출하고-반복하기"><a href="#그룹-오브젝트에서-데이터-추출하고-반복하기" class="headerlink" title="그룹 오브젝트에서 데이터 추출하고 반복하기"></a>그룹 오브젝트에서 데이터 추출하고 반복하기</h3><h4 id="1-10"><a href="#1-10" class="headerlink" title="1."></a>1.</h4><p>만약 그룹 오브젝트에서 특정 데이터만 추출하려면 get_group 메서드를 사용하면 된다. 다음은 sex 열로 그룹화한 그룹 오브젝트에 get_group 메서드를 사용하여 성별이 여성인 데이터만 추출한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">female = grouped.get_group(<span class="string">&#x27;Female&#x27;</span>)</span><br><span class="line">print(female)</span><br></pre></td></tr></table></figure>
+
+<pre><code>     total_bill   tip     sex smoker   day    time  size
+198       13.00  2.00  Female    Yes  Thur   Lunch     2
+124       12.48  2.52  Female     No  Thur   Lunch     2
+101       15.38  3.00  Female    Yes   Fri  Dinner     2</code></pre>
+<h4 id="2-10"><a href="#2-10" class="headerlink" title="2."></a>2.</h4><p>이번에는 그룹 오브젝트를 반복문에 사용해 보겠다. sex 열을 기준으로 그룹화한 tips 데이터 집합은 여성 그룹과 남성 그룹으로 나누어져 있다. 이 특징을 이용하여 반복문을 사용하면 된다. 다음은 각 성별 그룹의 데이터를 반복문을 이용하여 출력한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> sex_group <span class="keyword">in</span> grouped:</span><br><span class="line">    print(sex_group)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(&#39;Male&#39;,      total_bill   tip   sex smoker   day    time  size
+24        19.82  3.18  Male     No   Sat  Dinner     2
+6          8.77  2.00  Male     No   Sun  Dinner     2
+153       24.55  2.00  Male     No   Sun  Dinner     4
+211       25.89  5.16  Male    Yes   Sat  Dinner     4
+176       17.89  2.00  Male    Yes   Sun  Dinner     2
+192       28.44  2.56  Male    Yes  Thur   Lunch     2
+9         14.78  3.23  Male     No   Sun  Dinner     2)
+(&#39;Female&#39;,      total_bill   tip     sex smoker   day    time  size
+198       13.00  2.00  Female    Yes  Thur   Lunch     2
+124       12.48  2.52  Female     No  Thur   Lunch     2
+101       15.38  3.00  Female    Yes   Fri  Dinner     2)</code></pre>
+<h4 id="3-5"><a href="#3-5" class="headerlink" title="3."></a>3.</h4><p>그런데 과정 <strong>2</strong>의 결과를 자세히 살펴보면 sex_group으로 넘어온 값이 튜플이라는 것을 알 수 있다. 다음은 sex_group의 자세한 정보를 출력한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> sex_group <span class="keyword">in</span> grouped:</span><br><span class="line">    print(<span class="string">&#x27;the type is: &#123;&#125;\n&#x27;</span>. <span class="built_in">format</span>(<span class="built_in">type</span>(sex_group)))</span><br><span class="line">    print(<span class="string">&#x27;the length is: &#123;&#125;\n&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">len</span>(sex_group)))</span><br><span class="line">    </span><br><span class="line">    first_element = sex_group[<span class="number">0</span>]</span><br><span class="line">    print(<span class="string">&#x27;the first element is: &#123;&#125;\n&#x27;</span>.<span class="built_in">format</span>(first_element))</span><br><span class="line">    print(<span class="string">&#x27;it has a type of: &#123;&#125;\n&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">type</span>(sex_group[<span class="number">0</span>])))</span><br><span class="line">    </span><br><span class="line">    second_element = sex_group[<span class="number">1</span>]</span><br><span class="line">    print(<span class="string">&#x27;the second element is: &#123;&#125;\n&#x27;</span>.<span class="built_in">format</span>(second_element))</span><br><span class="line">    print(<span class="string">&#x27;it has a type of: &#123;&#125;\n&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">type</span>(second_element)))</span><br><span class="line">    </span><br><span class="line">    print(<span class="string">&#x27;what we have:&#x27;</span>)</span><br><span class="line">    print(sex_group)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>the type is: &lt;class &#39;tuple&#39;&gt;
+
+the length is: 2
+
+the first element is: Male
+
+it has a type of: &lt;class &#39;str&#39;&gt;
+
+the second element is:      total_bill   tip   sex smoker   day    time  size
+24        19.82  3.18  Male     No   Sat  Dinner     2
+6          8.77  2.00  Male     No   Sun  Dinner     2
+153       24.55  2.00  Male     No   Sun  Dinner     4
+211       25.89  5.16  Male    Yes   Sat  Dinner     4
+176       17.89  2.00  Male    Yes   Sun  Dinner     2
+192       28.44  2.56  Male    Yes  Thur   Lunch     2
+9         14.78  3.23  Male     No   Sun  Dinner     2
+
+it has a type of: &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+
+what we have:
+(&#39;Male&#39;,      total_bill   tip   sex smoker   day    time  size
+24        19.82  3.18  Male     No   Sat  Dinner     2
+6          8.77  2.00  Male     No   Sun  Dinner     2
+153       24.55  2.00  Male     No   Sun  Dinner     4
+211       25.89  5.16  Male    Yes   Sat  Dinner     4
+176       17.89  2.00  Male    Yes   Sun  Dinner     2
+192       28.44  2.56  Male    Yes  Thur   Lunch     2
+9         14.78  3.23  Male     No   Sun  Dinner     2)</code></pre>
+<h2 id="여러-열을-사용해-그룹-오브젝트-만들고-계산하기"><a href="#여러-열을-사용해-그룹-오브젝트-만들고-계산하기" class="headerlink" title="여러 열을 사용해 그룹 오브젝트 만들고 계산하기"></a>여러 열을 사용해 그룹 오브젝트 만들고 계산하기</h2><p>지금까지는 하나의 열을 사용하여 그룹 오브젝트를 만들고 연산을 수행했다. 하지만 여러 열을 사용하여 그룹 오브젝트를 만들고 평균값을 구하는 등의 계산도 할 수 있다.</p>
+<h3 id="그룹-오브젝트-계산하고-살펴보기"><a href="#그룹-오브젝트-계산하고-살펴보기" class="headerlink" title="그룹 오브젝트 계산하고 살펴보기"></a>그룹 오브젝트 계산하고 살펴보기</h3><h4 id="1-11"><a href="#1-11" class="headerlink" title="1."></a>1.</h4><p>여러 열을 사용하여 데이터를 그룹화하려면 리스트에 열 이름을 담아 groupby 메서드에 전달하면 된다. 다음은 sex, time 열을 기준을 데이터를 그룹화하고 평균값을 구한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bill_sex_time = tips_10.groupby([<span class="string">&#x27;sex&#x27;</span>,<span class="string">&#x27;time&#x27;</span>])</span><br><span class="line">group_avg = bill_sex_time.mean()</span><br><span class="line"></span><br><span class="line">print(group_avg)</span><br></pre></td></tr></table></figure>
+
+<pre><code>               total_bill       tip      size
+sex    time                                  
+Male   Lunch    28.440000  2.560000  2.000000
+       Dinner   18.616667  2.928333  2.666667
+Female Lunch    12.740000  2.260000  2.000000
+       Dinner   15.380000  3.000000  2.000000</code></pre>
+<h4 id="2-11"><a href="#2-11" class="headerlink" title="2."></a>2.</h4><p>과정 <strong>1</strong>을 거친 group_avg의 자료형을 확인해 보면 데이터프레임이라는 것을 알 수 있다. 그리고 변수 group_avg에 포함된 열은 total_billm tip, size라는 것도 알 수 있다.</p>
+<p><em>참고로 groupby 메서드가 반환하는 데이터의 자료형은 그룹 오브젝트(DataFrameGroupBy)이다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="built_in">type</span>(group_avg))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(group_avg.columns)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Index([&#39;total_bill&#39;, &#39;tip&#39;, &#39;size&#39;], dtype=&#39;object&#39;)</code></pre>
+<h4 id="3-6"><a href="#3-6" class="headerlink" title="3."></a>3.</h4><p>group_avg의 자료형은 데이터프레임이라고 했다. 그러면 인덱스는 어떻게 구성되어 있을까? 다음은 group_avg의 인덱스를 출력한 것이다.</p>
+<p><em>참고로 여러 인덱스를 담고 있는 인덱스는 특별히 MultiIndex라고 부른다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(group_avg.index)</span><br></pre></td></tr></table></figure>
+
+<pre><code>MultiIndex([(  &#39;Male&#39;,  &#39;Lunch&#39;),
+            (  &#39;Male&#39;, &#39;Dinner&#39;),
+            (&#39;Female&#39;,  &#39;Lunch&#39;),
+            (&#39;Female&#39;, &#39;Dinner&#39;)],
+           names=[&#39;sex&#39;, &#39;time&#39;])</code></pre>
+<h4 id="4-3"><a href="#4-3" class="headerlink" title="4."></a>4.</h4><p>과정 <strong>3</strong>과 같이 데이터프레임의 인덱스가 MultiIndex인 경우에는 rest_index 메서드를 사용하여 데이터프레임의 인덱스를 새로 부여할 수도 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">group_method = tips_10.groupby([<span class="string">&#x27;sex&#x27;</span>,<span class="string">&#x27;time&#x27;</span>]).mean().reset_index()</span><br><span class="line">print(group_method)</span><br></pre></td></tr></table></figure>
+
+<pre><code>      sex    time  total_bill       tip      size
+0    Male   Lunch   28.440000  2.560000  2.000000
+1    Male  Dinner   18.616667  2.928333  2.666667
+2  Female   Lunch   12.740000  2.260000  2.000000
+3  Female  Dinner   15.380000  3.000000  2.000000</code></pre>
+<h4 id="5-1"><a href="#5-1" class="headerlink" title="5."></a>5.</h4><p>reset_index 메서드 대신 as_index 인자를 False로 설정해도 과정 <strong>4</strong>와 같은 결과를 얻을 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">group_param = tips_10.groupby([<span class="string">&#x27;sex&#x27;</span>,<span class="string">&#x27;time&#x27;</span>], as_index = <span class="literal">False</span>).mean()</span><br><span class="line">print(group_param)</span><br></pre></td></tr></table></figure>
+
+<pre><code>      sex    time  total_bill       tip      size
+0    Male   Lunch   28.440000  2.560000  2.000000
+1    Male  Dinner   18.616667  2.928333  2.666667
+2  Female   Lunch   12.740000  2.260000  2.000000
+3  Female  Dinner   15.380000  3.000000  2.000000</code></pre>
+<h2 id="마무리하며"><a href="#마무리하며" class="headerlink" title="마무리하며"></a>마무리하며</h2><p>이 장에서는 groupby 메서드의 분리-반영-결합 과정을 구체적으로 살펴보고 데이터를 집계, 변환, 필터링하는 방법을 알아보았다. 또 여러 가지 방법으로 그룹 오브젝트를 만들고 계산하는 방법도 알아보았다. 데이터를 그룹화하여 계산하는 작업을 실무에서 자주 사용하므로 반드시 알아두어야 한다.</p>
+<p>출처 : Do it 판다스</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://kim-1994.github.io/2021/04/01/pandas(10)/" data-id="ckmyx5h4t0000w4vj394957bc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "HOya"
+        },
+        "headline": "그룹 연산",
+        "image": "http://KIM-1994.github.io",
+        "keywords": "",
+        "genre": "Do it 판다스",
+        "datePublished": "2021-04-01",
+        "dateCreated": "2021-04-01",
+        "dateModified": "2021-04-01",
+        "url": "http://KIM-1994.github.io/2021/04/01/pandas(10)/",
+        "description": "=================================
+11-1 데이터 집계11-2 데이터 변환11-3 데이터 필터링11-4 그룹 오브젝트
+=================================
+11-1 데이터 집계데이터 집계하기 - groupby 메서드2장에서 갭마인더 데이터 집합으로 각 연도로 평균 수명을 구했던 것을 기억하는가? 수집한 데이",
+        "wordCount": 5829
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/KIM-1994" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2021/04/01/pandas(9)/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">apply 메서드 활용</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/01/pandas(10)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/04/01/pandas(10)/" class="title">그룹 연산</a></p>
+                            <p class="item-date"><time datetime="2021-04-01T13:30:58.890Z" itemprop="datePublished">2021-04-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/01/pandas(9)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/04/01/pandas(9)/" class="title">apply 메서드 활용</a></p>
+                            <p class="item-date"><time datetime="2021-04-01T08:05:28.904Z" itemprop="datePublished">2021-04-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/01/pandas(8)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/113251662-a2c2f900-92fd-11eb-9afb-4fa207f9d4ef.png)" alt="문자열 처리하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/04/01/pandas(8)/" class="title">문자열 처리하기</a></p>
+                            <p class="item-date"><time datetime="2021-04-01T06:20:51.231Z" itemprop="datePublished">2021-04-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/31/pandas(7)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/03/31/pandas(7)/" class="title">판다스 자료형</a></p>
+                            <p class="item-date"><time datetime="2021-03-31T11:37:52.060Z" itemprop="datePublished">2021-03-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/31/pandas(6)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/113006576-79e11d80-91b0-11eb-8930-55502e054a9a.png)" alt="깔끔한 데이터" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/03/31/pandas(6)/" class="title">깔끔한 데이터</a></p>
+                            <p class="item-date"><time datetime="2021-03-31T10:48:00.693Z" itemprop="datePublished">2021-03-31</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kaggle/">Kaggle</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/">crawling</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a><span class="category-list-count">2</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawling/" rel="tag">crawling</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">데이터</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" rel="tag">오픈소스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84/" rel="tag">통계</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" rel="tag">통계학</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag">파이썬</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" rel="tag">확률분포</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/crawling/" style="font-size: 20px;">crawling</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" style="font-size: 15px;">데이터</a> <a href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" style="font-size: 15px;">오픈소스</a> <a href="/tags/%ED%86%B5%EA%B3%84/" style="font-size: 10px;">통계</a> <a href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" style="font-size: 15px;">통계학</a> <a href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" style="font-size: 20px;">파이썬</a> <a href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" style="font-size: 10px;">확률분포</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 HOya</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://kim-1994.github.io/2021/04/01/pandas(10)/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
