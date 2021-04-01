@@ -12,16 +12,16 @@
     
     <meta name="keywords" content="" />
     
-    <meta name="description" content="7-1 열과 피벗넓은 데이터데이터프레임의 열은 파이썬의 변수와 비슷한 역할을 한다. 예를 들어 ebola 데이터프레임 열은 사망한 날짜(Date), 발병 국가(Case_Guinea) 등의 데이터를 저장하고 있다. 하지만 이번에 다루는 데이터프레임의 열은 열 자체가 어떤 값(&lt;10$, &lt;10-20$, &lt;20-30$, …)을 의미한다. 그러나">
+    <meta name="description" content="&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 7-1 열과 피벗7-2 열 이름 관리하기7-3 여러 열을 하나로 정리하기7-4 중복 데이터 처리하기7-5 대용량 데이터 처리하기 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 7-1 열과 피벗넓은 데이터데이터프레임의 열은 파이썬의 변수와 비슷한 역할을 한다. 예를 들어 ebola 데">
 <meta property="og:type" content="article">
 <meta property="og:title" content="깔끔한 데이터">
 <meta property="og:url" content="http://kim-1994.github.io/2021/03/31/pandas(6)/index.html">
 <meta property="og:site_name" content="Welcome to HOya World">
-<meta property="og:description" content="7-1 열과 피벗넓은 데이터데이터프레임의 열은 파이썬의 변수와 비슷한 역할을 한다. 예를 들어 ebola 데이터프레임 열은 사망한 날짜(Date), 발병 국가(Case_Guinea) 등의 데이터를 저장하고 있다. 하지만 이번에 다루는 데이터프레임의 열은 열 자체가 어떤 값(&lt;10$, &lt;10-20$, &lt;20-30$, …)을 의미한다. 그러나">
+<meta property="og:description" content="&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 7-1 열과 피벗7-2 열 이름 관리하기7-3 여러 열을 하나로 정리하기7-4 중복 데이터 처리하기7-5 대용량 데이터 처리하기 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 7-1 열과 피벗넓은 데이터데이터프레임의 열은 파이썬의 변수와 비슷한 역할을 한다. 예를 들어 ebola 데">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://user-images.githubusercontent.com/72365693/113006576-79e11d80-91b0-11eb-8930-55502e054a9a.png">
 <meta property="article:published_time" content="2021-03-31T10:48:00.693Z">
-<meta property="article:modified_time" content="2021-03-31T10:50:03.707Z">
+<meta property="article:modified_time" content="2021-04-01T06:48:26.980Z">
 <meta property="article:author" content="HOya">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/72365693/113006576-79e11d80-91b0-11eb-8930-55502e054a9a.png">
@@ -181,7 +181,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2021/03/31/pandas(6)/" class="article-date">
-     <time datetime="2021-03-31T10:50:03.707Z" itemprop="dateModified">2021-03-31</time>
+     <time datetime="2021-04-01T06:48:26.980Z" itemprop="dateModified">2021-04-01</time>
   </a>
 </div>
 
@@ -203,7 +203,10 @@
 
             
 
-            <h1 id="7-1-열과-피벗"><a href="#7-1-열과-피벗" class="headerlink" title="7-1 열과 피벗"></a>7-1 열과 피벗</h1><h2 id="넓은-데이터"><a href="#넓은-데이터" class="headerlink" title="넓은 데이터"></a>넓은 데이터</h2><p>데이터프레임의 열은 파이썬의 변수와 비슷한 역할을 한다. 예를 들어 ebola 데이터프레임 열은 사망한 날짜(Date), 발병 국가(Case_Guinea) 등의 데이터를 저장하고 있다. 하지만 이번에 다루는 데이터프레임의 열은 열 자체가 어떤 값(&lt;10$, &lt;10-20$, &lt;20-30$, …)을 의미한다. 그러나 보니 데이터프레임의 열이 옆으로 길게 늘어선 형태가 된다. 바로 이것을 ‘넓은 데이터’라고 한다. 이 장에서는 넓은 데이터를 사용해 다양한 실습을 진행할 것이다. 그러면 실습을 진행하기 전에 이 장에서 자주 사용할 melt 메서드에 대해 간략하게 알아보겠다.</p>
+            <p>=================================</p>
+<p>7-1 열과 피벗<br>7-2 열 이름 관리하기<br>7-3 여러 열을 하나로 정리하기<br>7-4 중복 데이터 처리하기<br>7-5 대용량 데이터 처리하기</p>
+<p>=================================</p>
+<h1 id="7-1-열과-피벗"><a href="#7-1-열과-피벗" class="headerlink" title="7-1 열과 피벗"></a>7-1 열과 피벗</h1><h2 id="넓은-데이터"><a href="#넓은-데이터" class="headerlink" title="넓은 데이터"></a>넓은 데이터</h2><p>데이터프레임의 열은 파이썬의 변수와 비슷한 역할을 한다. 예를 들어 ebola 데이터프레임 열은 사망한 날짜(Date), 발병 국가(Case_Guinea) 등의 데이터를 저장하고 있다. 하지만 이번에 다루는 데이터프레임의 열은 열 자체가 어떤 값(&lt;10$, &lt;10-20$, &lt;20-30$, …)을 의미한다. 그러나 보니 데이터프레임의 열이 옆으로 길게 늘어선 형태가 된다. 바로 이것을 ‘넓은 데이터’라고 한다. 이 장에서는 넓은 데이터를 사용해 다양한 실습을 진행할 것이다. 그러면 실습을 진행하기 전에 이 장에서 자주 사용할 melt 메서드에 대해 간략하게 알아보겠다.</p>
 <p><img src="https://user-images.githubusercontent.com/72365693/113006576-79e11d80-91b0-11eb-8930-55502e054a9a.png"></p>
 <h3 id="melt-메서드"><a href="#melt-메서드" class="headerlink" title="melt 메서드"></a>melt 메서드</h3><p>판다스는 데이터프레임을 깔끔한 데이터로 정리하는데 유용한 melt 메서드를 제공한다. melt 메서드는 지정한 열의 데이터를 모두 행으로 정리해 준다. 다음은 melt 메서드를 실습할 때 사용할 인자를 정리한 표이다. 본격적인 실습을 진행하기 전에 미리 읽어두면 도움이 될 것이다.</p>
 <h3 id="melt-메서드의-인자"><a href="#melt-메서드의-인자" class="headerlink" title="melt 메서드의 인자"></a>melt 메서드의 인자</h3><table>
@@ -713,10 +716,13 @@ C:/Users/user/Desktop/Doit_판다스입문_소스/data\fhv_tripdata_2015-05.csv<
         "genre": "Do it 판다스",
         "datePublished": "2021-03-31",
         "dateCreated": "2021-03-31",
-        "dateModified": "2021-03-31",
+        "dateModified": "2021-04-01",
         "url": "http://KIM-1994.github.io/2021/03/31/pandas(6)/",
-        "description": "7-1 열과 피벗넓은 데이터데이터프레임의 열은 파이썬의 변수와 비슷한 역할을 한다. 예를 들어 ebola 데이터프레임 열은 사망한 날짜(Date), 발병 국가(Case_Guinea) 등의 데이터를 저장하고 있다. 하지만 이번에 다루는 데이터프레임의 열은 열 자체가 어떤 값(&lt;10$, &lt;10-20$, &lt;20-30$, …)을 의미한다. 그러나 ",
-        "wordCount": 7910
+        "description": "=================================
+7-1 열과 피벗7-2 열 이름 관리하기7-3 여러 열을 하나로 정리하기7-4 중복 데이터 처리하기7-5 대용량 데이터 처리하기
+=================================
+7-1 열과 피벗넓은 데이터데이터프레임의 열은 파이썬의 변수와 비슷한 역할을 한다. 예를 들어 ebola 데",
+        "wordCount": 7925
     }
 </script>
 
