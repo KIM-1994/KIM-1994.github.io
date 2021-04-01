@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>apply 메서드 활용 | Welcome to HOya World</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 10-1 간단한 함수 만들기10-2 apply 메서드 사용하기 - 기초10-3 apply 메서드 사용하기 - 고급 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 10-1 간단한 함수 만들기이 책은 파이썬의 기초 지식을 어느 정도 아는 독자를 대상으로 집필되었다. 따라서 함수는 간단히">
+<meta property="og:type" content="article">
+<meta property="og:title" content="apply 메서드 활용">
+<meta property="og:url" content="http://kim-1994.github.io/2021/04/01/pandas(9)/index.html">
+<meta property="og:site_name" content="Welcome to HOya World">
+<meta property="og:description" content="&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 10-1 간단한 함수 만들기10-2 apply 메서드 사용하기 - 기초10-3 apply 메서드 사용하기 - 고급 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 10-1 간단한 함수 만들기이 책은 파이썬의 기초 지식을 어느 정도 아는 독자를 대상으로 집필되었다. 따라서 함수는 간단히">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-01T08:05:28.904Z">
+<meta property="article:modified_time" content="2021-04-01T08:07:47.010Z">
+<meta property="article:author" content="HOya">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Kaggle/">Kaggle</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/">crawling</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-pandas(9)" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        apply 메서드 활용
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2021/04/01/pandas(9)/" class="article-date">
+       <time datetime="2021-04-01T08:05:28.904Z" itemprop="datePublished">2021-04-01</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2021/04/01/pandas(9)/" class="article-date">
+     <time datetime="2021-04-01T08:07:47.010Z" itemprop="dateModified">2021-04-01</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>=================================</p>
+<p>10-1 간단한 함수 만들기<br>10-2 apply 메서드 사용하기 - 기초<br>10-3 apply 메서드 사용하기 - 고급</p>
+<p>=================================</p>
+<h1 id="10-1-간단한-함수-만들기"><a href="#10-1-간단한-함수-만들기" class="headerlink" title="10-1 간단한 함수 만들기"></a>10-1 간단한 함수 만들기</h1><p>이 책은 파이썬의 기초 지식을 어느 정도 아는 독자를 대상으로 집필되었다. 따라서 함수는 간단히 설명하고 넘어간다. 함수의 기본 구조는 다음과 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_function</span>():</span></span><br><span class="line">    <span class="comment"># 여기부터 코드를 입력한다.</span></span><br></pre></td></tr></table></figure>
+
+<p>그러면 제곱 함수와 n 제곱 함수를 직접 만들어보겠다. 제곱 함수와 n 제곱 함수는 10-2에서 apply 메서드와 함께 사용한다. 여기에서 꼭 함수를 만들어보고 다음으로 넘어가자.</p>
+<h3 id="제곱-함수와-n-제곱-함수-만들기"><a href="#제곱-함수와-n-제곱-함수-만들기" class="headerlink" title="제곱 함수와 n 제곱 함수 만들기"></a>제곱 함수와 n 제곱 함수 만들기</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p>제곱 함수는 오른쪽과 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_sq</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> x ** <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p>n 제곱 함수 my_exp는 다음과 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_exp</span>(<span class="params">x, n</span>):</span></span><br><span class="line">    <span class="keyword">return</span> x ** n</span><br></pre></td></tr></table></figure>
+
+<h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><p>과정 <strong>1~2</strong>에서 만든 함수를 사용해 보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(my_sq(<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>16</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(my_exp(<span class="number">2</span>,<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>16</code></pre>
+<h1 id="10-2-apply-메서드-사용하기-기초"><a href="#10-2-apply-메서드-사용하기-기초" class="headerlink" title="10-2 apply 메서드 사용하기 - 기초"></a>10-2 apply 메서드 사용하기 - 기초</h1><p>다음 실습을 통해 apply 메서드의 사용법을 알아보겠다. apply 메서드로 브로드캐스팅한 결과가 올바른 값인지 확인하기 위해 시리즈, 데이터프레임의 기초 연산 결과와 비교하며 실습을 진행하겠다.</p>
+<h3 id="시리즈와-데이터프레임에-apply-메서드-사용하기"><a href="#시리즈와-데이터프레임에-apply-메서드-사용하기" class="headerlink" title="시리즈와 데이터프레임에 apply 메서드 사용하기"></a>시리즈와 데이터프레임에 apply 메서드 사용하기</h3><h4 id="1-시리즈와-apply-메서드"><a href="#1-시리즈와-apply-메서드" class="headerlink" title="1. 시리즈와 apply 메서드"></a>1. 시리즈와 apply 메서드</h4><p>먼저 실습에 사용할 데이터프레임을 준비한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;a&#x27;</span>:[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>], <span class="string">&#x27;b&#x27;</span>: [<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>]&#125;)</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>    a   b
+0  10  20
+1  20  30
+2  30  40</code></pre>
+<h4 id="2-1"><a href="#2-1" class="headerlink" title="2."></a>2.</h4><p>다음은 앞에서 만든 제곱 함수(my_exp)를 사용하기 전에 a 열을 제곱하여 얻은 결과이다. 이 결괏값과 apply 메서드를 적용한 결괏값을 비교해 보겠다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df[<span class="string">&#x27;a&#x27;</span>]**<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    100
+1    400
+2    900
+Name: a, dtype: int64</code></pre>
+<h4 id="3-1"><a href="#3-1" class="headerlink" title="3."></a>3.</h4><p>다음은 apply 메서드에 제곱 함수의 이름(my_sq)을 전달하여 시리즈의 모든 데이터에 제곱 함수를 적용한 것이다. 이때 apply 메서드에 전달하는 함수(my_sq)가 1개의 인자를 받도록 구성되어 있다면 인잣값을 생략해야 한다. 그러면 2개의 인자를 전달해야 할 경우에는 어떻게 해야할까?</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sq = df[<span class="string">&#x27;a&#x27;</span>].apply(my_sq)</span><br><span class="line">print(sq)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    100
+1    400
+2    900
+Name: a, dtype: int64</code></pre>
+<h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p>이제 2개의 인자를 전달받아야 하는 n 제곱 함수(my_exp)와 apply 메서드를 함께 사용해 보겠다. apply 메서드의 첫 번째 인자에는 n 제곱 함수의 이름(my_exp)을 전달하고 두 번째 인자에는 n 제곱 함수의 두 번째 인자(n)를 전달한다.</p>
+<p><em>참고로 과정 3~4를 통해 apply 메서드에 전달하는 함수의 첫 번째 인자에는 데이터프레임이나 시리즈가 자동으로 전달된다는 것을 알 수 있다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ex = df[<span class="string">&#x27;a&#x27;</span>].apply(my_exp, n=<span class="number">2</span>)</span><br><span class="line">print(ex)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    100
+1    400
+2    900
+Name: a, dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ex = df[<span class="string">&#x27;a&#x27;</span>].apply(my_exp, n=<span class="number">3</span>)</span><br><span class="line">print(ex)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0     1000
+1     8000
+2    27000
+Name: a, dtype: int64</code></pre>
+<h4 id="5-데이터프레임과-apply-메서드"><a href="#5-데이터프레임과-apply-메서드" class="headerlink" title="5. 데이터프레임과 apply 메서드"></a>5. 데이터프레임과 apply 메서드</h4><p>이번에는 시리즈가 아니라 데이터프레임에 apply 메서드를 사용하는 방법을 알아보겠다. 먼저 데이터프레임을 다음과 같이 준비한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;a&#x27;</span>: [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>], <span class="string">&#x27;b&#x27;</span>: [<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>]&#125;)</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>    a   b
+0  10  20
+1  20  30
+2  30  40</code></pre>
+<h4 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h4><p>새로운 함수를 만들어보겠다. 이번에 사용할 함수는 1개의 값을 전달받아 출력하는 함수이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_me</span>(<span class="params">x</span>):</span></span><br><span class="line">    print(x)</span><br></pre></td></tr></table></figure>
+
+<h4 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h4><p>이번에는 데이터프레임에 함수를 적용해야 하기 때문에 함수를 열 방향으로 적용할지 행 방향으로 적용할지 정해야 한다. axis 인잣값을 0이나 1로 지정하면 함수를 열 또는 행 방향으로 적용할 수 있다.</p>
+<p><em>참고로 만약 axis 값을 지정하지 않으면 열 방향(0)으로 함수를 적용한다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.apply(print_me, axis = <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    10
+1    20
+2    30
+Name: a, dtype: int64
+0    20
+1    30
+2    40
+Name: b, dtype: int64
+a    None
+b    None
+dtype: object</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df[<span class="string">&#x27;a&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    10
+1    20
+2    30
+Name: a, dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df[<span class="string">&#x27;b&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    20
+1    30
+2    40
+Name: b, dtype: int64</code></pre>
+<h4 id="8"><a href="#8" class="headerlink" title="8."></a>8.</h4><p>이번에는 3개의 인자를 입력받아 평균을 계산하는 함수를 사용해 보겠다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">avg_3</span>(<span class="params">x, y, z</span>):</span></span><br><span class="line">    <span class="keyword">return</span> (x + y + z) / <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="9"><a href="#9" class="headerlink" title="9."></a>9.</h4><p>그런데 avg_3 함수를 apply 메서드에 전달하면 ‘avg_3 함수는 3개의 인잣값을 필요로 하는 함수인데 1개의 인잣값만 입력받았다.’는 오류 메시지가 출력된다. 즉, avg_3 함수에 열 단위 데이터(df[‘a’])가 전달되었고 이 값을 avg_3 함수에서 1개의 인자로 인식한 것이다. 따라서 avg_3 함수가 열 단위로 데이터를 처리할 수 있도록 수정해야 한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df.apply(avg_3))</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-16-60357ad98728&gt; in &lt;module&gt;
+----&gt; 1 print(df.apply(avg_3))
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\pandas\core\frame.py in apply(self, func, axis, raw, result_type, args, **kwds)
+   7766             kwds=kwds,
+   7767         )
+-&gt; 7768         return op.get_result()
+   7769 
+   7770     def applymap(self, func, na_action: Optional[str] = None) -&gt; DataFrame:
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\pandas\core\apply.py in get_result(self)
+    183             return self.apply_raw()
+    184 
+--&gt; 185         return self.apply_standard()
+    186 
+    187     def apply_empty_result(self):
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\pandas\core\apply.py in apply_standard(self)
+    274 
+    275     def apply_standard(self):
+--&gt; 276         results, res_index = self.apply_series_generator()
+    277 
+    278         # wrap results
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\pandas\core\apply.py in apply_series_generator(self)
+    288             for i, v in enumerate(series_gen):
+    289                 # ignore SettingWithCopy here in case the user mutates
+--&gt; 290                 results[i] = self.f(v)
+    291                 if isinstance(results[i], ABCSeries):
+    292                     # If we have a view on v, we need to make a copy because
+
+
+TypeError: avg_3() missing 2 required positional arguments: &#39;y&#39; and &#39;z&#39;</code></pre>
+<h4 id="10"><a href="#10" class="headerlink" title="10."></a>10.</h4><p>다음은 avg_3 함수가 열 단위로 데이터를 처리할 수 있도록 개선한 avg_3_apply 함수이다. 개선한 함수를 apply 메서드에 적용하면 잘 동작하는 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">avg_3_apply</span>(<span class="params">col</span>):</span></span><br><span class="line">    x = col[<span class="number">0</span>]</span><br><span class="line">    y = col[<span class="number">1</span>]</span><br><span class="line">    z = col[<span class="number">2</span>]</span><br><span class="line">    <span class="keyword">return</span> (x + y + z) / <span class="number">3</span></span><br><span class="line"></span><br><span class="line">print(df.apply(avg_3_apply))</span><br></pre></td></tr></table></figure>
+
+<pre><code>a    20.0
+b    30.0
+dtype: float64</code></pre>
+<h4 id="11"><a href="#11" class="headerlink" title="11."></a>11.</h4><p>앞의 과정에서는 데이터프레임의 행 수가 3이라는 것을 알고 있다는 전제하에 avg_3_apply 함수를 작성했다. 하지만 일반적으로는 for문을 이용하여 오른쪽과 같이 작성한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">avg_3_apply</span>(<span class="params">col</span>):</span></span><br><span class="line">    <span class="built_in">sum</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> col:</span><br><span class="line">        <span class="built_in">sum</span> += item</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sum</span> / df.shape[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<h4 id="12"><a href="#12" class="headerlink" title="12."></a>12.</h4><p>과정 <strong>11</strong>의 함수를 응용하면 행 방향으로 데이터를 처리하는 함수도 만들 수 있다. 마지막 return문의 df.shape[0]을 df.shape[1]로 바꾸면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">avg_2_apply</span>(<span class="params">col</span>):</span></span><br><span class="line">    <span class="built_in">sum</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> col:</span><br><span class="line">        <span class="built_in">sum</span> += item</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sum</span> / df.shape[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">print(df.apply(avg_2_apply, axis = <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    15.0
+1    25.0
+2    35.0
+dtype: float64</code></pre>
+<h1 id="10-3-apply-메서드-사용하기-고급"><a href="#10-3-apply-메서드-사용하기-고급" class="headerlink" title="10-3 apply 메서드 사용하기 - 고급"></a>10-3 apply 메서드 사용하기 - 고급</h1><p>이번에는 조금 더 큰 데이터를 사용하여 실습을 진행해 보겠다. 이번에 사용할 데이터는 seaborn 라이브러리의 titanic 데이터 집합이다.</p>
+<p><em>참고로 titanic 데이터 집합에는 타이타닉 침몰 시 생존자에 대한 데이터가 들어 있다.</em></p>
+<h3 id="데이터프레임의-누락값을-처리한-다음-apply-메서드-사용하기"><a href="#데이터프레임의-누락값을-처리한-다음-apply-메서드-사용하기" class="headerlink" title="데이터프레임의 누락값을 처리한 다음 apply 메서드 사용하기"></a>데이터프레임의 누락값을 처리한 다음 apply 메서드 사용하기</h3><h4 id="1-데이터프레임의-누락값-처리하기-열-방향"><a href="#1-데이터프레임의-누락값-처리하기-열-방향" class="headerlink" title="1.데이터프레임의 누락값 처리하기 - 열 방향"></a>1.데이터프레임의 누락값 처리하기 - 열 방향</h4><p>이번에도 seaborn 라이브러리에 있는 데이터를 사용한다. seaborn 라이브러리에 있는 titanic 데이터 집합을 불러와 변수 titanic에 저장한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"></span><br><span class="line">titanic = sns.load_dataset(<span class="string">&quot;titanic&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2"><a href="#2-2" class="headerlink" title="2."></a>2.</h4><p>다음은 titanic 데이터프레임의 데이터 정보를 출력한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(titanic.info())</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 891 entries, 0 to 890
+Data columns (total 15 columns):
+ #   Column       Non-Null Count  Dtype   
+---  ------       --------------  -----   
+ 0   survived     891 non-null    int64   
+ 1   pclass       891 non-null    int64   
+ 2   sex          891 non-null    object  
+ 3   age          714 non-null    float64 
+ 4   sibsp        891 non-null    int64   
+ 5   parch        891 non-null    int64   
+ 6   fare         891 non-null    float64 
+ 7   embarked     889 non-null    object  
+ 8   class        891 non-null    category
+ 9   who          891 non-null    object  
+ 10  adult_male   891 non-null    bool    
+ 11  deck         203 non-null    category
+ 12  embark_town  889 non-null    object  
+ 13  alive        891 non-null    object  
+ 14  alone        891 non-null    bool    
+dtypes: bool(2), category(2), float64(2), int64(4), object(5)
+memory usage: 80.7+ KB
+None</code></pre>
+<h4 id="3-2"><a href="#3-2" class="headerlink" title="3."></a>3.</h4><p>다음은 누락값의 개수를 반환하는 count_missing 함수이다. 판다스의 isnull 메서드에 데이터프레임을 전달하면 누락값의 유무에 따라 True, False를 적용한 데이터프레임이 만들어진다. 이 값을 넘파이의 sum 메서드에 전달하면 누락값의 개수를 구할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_missing</span>(<span class="params">vec</span>):</span></span><br><span class="line">    null_vec = pd.isnull(vec)</span><br><span class="line">    null_count = np.<span class="built_in">sum</span>(null_vec)</span><br><span class="line">    <span class="keyword">return</span> null_count</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-1"><a href="#4-1" class="headerlink" title="4."></a>4.</h4><p>다음은 apply 메서드에 count_missing 함수를 전달하여 얻은 결과이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmis_col = titanic.apply(count_missing)</span><br><span class="line">print(cmis_col)</span><br></pre></td></tr></table></figure>
+
+<pre><code>survived         0
+pclass           0
+sex              0
+age            177
+sibsp            0
+parch            0
+fare             0
+embarked         2
+class            0
+who              0
+adult_male       0
+deck           688
+embark_town      2
+alive            0
+alone            0
+dtype: int64</code></pre>
+<h4 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h4><p>다음은 누락값의 비율을 계산하는 prop_missing 함수이다. 과정 <strong>3</strong>에서 작성한 count_missing 함수를 이용해 데이터프레임의 누락값 개수를 구하고 size 속성을 이용해 데이터프레임의 전체 데이터 수를 구하여 나누면 누락값의 비율을 계산할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prop_missing</span>(<span class="params">vec</span>):</span></span><br><span class="line">    num = count_missing(vec)</span><br><span class="line">    dem = vec.size</span><br><span class="line">    <span class="keyword">return</span> num / dem</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-1"><a href="#6-1" class="headerlink" title="6."></a>6.</h4><p>다음은 apply 메서드에 prop_missing 함수를 적용한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pmis_col = titanic.apply(prop_missing)</span><br><span class="line">print(pmis_col)</span><br></pre></td></tr></table></figure>
+
+<pre><code>survived       0.000000
+pclass         0.000000
+sex            0.000000
+age            0.198653
+sibsp          0.000000
+parch          0.000000
+fare           0.000000
+embarked       0.002245
+class          0.000000
+who            0.000000
+adult_male     0.000000
+deck           0.772166
+embark_town    0.002245
+alive          0.000000
+alone          0.000000
+dtype: float64</code></pre>
+<h4 id="7-1"><a href="#7-1" class="headerlink" title="7."></a>7.</h4><p>과정 <strong>5</strong>에서 작성한 prop_missing 함수를 이용하면 누락값이 아닌 데이터의 비율도 구할 수 있다. 전체 비율(1)에서 누락값의 비율을 빼면 된다. 과정 <strong>5~6</strong>과 같은 방법으로 apply 메서드에 prop_complete 함수를 전달하여 결과를 확인해 보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prop_complete</span>(<span class="params">vec</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> - prop_missing(vec)</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-데이터프레임의-누락값-처리하기-행-방향"><a href="#8-데이터프레임의-누락값-처리하기-행-방향" class="headerlink" title="8. 데이터프레임의 누락값 처리하기 - 행 방향"></a>8. 데이터프레임의 누락값 처리하기 - 행 방향</h4><p>이번에는 행 방향으로 데이터를 처리해 보겠다. 다음은 axis를 1로 설정하여 앞에서 만든 count_missing, prop_missing, prop_comlete 함수를 행 방향으로 적용하여 실항한 것이다. 각 행의 누락값과 누락값의 비율, 누락값이 아닌 값의 비율을 잘 계산하고 있다는 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cmis_row = titanic.apply(count_missing, axis = <span class="number">1</span>)</span><br><span class="line">pmis_row = titanic.apply(prop_missing, axis = <span class="number">1</span>)</span><br><span class="line">pcom_row = titanic.apply(prop_complete, axis = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">print(cmis_row.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    1
+1    0
+2    1
+3    0
+4    1
+dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pmis_row.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    0.066667
+1    0.000000
+2    0.066667
+3    0.000000
+4    0.066667
+dtype: float64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pcom_row.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>0    0.933333
+1    1.000000
+2    0.933333
+3    1.000000
+4    0.933333
+dtype: float64</code></pre>
+<h4 id="9-1"><a href="#9-1" class="headerlink" title="9."></a>9.</h4><p>다음은 누락값의 개수를 구하여 titanic 데이터프레임에 추가한 것이다. 데이터프레임에 num_missing 열이 추가된 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">titanic[<span class="string">&#x27;num_missing&#x27;</span>] = titanic.apply(count_missing, axis = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">print(titanic.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>   survived  pclass     sex   age  sibsp  parch     fare embarked  class  \
+0         0       3    male  22.0      1      0   7.2500        S  Third   
+1         1       1  female  38.0      1      0  71.2833        C  First   
+2         1       3  female  26.0      0      0   7.9250        S  Third   
+3         1       1  female  35.0      1      0  53.1000        S  First   
+4         0       3    male  35.0      0      0   8.0500        S  Third   
+
+     who  adult_male deck  embark_town alive  alone  num_missing  
+0    man        True  NaN  Southampton    no  False            1  
+1  woman       False    C    Cherbourg   yes  False            0  
+2  woman       False  NaN  Southampton   yes   True            1  
+3  woman       False    C  Southampton   yes  False            0  
+4    man        True  NaN  Southampton    no   True            1  </code></pre>
+<h4 id="10-1"><a href="#10-1" class="headerlink" title="10."></a>10.</h4><p>과정 <strong>9</strong>에서 누락값이 있는 데이터를 데이터프레임에 추가했기 때문에 누락값이 있는 데이터만 따로 모아서 볼 수도 있다. 다음은 누락값이 2개 이상인 데이터 추출한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(titanic. loc[titanic.num_missing &gt; <span class="number">1</span>, :].sample(<span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>     survived  pclass     sex   age  sibsp  parch     fare embarked  class  \
+61          1       1  female  38.0      0      0  80.0000      NaN  First   
+650         0       3    male   NaN      0      0   7.8958        S  Third   
+324         0       3    male   NaN      8      2  69.5500        S  Third   
+459         0       3    male   NaN      0      0   7.7500        Q  Third   
+241         1       3  female   NaN      1      0  15.5000        Q  Third   
+223         0       3    male   NaN      0      0   7.8958        S  Third   
+828         1       3    male   NaN      0      0   7.7500        Q  Third   
+613         0       3    male   NaN      0      0   7.7500        Q  Third   
+495         0       3    male   NaN      0      0  14.4583        C  Third   
+667         0       3    male   NaN      0      0   7.7750        S  Third   
+
+       who  adult_male deck  embark_town alive  alone  num_missing  
+61   woman       False    B          NaN   yes   True            2  
+650    man        True  NaN  Southampton    no   True            2  
+324    man        True  NaN  Southampton    no  False            2  
+459    man        True  NaN   Queenstown    no   True            2  
+241  woman       False  NaN   Queenstown   yes  False            2  
+223    man        True  NaN  Southampton    no   True            2  
+828    man        True  NaN   Queenstown   yes   True            2  
+613    man        True  NaN   Queenstown    no   True            2  
+495    man        True  NaN    Cherbourg    no   True            2  
+667    man        True  NaN  Southampton    no   True            2  </code></pre>
+<h2 id="마무리하며"><a href="#마무리하며" class="headerlink" title="마무리하며"></a>마무리하며</h2><p>이 장에서는 여러 가지 실습을 통해 apply 메서드가 왜 데이터 분석에 유용한지 알아보았다. 내장 함수의 기능도 훌륭하지만 때로는 나만의 함수를 만들어 데이터 처리에 사용하는 것이 더 편리할 수도 있기 때문에 apply 메서드의 사용법은 반드시 알아두어야 한다.</p>
+<p>출처 : Do it 판다스</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://kim-1994.github.io/2021/04/01/pandas(9)/" data-id="ckmylikke0000j0vjalvnfdmt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "HOya"
+        },
+        "headline": "apply 메서드 활용",
+        "image": "http://KIM-1994.github.io",
+        "keywords": "",
+        "genre": "Do it 판다스",
+        "datePublished": "2021-04-01",
+        "dateCreated": "2021-04-01",
+        "dateModified": "2021-04-01",
+        "url": "http://KIM-1994.github.io/2021/04/01/pandas(9)/",
+        "description": "=================================
+10-1 간단한 함수 만들기10-2 apply 메서드 사용하기 - 기초10-3 apply 메서드 사용하기 - 고급
+=================================
+10-1 간단한 함수 만들기이 책은 파이썬의 기초 지식을 어느 정도 아는 독자를 대상으로 집필되었다. 따라서 함수는 간단히",
+        "wordCount": 4117
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/KIM-1994" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2021/04/01/pandas(8)/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">문자열 처리하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/01/pandas(9)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/04/01/pandas(9)/" class="title">apply 메서드 활용</a></p>
+                            <p class="item-date"><time datetime="2021-04-01T08:05:28.904Z" itemprop="datePublished">2021-04-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/01/pandas(8)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/113251662-a2c2f900-92fd-11eb-9afb-4fa207f9d4ef.png)" alt="문자열 처리하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/04/01/pandas(8)/" class="title">문자열 처리하기</a></p>
+                            <p class="item-date"><time datetime="2021-04-01T06:20:51.231Z" itemprop="datePublished">2021-04-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/31/pandas(7)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/03/31/pandas(7)/" class="title">판다스 자료형</a></p>
+                            <p class="item-date"><time datetime="2021-03-31T11:37:52.060Z" itemprop="datePublished">2021-03-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/31/pandas(6)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/113006576-79e11d80-91b0-11eb-8930-55502e054a9a.png)" alt="깔끔한 데이터" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/03/31/pandas(6)/" class="title">깔끔한 데이터</a></p>
+                            <p class="item-date"><time datetime="2021-03-31T10:48:00.693Z" itemprop="datePublished">2021-03-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/30/pandas(5)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/03/30/pandas(5)/" class="title">누락값 처리하기</a></p>
+                            <p class="item-date"><time datetime="2021-03-30T14:14:38.570Z" itemprop="datePublished">2021-03-30</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kaggle/">Kaggle</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/">crawling</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a><span class="category-list-count">2</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawling/" rel="tag">crawling</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">데이터</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" rel="tag">오픈소스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84/" rel="tag">통계</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" rel="tag">통계학</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag">파이썬</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" rel="tag">확률분포</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/crawling/" style="font-size: 20px;">crawling</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" style="font-size: 15px;">데이터</a> <a href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" style="font-size: 15px;">오픈소스</a> <a href="/tags/%ED%86%B5%EA%B3%84/" style="font-size: 10px;">통계</a> <a href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" style="font-size: 15px;">통계학</a> <a href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" style="font-size: 20px;">파이썬</a> <a href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" style="font-size: 10px;">확률분포</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 HOya</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://kim-1994.github.io/2021/04/01/pandas(9)/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
