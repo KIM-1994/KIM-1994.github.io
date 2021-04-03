@@ -21,7 +21,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://user-images.githubusercontent.com/72365693/113377939-b11e1d00-93b0-11eb-9cfa-5263349bd805.png">
 <meta property="article:published_time" content="2021-04-03T04:12:46.000Z">
-<meta property="article:modified_time" content="2021-04-03T04:24:12.165Z">
+<meta property="article:modified_time" content="2021-04-03T04:29:39.934Z">
 <meta property="article:author" content="HOya">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/72365693/113377939-b11e1d00-93b0-11eb-9cfa-5263349bd805.png">
@@ -181,7 +181,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2021/04/03/pandas(11)/" class="article-date">
-     <time datetime="2021-04-03T04:24:12.165Z" itemprop="dateModified">2021-04-03</time>
+     <time datetime="2021-04-03T04:29:39.934Z" itemprop="dateModified">2021-04-03</time>
   </a>
 </div>
 
@@ -638,7 +638,7 @@ dtype: int64</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pandas-datareader</span><br></pre></td></tr></table></figure>
 
 <h4 id="1-7"><a href="#1-7" class="headerlink" title="1."></a>1.</h4><p>다음은 get_data_quanal 메서드에 TSLA라는 문자열을 전달하여 테슬라의 주식 데이터를 내려받은 다음 to_csv 메서드를 사용하여 data 폴더 안에 ‘tesla_stock_quandl.csv’라는 이름으로 저장한 것이다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pd.core.common.is_list_like = pd.api.types.is_list_like</span><br><span class="line"><span class="keyword">import</span> pandas_datareader <span class="keyword">as</span> pdr</span><br><span class="line"></span><br><span class="line">tesla = pdr.get_data_quandl(<span class="string">&#x27;TSLA&#x27;</span>, api_key = <span class="string">&#x27;8ULzmPysfopF8Ph7zgLy&#x27;</span>)<span class="comment">#Quandl에서 생성한 내 API</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tesla.to_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/tesla_stock_quandl.csv&#x27;</span>)</span><br><span class="line">tesla.head()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pd.core.common.is_list_like = pd.api.types.is_list_like</span><br><span class="line"><span class="keyword">import</span> pandas_datareader <span class="keyword">as</span> pdr</span><br><span class="line"></span><br><span class="line">tesla = pdr.get_data_quandl(<span class="string">&#x27;TSLA&#x27;</span>, api_key = <span class="string">&#x27;Quandl에서 생성한 내 API&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tesla.to_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/tesla_stock_quandl.csv&#x27;</span>)</span><br><span class="line">tesla.head()</span><br></pre></td></tr></table></figure>
 
 
 
@@ -1406,7 +1406,7 @@ NaN             NaN                  NaN           NaN          NaN
 12-1 datetime 오브젝트12-2 사례별 시계열 데이터 계산기
 =================================
 12-1 datetime 오브젝트datetime 라이브러리는 날짜와 시간을 처리하는 등의 다양한 기능을 제공하는 파이썬 라이브러리이다. datetime 라이브러리에는 ",
-        "wordCount": 18775
+        "wordCount": 18774
     }
 </script>
 
