@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>시계열 데이터 | Welcome to HOya World</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 12-1 datetime 오브젝트12-2 사례별 시계열 데이터 계산기 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 12-1 datetime 오브젝트datetime 라이브러리는 날짜와 시간을 처리하는 등의 다양한 기능을 제공하는 파이썬 라이브러리이다. datetime 라이브러리에는">
+<meta property="og:type" content="article">
+<meta property="og:title" content="시계열 데이터">
+<meta property="og:url" content="http://kim-1994.github.io/2021/04/03/pandas(11)/index.html">
+<meta property="og:site_name" content="Welcome to HOya World">
+<meta property="og:description" content="&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 12-1 datetime 오브젝트12-2 사례별 시계열 데이터 계산기 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 12-1 datetime 오브젝트datetime 라이브러리는 날짜와 시간을 처리하는 등의 다양한 기능을 제공하는 파이썬 라이브러리이다. datetime 라이브러리에는">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/72365693/113377939-b11e1d00-93b0-11eb-9cfa-5263349bd805.png">
+<meta property="article:published_time" content="2021-04-03T04:12:46.000Z">
+<meta property="article:modified_time" content="2021-04-03T04:18:15.852Z">
+<meta property="article:author" content="HOya">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/72365693/113377939-b11e1d00-93b0-11eb-9cfa-5263349bd805.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Kaggle/">Kaggle</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/">crawling</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a></li></ul></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-pandas(11)" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        시계열 데이터
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2021/04/03/pandas(11)/" class="article-date">
+       <time datetime="2021-04-03T04:12:46.000Z" itemprop="datePublished">2021-04-03</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2021/04/03/pandas(11)/" class="article-date">
+     <time datetime="2021-04-03T04:18:15.852Z" itemprop="dateModified">2021-04-03</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>=================================</p>
+<p>12-1 datetime 오브젝트<br>12-2 사례별 시계열 데이터 계산기</p>
+<p>=================================</p>
+<h1 id="12-1-datetime-오브젝트"><a href="#12-1-datetime-오브젝트" class="headerlink" title="12-1 datetime 오브젝트"></a>12-1 datetime 오브젝트</h1><p>datetime 라이브러리는 날짜와 시간을 처리하는 등의 다양한 기능을 제공하는 파이썬 라이브러리이다. datetime 라이브러리에는 날짜를 처리하는 date 오브젝트, 시간을 처리하는 time 오브젝트, 날짜와 시간을 모두 처리하는 datetime 오브젝트가 포함되어 있다. 앞으로 3개의 오브젝트를 명확히 구분하기 위해 영문을 그대로 살려 date, time, datetime 오브젝트라고 부르겠다.</p>
+<p><em>참고로 datetime 라이브러리에는 더 많은 오브젝트가 포함되어 있다. 이 책에서는 datem time, datetime 오브젝트를 주로 다룬다.</em></p>
+<h3 id="datetime-오브젝트-사용하기"><a href="#datetime-오브젝트-사용하기" class="headerlink" title="datetime 오브젝트 사용하기"></a>datetime 오브젝트 사용하기</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p>datetime 오브젝트를 사용하기 위해 datetime 라이브러리를 불러온다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br></pre></td></tr></table></figure>
+
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p>now, today 메서드를 사용하면 다음과 같이 현재 시간을 출력할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">now1 = datetime.now()</span><br><span class="line">print(now1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2021-04-03 13:04:50.679858</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">now2 = datetime.today()</span><br><span class="line">print(now2)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2021-04-03 13:04:50.695356</code></pre>
+<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><p>다음은 datetime 오브젝트를 생성할 때 시간을 직접 입력하여 인자로 전달한 것이다. 각 변수를 출력하여 확인해 보면 입력한 시간을 바탕으로 datetime 오브젝트가 생성된 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">t1 = datetime.now()</span><br><span class="line">t2 = datetime(<span class="number">1970</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">t3 = datetime(<span class="number">1970</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">24</span>, <span class="number">34</span>)</span><br><span class="line"></span><br><span class="line">print(t1)</span><br><span class="line">print(t2)</span><br><span class="line">print(t3)</span><br><span class="line"></span><br><span class="line"><span class="comment"># now 메서드는 밀리초 단위까지 구한다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>2021-04-03 13:04:50.712902
+1970-01-01 00:00:00
+1970-12-12 13:24:34</code></pre>
+<h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p>datetime 오브젝트를 사용하는 이유 중 하나는 시간 계산을 할 수 있다는 점이다. 다음은 두 datetime 오브젝트의 차이를 구한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">diff1 = t1 - t2</span><br><span class="line"></span><br><span class="line">print(diff1)</span><br><span class="line">print(<span class="built_in">type</span>(diff1))</span><br></pre></td></tr></table></figure>
+
+<pre><code>18720 days, 13:04:50.712902
+&lt;class &#39;datetime.timedelta&#39;&gt;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">diff2 = t2 - t1</span><br><span class="line"></span><br><span class="line">print(diff2)</span><br><span class="line">print(<span class="built_in">type</span>(diff2))</span><br></pre></td></tr></table></figure>
+
+<pre><code>-18721 days, 10:55:09.287098
+&lt;class &#39;datetime.timedelta&#39;&gt;</code></pre>
+<h2 id="datetime-오브젝트로-변환하기-to-datetime-메서드"><a href="#datetime-오브젝트로-변환하기-to-datetime-메서드" class="headerlink" title="datetime 오브젝트로 변환하기 - to_datetime 메서드"></a>datetime 오브젝트로 변환하기 - to_datetime 메서드</h2><p>경우에 따라서는 시계열 데이터를 문자열로 저장해야 할 때도 있다. 하지만 문자열은 시간 계산을 할 수 없기 때문에 datetime 오브젝트로 변환해야 주어야 한다. 이번에는 to_datetime 메서드를 사용하여 문자열을 datetime 오브젝트로 변환하는 방법에 대해 알아 보겠다.</p>
+<h3 id="문자열을-datetime-오브젝트로-변환하기"><a href="#문자열을-datetime-오브젝트로-변환하기" class="headerlink" title="문자열을 datetime 오브젝트로 변환하기"></a>문자열을 datetime 오브젝트로 변환하기</h3><h4 id="1-1"><a href="#1-1" class="headerlink" title="1."></a>1.</h4><p>먼저 ebola 데이터 집합을 불러온다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">ebola = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/country_timeseries.csv&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1"><a href="#2-1" class="headerlink" title="2."></a>2.</h4><p>ebola 데이터프레임을 보면 문자열로 저장된 Date 열이 있는 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.info())</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 122 entries, 0 to 121
+Data columns (total 18 columns):
+ #   Column               Non-Null Count  Dtype  
+---  ------               --------------  -----  
+ 0   Date                 122 non-null    object 
+ 1   Day                  122 non-null    int64  
+ 2   Cases_Guinea         93 non-null     float64
+ 3   Cases_Liberia        83 non-null     float64
+ 4   Cases_SierraLeone    87 non-null     float64
+ 5   Cases_Nigeria        38 non-null     float64
+ 6   Cases_Senegal        25 non-null     float64
+ 7   Cases_UnitedStates   18 non-null     float64
+ 8   Cases_Spain          16 non-null     float64
+ 9   Cases_Mali           12 non-null     float64
+ 10  Deaths_Guinea        92 non-null     float64
+ 11  Deaths_Liberia       81 non-null     float64
+ 12  Deaths_SierraLeone   87 non-null     float64
+ 13  Deaths_Nigeria       38 non-null     float64
+ 14  Deaths_Senegal       22 non-null     float64
+ 15  Deaths_UnitedStates  18 non-null     float64
+ 16  Deaths_Spain         16 non-null     float64
+ 17  Deaths_Mali          12 non-null     float64
+dtypes: float64(16), int64(1), object(1)
+memory usage: 17.3+ KB
+None</code></pre>
+<h4 id="3-1"><a href="#3-1" class="headerlink" title="3."></a>3.</h4><p>to_datetime 메서드를 사용하면 Date 열의 자료형을 datetime 오브젝트로 변화할 수 있다. 다음과 같이 to_datetime 메서드를 사용하여 Date 열의 자료형을 datetime 오브젝트로 변환한 다음 ebola 데이터프레임에 새로운 열로 추가한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ebola[<span class="string">&#x27;date_dt&#x27;</span>] = pd.to_datetime(ebola[<span class="string">&#x27;Date&#x27;</span>])</span><br><span class="line">print(ebola.info())</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 122 entries, 0 to 121
+Data columns (total 19 columns):
+ #   Column               Non-Null Count  Dtype         
+---  ------               --------------  -----         
+ 0   Date                 122 non-null    object        
+ 1   Day                  122 non-null    int64         
+ 2   Cases_Guinea         93 non-null     float64       
+ 3   Cases_Liberia        83 non-null     float64       
+ 4   Cases_SierraLeone    87 non-null     float64       
+ 5   Cases_Nigeria        38 non-null     float64       
+ 6   Cases_Senegal        25 non-null     float64       
+ 7   Cases_UnitedStates   18 non-null     float64       
+ 8   Cases_Spain          16 non-null     float64       
+ 9   Cases_Mali           12 non-null     float64       
+ 10  Deaths_Guinea        92 non-null     float64       
+ 11  Deaths_Liberia       81 non-null     float64       
+ 12  Deaths_SierraLeone   87 non-null     float64       
+ 13  Deaths_Nigeria       38 non-null     float64       
+ 14  Deaths_Senegal       22 non-null     float64       
+ 15  Deaths_UnitedStates  18 non-null     float64       
+ 16  Deaths_Spain         16 non-null     float64       
+ 17  Deaths_Mali          12 non-null     float64       
+ 18  date_dt              122 non-null    datetime64[ns]
+dtypes: datetime64[ns](1), float64(16), int64(1), object(1)
+memory usage: 18.2+ KB
+None</code></pre>
+<h4 id="4-1"><a href="#4-1" class="headerlink" title="4."></a>4.</h4><p>to_datetime 메서드를 좀 더 자세히 알아보자. 시간 형식 지정자(%d,%m,%y)와 기호(/, -)를 적절히 조합하여 format 인자에 전달하면 그 형식에 맞게 정리된 datetime 오브젝트를 얻을 수 있다. 다음 실습을 참고하여 format 인자의 사용법을 꼭 익혀두자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test_df1 = pd.DataFrame(&#123;<span class="string">&#x27;order_day&#x27;</span>: [<span class="string">&#x27;01/01/15&#x27;</span>, <span class="string">&#x27;02/01/15&#x27;</span>, <span class="string">&#x27;03/01/15&#x27;</span>]&#125;)</span><br><span class="line"></span><br><span class="line">test_df1[<span class="string">&#x27;date_dt1&#x27;</span>] = pd.to_datetime(test_df1[<span class="string">&#x27;order_day&#x27;</span>], <span class="built_in">format</span> = <span class="string">&#x27;%d/%m/%y&#x27;</span>)</span><br><span class="line">test_df1[<span class="string">&#x27;date_dt2&#x27;</span>] = pd.to_datetime(test_df1[<span class="string">&#x27;order_day&#x27;</span>], <span class="built_in">format</span> = <span class="string">&#x27;%m/%d/%y&#x27;</span>)</span><br><span class="line">test_df1[<span class="string">&#x27;date_dt3&#x27;</span>] = pd.to_datetime(test_df1[<span class="string">&#x27;order_day&#x27;</span>], <span class="built_in">format</span> = <span class="string">&#x27;%y/%m/%d&#x27;</span>)</span><br><span class="line"></span><br><span class="line">print(test_df1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>  order_day   date_dt1   date_dt2   date_dt3
+0  01/01/15 2015-01-01 2015-01-01 2001-01-15
+1  02/01/15 2015-01-02 2015-02-01 2002-01-15
+2  03/01/15 2015-01-03 2015-03-01 2003-01-15</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test_df2 = pd.DataFrame(&#123;<span class="string">&#x27;order_day&#x27;</span>:[<span class="string">&#x27;01-01-15&#x27;</span>,<span class="string">&#x27;02-01-15&#x27;</span>,<span class="string">&#x27;03-01-15&#x27;</span>]&#125;)</span><br><span class="line">test_df2[<span class="string">&#x27;date_dt&#x27;</span>] = pd.to_datetime(test_df2[<span class="string">&#x27;order_day&#x27;</span>], <span class="built_in">format</span> = <span class="string">&#x27;%d-%m-%y&#x27;</span>)</span><br><span class="line"></span><br><span class="line">print(test_df2)</span><br></pre></td></tr></table></figure>
+
+<pre><code>  order_day    date_dt
+0  01-01-15 2015-01-01
+1  02-01-15 2015-01-02
+2  03-01-15 2015-01-03</code></pre>
+<h2 id="시간-형식-지정자"><a href="#시간-형식-지정자" class="headerlink" title="시간 형식 지정자"></a>시간 형식 지정자</h2><p>다음은 시간 형식 지정자를 정리한 표이다. 이 장의 실습에서 종종 사용하므로 한 번 읽고 넘어가기 바란다.</p>
+<p><em>참고로 바로 앞의 실습에 적용해 보자.</em></p>
+<p><strong>시간 형식 지정자</strong></p>
+<p><img src="https://user-images.githubusercontent.com/72365693/113377939-b11e1d00-93b0-11eb-9cfa-5263349bd805.png"></p>
+<h3 id="시계열-데이터를-구분해서-추출하고-싶다"><a href="#시계열-데이터를-구분해서-추출하고-싶다" class="headerlink" title="시계열 데이터를 구분해서 추출하고 싶다."></a>시계열 데이터를 구분해서 추출하고 싶다.</h3><p>now 메서드로 얻은 현재 시간의 시계열 데이터는 아주 정밀한 단위까지 시간을 표현한다. 하지만 원하는 시계열 데이터의 시간 요소가 연도, 월, 일뿐이라면 now 메서드로 얻은 시계열 데이터를 잘라내야 한다. 다음은 strftime 메서드와 시간 형식 지정자를 이용하여 시계열 데이터를 잘라낸 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">now = datetime.now()</span><br><span class="line">print(now)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2021-04-03 13:04:50.897278</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nowData = now.strftime(<span class="string">&#x27;%Y-%m-%d&#x27;</span>) </span><br><span class="line">print(nowData)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2021-04-03</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">noTime = now.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)</span><br><span class="line">print(noTime)</span><br></pre></td></tr></table></figure>
+
+<pre><code>13:04:50</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nowDatetime = now.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)</span><br><span class="line">print(nowDatetime)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2021-04-03 13:04:50</code></pre>
+<h2 id="datetime-오브젝트로-변환하기-read-csv-메서드"><a href="#datetime-오브젝트로-변환하기-read-csv-메서드" class="headerlink" title="datetime 오브젝트로 변환하기 - read_csv 메서드"></a>datetime 오브젝트로 변환하기 - read_csv 메서드</h2><p>앞에서는 to_datetime 메서드를 사용하여 문자열로 저장되어 있는 Date 열을 datetime 오브젝트로 변환했다. 하지만 datetime 오브젝트로 변환하려는 열을 지정하여 데이터 집합을 불러오는 것이 더 간단하다. 다음 실습을 통해 알아보겠다.</p>
+<h3 id="datetime-오브젝트로-변환하려는-열을-지정하여-데이터-집합-불러오기"><a href="#datetime-오브젝트로-변환하려는-열을-지정하여-데이터-집합-불러오기" class="headerlink" title="datetime 오브젝트로 변환하려는 열을 지정하여 데이터 집합 불러오기"></a>datetime 오브젝트로 변환하려는 열을 지정하여 데이터 집합 불러오기</h3><h4 id="1-2"><a href="#1-2" class="headerlink" title="1."></a>1.</h4><p>다음은 read_csv 메서드의 parse_dates 인자에 datetime 오브젝트로 변환하곡자 하는 열의 이름을 전달하여 데이터 집합을 불러온 것이다. 결과를 보면 Date 열이 문자열이 아니라 datetime 오브젝트라는 것을 확인할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ebola1 = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/country_timeseries.csv&#x27;</span>, parse_dates=[<span class="string">&#x27;Date&#x27;</span>])</span><br><span class="line">print(ebola1.info())</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 122 entries, 0 to 121
+Data columns (total 18 columns):
+ #   Column               Non-Null Count  Dtype         
+---  ------               --------------  -----         
+ 0   Date                 122 non-null    datetime64[ns]
+ 1   Day                  122 non-null    int64         
+ 2   Cases_Guinea         93 non-null     float64       
+ 3   Cases_Liberia        83 non-null     float64       
+ 4   Cases_SierraLeone    87 non-null     float64       
+ 5   Cases_Nigeria        38 non-null     float64       
+ 6   Cases_Senegal        25 non-null     float64       
+ 7   Cases_UnitedStates   18 non-null     float64       
+ 8   Cases_Spain          16 non-null     float64       
+ 9   Cases_Mali           12 non-null     float64       
+ 10  Deaths_Guinea        92 non-null     float64       
+ 11  Deaths_Liberia       81 non-null     float64       
+ 12  Deaths_SierraLeone   87 non-null     float64       
+ 13  Deaths_Nigeria       38 non-null     float64       
+ 14  Deaths_Senegal       22 non-null     float64       
+ 15  Deaths_UnitedStates  18 non-null     float64       
+ 16  Deaths_Spain         16 non-null     float64       
+ 17  Deaths_Mali          12 non-null     float64       
+dtypes: datetime64[ns](1), float64(16), int64(1)
+memory usage: 17.3 KB
+None</code></pre>
+<h2 id="datetime-오브젝트에서-날짜-정보-추출하기"><a href="#datetime-오브젝트에서-날짜-정보-추출하기" class="headerlink" title="datetime 오브젝트에서 날짜 정보 추출하기"></a>datetime 오브젝트에서 날짜 정보 추출하기</h2><p>datetime 오브젝트에는 년, 월, 일과 같은 날짜 정보를 따로 저장하고 있는 속성이 이미 준비되어 있다. 다음 실습을 통해 datetime 오브젝트에서 날짜 정보를 하나씩 추출해 보겠다.</p>
+<h3 id="datetime-오브젝트에서-날짜-정보-추출하기-1"><a href="#datetime-오브젝트에서-날짜-정보-추출하기-1" class="headerlink" title="datetime 오브젝트에서 날짜 정보 추출하기"></a>datetime 오브젝트에서 날짜 정보 추출하기</h3><h4 id="1-3"><a href="#1-3" class="headerlink" title="1."></a>1.</h4><p>다음은 문자열로 저장된 날짜를 시리즈에 담아 datetime 오브젝트로 변환한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date_series = pd.Series([<span class="string">&#x27;2018-05-16&#x27;</span>, <span class="string">&#x27;2018-05-17&#x27;</span>, <span class="string">&#x27;2018-05-18&#x27;</span>])</span><br><span class="line">d1 = pd.to_datetime(date_series)</span><br><span class="line">print(d1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0   2018-05-16
+1   2018-05-17
+2   2018-05-18
+dtype: datetime64[ns]</code></pre>
+<h4 id="2-2"><a href="#2-2" class="headerlink" title="2."></a>2.</h4><p>datetime 오브젝트(d1)의 year, month, day 속성을 이용하면 년,월,일 정보를 바로 추출할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(d1[<span class="number">0</span>].year)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2018</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(d1[<span class="number">0</span>].month)</span><br></pre></td></tr></table></figure>
+
+<pre><code>5</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(d1[<span class="number">0</span>].day)</span><br></pre></td></tr></table></figure>
+
+<pre><code>16</code></pre>
+<h2 id="dt-접근자-사용하기"><a href="#dt-접근자-사용하기" class="headerlink" title="dt 접근자 사용하기"></a>dt 접근자 사용하기</h2><p>문자열을 처리하려면 str 접근자를 사용한 다음 문자열 속성이나 메서드를 사용해야 했다.datetime 오브젝트도 마찬가지로 dt 접근자를 사용하면 datetime 속성이나 메서드를 사용하여 시계열 데이터를 처리할 수 있다.</p>
+<h3 id="dt-접근자로-시계열-데이터-정리하기"><a href="#dt-접근자로-시계열-데이터-정리하기" class="headerlink" title="dt 접근자로 시계열 데이터 정리하기"></a>dt 접근자로 시계열 데이터 정리하기</h3><h4 id="1-4"><a href="#1-4" class="headerlink" title="1."></a>1.</h4><p>먼저 ebola 데이터 집합을 불러온 다음 Date 열을 datetime 오브젝트로 변환하여 새로운 열(date_dt)로 추가한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ebola = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/country_timeseries.csv&#x27;</span>)</span><br><span class="line">ebola[<span class="string">&#x27;date_dt&#x27;</span>] = pd.to_datetime(ebola[<span class="string">&#x27;Date&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3"><a href="#2-3" class="headerlink" title="2."></a>2.</h4><p>다음은 dt 접근자를 사용하지 않고 인덱스가 3인 데이터의 년,월,일 데이터를 추출한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola[[<span class="string">&#x27;Date&#x27;</span>, <span class="string">&#x27;date_dt&#x27;</span>]].head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>         Date    date_dt
+0    1/5/2015 2015-01-05
+1    1/4/2015 2015-01-04
+2    1/3/2015 2015-01-03
+3    1/2/2015 2015-01-02
+4  12/31/2014 2014-12-31</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola[<span class="string">&#x27;date_dt&#x27;</span>][<span class="number">3</span>].year)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2015</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola[<span class="string">&#x27;date_dt&#x27;</span>][<span class="number">3</span>].month)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola[<span class="string">&#x27;date_dt&#x27;</span>][<span class="number">3</span>].day)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2</code></pre>
+<h4 id="3-2"><a href="#3-2" class="headerlink" title="3."></a>3.</h4><p>과정 <strong>2</strong>와 같은 방법은 date_dt 열의 특정 데이터를 인덱스로 접근해야 하기 때문에 불편하다. 다음은 dt 접근자로 date_dt 열에 한 번에 접근한 다음 year 속성을 이용하여 연도값을 추출한 것이다. 추출한 연도값은 ebola 데이터프레임의 새로운 열(year)로 추가 했다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ebola[<span class="string">&#x27;year&#x27;</span>] = ebola[<span class="string">&#x27;date_dt&#x27;</span>].dt.year</span><br><span class="line"></span><br><span class="line">print(ebola[[<span class="string">&#x27;Date&#x27;</span>, <span class="string">&#x27;date_dt&#x27;</span>, <span class="string">&#x27;year&#x27;</span>]].head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>         Date    date_dt  year
+0    1/5/2015 2015-01-05  2015
+1    1/4/2015 2015-01-04  2015
+2    1/3/2015 2015-01-03  2015
+3    1/2/2015 2015-01-02  2015
+4  12/31/2014 2014-12-31  2014</code></pre>
+<h4 id="4-2"><a href="#4-2" class="headerlink" title="4."></a>4.</h4><p>다음은 과정 <strong>3을</strong>을 응용하여 월,일 데이터를 한 번에 추출해서 새로운 열(month, day)로 추가한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ebola[<span class="string">&#x27;month&#x27;</span>], ebola[<span class="string">&#x27;day&#x27;</span>] = (ebola[<span class="string">&#x27;date_dt&#x27;</span>].dt.month, ebola[<span class="string">&#x27;date_dt&#x27;</span>].dt.day)</span><br><span class="line"></span><br><span class="line">print(ebola[[<span class="string">&#x27;Date&#x27;</span>,<span class="string">&#x27;date_dt&#x27;</span>,<span class="string">&#x27;year&#x27;</span>,<span class="string">&#x27;month&#x27;</span>,<span class="string">&#x27;day&#x27;</span>]].head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>         Date    date_dt  year  month  day
+0    1/5/2015 2015-01-05  2015      1    5
+1    1/4/2015 2015-01-04  2015      1    4
+2    1/3/2015 2015-01-03  2015      1    3
+3    1/2/2015 2015-01-02  2015      1    2
+4  12/31/2014 2014-12-31  2014     12   31</code></pre>
+<h4 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h4><p>오른쪽은 ebola 데이터프레임에 새로 추가한 date_dt, year, month, day 열의 자료형을 출력한 것이다. date_dt 열은 datetime 오브젝트이고 나머지는 정수형이라는 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.info())</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 122 entries, 0 to 121
+Data columns (total 22 columns):
+ #   Column               Non-Null Count  Dtype         
+---  ------               --------------  -----         
+ 0   Date                 122 non-null    object        
+ 1   Day                  122 non-null    int64         
+ 2   Cases_Guinea         93 non-null     float64       
+ 3   Cases_Liberia        83 non-null     float64       
+ 4   Cases_SierraLeone    87 non-null     float64       
+ 5   Cases_Nigeria        38 non-null     float64       
+ 6   Cases_Senegal        25 non-null     float64       
+ 7   Cases_UnitedStates   18 non-null     float64       
+ 8   Cases_Spain          16 non-null     float64       
+ 9   Cases_Mali           12 non-null     float64       
+ 10  Deaths_Guinea        92 non-null     float64       
+ 11  Deaths_Liberia       81 non-null     float64       
+ 12  Deaths_SierraLeone   87 non-null     float64       
+ 13  Deaths_Nigeria       38 non-null     float64       
+ 14  Deaths_Senegal       22 non-null     float64       
+ 15  Deaths_UnitedStates  18 non-null     float64       
+ 16  Deaths_Spain         16 non-null     float64       
+ 17  Deaths_Mali          12 non-null     float64       
+ 18  date_dt              122 non-null    datetime64[ns]
+ 19  year                 122 non-null    int64         
+ 20  month                122 non-null    int64         
+ 21  day                  122 non-null    int64         
+dtypes: datetime64[ns](1), float64(16), int64(4), object(1)
+memory usage: 21.1+ KB
+None</code></pre>
+<h1 id="12-2-사례별-시계열-데이터-계산하기"><a href="#12-2-사례별-시계열-데이터-계산하기" class="headerlink" title="12-2 사례별 시계열 데이터 계산하기"></a>12-2 사례별 시계열 데이터 계산하기</h1><h3 id="에볼라-최초-발병일-계산하기"><a href="#에볼라-최초-발병일-계산하기" class="headerlink" title="에볼라 최초 발병일 계산하기"></a>에볼라 최초 발병일 계산하기</h3><h4 id="1-5"><a href="#1-5" class="headerlink" title="1."></a>1.</h4><p>ebola 데이터프레임의 마지막 행과 열을 5개씩만 살펴보겠다. ebola 데이터프레임은 데이터가 시간 역순으로 정렬되어 있다. 즉, 시간 순으로 데이터를 살펴보려면 데이터프레임의 마지막부터 살펴봐야 한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.iloc[<span class="number">-5</span>:, :<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>          Date  Day  Cases_Guinea  Cases_Liberia  Cases_SierraLeone
+117  3/27/2014    5         103.0            8.0                6.0
+118  3/26/2014    4          86.0            NaN                NaN
+119  3/25/2014    3          86.0            NaN                NaN
+120  3/24/2014    2          86.0            NaN                NaN
+121  3/22/2014    0          49.0            NaN                NaN</code></pre>
+<h4 id="2-4"><a href="#2-4" class="headerlink" title="2."></a>2.</h4><p>121행에서 볼 수 있듯이 에볼라가 발생하기 시작한 날은 2014년 03월 22일이다. 다음은 min 메서드를 사용하여 에볼라의 최초 발병일을 찾은 것이다.</p>
+<p><em>참고로 Timestamp는 Datetime 오브젝트와 호환되는 자료형이다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(ebola[<span class="string">&#x27;date_dt&#x27;</span>].<span class="built_in">min</span>())</span><br><span class="line">print(<span class="built_in">type</span>(ebola[<span class="string">&#x27;date_dt&#x27;</span>].<span class="built_in">min</span>()))</span><br></pre></td></tr></table></figure>
+
+<pre><code>2014-03-22 00:00:00
+&lt;class &#39;pandas._libs.tslibs.timestamps.Timestamp&#39;&gt;</code></pre>
+<h4 id="3-3"><a href="#3-3" class="headerlink" title="3."></a>3.</h4><p>에볼라의 최초 발병일을 알아냈으니 Date 열에서 에볼라의 최초 발병일을 빼면 에볼라의 진행 정도를 알 수 있다.</p>
+<p><em>참고 : 사실 ebola 데이터프레임의 Day 열에는 이 값이 저장되어 있다. 두 값을 비교해 보자.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ebola[<span class="string">&#x27;outbreak_d&#x27;</span>] = ebola[<span class="string">&#x27;date_dt&#x27;</span>] - ebola[<span class="string">&#x27;date_dt&#x27;</span>].<span class="built_in">min</span>()</span><br><span class="line"></span><br><span class="line">print(ebola[[<span class="string">&#x27;Date&#x27;</span>,<span class="string">&#x27;Day&#x27;</span>,<span class="string">&#x27;outbreak_d&#x27;</span>]].head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>         Date  Day outbreak_d
+0    1/5/2015  289   289 days
+1    1/4/2015  288   288 days
+2    1/3/2015  287   287 days
+3    1/2/2015  286   286 days
+4  12/31/2014  284   284 days</code></pre>
+<h3 id="파산한-은행의-개수-계산하기"><a href="#파산한-은행의-개수-계산하기" class="headerlink" title="파산한 은행의 개수 계산하기"></a>파산한 은행의 개수 계산하기</h3><p>이번에는 파산한 은행 데이터를 불러와 분기별로 파산한 은행이 얼마나 되는지 계산해 보겠다. 그리고 이번에는 그래프로도 시각화 해보겠다.</p>
+<h4 id="1-6"><a href="#1-6" class="headerlink" title="1."></a>1.</h4><p>다음은 파산한 은행 데이터 집합을 불러온 것이다. banks 데이터프레임의 앞부분을 살펴보면 Closing Date, Updated Date 열의 데이터 자료형이 시계열 데이터라는 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">banks = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/banklist.csv&#x27;</span>)</span><br><span class="line">print(banks.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>                                           Bank Name         City  ST   CERT  \
+0                Washington Federal Bank for Savings      Chicago  IL  30570   
+1    The Farmers and Merchants State Bank of Argonia      Argonia  KS  17719   
+2                                Fayette County Bank   Saint Elmo  IL   1802   
+3  Guaranty Bank, (d/b/a BestBank in Georgia &amp; Mi...    Milwaukee  WI  30003   
+4                                     First NBC Bank  New Orleans  LA  58302   
+
+                 Acquiring Institution Closing Date Updated Date  
+0                   Royal Savings Bank    15-Dec-17    20-Dec-17  
+1                          Conway Bank    13-Oct-17    20-Oct-17  
+2            United Fidelity Bank, fsb    26-May-17    26-Jul-17  
+3  First-Citizens Bank &amp; Trust Company     5-May-17    26-Jul-17  
+4                         Whitney Bank    28-Apr-17     5-Dec-17  </code></pre>
+<h4 id="2-5"><a href="#2-5" class="headerlink" title="2."></a>2.</h4><p>Closing Date, Updated Date 열의 데이터 자료형은 문자열이다. 다음은 read_csv 메서드의 parse_dates 속성을 이용하여 문자열로 저장된 두 열을 datetime 오브젝트로 변환하여 불러온 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">banks_no_dates = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/banklist.csv&#x27;</span>)</span><br><span class="line">print(banks_no_dates.info())</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 555 entries, 0 to 554
+Data columns (total 7 columns):
+ #   Column                 Non-Null Count  Dtype 
+---  ------                 --------------  ----- 
+ 0   Bank Name              555 non-null    object
+ 1   City                   555 non-null    object
+ 2   ST                     555 non-null    object
+ 3   CERT                   555 non-null    int64 
+ 4   Acquiring Institution  555 non-null    object
+ 5   Closing Date           555 non-null    object
+ 6   Updated Date           555 non-null    object
+dtypes: int64(1), object(6)
+memory usage: 30.5+ KB
+None</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">banks = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/banklist.csv&#x27;</span>, parse_dates=[<span class="number">5</span>,<span class="number">6</span>])</span><br><span class="line">print(banks.info())</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 555 entries, 0 to 554
+Data columns (total 7 columns):
+ #   Column                 Non-Null Count  Dtype         
+---  ------                 --------------  -----         
+ 0   Bank Name              555 non-null    object        
+ 1   City                   555 non-null    object        
+ 2   ST                     555 non-null    object        
+ 3   CERT                   555 non-null    int64         
+ 4   Acquiring Institution  555 non-null    object        
+ 5   Closing Date           555 non-null    datetime64[ns]
+ 6   Updated Date           555 non-null    datetime64[ns]
+dtypes: datetime64[ns](2), int64(1), object(4)
+memory usage: 30.5+ KB
+None</code></pre>
+<h4 id="3-4"><a href="#3-4" class="headerlink" title="3."></a>3.</h4><p>dt 접근자와 quarter 속성을 이용하면 은행이 파산한 분기를 알 수 있다. 다음은 dt 접근자와 year, quarter 속성을 이용하여 은행이 파산한 연도, 분기를 새로운 열로 추가한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">banks[<span class="string">&#x27;closing_quarter&#x27;</span>], banks[<span class="string">&#x27;closing_year&#x27;</span>] = (banks[<span class="string">&#x27;Closing Date&#x27;</span>].dt.quarter, banks[<span class="string">&#x27;Closing Date&#x27;</span>].dt.year)</span><br><span class="line"></span><br><span class="line">print(banks.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>                                           Bank Name         City  ST   CERT  \
+0                Washington Federal Bank for Savings      Chicago  IL  30570   
+1    The Farmers and Merchants State Bank of Argonia      Argonia  KS  17719   
+2                                Fayette County Bank   Saint Elmo  IL   1802   
+3  Guaranty Bank, (d/b/a BestBank in Georgia &amp; Mi...    Milwaukee  WI  30003   
+4                                     First NBC Bank  New Orleans  LA  58302   
+
+                 Acquiring Institution Closing Date Updated Date  \
+0                   Royal Savings Bank   2017-12-15   2017-12-20   
+1                          Conway Bank   2017-10-13   2017-10-20   
+2            United Fidelity Bank, fsb   2017-05-26   2017-07-26   
+3  First-Citizens Bank &amp; Trust Company   2017-05-05   2017-07-26   
+4                         Whitney Bank   2017-04-28   2017-12-05   
+
+   closing_quarter  closing_year  
+0                4          2017  
+1                4          2017  
+2                2          2017  
+3                2          2017  
+4                2          2017  </code></pre>
+<h4 id="4-3"><a href="#4-3" class="headerlink" title="4."></a>4.</h4><p>이제 연도별로 파산한 은행이 얼마나 되는지 알아보자. groupby 메섣를 사용하면 연도별로 파산한 은행의 개수를 구할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">closing_year = banks.groupby([<span class="string">&#x27;closing_year&#x27;</span>]).size()</span><br><span class="line">print(closing_year)</span><br></pre></td></tr></table></figure>
+
+<pre><code>closing_year
+2000      2
+2001      4
+2002     11
+2003      3
+2004      4
+2007      3
+2008     25
+2009    140
+2010    157
+2011     92
+2012     51
+2013     24
+2014     18
+2015      8
+2016      5
+2017      8
+dtype: int64</code></pre>
+<h4 id="5-1"><a href="#5-1" class="headerlink" title="5."></a>5.</h4><p>각 연도별, 분기별로 파산한 은행의 개수도 알아보겠다. 다음은 banks 데이터프레임을 연도별로 그룹화한 다음 다시 분기별로 그룹화하여 출력한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">closing_year_q = banks.groupby([<span class="string">&#x27;closing_year&#x27;</span>, <span class="string">&#x27;closing_quarter&#x27;</span>]).size()</span><br><span class="line">print(closing_year_q)</span><br></pre></td></tr></table></figure>
+
+<pre><code>closing_year  closing_quarter
+2000          4                   2
+2001          1                   1
+              2                   1
+              3                   2
+2002          1                   6
+              2                   2
+              3                   1
+              4                   2
+2003          1                   1
+              2                   1
+              4                   1
+2004          1                   3
+              2                   1
+2007          1                   1
+              3                   1
+              4                   1
+2008          1                   2
+              2                   2
+              3                   9
+              4                  12
+2009          1                  21
+              2                  24
+              3                  50
+              4                  45
+2010          1                  41
+              2                  45
+              3                  41
+              4                  30
+2011          1                  26
+              2                  22
+              3                  26
+              4                  18
+2012          1                  16
+              2                  15
+              3                  12
+              4                   8
+2013          1                   4
+              2                  12
+              3                   6
+              4                   2
+2014          1                   5
+              2                   7
+              3                   2
+              4                   4
+2015          1                   4
+              2                   1
+              3                   1
+              4                   2
+2016          1                   1
+              2                   2
+              3                   2
+2017          1                   3
+              2                   3
+              4                   2
+dtype: int64</code></pre>
+<h4 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h4><p>다음은 과정 <strong>5</strong>에서 얻은 값으로 그래프를 그린 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line"></span><br><span class="line">ax = closing_year.plot()</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax = closing_year_q.plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://user-images.githubusercontent.com/72365693/113467543-7e425a80-947e-11eb-907d-f64bc24524cb.png"></p>
+<p><img src="https://user-images.githubusercontent.com/72365693/113467544-7f738780-947e-11eb-9e9c-3b4eda27a99e.png"></p>
+<h3 id="테슬라-주식-데이터로-시간-계산하기"><a href="#테슬라-주식-데이터로-시간-계산하기" class="headerlink" title="테슬라 주식 데이터로 시간 계산하기"></a>테슬라 주식 데이터로 시간 계산하기</h3><p>이번에는 pandas-datareader 라이브러리를 이용하여 주식 데이터를 불러오겠다. 이 라이브러리는 지금까지 설치한 적이 없는 라이브러리이다. 다음을 아나콘다 프롬프트에 입력하여 pandas-datareader 라이브러리를 설치해보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pandas-datareader</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-7"><a href="#1-7" class="headerlink" title="1."></a>1.</h4><p>다음은 get_data_quanal 메서드에 TSLA라는 문자열을 전달하여 테슬라의 주식 데이터를 내려받은 다음 to_csv 메서드를 사용하여 data 폴더 안에 ‘tesla_stock_quandl.csv’라는 이름으로 저장한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pd.core.common.is_list_like = pd.api.types.is_list_like</span><br><span class="line"><span class="keyword">import</span> pandas_datareader <span class="keyword">as</span> pdr</span><br><span class="line"></span><br><span class="line">tesla = pdr.get_data_quandl(<span class="string">&#x27;TSLA&#x27;</span>, api_key = <span class="string">&#x27;8ULzmPysfopF8Ph7zgLy&#x27;</span>)<span class="comment">#Quandl에서 생성한 내 API</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tesla.to_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/tesla_stock_quandl.csv&#x27;</span>)</span><br><span class="line">tesla.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+      <th>ExDividend</th>
+      <th>SplitRatio</th>
+      <th>AdjOpen</th>
+      <th>AdjHigh</th>
+      <th>AdjLow</th>
+      <th>AdjClose</th>
+      <th>AdjVolume</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018-03-27</th>
+      <td>304.00</td>
+      <td>304.27</td>
+      <td>277.18</td>
+      <td>279.18</td>
+      <td>13696168.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>304.00</td>
+      <td>304.27</td>
+      <td>277.18</td>
+      <td>279.18</td>
+      <td>13696168.0</td>
+    </tr>
+    <tr>
+      <th>2018-03-26</th>
+      <td>307.34</td>
+      <td>307.59</td>
+      <td>291.36</td>
+      <td>304.18</td>
+      <td>8324639.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>307.34</td>
+      <td>307.59</td>
+      <td>291.36</td>
+      <td>304.18</td>
+      <td>8324639.0</td>
+    </tr>
+    <tr>
+      <th>2018-03-23</th>
+      <td>311.25</td>
+      <td>311.61</td>
+      <td>300.45</td>
+      <td>301.54</td>
+      <td>6600538.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>311.25</td>
+      <td>311.61</td>
+      <td>300.45</td>
+      <td>301.54</td>
+      <td>6600538.0</td>
+    </tr>
+    <tr>
+      <th>2018-03-22</th>
+      <td>313.89</td>
+      <td>318.82</td>
+      <td>308.18</td>
+      <td>309.10</td>
+      <td>4914307.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>313.89</td>
+      <td>318.82</td>
+      <td>308.18</td>
+      <td>309.10</td>
+      <td>4914307.0</td>
+    </tr>
+    <tr>
+      <th>2018-03-21</th>
+      <td>310.25</td>
+      <td>322.44</td>
+      <td>310.19</td>
+      <td>316.53</td>
+      <td>5927881.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>310.25</td>
+      <td>322.44</td>
+      <td>310.19</td>
+      <td>316.53</td>
+      <td>5927881.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h4 id="2-6"><a href="#2-6" class="headerlink" title="2."></a>2.</h4><p>tesla 데이터프레임의 Date 열은 문자열로 저장되어 있다. 즉, datetime 오브젝트로 자료형을 변환해야 시간 계산을 할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(tesla.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>              Open    High     Low   Close      Volume  ExDividend  \
+Date                                                                 
+2018-03-27  304.00  304.27  277.18  279.18  13696168.0         0.0   
+2018-03-26  307.34  307.59  291.36  304.18   8324639.0         0.0   
+2018-03-23  311.25  311.61  300.45  301.54   6600538.0         0.0   
+2018-03-22  313.89  318.82  308.18  309.10   4914307.0         0.0   
+2018-03-21  310.25  322.44  310.19  316.53   5927881.0         0.0   
+
+            SplitRatio  AdjOpen  AdjHigh  AdjLow  AdjClose   AdjVolume  
+Date                                                                    
+2018-03-27         1.0   304.00   304.27  277.18    279.18  13696168.0  
+2018-03-26         1.0   307.34   307.59  291.36    304.18   8324639.0  
+2018-03-23         1.0   311.25   311.61  300.45    301.54   6600538.0  
+2018-03-22         1.0   313.89   318.82  308.18    309.10   4914307.0  
+2018-03-21         1.0   310.25   322.44  310.19    316.53   5927881.0  </code></pre>
+<h4 id="3-5"><a href="#3-5" class="headerlink" title="3."></a>3.</h4><p>Date 열을 Datetime 형으로 변환하려면 read_csv 메서드로 데이터 집합(tesla_stock_quandl.csv)을 불러올 때 parse_dates 인자에 Date 열을 전달하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tesla = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/tesla_stock_quandl.csv&#x27;</span>, parse_dates =[<span class="number">0</span>])</span><br><span class="line">print(tesla.info())</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 499 entries, 0 to 498
+Data columns (total 13 columns):
+ #   Column      Non-Null Count  Dtype         
+---  ------      --------------  -----         
+ 0   Date        499 non-null    datetime64[ns]
+ 1   Open        499 non-null    float64       
+ 2   High        499 non-null    float64       
+ 3   Low         499 non-null    float64       
+ 4   Close       499 non-null    float64       
+ 5   Volume      499 non-null    float64       
+ 6   ExDividend  499 non-null    float64       
+ 7   SplitRatio  499 non-null    float64       
+ 8   AdjOpen     499 non-null    float64       
+ 9   AdjHigh     499 non-null    float64       
+ 10  AdjLow      499 non-null    float64       
+ 11  AdjClose    499 non-null    float64       
+ 12  AdjVolume   499 non-null    float64       
+dtypes: datetime64[ns](1), float64(12)
+memory usage: 50.8 KB
+None</code></pre>
+<h4 id="4-4"><a href="#4-4" class="headerlink" title="4."></a>4.</h4><p>Date 열의 자료형이 datetime 오브젝트로 변환되었다. 이제 dt 접근자를 사용할 수 있다. 다음은 불린 추출로 2010년 6월의 데이터만 추출한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(tesla.loc[(tesla.Date.dt.year == <span class="number">2010</span>) &amp; (tesla.Date.dt.month == <span class="number">6</span>)])</span><br></pre></td></tr></table></figure>
+
+<pre><code>Empty DataFrame
+Columns: [Date, Open, High, Low, Close, Volume, ExDividend, SplitRatio, AdjOpen, AdjHigh, AdjLow, AdjClose, AdjVolume]
+Index: []</code></pre>
+<h2 id="datetime-오브젝트와-인덱스-DatetimeIndex"><a href="#datetime-오브젝트와-인덱스-DatetimeIndex" class="headerlink" title="datetime 오브젝트와 인덱스 - DatetimeIndex"></a>datetime 오브젝트와 인덱스 - DatetimeIndex</h2><p>지금까지의 실습은 대부분 데이터프레임의 행 번호를 인덱스로 사용했지만 datetime 오브젝트를 데이터프레임의 인덱스로 설정하면 원하는 시간의 데이터를 바로 추출할 수 있어 편리하다. 이번에는 datetime 오브젝트를 인덱스로 지정하는 방법에 대해 알아보겠다.</p>
+<h3 id="datetime-오브젝트를-인덱스로-설정해-데이터-추출하기"><a href="#datetime-오브젝트를-인덱스로-설정해-데이터-추출하기" class="headerlink" title="datetime 오브젝트를 인덱스로 설정해 데이터 추출하기"></a>datetime 오브젝트를 인덱스로 설정해 데이터 추출하기</h3><h4 id="1-8"><a href="#1-8" class="headerlink" title="1."></a>1.</h4><p>계속해서 테슬라 주식 데이터를 사용하여 실습을 진행하겠다. 다음은 Date 열을 tesla 데이터프레임의 인덱스로 지정한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tesla.index = tesla[<span class="string">&#x27;Date&#x27;</span>]</span><br><span class="line">print(tesla.index)</span><br></pre></td></tr></table></figure>
+
+<pre><code>DatetimeIndex([&#39;2018-03-27&#39;, &#39;2018-03-26&#39;, &#39;2018-03-23&#39;, &#39;2018-03-22&#39;,
+               &#39;2018-03-21&#39;, &#39;2018-03-20&#39;, &#39;2018-03-19&#39;, &#39;2018-03-16&#39;,
+               &#39;2018-03-15&#39;, &#39;2018-03-14&#39;,
+               ...
+               &#39;2016-04-15&#39;, &#39;2016-04-14&#39;, &#39;2016-04-13&#39;, &#39;2016-04-12&#39;,
+               &#39;2016-04-11&#39;, &#39;2016-04-08&#39;, &#39;2016-04-07&#39;, &#39;2016-04-06&#39;,
+               &#39;2016-04-05&#39;, &#39;2016-04-04&#39;],
+              dtype=&#39;datetime64[ns]&#39;, name=&#39;Date&#39;, length=499, freq=None)</code></pre>
+<h2 id="시간-간격과-인덱스-TimedeltaIndex"><a href="#시간-간격과-인덱스-TimedeltaIndex" class="headerlink" title="시간 간격과 인덱스 - TimedeltaIndex"></a>시간 간격과 인덱스 - TimedeltaIndex</h2><p>예를 들어 주식 데이터에서 최초 5일간 수집된 데이터만 살펴보고 싶다면 어떻게 해야 할까? 이런 경우에는 시간 간격을 인덱스로 지정하여 데이터를 추출하면 된다. 이번에는 datetime 오브젝트를 인덱스로 지정하는 것이 아니라 시간 간격을 인덱스로 지정하여 진행하겠다.</p>
+<h3 id="시간-간격을-인덱스로-지정해-데이터-추출하기"><a href="#시간-간격을-인덱스로-지정해-데이터-추출하기" class="headerlink" title="시간 간격을 인덱스로 지정해 데이터 추출하기"></a>시간 간격을 인덱스로 지정해 데이터 추출하기</h3><h4 id="1-9"><a href="#1-9" class="headerlink" title="1."></a>1.</h4><p>Date 열에서 Date 열의 최솟값(2010-06-29)을 빼면 데이터 수집한 이후에 시간이 얼마나 흘렀는지 알 수 있다. 다음은 Date 열에서 최솟값을 뺀 다음 ref_date 열로 추가한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tesla[<span class="string">&#x27;ref_date&#x27;</span>] = tesla[<span class="string">&#x27;Date&#x27;</span>] - tesla[<span class="string">&#x27;Date&#x27;</span>].<span class="built_in">min</span>()</span><br><span class="line">print(tesla.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>                 Date    Open    High     Low   Close      Volume  ExDividend  \
+Date                                                                            
+2018-03-27 2018-03-27  304.00  304.27  277.18  279.18  13696168.0         0.0   
+2018-03-26 2018-03-26  307.34  307.59  291.36  304.18   8324639.0         0.0   
+2018-03-23 2018-03-23  311.25  311.61  300.45  301.54   6600538.0         0.0   
+2018-03-22 2018-03-22  313.89  318.82  308.18  309.10   4914307.0         0.0   
+2018-03-21 2018-03-21  310.25  322.44  310.19  316.53   5927881.0         0.0   
+
+            SplitRatio  AdjOpen  AdjHigh  AdjLow  AdjClose   AdjVolume  \
+Date                                                                     
+2018-03-27         1.0   304.00   304.27  277.18    279.18  13696168.0   
+2018-03-26         1.0   307.34   307.59  291.36    304.18   8324639.0   
+2018-03-23         1.0   311.25   311.61  300.45    301.54   6600538.0   
+2018-03-22         1.0   313.89   318.82  308.18    309.10   4914307.0   
+2018-03-21         1.0   310.25   322.44  310.19    316.53   5927881.0   
+
+           ref_date  
+Date                 
+2018-03-27 722 days  
+2018-03-26 721 days  
+2018-03-23 718 days  
+2018-03-22 717 days  
+2018-03-21 716 days  </code></pre>
+<h4 id="2-7"><a href="#2-7" class="headerlink" title="2."></a>2.</h4><p>다음과 같이 ref_date 열을 인덱스로 지정했다. 이제 시간 간격(ref_date)을 이용하여 데이트를 추출할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tesla.index = tesla[<span class="string">&#x27;ref_date&#x27;</span>]</span><br><span class="line">print(tesla.iloc[:<span class="number">5</span>, :<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>               Date    Open    High     Low   Close
+ref_date                                           
+722 days 2018-03-27  304.00  304.27  277.18  279.18
+721 days 2018-03-26  307.34  307.59  291.36  304.18
+718 days 2018-03-23  311.25  311.61  300.45  301.54
+717 days 2018-03-22  313.89  318.82  308.18  309.10
+716 days 2018-03-21  310.25  322.44  310.19  316.53</code></pre>
+<h4 id="3-6"><a href="#3-6" class="headerlink" title="3."></a>3.</h4><p>다음은 데이터를 수집한 이후 최초 5일의 데이터를 추출한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(tesla[<span class="string">&#x27;5 days&#x27;</span>:].iloc[:<span class="number">5</span>, :<span class="number">5</span>])</span><br><span class="line"><span class="comment"># 4 days는 데이터가 처음부터 없어서 출력되지 않았다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>               Date    Open    High       Low   Close
+ref_date                                             
+4 days   2016-04-08  260.50  260.82  248.0201  250.07
+3 days   2016-04-07  266.45  269.34  254.5100  257.20
+2 days   2016-04-06  253.97  267.74  253.4500  265.42
+1 days   2016-04-05  240.50  256.56  240.0000  255.47
+0 days   2016-04-04  249.12  252.12  243.6400  246.99</code></pre>
+<h2 id="시간-범위와-인덱스"><a href="#시간-범위와-인덱스" class="headerlink" title="시간 범위와 인덱스"></a>시간 범위와 인덱스</h2><p>앞에서 사용한 주식 데이터는 특정 일에 누락된 데이터가 없었다. 하지만 가끔은 데이터를 수집하지 못한 날도 있을 수 있다. 만약 특정 일에 누락된 데이터도 포함시켜 데이터를 살펴보려면 어떻게 해야 할까? 이런 경우에는 임의로 시간 범위를 생성하여 인덱스로 지정해야 한다.</p>
+<h3 id="시간-범위-생성해-인덱스로-지정하기"><a href="#시간-범위-생성해-인덱스로-지정하기" class="headerlink" title="시간 범위 생성해 인덱스로 지정하기"></a>시간 범위 생성해 인덱스로 지정하기</h3><h4 id="1-10"><a href="#1-10" class="headerlink" title="1."></a>1.</h4><p>테슬라 주식 데이터는 특정 일에 누락된 데이터가 없다. 그래서 이번에는 에볼라 데이터 집합을 사용하겠다. 가장 앞쪽의 데이터를 살펴보면 2015년 01월 01일의 데이터가 누락된 것을 알 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ebola = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/country_timeseries.csv&#x27;</span>, parse_dates = [<span class="number">0</span>])</span><br><span class="line">print(ebola)</span><br></pre></td></tr></table></figure>
+
+<pre><code>          Date  Day  Cases_Guinea  Cases_Liberia  Cases_SierraLeone  \
+0   2015-01-05  289        2776.0            NaN            10030.0   
+1   2015-01-04  288        2775.0            NaN             9780.0   
+2   2015-01-03  287        2769.0         8166.0             9722.0   
+3   2015-01-02  286           NaN         8157.0                NaN   
+4   2014-12-31  284        2730.0         8115.0             9633.0   
+..         ...  ...           ...            ...                ...   
+117 2014-03-27    5         103.0            8.0                6.0   
+118 2014-03-26    4          86.0            NaN                NaN   
+119 2014-03-25    3          86.0            NaN                NaN   
+120 2014-03-24    2          86.0            NaN                NaN   
+121 2014-03-22    0          49.0            NaN                NaN   
+
+     Cases_Nigeria  Cases_Senegal  Cases_UnitedStates  Cases_Spain  \
+0              NaN            NaN                 NaN          NaN   
+1              NaN            NaN                 NaN          NaN   
+2              NaN            NaN                 NaN          NaN   
+3              NaN            NaN                 NaN          NaN   
+4              NaN            NaN                 NaN          NaN   
+..             ...            ...                 ...          ...   
+117            NaN            NaN                 NaN          NaN   
+118            NaN            NaN                 NaN          NaN   
+119            NaN            NaN                 NaN          NaN   
+120            NaN            NaN                 NaN          NaN   
+121            NaN            NaN                 NaN          NaN   
+
+     Cases_Mali  Deaths_Guinea  Deaths_Liberia  Deaths_SierraLeone  \
+0           NaN         1786.0             NaN              2977.0   
+1           NaN         1781.0             NaN              2943.0   
+2           NaN         1767.0          3496.0              2915.0   
+3           NaN            NaN          3496.0                 NaN   
+4           NaN         1739.0          3471.0              2827.0   
+..          ...            ...             ...                 ...   
+117         NaN           66.0             6.0                 5.0   
+118         NaN           62.0             NaN                 NaN   
+119         NaN           60.0             NaN                 NaN   
+120         NaN           59.0             NaN                 NaN   
+121         NaN           29.0             NaN                 NaN   
+
+     Deaths_Nigeria  Deaths_Senegal  Deaths_UnitedStates  Deaths_Spain  \
+0               NaN             NaN                  NaN           NaN   
+1               NaN             NaN                  NaN           NaN   
+2               NaN             NaN                  NaN           NaN   
+3               NaN             NaN                  NaN           NaN   
+4               NaN             NaN                  NaN           NaN   
+..              ...             ...                  ...           ...   
+117             NaN             NaN                  NaN           NaN   
+118             NaN             NaN                  NaN           NaN   
+119             NaN             NaN                  NaN           NaN   
+120             NaN             NaN                  NaN           NaN   
+121             NaN             NaN                  NaN           NaN   
+
+     Deaths_Mali  
+0            NaN  
+1            NaN  
+2            NaN  
+3            NaN  
+4            NaN  
+..           ...  
+117          NaN  
+118          NaN  
+119          NaN  
+120          NaN  
+121          NaN  
+
+[122 rows x 18 columns]</code></pre>
+<h4 id="2-8"><a href="#2-8" class="headerlink" title="2."></a>2.</h4><p>뒤쪽의 데이터도 마찬가지이다. 2014년 03월 23일의 데이터가 누락되었다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.iloc[<span class="number">-5</span>:, :<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>          Date  Day  Cases_Guinea  Cases_Liberia  Cases_SierraLeone
+117 2014-03-27    5         103.0            8.0                6.0
+118 2014-03-26    4          86.0            NaN                NaN
+119 2014-03-25    3          86.0            NaN                NaN
+120 2014-03-24    2          86.0            NaN                NaN
+121 2014-03-22    0          49.0            NaN                NaN</code></pre>
+<h4 id="3-7"><a href="#3-7" class="headerlink" title="3."></a>3.</h4><p>다음은 date_range 메서드를 이용하여 2014년 12월 31일부터 2015년 01월 05일 사이의 시간 인덱스(DatetimeIndex)를 생성한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">head_range = pd.date_range(start = <span class="string">&#x27;2014-12-31&#x27;</span>, end = <span class="string">&#x27;2015-01-05&#x27;</span>)</span><br><span class="line">print(head_range)</span><br></pre></td></tr></table></figure>
+
+<pre><code>DatetimeIndex([&#39;2014-12-31&#39;, &#39;2015-01-01&#39;, &#39;2015-01-02&#39;, &#39;2015-01-03&#39;,
+               &#39;2015-01-04&#39;, &#39;2015-01-05&#39;],
+              dtype=&#39;datetime64[ns]&#39;, freq=&#39;D&#39;)</code></pre>
+<h4 id="4-5"><a href="#4-5" class="headerlink" title="4."></a>4.</h4><p>다음은 원본 데이터를 손상시키는 것을 방지하기 위해 ebola 데이터프레임의 앞쪽 5개의 데이터를 추출하여 새로운 데이터프레임을 만든 것이다. 이때 Date 열을 인덱스로 먼저 저장하지 않으면 오류가 발생한다. 반드시 Date 열을 인덱스로 지정한 다음 과정 <strong>3</strong>에서 생성한 시간 범위를 인덱스로 지정해야 한다.</p>
+<p><em>참고로 ebola_5.reindex(head_range)를 실행하면 주피터 노트북에 실행 결과가 바로 나타난다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ebola_5 = ebola.head()</span><br><span class="line">ebola_5.index = ebola_5[<span class="string">&#x27;Date&#x27;</span>]</span><br><span class="line">ebola_5.reindex(head_range)</span><br><span class="line">print(ebola_5.iloc[:<span class="number">5</span>, :<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>                 Date  Day  Cases_Guinea  Cases_Liberia  Cases_SierraLeone
+Date                                                                      
+2015-01-05 2015-01-05  289        2776.0            NaN            10030.0
+2015-01-04 2015-01-04  288        2775.0            NaN             9780.0
+2015-01-03 2015-01-03  287        2769.0         8166.0             9722.0
+2015-01-02 2015-01-02  286           NaN         8157.0                NaN
+2014-12-31 2014-12-31  284        2730.0         8115.0             9633.0</code></pre>
+<h3 id="tip-시간-범위의-주기-설정하기"><a href="#tip-시간-범위의-주기-설정하기" class="headerlink" title="tip 시간 범위의 주기 설정하기"></a><code>tip</code> 시간 범위의 주기 설정하기</h3><p>시간 범위를 인덱스로 지정하면 DatetimeIndex 자료형이 만들어진다. 그리고 DatetimeIndex에는 freq 속성이 포함되어 있다. freq 속성값을 지정하면 시간 간격을 조절하여 DatetimeIndex를 만들 수 있다. 아래에 freq 속성값으로 사용할 수 있는 시간 주기를 표로 정리했다.</p>
+<p><strong>freq 속성값으로 사용할 수 있는 시간 주기</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>시간 주기</strong></th>
+<th align="center"><strong>설명</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B</td>
+<td align="center">평일만 포함</td>
+</tr>
+<tr>
+<td>C</td>
+<td align="center">사용자가 정의한 평일만 포함</td>
+</tr>
+<tr>
+<td>D</td>
+<td align="center">달력 일자 단위</td>
+</tr>
+<tr>
+<td>W</td>
+<td align="center">주간 단위</td>
+</tr>
+<tr>
+<td>M</td>
+<td align="center">월 마지막 날만 포함</td>
+</tr>
+<tr>
+<td>SM</td>
+<td align="center">15일과 월 마지막 날만 포함</td>
+</tr>
+<tr>
+<td>BM</td>
+<td align="center">M 주기의 값이 휴일이면 제외하고 평일만 포함</td>
+</tr>
+<tr>
+<td>CBM</td>
+<td align="center">BM에 사용자 정의 평일을 적용</td>
+</tr>
+<tr>
+<td>MS</td>
+<td align="center">월 시작일만 포함</td>
+</tr>
+<tr>
+<td>SMS</td>
+<td align="center">월 시작일과 15일만 포함</td>
+</tr>
+<tr>
+<td>BMS</td>
+<td align="center">MS 주기의 값이 휴일이면 제외하고 평일만 포함</td>
+</tr>
+<tr>
+<td>CBMS</td>
+<td align="center">BMS에 사용자 정의 평일을 적용</td>
+</tr>
+<tr>
+<td>Q</td>
+<td align="center">3, 6, 9, 12월 분기 마지막 날만 포함</td>
+</tr>
+<tr>
+<td>BQ</td>
+<td align="center">3, 6, 9, 12월 분기 마지막 날이 휴일이면 제외하고 평일만 포함</td>
+</tr>
+<tr>
+<td>QS</td>
+<td align="center">3, 6, 9, 12월 분기 시작일만 포함</td>
+</tr>
+<tr>
+<td>BQS</td>
+<td align="center">3, 6, 9, 12월 분기 시작일이 휴일이면 제외하고 평일만 포함</td>
+</tr>
+<tr>
+<td>A</td>
+<td align="center">년의 마지막 날만 포함</td>
+</tr>
+<tr>
+<td>BA</td>
+<td align="center">년의 마지막 날이 휴일이면 제외하고 평일만 포함</td>
+</tr>
+<tr>
+<td>AS</td>
+<td align="center">년의 시작일만 포함</td>
+</tr>
+<tr>
+<td>BAS</td>
+<td align="center">년의 시작일이 휴일이면 제외하고 평일만 포함</td>
+</tr>
+<tr>
+<td>BH</td>
+<td align="center">평일을 시간 단위로 포함(09:00 ~ 16:00)</td>
+</tr>
+<tr>
+<td>H</td>
+<td align="center">시간 단위로 포함(00:00 ~ 00:00)</td>
+</tr>
+<tr>
+<td>T</td>
+<td align="center">분 단위 포함</td>
+</tr>
+<tr>
+<td>S</td>
+<td align="center">초 단위 포함</td>
+</tr>
+<tr>
+<td>L</td>
+<td align="center">밀리초 단위 포함</td>
+</tr>
+<tr>
+<td>U</td>
+<td align="center">마이크로초 단위 포함</td>
+</tr>
+<tr>
+<td>N</td>
+<td align="center">나노초 단위 포함</td>
+</tr>
+</tbody></table>
+<p>다음은 date_range 메서드의 freq 인잣값을 B로 설정하여 평일만 포함시킨 DatetimeIndex를 만든 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.date_range(<span class="string">&#x27;2017-01-01&#x27;</span>, <span class="string">&#x27;2017-01-07&#x27;</span>, freq = <span class="string">&#x27;B&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>DatetimeIndex([&#39;2017-01-02&#39;, &#39;2017-01-03&#39;, &#39;2017-01-04&#39;, &#39;2017-01-05&#39;,
+               &#39;2017-01-06&#39;],
+              dtype=&#39;datetime64[ns]&#39;, freq=&#39;B&#39;)</code></pre>
+<h2 id="시간-범위-수정하고-데이터-밀어내기-shift-메서드"><a href="#시간-범위-수정하고-데이터-밀어내기-shift-메서드" class="headerlink" title="시간 범위 수정하고 데이터 밀어내기 - shift 메서드"></a>시간 범위 수정하고 데이터 밀어내기 - shift 메서드</h2><p>만약 나라별로 에볼라의 확산 속도를 비교하려면 발생하기 시작한 날짜를 옮기는 것이 좋다. 왜 그럴까? 일단 ebola 데이터프레임로 그래프를 그려보고 에볼라의 확산 속도를 비교하는데 어떤 문제가 있는지 그리고 해결 방법은 무엇인지 알아보자.</p>
+<h3 id="에볼라의-확산-속도-비교하기"><a href="#에볼라의-확산-속도-비교하기" class="headerlink" title="에볼라의 확산 속도 비교하기"></a>에볼라의 확산 속도 비교하기</h3><h4 id="1-11"><a href="#1-11" class="headerlink" title="1."></a>1.</h4><p>다음은 ebola 데이터프레임의 Date 열을 인덱스로 지정한 다음 x 축을 Date 열로, y축을 사망자 수로 지정하여 그린 그래프이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">ebola.index = ebola[<span class="string">&#x27;Date&#x27;</span>]</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax = ebola.iloc[<span class="number">0</span>:, <span class="number">1</span>:].plot(ax=ax)</span><br><span class="line">ax.legend(fontsize =<span class="number">7</span>, loc=<span class="number">2</span>, borderaxespad=<span class="number">0.</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://user-images.githubusercontent.com/72365693/113467545-7f738780-947e-11eb-918d-3ed91a1af0b7.png"></p>
+<h4 id="2-9"><a href="#2-9" class="headerlink" title="2."></a>2.</h4><p>그런데 과정 <strong>1</strong>의 그래프는 각 나라의 에볼라 발병일이 달라 그래프가 그려지기 시작한 지점도가 다르다. 달리기 속도를 비교하려면 같은 출발선에서 출발하여 시간을 측정해야 한다. 에볼라의 확산 속도도 같은 방법으로 측정해야 한다. 즉, 각 나라의 발병일을 가장 처음 에볼라가 발병한 Guinea와 동일한 위치로 옮겨야 나라별 에볼라의 확산 속도를 제대로 비교할 수 있다.</p>
+<p><em>참고 : 예를 들어 Liberia는 발병일을 4만큼 옮겨야 한다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ebola_sub = ebola[[<span class="string">&#x27;Day&#x27;</span>, <span class="string">&#x27;Cases_Guinea&#x27;</span>, <span class="string">&#x27;Cases_Liberia&#x27;</span>]]</span><br><span class="line">print(ebola_sub.tail(<span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>            Day  Cases_Guinea  Cases_Liberia
+Date                                        
+2014-04-04   13         143.0           18.0
+2014-04-01   10         127.0            8.0
+2014-03-31    9         122.0            8.0
+2014-03-29    7         112.0            7.0
+2014-03-28    6         112.0            3.0
+2014-03-27    5         103.0            8.0
+2014-03-26    4          86.0            NaN
+2014-03-25    3          86.0            NaN
+2014-03-24    2          86.0            NaN
+2014-03-22    0          49.0            NaN</code></pre>
+<h4 id="3-그래프를-그리기-위한-데이터프레임-준비하기"><a href="#3-그래프를-그리기-위한-데이터프레임-준비하기" class="headerlink" title="3. 그래프를 그리기 위한 데이터프레임 준비하기"></a>3. 그래프를 그리기 위한 데이터프레임 준비하기</h4><p>다음은 Date 열의 자료형을 datetime 오브젝트로 변환하여 ebola 데이터프레임을 다시 생성한 것이다. 그런데 중간에 아예 날짜가 없는데 데이터(2015년 01월 01일)도 있다. 이 데이터도 포함시켜야 확산 속도를 제대로 비교할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ebola = pd.read_csv(<span class="string">&#x27;C:/Users/user/Desktop/Doit_판다스입문_소스/data/country_timeseries.csv&#x27;</span>, parse_dates = [<span class="string">&#x27;Date&#x27;</span>])</span><br><span class="line"></span><br><span class="line">print(ebola.head().iloc[:, :<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>        Date  Day  Cases_Guinea  Cases_Liberia  Cases_SierraLeone
+0 2015-01-05  289        2776.0            NaN            10030.0
+1 2015-01-04  288        2775.0            NaN             9780.0
+2 2015-01-03  287        2769.0         8166.0             9722.0
+3 2015-01-02  286           NaN         8157.0                NaN
+4 2014-12-31  284        2730.0         8115.0             9633.0</code></pre>
+<h4 id="4-6"><a href="#4-6" class="headerlink" title="4."></a>4.</h4><p>다음은 Date 열을 인덱스로 지정한 다음 ebola 데이터프레임의 Date 열의 최댓값과 최솟값으로 시간 범위를 생성하여 new_idx에 저장한 것이다. 이렇게 하면 날짜가 아예 없었던 데이터의 인덱스를 생성할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ebola.index = ebola[<span class="string">&#x27;Date&#x27;</span>]</span><br><span class="line">new_idx = pd.date_range(ebola.index.<span class="built_in">min</span>(), ebola.index.<span class="built_in">max</span>())</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-2"><a href="#5-2" class="headerlink" title="5."></a>5.</h4><p>그런데 new_idx를 살펴보면 ebola 데이터 집합에 있는 시간 순서와 반대로 생성되어 있다. 다음은 시간 순서를 맞추기 위해 reversed 메서드를 사용하여 인덱스를 반대로 뒤집은 것이다.</p>
+<p><em>참고 : reversed(new_idx)를 실행한 다음 new_idx를 출력하여 확인해 보자.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(new_idx)</span><br><span class="line"></span><br><span class="line">new_idx = <span class="built_in">reversed</span>(new_idx)</span><br></pre></td></tr></table></figure>
+
+<pre><code>DatetimeIndex([&#39;2014-03-22&#39;, &#39;2014-03-23&#39;, &#39;2014-03-24&#39;, &#39;2014-03-25&#39;,
+               &#39;2014-03-26&#39;, &#39;2014-03-27&#39;, &#39;2014-03-28&#39;, &#39;2014-03-29&#39;,
+               &#39;2014-03-30&#39;, &#39;2014-03-31&#39;,
+               ...
+               &#39;2014-12-27&#39;, &#39;2014-12-28&#39;, &#39;2014-12-29&#39;, &#39;2014-12-30&#39;,
+               &#39;2014-12-31&#39;, &#39;2015-01-01&#39;, &#39;2015-01-02&#39;, &#39;2015-01-03&#39;,
+               &#39;2015-01-04&#39;, &#39;2015-01-05&#39;],
+              dtype=&#39;datetime64[ns]&#39;, length=290, freq=&#39;D&#39;)</code></pre>
+<h4 id="6-1"><a href="#6-1" class="headerlink" title="6."></a>6.</h4><p>다음은 reindex 메서드를 사용하여 새로 생성한 인덱스(new_idx)를 새로운 인덱스로 지정한 것이다. 그러면 2015년 01월 01일 데이터와 같은 ebola 데이터프레임에 아예 없었던 날짜가 추가된다. 이제 그래프를 그리기 위한 데이터프레임이 준비되어있다.</p>
+<p><em>참고 : 시간에 대한 누락값은 NaT이다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ebola = ebola.reindex(new_idx)</span><br><span class="line"></span><br><span class="line">print(ebola.head().iloc[:, :<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>                 Date    Day  Cases_Guinea  Cases_Liberia  Cases_SierraLeone
+2015-01-05 2015-01-05  289.0        2776.0            NaN            10030.0
+2015-01-04 2015-01-04  288.0        2775.0            NaN             9780.0
+2015-01-03 2015-01-03  287.0        2769.0         8166.0             9722.0
+2015-01-02 2015-01-02  286.0           NaN         8157.0                NaN
+2015-01-01        NaT    NaN           NaN            NaN                NaN</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola.tail().iloc[:, :<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>                 Date  Day  Cases_Guinea  Cases_Liberia  Cases_SierraLeone
+2014-03-26 2014-03-26  4.0          86.0            NaN                NaN
+2014-03-25 2014-03-25  3.0          86.0            NaN                NaN
+2014-03-24 2014-03-24  2.0          86.0            NaN                NaN
+2014-03-23        NaT  NaN           NaN            NaN                NaN
+2014-03-22 2014-03-22  0.0          49.0            NaN                NaN</code></pre>
+<h4 id="7-각-나라의-에볼라-발병일-옮기기"><a href="#7-각-나라의-에볼라-발병일-옮기기" class="headerlink" title="7.  각 나라의 에볼라 발병일 옮기기"></a>7.  각 나라의 에볼라 발병일 옮기기</h4><p>다음은 last_valid_index, first_valid_index 메서드를 사용하여 각 나라의 에볼라 발병일을 구한 것이다. 각각의 메서드는 유요한 값이 있는 첫 번째와 마지막 인덱스를 반환한다. 다음을 입력하고 결과를 확인해 보자.</p>
+<p><em>참고 : last_valid_index는 가장 오래된 데이터를 가져오고 first_valid_index는 가장 최근의 데이터를 가져온다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">last_valid = ebola.apply(pd.Series.last_valid_index)</span><br><span class="line">print(last_valid)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Date                  2014-03-22
+Day                   2014-03-22
+Cases_Guinea          2014-03-22
+Cases_Liberia         2014-03-27
+Cases_SierraLeone     2014-03-27
+Cases_Nigeria         2014-07-23
+Cases_Senegal         2014-08-31
+Cases_UnitedStates    2014-10-01
+Cases_Spain           2014-10-08
+Cases_Mali            2014-10-22
+Deaths_Guinea         2014-03-22
+Deaths_Liberia        2014-03-27
+Deaths_SierraLeone    2014-03-27
+Deaths_Nigeria        2014-07-23
+Deaths_Senegal        2014-09-07
+Deaths_UnitedStates   2014-10-01
+Deaths_Spain          2014-10-08
+Deaths_Mali           2014-10-22
+dtype: datetime64[ns]</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">first_valid = ebola.apply(pd.Series.first_valid_index)</span><br><span class="line">print(first_valid)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Date                  2015-01-05
+Day                   2015-01-05
+Cases_Guinea          2015-01-05
+Cases_Liberia         2015-01-03
+Cases_SierraLeone     2015-01-05
+Cases_Nigeria         2014-12-07
+Cases_Senegal         2014-12-07
+Cases_UnitedStates    2014-12-07
+Cases_Spain           2014-12-07
+Cases_Mali            2014-12-07
+Deaths_Guinea         2015-01-05
+Deaths_Liberia        2015-01-03
+Deaths_SierraLeone    2015-01-05
+Deaths_Nigeria        2014-12-07
+Deaths_Senegal        2014-12-07
+Deaths_UnitedStates   2014-12-07
+Deaths_Spain          2014-12-07
+Deaths_Mali           2014-12-07
+dtype: datetime64[ns]</code></pre>
+<h4 id="8"><a href="#8" class="headerlink" title="8."></a>8.</h4><p>각 나라의 에볼라 발병일을 동일한 출발선으로 옮기려면 에볼라가 가장 처음 발병한 날(earliest_date)에서 각 나라의 에볼라 발병일을 뺀 만큼(shift_values)만 옮기면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">earliest_date = ebola.index.<span class="built_in">min</span>()</span><br><span class="line">print(earliest_date)</span><br><span class="line"></span><br><span class="line">shift_values = last_valid - earliest_date </span><br><span class="line">print(shift_values)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2014-03-22 00:00:00
+Date                    0 days
+Day                     0 days
+Cases_Guinea            0 days
+Cases_Liberia           5 days
+Cases_SierraLeone       5 days
+Cases_Nigeria         123 days
+Cases_Senegal         162 days
+Cases_UnitedStates    193 days
+Cases_Spain           200 days
+Cases_Mali            214 days
+Deaths_Guinea           0 days
+Deaths_Liberia          5 days
+Deaths_SierraLeone      5 days
+Deaths_Nigeria        123 days
+Deaths_Senegal        169 days
+Deaths_UnitedStates   193 days
+Deaths_Spain          200 days
+Deaths_Mali           214 days
+dtype: timedelta64[ns]</code></pre>
+<h4 id="9"><a href="#9" class="headerlink" title="9."></a>9.</h4><p>이제 각 나라의 에볼라 발병일을 옮기면 된다. 다음은 shift 메서드를 사용하여 모든 열의 값을 shift_values 값만큼 옮긴 것이다. shift 메서드는 인잣값만큼 데이터를 밀어내는 메서드이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ebola_dict = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> idx, col <span class="keyword">in</span> <span class="built_in">enumerate</span>(ebola):</span><br><span class="line">    d = shift_values[idx].days</span><br><span class="line">    shifted = ebola[col].shift(d)</span><br><span class="line">    ebola_dict[col] = shifted</span><br></pre></td></tr></table></figure>
+
+<h4 id="10"><a href="#10" class="headerlink" title="10."></a>10.</h4><p>ebola_dict에는 시간을 다시 설정한 데이터가 딕셔너리 형태로 저장되어 있다. 다음은 DataFrame 메서드를 사용하여 ebola_dict의 값을 데이터프레임으로 변환한 것이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ebola_shift = pd.DataFrame(ebola_dict)</span><br></pre></td></tr></table></figure>
+
+<h4 id="11"><a href="#11" class="headerlink" title="11."></a>11.</h4><p>이제 에볼라의 최초 발병일(2014-03-22)을 기준으로 모든 열의 데이터가 옮겨졌다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(ebola_shift.tail())</span><br></pre></td></tr></table></figure>
+
+<pre><code>                 Date  Day  Cases_Guinea  Cases_Liberia  Cases_SierraLeone  \
+2014-03-26 2014-03-26  4.0          86.0            8.0                2.0   
+2014-03-25 2014-03-25  3.0          86.0            NaN                NaN   
+2014-03-24 2014-03-24  2.0          86.0            7.0                NaN   
+2014-03-23        NaT  NaN           NaN            3.0                2.0   
+2014-03-22 2014-03-22  0.0          49.0            8.0                6.0   
+
+            Cases_Nigeria  Cases_Senegal  Cases_UnitedStates  Cases_Spain  \
+2014-03-26            1.0            NaN                 1.0          1.0   
+2014-03-25            NaN            NaN                 NaN          NaN   
+2014-03-24            NaN            NaN                 NaN          NaN   
+2014-03-23            NaN            NaN                 NaN          NaN   
+2014-03-22            0.0            1.0                 1.0          1.0   
+
+            Cases_Mali  Deaths_Guinea  Deaths_Liberia  Deaths_SierraLeone  \
+2014-03-26         NaN           62.0             4.0                 2.0   
+2014-03-25         NaN           60.0             NaN                 NaN   
+2014-03-24         NaN           59.0             2.0                 NaN   
+2014-03-23         NaN            NaN             3.0                 2.0   
+2014-03-22         1.0           29.0             6.0                 5.0   
+
+            Deaths_Nigeria  Deaths_Senegal  Deaths_UnitedStates  Deaths_Spain  \
+2014-03-26             1.0             NaN                  0.0           1.0   
+2014-03-25             NaN             NaN                  NaN           NaN   
+2014-03-24             NaN             NaN                  NaN           NaN   
+2014-03-23             NaN             NaN                  NaN           NaN   
+2014-03-22             0.0             0.0                  0.0           1.0   
+
+            Deaths_Mali  
+2014-03-26          NaN  
+2014-03-25          NaN  
+2014-03-24          NaN  
+2014-03-23          NaN  
+2014-03-22          1.0  </code></pre>
+<h4 id="12"><a href="#12" class="headerlink" title="12."></a>12.</h4><p>마지막으로 인덱스를 Day 열로 지정하고 그래프에 필요 없는 Date, Day 열은 삭제하면 그래프를 그리기 위한 데이터프레임이 완성된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ebola_shift.index = ebola_shift[<span class="string">&#x27;Day&#x27;</span>]</span><br><span class="line">ebola_shift = ebola_shift.drop([<span class="string">&#x27;Date&#x27;</span>, <span class="string">&#x27;Day&#x27;</span>], axis = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">print(ebola_shift.tail())</span><br></pre></td></tr></table></figure>
+
+<pre><code>     Cases_Guinea  Cases_Liberia  Cases_SierraLeone  Cases_Nigeria  \
+Day                                                                  
+4.0          86.0            8.0                2.0            1.0   
+3.0          86.0            NaN                NaN            NaN   
+2.0          86.0            7.0                NaN            NaN   
+NaN           NaN            3.0                2.0            NaN   
+0.0          49.0            8.0                6.0            0.0   
+
+     Cases_Senegal  Cases_UnitedStates  Cases_Spain  Cases_Mali  \
+Day                                                               
+4.0            NaN                 1.0          1.0         NaN   
+3.0            NaN                 NaN          NaN         NaN   
+2.0            NaN                 NaN          NaN         NaN   
+NaN            NaN                 NaN          NaN         NaN   
+0.0            1.0                 1.0          1.0         1.0   
+
+     Deaths_Guinea  Deaths_Liberia  Deaths_SierraLeone  Deaths_Nigeria  \
+Day                                                                      
+4.0           62.0             4.0                 2.0             1.0   
+3.0           60.0             NaN                 NaN             NaN   
+2.0           59.0             2.0                 NaN             NaN   
+NaN            NaN             3.0                 2.0             NaN   
+0.0           29.0             6.0                 5.0             0.0   
+
+     Deaths_Senegal  Deaths_UnitedStates  Deaths_Spain  Deaths_Mali  
+Day                                                                  
+4.0             NaN                  0.0           1.0          NaN  
+3.0             NaN                  NaN           NaN          NaN  
+2.0             NaN                  NaN           NaN          NaN  
+NaN             NaN                  NaN           NaN          NaN  
+0.0             0.0                  0.0           1.0          1.0  </code></pre>
+<h4 id="13"><a href="#13" class="headerlink" title="13."></a>13.</h4><p>다음은 지금까지 만든 데이터프레임으로 다시 그린 그래프이다.</p>
+<p><em>참고 : x축이 Day로 변경되었다.</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax = ebola_shift.iloc[:, :].plot(ax=ax)</span><br><span class="line">ax.legend(fontsize=<span class="number">7</span>, loc=<span class="number">2</span>, borderaxespad=<span class="number">0.</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://user-images.githubusercontent.com/72365693/113467546-800c1e00-947e-11eb-988a-0b0f9cdf1415.png"></p>
+<h2 id="마무리하며"><a href="#마무리하며" class="headerlink" title="마무리하며"></a>마무리하며</h2><p>판다스 라이브러리는 시간을 다룰 수 있는 다양한 기능을 제공한다. 이 장에서는 시계열 데이터와 깊은 연관성이 있는 에볼라 데이터 및 주식 데이터를 주로 다루었다. 우리 주변의 상당수의 데이터는 시간과 깊은 연관성이 있는 경우가 많다. 시계열 데이터를 능숙하게 다루는 것을 데이터 분석가의 기본 소양이므로 이 장의 내용을 반드시 익혀두기 바란다.</p>
+<p>출처 : Do it 판드스</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://kim-1994.github.io/2021/04/03/pandas(11)/" data-id="ckn18792i0000l4vj65p05adi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "HOya"
+        },
+        "headline": "시계열 데이터",
+        "image": "http://KIM-1994.github.iohttps://user-images.githubusercontent.com/72365693/113377939-b11e1d00-93b0-11eb-9cfa-5263349bd805.png",
+        "keywords": "",
+        "genre": "Do it 판다스",
+        "datePublished": "2021-04-03",
+        "dateCreated": "2021-04-03",
+        "dateModified": "2021-04-03",
+        "url": "http://KIM-1994.github.io/2021/04/03/pandas(11)/",
+        "description": "=================================
+12-1 datetime 오브젝트12-2 사례별 시계열 데이터 계산기
+=================================
+12-1 datetime 오브젝트datetime 라이브러리는 날짜와 시간을 처리하는 등의 다양한 기능을 제공하는 파이썬 라이브러리이다. datetime 라이브러리에는 ",
+        "wordCount": 18775
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/KIM-1994" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2021/04/01/pandas(10)/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">그룹 연산</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/03/pandas(11)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/113377939-b11e1d00-93b0-11eb-9cfa-5263349bd805.png)" alt="시계열 데이터" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/04/03/pandas(11)/" class="title">시계열 데이터</a></p>
+                            <p class="item-date"><time datetime="2021-04-03T04:12:46.000Z" itemprop="datePublished">2021-04-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/01/pandas(10)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/04/01/pandas(10)/" class="title">그룹 연산</a></p>
+                            <p class="item-date"><time datetime="2021-04-01T13:39:30.566Z" itemprop="datePublished">2021-04-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/01/pandas(9)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/04/01/pandas(9)/" class="title">apply 메서드 활용</a></p>
+                            <p class="item-date"><time datetime="2021-04-01T08:05:28.904Z" itemprop="datePublished">2021-04-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/04/01/pandas(8)/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/72365693/113251662-a2c2f900-92fd-11eb-9afb-4fa207f9d4ef.png)" alt="문자열 처리하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/04/01/pandas(8)/" class="title">문자열 처리하기</a></p>
+                            <p class="item-date"><time datetime="2021-04-01T06:20:51.231Z" itemprop="datePublished">2021-04-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/03/31/pandas(7)/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a></p>
+                            <p class="item-title"><a href="/2021/03/31/pandas(7)/" class="title">판다스 자료형</a></p>
+                            <p class="item-date"><time datetime="2021-03-31T11:37:52.060Z" itemprop="datePublished">2021-03-31</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Do-it-%ED%8C%90%EB%8B%A4%EC%8A%A4/">Do it 판다스</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kaggle/">Kaggle</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/">crawling</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/crawling/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/">데이터</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/">통계학</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%8D%B0%EC%9D%B4%ED%84%B0/%ED%86%B5%EA%B3%84%ED%95%99/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%8B%9C%EA%B0%81%ED%99%94-%EA%B3%B5%EB%B6%80/">시각화 공부</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%A0%90%ED%94%84-%ED%88%AC-%ED%8C%8C%EC%9D%B4%EC%8D%AC/">점프 투 파이썬</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/">파이썬 머신러닝 완벽가이드</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B8%ED%84%B0%EB%B7%B0/">파이썬 알고리즘 인터뷰</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84-%EC%B2%B4%ED%81%AC/">패키지 버전 체크</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/">확률분포</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/%ED%86%B5%EA%B3%84/">통계</a><span class="category-list-count">2</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawling/" rel="tag">crawling</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">데이터</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" rel="tag">오픈소스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84/" rel="tag">통계</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" rel="tag">통계학</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag">파이썬</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" rel="tag">확률분포</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/crawling/" style="font-size: 20px;">crawling</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0/" style="font-size: 15px;">데이터</a> <a href="/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/" style="font-size: 15px;">오픈소스</a> <a href="/tags/%ED%86%B5%EA%B3%84/" style="font-size: 10px;">통계</a> <a href="/tags/%ED%86%B5%EA%B3%84%ED%95%99/" style="font-size: 15px;">통계학</a> <a href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" style="font-size: 20px;">파이썬</a> <a href="/tags/%ED%99%95%EB%A5%A0%EB%B6%84%ED%8F%AC/" style="font-size: 10px;">확률분포</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 HOya</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://kim-1994.github.io/2021/04/03/pandas(11)/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
