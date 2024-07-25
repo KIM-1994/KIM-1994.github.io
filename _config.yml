@@ -116,7 +116,8 @@ author:
   name             : "Dongho Kim"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Hello :)"
-  location         : "University of Seoul"
+  location         : "Republic of Krea"
+  school           : "University of Seoul"
   email            :
   links:
     - label: "Email"
