@@ -13,7 +13,7 @@
   main:
   #- title: "Home"
   #  url: "/"
-  - title: "Introduce"
+  - title: "Home"
     url: /about/
   - title: "Category"
     url: "/categories/"
