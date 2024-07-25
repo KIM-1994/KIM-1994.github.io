@@ -12,7 +12,7 @@
   #   url: /sitemap/
   main:
   #- title: "Home"
-  #  url: "/"
+  #  url: "https://kim-1994.github.io/home"
   - title: "Home"
     url: /about/
   - title: "Category"
