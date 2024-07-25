@@ -6,7 +6,7 @@ classes: wide
 use_math: true
 ---
 
-# ![]({{site.url}}/assets/images/cv-photo.jpg){: .align-right width="220" height="220"}
+<!--![]({{site.url}}/assets/images/cv-photo.jpg){: .align-right width="220" height="220"}-->
 
 Hello,  I graduated with a Master's degree in Environmental Engineering from the University of Seoul. I am interested in
 
