@@ -1,6 +1,6 @@
 ---
 permalink: /home/
-layout: single
+layout: Home
 author_profile: true
 classes: wide
 use_math: true
