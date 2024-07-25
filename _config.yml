@@ -117,7 +117,7 @@ author:
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Hello :)"
   location         : "Republic of Krea"
-  school           : "University of Seoul"
+  :school:         : "University of Seoul"
   email            :
   links:
     - label: "Email"
