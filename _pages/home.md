@@ -4,7 +4,6 @@ layout: single
 author_profile: true
 classes: wide
 use_math: true
-order : 1
 ---
 
 <!--![]({{site.url}}/assets/images/cv-photo.jpg){: .align-right width="220" height="220"}-->
