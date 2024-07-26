@@ -60,20 +60,47 @@ Journal : AGU Fall Meeting Abstracts [[poster](https://ui.adsabs.harvard.edu/abs
 
 ## 🎨 Projects
 
-**University of Seoul** *Aug 2023 - Dec 2023*  
-2023 Specialized Graduate Program in Waste-to-Energy (Combustible Waste-to-Energy)
+**서울시 금천구** *Aug 2023 - Jun 2024*  
+시흥계곡 방재그린 SOC조성 사전기획 및 타당성 검토 용역
 
-**University of Seoul** *Aug 2023 - Dec 2023*  
-Advancing water-based carbon prediction models
+**서울녹색환경지원센터** *Jun 2023 - Dec 2023*  
+하이브리드 모델을 활용한 한강 수계 수질예측 및 미래 기상시나리오의 적용평가 연구
 
-**Seoul, Geumcheon** *Aug 2023 - Jun 2024*  
-Pre-planning and feasibility study service for Siheung Valley Disaster Prevention Green SOC
+**서울시립대학교 산학협력단** *Jun 2023 - May 2024*  
+[연구활동경비지원사업] 수계탄소 예측 모델 고도화
 
-**Kangwon University** *Mar 2023 - Dec 2024*  
-Water ecosystems in response to extreme rainfall Developed long-term integrated surface water-groundwater runoff forecasting technology
+**한국환경공단** *Mar 2023 - Feb 2024*  
+2023년 폐자원에너지화 특성화대학원사업(가연성 폐자원 에너지화 분야)
 
-**Korea University** *Mar 2021 - Dec 2023*  
-OJEong Resilience Institute
+**환경부** *Jan 2023 - Dec 2023*  
+[2-1][통합RCMS]지중 내 유기오염물질의 선택적 차단을 위한 스마트 차수재 개발 및 AI기법을 이용한 환경영향 예측 평가
 
-**National Research Foundation of Korea** *Mar 2021 - Feb 2024*  
-Development of a smart water observation system based on big data and artificial intelligence
+**한국환경산업기술원** *Mar 2023 - Dec 2024*  
+이상강우 대응 수생태계장기 지표수-지하수 통합 유출 예측 기술 개발
+
+**그린솔루스** *Sept 2022 - Jun 2023*  
+서울시 지능형 물재생센터 구축
+
+**서울시립대학교 산학협력단** *Mar 2022 - Feb 2023*  
+[연구활동경비지원사업] 수계탄소 모형 국내 적용성 평가
+
+**환경부** *Mar 2022 - Feb 2023*  
+2022년 폐자원에너지화 특성화대학원사업(가연성 폐자원 에너지화 분야)
+
+**환경부** *Jan 2022 - Dec 2022*  
+[1-2][통합RCMS]지중 내 유기오염물질의 선택적 차단을 위한 스마트 차수재 개발 및 AI기법을 이용한 환경영향 예측 평가
+
+**국립환경과학원** *Oct 2021 - Jun 2022*  
+딥러닝 기법을 활용한 4대강 수계 주요 유입지류 수질변화 연구
+
+**환경부** *Jul 2021 - Dec 2021*  
+[1-1][통합RCMS]지중 내 유기오염물질의 선택적 차단을 위한 스마트 차수재 개발 및 AI기법을 이용한 환경영향 예측 평가
+
+**서울시립대학교** *Jun 2021 - Mar 2022*  
+[교내과제 신진]빅데이터를 활용한 수계 수자원 평가
+
+**고려대학교** *Mar 2021 - Dec 2023*  
+오정리질리언스연구원
+
+**과학기술정보통신부** *Mar 2021 - Feb 2022*  
+[1-1][통합Ez]빅데이터-인공지능 기반 스마트 물관측체계 개발 (R&D)
