@@ -1,6 +1,8 @@
 ---
 layout: home
 author_profile: true
+classes: wide
+use_math: true
 ---
 
 Hello,  I graduated with a Master's degree in Environmental Engineering from the University of Seoul. I am interested in
