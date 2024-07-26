@@ -22,41 +22,38 @@ B.S., Major in Environmental Engineering
 ## 📚 Publications  
 
 Paper: Climate change impacts on in-stream carbon cycling dynamics in a the Miho River Watershed, South Korea <br>
-**Dongho Kim***, Younghun Lee, Xuesong Zhang, Gregory W. McCarty, Junyu Qi, Mikyung Lee, Kyung Hwa Cho, Sangchul Lee
+**Dongho Kim***, Younghun Lee, Xuesong Zhang, Gregory W. McCarty, Junyu Qi, Mikyung Lee, Kyung Hwa Cho, Sangchul Lee <br>
 Journal : Carbon Balance and Management [[paper review]]
 
 Paper: Hybrid model for daily streamflow and phosphorus load prediction <br>
-Doyeon Lee, Jihoon Shin, Taeho Kim, Sangchul Lee, **Dongho Kim**, Yeonjeong Park, YoonKyung Cha
+Doyeon Lee, Jihoon Shin, Taeho Kim, Sangchul Lee, **Dongho Kim**, Yeonjeong Park, YoonKyung Cha <br>
 Journal : Water Science & Technology [[paper](https://iwaponline.com/wst/article/88/4/975/96722/Hybrid-model-for-daily-streamflow-and-phosphorus)]
 
 Paper: Spatial calibration and uncertainty reduction of the SWAT model using multiple remotely sensed data <br>
-Sangchul Lee, **Dongho Kim**, Gregory W McCarty, Martha Anderson, Feng Gao, Fangni Lei, Glenn E Moglen, Xuesong Zhang, Haw Yen, Junyu Qi, Wade Crow, In-Young Yeo, Liang Sun
+Sangchul Lee, **Dongho Kim**, Gregory W McCarty, Martha Anderson, Feng Gao, Fangni Lei, Glenn E Moglen, Xuesong Zhang, Haw Yen, Junyu Qi, Wade Crow, In-Young Yeo, Liang Sun <br>
 Journal : Heliyon [[paper](https://www.cell.com/heliyon/fulltext/S2405-8440(24)06954-8)]
 
 Paper: Improving estimation capacity of a hybrid model of LSTM and SWAT by reducing parameter uncertainty <br>
-Hyemin Jeong, Byeongwon Lee, **Dongho Kim**, Junyu Qi, Kyoung Jae Lim, Sangchul Lee
+Hyemin Jeong, Byeongwon Lee, **Dongho Kim**, Junyu Qi, Kyoung Jae Lim, Sangchul Lee <br>
 Journal : Journal of Hydrology [[paper](https://www.sciencedirect.com/science/article/abs/pii/S0022169424003366)]
 
 Paper: Application and evaluation of SWAT-Cmodel to predict TOC loading in the Hwangryong River Watershed <br>
-**Dongho Kim***, Jiwon Lee, Hyemin Jeong, Youngsung Kwon, Byeongwon Lee, Sangchul Lee
+**Dongho Kim***, Jiwon Lee, Hyemin Jeong, Youngsung Kwon, Byeongwon Lee, Sangchul Lee <br>
 Journal : J. Korean Soc. Environ. [[paper](https://hess.copernicus.org/preprints/hess-2022-187/hess-2022-187.pdf)]
 
 Paper: Enhanced Watershed Modeling by Incorporating Remotely Sensed Evapotranspiration and Leaf Area Index <br>
-Sangchul Lee, **Dongho Kim**, Gregory W McCarty, Martha Anderson, Feng Gao, Fangni Lei, Glenn E Moglen, Xuesong Zhang, Haw Yen, Junyu Qi, Wade Crow, In-Young Yeo, Liang Sun
+Sangchul Lee, **Dongho Kim**, Gregory W McCarty, Martha Anderson, Feng Gao, Fangni Lei, Glenn E Moglen, Xuesong Zhang, Haw Yen, Junyu Qi, Wade Crow, In-Young Yeo, Liang Sun <br>
 Journal : Hydrology and Earth System Sciences Discussions [[paper](https://hess.copernicus.org/preprints/hess-2022-187/hess-2022-187.pdf)]
 
 Poster: Comparison of SWAT and a deep learning model in nitrate load simulation at the Tuckahoe creek watershed in the United States <br>
-Jiye Lee, **Dongho Kim**, Seokmin Hong, Daeun Yun, Dohyuck Kwon, Robert Hill, Yakov Pachepsky, Feng Gao, Xuesong Zhang, Sangchul Lee, KyungHwa Cho
+Jiye Lee, **Dongho Kim**, Seokmin Hong, Daeun Yun, Dohyuck Kwon, Robert Hill, Yakov Pachepsky, Feng Gao, Xuesong Zhang, Sangchul Lee, KyungHwa Cho <br>
 Journal : EGU24 [[poster](https://meetingorganizer.copernicus.org/EGU24/EGU24-6622.html)]
 
 Poster: Improving watershed modeling capacity by incorporating remotely sensed products <br>
-Sangchul Lee, **Dongho Kim**, Gregory W McCarty, Martha Anderson, Feng Gao, Fangni Lei, Glenn E Moglen, Xuesong Zhang, Haw Yen, Junyu Qi, Wade Crow, In-Young Yeo, Liang Sun
+Sangchul Lee, **Dongho Kim**, Gregory W McCarty, Martha Anderson, Feng Gao, Fangni Lei, Glenn E Moglen, Xuesong Zhang, Haw Yen, Junyu Qi, Wade Crow, In-Young Yeo, Liang Sun <br>
 Journal : AGU Fall Meeting Abstracts [[poster](https://ui.adsabs.harvard.edu/abs/2022AGUFM.H22B..09L/abstract)]
 
 <!--
-**Fine-grained Explanatory Learning for Predicting the Age-Suitability Rating of Movie Scripts**  
-Chae Hyeong Kim, Gayeon Lee, Seung-won Hwang, Jinyoung Yeo  
-Under review for *Proceedings of COLING 2022*.
 -->
 
 ## 🎨 Projects
