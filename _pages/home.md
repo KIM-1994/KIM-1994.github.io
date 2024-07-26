@@ -27,7 +27,7 @@ B.S., Major in Environmental Engineering
 ## 📚 Publications  
 
 Paper: Climate change impacts on in-stream carbon cycling dynamics in a the Miho River Watershed, South Korea <br>
-**Dongho Kim^*^**, Younghun Lee, Xuesong Zhang, Gregory W. McCarty, Junyu Qi, Mikyung Lee, Kyung Hwa Cho, Sangchul Lee
+**Dongho Kim***, Younghun Lee, Xuesong Zhang, Gregory W. McCarty, Junyu Qi, Mikyung Lee, Kyung Hwa Cho, Sangchul Lee
 Journal : Carbon Balance and Management [[paper review]]
 
 Paper: Hybrid model for daily streamflow and phosphorus load prediction <br>
@@ -43,7 +43,7 @@ Hyemin Jeong, Byeongwon Lee, **Dongho Kim**, Junyu Qi, Kyoung Jae Lim, Sangchul 
 Journal : Journal of Hydrology [[paper](https://www.sciencedirect.com/science/article/abs/pii/S0022169424003366)]
 
 Paper: Application and evaluation of SWAT-Cmodel to predict TOC loading in the Hwangryong River Watershed <br>
-**Dongho Kim^*^**, Jiwon Lee, Hyemin Jeong, Youngsung Kwon, Byeongwon Lee, Sangchul Lee
+**Dongho Kim***, Jiwon Lee, Hyemin Jeong, Youngsung Kwon, Byeongwon Lee, Sangchul Lee
 Journal : J. Korean Soc. Environ. [[paper](https://hess.copernicus.org/preprints/hess-2022-187/hess-2022-187.pdf)]
 
 Paper: Enhanced Watershed Modeling by Incorporating Remotely Sensed Evapotranspiration and Leaf Area Index <br>
