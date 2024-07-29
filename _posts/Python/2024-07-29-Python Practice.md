@@ -1,0 +1,568 @@
+---
+layout: single
+title:  "Python 연습문제"
+categories: Python
+tag: [Python]
+toc: true
+author_profile: false
+---
+
+<head>
+  <style>
+    table.dataframe {
+      white-space: normal;
+      width: 100%;
+      height: 240px;
+      display: block;
+      overflow: auto;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      line-height: 20px;
+      text-align: center;
+      border: 0px !important;
+    }
+
+    table.dataframe th {
+      text-align: center;
+      font-weight: bold;
+      padding: 8px;
+    }
+
+    table.dataframe td {
+      text-align: center;
+      padding: 8px;
+    }
+
+    table.dataframe tr:hover {
+      background: #b8d1f3; 
+    }
+
+    .output_prompt {
+      overflow: auto;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      border-radius: 0.3rem;
+      -webkit-overflow-scrolling: touch;
+      padding: 0.8rem;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      color: $code-text-color;
+      border: solid 1px $border-color;
+      border-radius: 0.3rem;
+      word-break: normal;
+      white-space: pre;
+    }
+
+  .dataframe tbody tr th:only-of-type {
+      vertical-align: middle;
+  }
+
+  .dataframe tbody tr th {
+      vertical-align: top;
+  }
+
+  .dataframe thead th {
+      text-align: center !important;
+      padding: 8px;
+  }
+
+  .page__content p {
+      margin: 0 0 0px !important;
+  }
+
+  .page__content p > strong {
+    font-size: 0.8rem !important;
+  }
+
+  </style>
+</head>
+
+
+## 문제 1: 비밀번호 강도 체크
+
+사용자로부터 비밀번호를 입력받아, 그 비밀번호가 강한지 약한지를 평가하는 프로그램을 작성하세요. 강한 비밀번호 조건은 다음과 같습니다.
+
+
+
+> 조건1. 8자리 이상
+
+
+
+> 조건2. 숫자와 영문자를 반드시 포함해야 함. (대소문자는 상관X)
+
+
+
+위의 조건을 만족하지 않을 시, 약한 비밀번호로 지정합니다.
+
+
+
+[HINT] str.isalpha(), str.isdigit(), str.isalnum()을 사용합니다.
+
+
+
+```python
+# isalnum()은 모든 글자가 숫자 or 영문자로 되어있는 경우에 True
+password  = "a1b2c3d4"
+
+if (len(password) >= 8) and password.isalnum():
+    if password.isalpha(): # 전부 다 문자열인 경우
+        print(f'{password} is weak')
+    elif password.isdigit(): # 전부 다 숫자일 경우
+        print(f'{password} is weak')
+    else:
+        print(f'{password} is strong')
+else:
+    print(f'{password} is weak')
+```
+
+<pre>
+a1b2c3d4 is strong
+</pre>
+## 문제 2. 별 찍기!
+
+
+
+* 하늘의 아름다운 별을 따다 코드로 작성해보자.
+
+
+
+> 이해하고 싶으신 분들은 별 찍기의 출력을 반대로 해보세요!
+
+
+
+```python
+# number = 5
+*****
+****
+***
+**
+*
+```
+
+
+```python
+number = int(input("Input the number of lines : "))
+
+# 1)
+for i in range(number):
+    for j in range(number-i):
+        print('*', end='')
+    print()
+
+# 2)
+for i in range(number, 0, -1):
+    print('*' * i)
+```
+
+<pre>
+*****
+****
+***
+**
+*
+*****
+****
+***
+**
+*
+</pre>
+## 문제 3. 단어 갯수 구하기
+
+
+
+* 다음과 같은 영어 문서 하나가 있다.
+
+* 다음 문서에 등장하는 단어마다 등장 횟수를 세어보자!
+
+
+
+```python
+#아래 문자열은 하나의 문서를 의미합니다.
+pep8 = """This document gives coding conventions for the Python code comprising the standard library in the main Python distribution. Please see the companion informational PEP describing style guidelines for the C code in the C implementation of Python.
+This document and PEP 257 (Docstring Conventions) were adapted from Guido’s original Python Style Guide essay, with some additions from Barry’s style guide [2].
+This style guide evolves over time as additional conventions are identified and past conventions are rendered obsolete by changes in the language itself.
+Many projects have their own coding style guidelines. In the event of any conflicts, such project-specific guides take precedence for that project.
+"""
+```
+
+
+```python
+# word_Dict는 문서 하나당 단어와 단어 갯수가 저장되는 사전입니다. 하나만 사용하셔도 되고, 여러개를 사용하셔도 됩니다.
+
+# HINT:
+## 1. pep8.split() + for statement
+## 2. Dictionary
+
+# 1) List로 구현
+word_list = pep8.split()
+word_set = set(word_list)
+for word in sorted(word_set):
+    print(f'{word} : {word_list.count(word)}')
+
+# 2) Dict로 구현
+word_dict = {}   # key : value = word : count
+for word in word_list:
+    if word in word_dict:   # 이미 해당 단어가 word_dict에 key로 있는 경우
+        word_dict[word] = word_dict[word] + 1
+    else:   # 해당 단어를 처음보는 경우(=word_dict에 key로 없는 경우)
+        word_dict[word]  = 1
+for word in sorted(word_dict.keys()):
+    print(f'{word} : {word_dict[word]}')
+
+# 3) Counter로 구현
+from collections import Counter
+
+Counter(word_list)
+```
+
+<pre>
+(Docstring : 1
+257 : 1
+Barry’s : 1
+C : 2
+Conventions) : 1
+Guide : 1
+Guido’s : 1
+In : 1
+Many : 1
+PEP : 2
+Please : 1
+Python : 3
+Python. : 1
+Style : 1
+This : 3
+[2]. : 1
+adapted : 1
+additional : 1
+additions : 1
+and : 2
+any : 1
+are : 2
+as : 1
+by : 1
+changes : 1
+code : 2
+coding : 2
+companion : 1
+comprising : 1
+conflicts, : 1
+conventions : 3
+describing : 1
+distribution. : 1
+document : 2
+essay, : 1
+event : 1
+evolves : 1
+for : 3
+from : 2
+gives : 1
+guide : 2
+guidelines : 1
+guidelines. : 1
+guides : 1
+have : 1
+identified : 1
+implementation : 1
+in : 3
+informational : 1
+itself. : 1
+language : 1
+library : 1
+main : 1
+obsolete : 1
+of : 2
+original : 1
+over : 1
+own : 1
+past : 1
+precedence : 1
+project-specific : 1
+project. : 1
+projects : 1
+rendered : 1
+see : 1
+some : 1
+standard : 1
+style : 4
+such : 1
+take : 1
+that : 1
+the : 8
+their : 1
+time : 1
+were : 1
+with : 1
+(Docstring : 1
+257 : 1
+Barry’s : 1
+C : 2
+Conventions) : 1
+Guide : 1
+Guido’s : 1
+In : 1
+Many : 1
+PEP : 2
+Please : 1
+Python : 3
+Python. : 1
+Style : 1
+This : 3
+[2]. : 1
+adapted : 1
+additional : 1
+additions : 1
+and : 2
+any : 1
+are : 2
+as : 1
+by : 1
+changes : 1
+code : 2
+coding : 2
+companion : 1
+comprising : 1
+conflicts, : 1
+conventions : 3
+describing : 1
+distribution. : 1
+document : 2
+essay, : 1
+event : 1
+evolves : 1
+for : 3
+from : 2
+gives : 1
+guide : 2
+guidelines : 1
+guidelines. : 1
+guides : 1
+have : 1
+identified : 1
+implementation : 1
+in : 3
+informational : 1
+itself. : 1
+language : 1
+library : 1
+main : 1
+obsolete : 1
+of : 2
+original : 1
+over : 1
+own : 1
+past : 1
+precedence : 1
+project-specific : 1
+project. : 1
+projects : 1
+rendered : 1
+see : 1
+some : 1
+standard : 1
+style : 4
+such : 1
+take : 1
+that : 1
+the : 8
+their : 1
+time : 1
+were : 1
+with : 1
+</pre>
+<pre>
+Counter({'This': 3,
+         'document': 2,
+         'gives': 1,
+         'coding': 2,
+         'conventions': 3,
+         'for': 3,
+         'the': 8,
+         'Python': 3,
+         'code': 2,
+         'comprising': 1,
+         'standard': 1,
+         'library': 1,
+         'in': 3,
+         'main': 1,
+         'distribution.': 1,
+         'Please': 1,
+         'see': 1,
+         'companion': 1,
+         'informational': 1,
+         'PEP': 2,
+         'describing': 1,
+         'style': 4,
+         'guidelines': 1,
+         'C': 2,
+         'implementation': 1,
+         'of': 2,
+         'Python.': 1,
+         'and': 2,
+         '257': 1,
+         '(Docstring': 1,
+         'Conventions)': 1,
+         'were': 1,
+         'adapted': 1,
+         'from': 2,
+         'Guido’s': 1,
+         'original': 1,
+         'Style': 1,
+         'Guide': 1,
+         'essay,': 1,
+         'with': 1,
+         'some': 1,
+         'additions': 1,
+         'Barry’s': 1,
+         'guide': 2,
+         '[2].': 1,
+         'evolves': 1,
+         'over': 1,
+         'time': 1,
+         'as': 1,
+         'additional': 1,
+         'are': 2,
+         'identified': 1,
+         'past': 1,
+         'rendered': 1,
+         'obsolete': 1,
+         'by': 1,
+         'changes': 1,
+         'language': 1,
+         'itself.': 1,
+         'Many': 1,
+         'projects': 1,
+         'have': 1,
+         'their': 1,
+         'own': 1,
+         'guidelines.': 1,
+         'In': 1,
+         'event': 1,
+         'any': 1,
+         'conflicts,': 1,
+         'such': 1,
+         'project-specific': 1,
+         'guides': 1,
+         'take': 1,
+         'precedence': 1,
+         'that': 1,
+         'project.': 1})
+</pre>
+
+```python
+text = []
+for i in pep8.split():
+    text.append(i.strip(",.()'"))
+
+for i in text:
+    print(f'{i} {text.count(i)}개')
+```
+
+<pre>
+This 3개
+document 2개
+gives 1개
+coding 2개
+conventions 3개
+for 3개
+the 8개
+Python 4개
+code 2개
+comprising 1개
+the 8개
+standard 1개
+library 1개
+in 3개
+the 8개
+main 1개
+Python 4개
+distribution 1개
+Please 1개
+see 1개
+the 8개
+companion 1개
+informational 1개
+PEP 2개
+describing 1개
+style 4개
+guidelines 2개
+for 3개
+the 8개
+C 2개
+code 2개
+in 3개
+the 8개
+C 2개
+implementation 1개
+of 2개
+Python 4개
+This 3개
+document 2개
+and 2개
+PEP 2개
+257 1개
+Docstring 1개
+Conventions 1개
+were 1개
+adapted 1개
+from 2개
+Guido’s 1개
+original 1개
+Python 4개
+Style 1개
+Guide 1개
+essay 1개
+with 1개
+some 1개
+additions 1개
+from 2개
+Barry’s 1개
+style 4개
+guide 2개
+[2] 1개
+This 3개
+style 4개
+guide 2개
+evolves 1개
+over 1개
+time 1개
+as 1개
+additional 1개
+conventions 3개
+are 2개
+identified 1개
+and 2개
+past 1개
+conventions 3개
+are 2개
+rendered 1개
+obsolete 1개
+by 1개
+changes 1개
+in 3개
+the 8개
+language 1개
+itself 1개
+Many 1개
+projects 1개
+have 1개
+their 1개
+own 1개
+coding 2개
+style 4개
+guidelines 2개
+In 1개
+the 8개
+event 1개
+of 2개
+any 1개
+conflicts 1개
+such 1개
+project-specific 1개
+guides 1개
+take 1개
+precedence 1개
+for 3개
+that 1개
+project 1개
+</pre>
