@@ -25,7 +25,7 @@ B.S., Major in Environmental Engineering
 
 Paper: Climate change impacts on in-stream carbon cycling dynamics in a the Miho River Watershed, South Korea <br>
 **Dongho Kim***, Younghun Lee, Xuesong Zhang, Gregory W. McCarty, Junyu Qi, Mikyung Lee, Kyung Hwa Cho, Sangchul Lee <br>
-Journal : *Carbon Balance and Management* [[paper review]]
+Journal : *Carbon Balance and Management* [paper review]
 
 Paper: Hybrid model for daily streamflow and phosphorus load prediction <br>
 Doyeon Lee, Jihoon Shin, Taeho Kim, Sangchul Lee, **Dongho Kim**, Yeonjeong Park, YoonKyung Cha <br>
