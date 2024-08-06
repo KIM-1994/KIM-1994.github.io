@@ -19,7 +19,7 @@ M.S. Environmental Engineering
 Advised by Prof. Jayong Koo
 
 **Pyeongtaek University, Pyeongtaek, Republic of Korea** *Mar 2013 - Feb 2019*  
-B.S., Major in Environmental Engineering
+B.S. Major in Environmental Engineering
 
 ## 📚 Publications  
 
