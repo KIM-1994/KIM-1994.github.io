@@ -44,7 +44,7 @@ Fork 가 완료되면 다음과 같은 화면이 나타납니다.
 
 ```bash
 git clone [자신의 저장소의 HTTP]
-# git clone https://github.com/cheris8/ESC-20SUMMER.git
+# git clone https://github.com/KIM-1994.git
 ```
 
 `git clone` 명령어는 깃허브 웹페이지에 있는 기존 저장소를 복제하여 PC로 가져오는 명령어입니다. 다른 프로젝트에 참여하거나 깃 저장소를 복사하고 싶을 때 주로 사용합니다.
@@ -65,7 +65,7 @@ git remote -v
 
 ```bash
 git remote add [상대방의 저장소의 별칭] [상대방의 저장소의 HTTP]
-# git remote add esc https://github.com/YonseiESC/ESC-20SUMMER.git
+# git remote add esc https://github.com/Hoya2021.git
 ```
 
 이렇게 하면 자신의 저장소와 함께 상대방의 저장소도 등록되게 됩니다. 다시 한번 `git remote` 명령어를 실행해봅시다.
