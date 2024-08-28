@@ -172,7 +172,7 @@ def create_vectorstore(pages):
     return vectorstore.as_retriever(k=2)
 ```
 
-### 4. 시각화를 위한 streamlit
+## 4. 시각화를 위한 streamlit
 LLM 모델의 입력과 출력 그리고 PDF파일 업로드를 위한 시각화를 위해 streamlit을 이용하여 진행하였다.
 
 
