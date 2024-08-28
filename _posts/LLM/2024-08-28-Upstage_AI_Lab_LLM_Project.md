@@ -78,7 +78,7 @@ author_profile: false
   </style>
 </head>
 
-
+## 1. .env 환경 설정
 처음으로 .env 폴더에서 제공받은 Upstage_API_Key를 입력하고 저장해준다
 
 
@@ -92,7 +92,7 @@ load_dotenv()
 MAX_MESSAGES_BEFORE_DELETION = 5
 UPSTAGE_API_KEY = os.getenv("UPSTAGE_API_KEY")
 ```
-
+## 2. chat_model.py
 다음으로 chat_model.py를 만들어 입력과 출력을 가능하게 만들어주었다.
 
 
@@ -146,6 +146,7 @@ def create_rag_chain(chat, retriever, contextualize_q_prompt, qa_prompt):
     return create_retrieval_chain(history_aware_retriever, question_answer_chain)
 ```
 
+## 3. doucument_loader.py
 doucument_loader.py를 만들어 PDF 파일 업로드가 가능하도록 만들었다.
 
 
@@ -171,6 +172,7 @@ def create_vectorstore(pages):
     return vectorstore.as_retriever(k=2)
 ```
 
+### 4. 시각화를 위한 streamlit
 LLM 모델의 입력과 출력 그리고 PDF파일 업로드를 위한 시각화를 위해 streamlit을 이용하여 진행하였다.
 
 
@@ -207,6 +209,7 @@ def get_user_input():
     return st.chat_input("Ask a question!")
 ```
 
+## 5. main.py
 마지막으로 전체 모듈을 구동하기 위해 main.py를 만들었다.
 
 
