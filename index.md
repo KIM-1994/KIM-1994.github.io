@@ -25,7 +25,7 @@ B.S. Major in Environmental Engineering
 
 Paper: Remotely sensed evapotranspiration-based ensemble streamflow modeling in an ungauged watershed under climate and land use/cover change, North Korea <br>
 Yoonnoh Lee, Hyemin Jeong, Byeongwon Lee, Younghun Lee, **Dongho Kim**, Seongyun Kim, Dongjin Jeon, Ikjae Kim, Sangchul Lee <br>
-Journal : *Journal of Hydrology: Regional Studies* [[paper]([https://link.springer.com/article/10.1007/s12665-025-12508-6](https://www.sciencedirect.com/science/article/pii/S2214581825006962))]
+Journal : *Journal of Environmental Management* [[paper]([[https://link.springer.com/article/10.1007/s12665-025-12508-6](https://www.sciencedirect.com/science/article/pii/S2214581825006962)](https://www.sciencedirect.com/science/article/abs/pii/S0301479726013794))]
 
 Paper: Geographically weighted machine learning for predicting the spatial distribution of groundwater nitrate nitrogen (NO3-N) concentration <br>
 Younghun Lee, Changhyun Kim, Hyemin Jeong, **Dongho Kim**, Byeongwon Lee, Taeseung Park, Seongyun Kim, Dongjin Jeon, Jongho Ahn, Jaiyoung Lee, Yoonkyung Cha, Sangchul Lee <br>
