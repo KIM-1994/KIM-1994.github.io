@@ -29,7 +29,7 @@ Journal : *Journal of Environmental Management* [[paper](https://www.sciencedire
 
 Paper: Geographically weighted machine learning for predicting the spatial distribution of groundwater nitrate nitrogen (NO3-N) concentration <br>
 Younghun Lee, Changhyun Kim, Hyemin Jeong, **Dongho Kim**, Byeongwon Lee, Taeseung Park, Seongyun Kim, Dongjin Jeon, Jongho Ahn, Jaiyoung Lee, Yoonkyung Cha, Sangchul Lee <br>
-Journal : *Journal of Hydrology: Regional Studies* [[paper]([https://link.springer.com/article/10.1007/s12665-025-12508-6](https://www.sciencedirect.com/science/article/pii/S2214581825006962))]
+Journal : *Journal of Hydrology: Regional Studies* [[paper](https://www.sciencedirect.com/science/article/pii/S2214581825006962)]
 
 Paper: Climate change impacts on in-stream carbon cycling dynamics in the Miho River Watershed, South Korea <br>
 **Dongho Kim***, Younghun Lee, Xuesong Zhang, Gregory W. McCarty, Junyu Qi, Mikyung Lee, Kyung Hwa Cho, Sangchul Lee <br>
