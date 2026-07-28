@@ -68,7 +68,7 @@ Journal : *AGU Fall Meeting Abstracts* [[poster](https://ui.adsabs.harvard.edu/a
 
 ## 🎨 Projects
 
-**(주)한국수력원자력** *Mar 2026 - Aug 2026*  
+**한국수력원자력** *Mar 2026 - Aug 2026*  
 강릉수력발전소 양수전환 가치 및 경제성분석 용역
 
 **국립재난안전연구원** *Jan 2025 - Dec 2025*  
