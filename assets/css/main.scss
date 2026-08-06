@@ -9,3 +9,27 @@ search: false
 @import "minimal-mistakes"; // main partials
 
 /* @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap'); */
+
+/* 연도 구분선 */
+.publication-year {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 25px;
+  margin: 50px 0 30px;
+}
+
+.publication-year::before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #555;
+}
+
+.publication-year span {
+  flex-shrink: 0;
+  font-size: 46px;
+  font-weight: 300;
+  line-height: 1;
+  color: #666;
+}
