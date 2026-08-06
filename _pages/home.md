@@ -25,6 +25,10 @@ B.S., Major in Environmental Engineering
 
 ## 📚 Publications  
 
+<div class="publication-year">
+  <span>2026</span>
+</div>
+
 Paper: Remotely sensed evapotranspiration-based ensemble streamflow modeling in an ungauged watershed under climate and land use/cover change, North Korea <br>
 Yoonnoh Lee, Hyemin Jeong, Byeongwon Lee, Younghun Lee, **Dongho Kim**, Seongyun Kim, Dongjin Jeon, Ikjae Kim, Sangchul Lee <br>
 Journal : Journal of Environmental Management [[paper](https://www.sciencedirect.com/science/article/abs/pii/S0301479726013794)]
