@@ -24,6 +24,14 @@ B.S., Major in Environmental Engineering
 
 ## 📚 Publications  
 
+Paper: Remotely sensed evapotranspiration-based ensemble streamflow modeling in an ungauged watershed under climate and land use/cover change, North Korea <br>
+Yoonnoh Lee, Hyemin Jeong, Byeongwon Lee, Younghun Lee, **Dongho Kim**, Seongyun Kim, Dongjin Jeon, Ikjae Kim, Sangchul Lee <br>
+Journal : Journal of Environmental Management [[paper](https://www.sciencedirect.com/science/article/abs/pii/S0301479726013794)]
+
+Paper: Geographically weighted machine learning for predicting the spatial distribution of groundwater nitrate nitrogen (NO3-N) concentration <br>
+Younghun Lee, Changhyun Kim, Hyemin Jeong, **Dongho Kim**, Byeongwon Lee, Taeseung Park, Seongyun Kim, Dongjin Jeon, Jongho Ahn, Jaiyoung Lee, Yoonkyung Cha, Sangchul Lee <br>
+Journal : Journal of Hydrology: Regional Studies [[paper](https://www.sciencedirect.com/science/article/pii/S2214581825006962)]
+
 Paper: Climate change impacts on in-stream carbon cycling dynamics in the Miho River Watershed, South Korea <br>
 **Dongho Kim***, Younghun Lee, Xuesong Zhang, Gregory W. McCarty, Junyu Qi, Mikyung Lee, Kyung Hwa Cho, Sangchul Lee <br>
 Journal : Environmental Earth Sciences [[paper](https://link.springer.com/article/10.1007/s12665-025-12508-6)]
