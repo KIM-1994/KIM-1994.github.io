@@ -12,6 +12,7 @@ Hello,  I graduated with a Master's degree in Environmental Engineering from the
 - Hydrological model
 - Deep Learning
 - Machine Learning
+- Water resources Management
 
 ## 🎓 Education
 
